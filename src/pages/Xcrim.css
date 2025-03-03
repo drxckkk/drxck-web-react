@@ -1,0 +1,8 @@
+.xcrim-container {
+    background-image: url('/src/assets/xcrim.jpg');
+    background-size: 50%;
+    background-position: center;
+    height: 100vh;
+    padding-top: 80px;
+    padding-bottom: 80px;
+}

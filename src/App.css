@@ -1,0 +1,51 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.App {
+  text-align: center;
+  background-image: url('assets/background.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  position: relative;
+  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.App-header {
+  background-color: rgba(40, 44, 52, 0.7); 
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  width: 100%;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

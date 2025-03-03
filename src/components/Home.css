@@ -1,0 +1,73 @@
+/* General Section Styles */
+.section {
+    padding: 60px 20px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 20vh; /* Ensure section takes up full height */
+}
+
+.home-container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1); /* Slight background blur */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 100%; /* Ensure content is responsive */
+    max-width: 1000px; /* Limit content width */
+}
+
+h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* Add some responsive styling */
+@media (max-width: 768px) {
+    .content {
+        padding: 30px;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    p {
+        font-size: 1.1em;
+    }
+}
+
+/* Optional: Add a fade-in animation for when the section appears */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section {
+    animation: fadeIn 1s ease-out;
+}

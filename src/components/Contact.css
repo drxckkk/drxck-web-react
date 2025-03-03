@@ -1,0 +1,19 @@
+.contacts-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  color: #fff;
+}
+
+.contacts-container h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.contact-text {
+  font-size: 1.2em;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+}
