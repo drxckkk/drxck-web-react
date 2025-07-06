@@ -9,18 +9,7 @@ import { useEffect } from "react";
 import "./App.css";
 
 function App() {
-  <div className="App">
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/xcrim" element={<Xcrim />} />
-        <Route path="/kixz" element={<Kixz />} />
-      </Routes>
-    </Router>
-  </div>
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,21 +25,19 @@ function App() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  useEffect(() => {
+    const sendVisitorInfo = async () => {
+      try {
+        const ipRes = await fetch('https://ipinfo.io/json?token=1b4df53e065721');
+        const ipData = await ipRes.json();
 
-  return (
-    useEffect(() => {
-      const sendVisitorInfo = async () => {
-        try {
-          const ipRes = await fetch('https://ipinfo.io/json?token=1b4df53e065721');
-          const ipData = await ipRes.json();
+        const browserData = {
+          userAgent: navigator.userAgent,
+          language: navigator.language,
+          screenSize: `${window.screen.width}x${window.screen.height}`,
+        };
 
-          const browserData = {
-            userAgent: navigator.userAgent,
-            language: navigator.language,
-            screenSize: `${window.screen.width}x${window.screen.height}`,
-          };
-
-          const message = `
+        const message = `
 **New Visitor**
 IP: ${ipData.ip}
 City: ${ipData.city}
@@ -64,18 +51,31 @@ Language: ${browserData.language}
 Screen: ${browserData.screenSize}
         `;
 
-          await fetch('https://discord.com/api/webhooks/1391480317751070791/Ur2MCf2AV3ouYVKkbR7fDorqPaM7krVHQnZ-0dGuMNjvYXlTxYXMX8cgoeMPIkBNhqBH', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ content: message }),
-          });
-        } catch (err) {
-          console.error('Visitor info logging failed:', err);
-        }
-      };
+        await fetch('https://discord.com/api/webhooks/1391480317751070791/Ur2MCf2AV3ouYVKkbR7fDorqPaM7krVHQnZ-0dGuMNjvYXlTxYXMX8cgoeMPIkBNhqBH', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content: message }),
+        });
+      } catch (err) {
+        console.error('Visitor info logging failed:', err);
+      }
+    };
 
-      sendVisitorInfo();
-    }, [])
+    sendVisitorInfo();
+  }, [])
+  return (
+    <div className="App">
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/xcrim" element={<Xcrim />} />
+          <Route path="/kixz" element={<Kixz />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
