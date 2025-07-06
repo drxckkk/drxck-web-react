@@ -1,11 +1,10 @@
-/* General Section Styles */
 .section {
     padding: 60px 20px;
     color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 20vh; /* Ensure section takes up full height */
+    min-height: 20vh;
 }
 
 .home-container {
@@ -36,7 +35,6 @@ p {
     font-weight: 300;
 }
 
-/* Add some responsive styling */
 @media (max-width: 768px) {
     .content {
         padding: 30px;
@@ -51,7 +49,6 @@ p {
     }
 }
 
-/* Optional: Add a fade-in animation for when the section appears */
 @keyframes fadeIn {
     0% {
         opacity: 0;
