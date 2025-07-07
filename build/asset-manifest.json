@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "/static/css/main.8df931da.css",
-    "main.js": "/static/js/main.830c422e.js",
-    "static/js/453.920a9f67.chunk.js": "/static/js/453.920a9f67.chunk.js",
-    "static/media/project1.mp4": "/static/media/project1.6eb868ecfe977deaf484.mp4",
-    "static/media/project3.mp4": "/static/media/project3.72a848c83b0070563cfa.mp4",
-    "static/media/project2.mp4": "/static/media/project2.94a34d5481c3456fb5af.mp4",
-    "static/media/fa-solid-900.ttf": "/static/media/fa-solid-900.2582b0e4bcf85eceead0.ttf",
-    "static/media/fa-brands-400.ttf": "/static/media/fa-brands-400.1815e00441357e01619e.ttf",
-    "static/media/fa-solid-900.woff2": "/static/media/fa-solid-900.2463b90d9a316e4e5294.woff2",
-    "static/media/fa-brands-400.woff2": "/static/media/fa-brands-400.c210719e60948b211a12.woff2",
-    "static/media/background.png": "/static/media/background.63f371e5c6c0f483c557.png",
-    "static/media/fa-regular-400.ttf": "/static/media/fa-regular-400.914997e1bdfc990d0897.ttf",
-    "static/media/fa-regular-400.woff2": "/static/media/fa-regular-400.89999bdf5d835c012025.woff2",
-    "static/media/kixz.png": "/static/media/kixz.2698bf70b431a6a4f7b0.png",
-    "static/media/xcrim.jpg": "/static/media/xcrim.3678ec54cfc8f45243f3.jpg",
-    "static/media/fa-v4compatibility.ttf": "/static/media/fa-v4compatibility.da94ef451f4969af06e6.ttf",
-    "static/media/fa-v4compatibility.woff2": "/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
-    "index.html": "/index.html",
-    "main.8df931da.css.map": "/static/css/main.8df931da.css.map",
-    "main.830c422e.js.map": "/static/js/main.830c422e.js.map",
-    "453.920a9f67.chunk.js.map": "/static/js/453.920a9f67.chunk.js.map"
+    "main.css": "/drxckkk.github.io/drxck-web-react/static/css/main.a5810448.css",
+    "main.js": "/drxckkk.github.io/drxck-web-react/static/js/main.dbf01bc5.js",
+    "static/js/453.920a9f67.chunk.js": "/drxckkk.github.io/drxck-web-react/static/js/453.920a9f67.chunk.js",
+    "static/media/project1.mp4": "/drxckkk.github.io/drxck-web-react/static/media/project1.6eb868ecfe977deaf484.mp4",
+    "static/media/project3.mp4": "/drxckkk.github.io/drxck-web-react/static/media/project3.72a848c83b0070563cfa.mp4",
+    "static/media/project2.mp4": "/drxckkk.github.io/drxck-web-react/static/media/project2.94a34d5481c3456fb5af.mp4",
+    "static/media/fa-solid-900.ttf": "/drxckkk.github.io/drxck-web-react/static/media/fa-solid-900.2582b0e4bcf85eceead0.ttf",
+    "static/media/fa-brands-400.ttf": "/drxckkk.github.io/drxck-web-react/static/media/fa-brands-400.1815e00441357e01619e.ttf",
+    "static/media/fa-solid-900.woff2": "/drxckkk.github.io/drxck-web-react/static/media/fa-solid-900.2463b90d9a316e4e5294.woff2",
+    "static/media/fa-brands-400.woff2": "/drxckkk.github.io/drxck-web-react/static/media/fa-brands-400.c210719e60948b211a12.woff2",
+    "static/media/background.png": "/drxckkk.github.io/drxck-web-react/static/media/background.63f371e5c6c0f483c557.png",
+    "static/media/fa-regular-400.ttf": "/drxckkk.github.io/drxck-web-react/static/media/fa-regular-400.914997e1bdfc990d0897.ttf",
+    "static/media/fa-regular-400.woff2": "/drxckkk.github.io/drxck-web-react/static/media/fa-regular-400.89999bdf5d835c012025.woff2",
+    "static/media/kixz.png": "/drxckkk.github.io/drxck-web-react/static/media/kixz.2698bf70b431a6a4f7b0.png",
+    "static/media/xcrim.jpg": "/drxckkk.github.io/drxck-web-react/static/media/xcrim.3678ec54cfc8f45243f3.jpg",
+    "static/media/fa-v4compatibility.ttf": "/drxckkk.github.io/drxck-web-react/static/media/fa-v4compatibility.da94ef451f4969af06e6.ttf",
+    "static/media/fa-v4compatibility.woff2": "/drxckkk.github.io/drxck-web-react/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
+    "index.html": "/drxckkk.github.io/drxck-web-react/index.html",
+    "main.a5810448.css.map": "/drxckkk.github.io/drxck-web-react/static/css/main.a5810448.css.map",
+    "main.dbf01bc5.js.map": "/drxckkk.github.io/drxck-web-react/static/js/main.dbf01bc5.js.map",
+    "453.920a9f67.chunk.js.map": "/drxckkk.github.io/drxck-web-react/static/js/453.920a9f67.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8df931da.css",
-    "static/js/main.830c422e.js"
+    "static/css/main.a5810448.css",
+    "static/js/main.dbf01bc5.js"
   ]
 }
