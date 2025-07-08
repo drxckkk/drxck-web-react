@@ -17,3 +17,21 @@
   color: #fff;
   font-weight: 500;
 }
+
+.email-text svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  fill: currentColor;
+}
+
+.payment-text svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  fill: currentColor;
+}
+
+a {
+  margin: 0em 0.25em;
+}

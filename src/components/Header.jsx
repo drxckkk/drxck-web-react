@@ -1,5 +1,6 @@
-import React from "react";
 import "./Header.css";
+import { CIcon } from '@coreui/icons-react';
+import { cibKoFi } from "@coreui/icons";
 
 function Header() {
   return (
@@ -8,7 +9,7 @@ function Header() {
         <h1>Drxck's Portfolio</h1>
         <nav>
           <ul>
-            <li><a href="#home">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
@@ -20,7 +21,7 @@ function Header() {
             rel="noopener noreferrer"
             className="kofi-button"
           >
-            <span className="kofi-text">Support me on Ko-fi</span>
+            <span className="kofi-text"><CIcon icon={cibKoFi} /> Support me on Ko-fi</span>
           </a>
         </div>
       </div>

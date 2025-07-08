@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import "./App.css";
 
-function App() {
+export default function App() {
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector("header");
@@ -36,7 +36,5 @@ function App() {
         </Routes>
       </Router>
     </div>
-  );
+  )
 }
-
-export default App;

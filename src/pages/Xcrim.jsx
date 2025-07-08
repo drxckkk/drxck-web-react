@@ -1,4 +1,3 @@
-import React from "react";
 import "./Xcrim.css";
 
 function Xcrim() {
