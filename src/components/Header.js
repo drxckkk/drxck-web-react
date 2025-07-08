@@ -13,6 +13,16 @@ function Header() {
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
+        <div className="kofi-container">
+          <a
+            href="https://ko-fi.com/drxck"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="kofi-button"
+          >
+            <span className="kofi-text">Support me on Ko-fi</span>
+          </a>
+        </div>
       </div>
     </header>
   );

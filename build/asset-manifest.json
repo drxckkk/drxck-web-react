@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/drxckkk.github.io/drxck-web-react/static/css/main.a5810448.css",
-    "main.js": "/drxckkk.github.io/drxck-web-react/static/js/main.dbf01bc5.js",
+    "main.css": "/drxckkk.github.io/drxck-web-react/static/css/main.4752b5c2.css",
+    "main.js": "/drxckkk.github.io/drxck-web-react/static/js/main.476a1143.js",
     "static/js/453.920a9f67.chunk.js": "/drxckkk.github.io/drxck-web-react/static/js/453.920a9f67.chunk.js",
     "static/media/project1.mp4": "/drxckkk.github.io/drxck-web-react/static/media/project1.6eb868ecfe977deaf484.mp4",
     "static/media/project3.mp4": "/drxckkk.github.io/drxck-web-react/static/media/project3.72a848c83b0070563cfa.mp4",
@@ -18,12 +18,12 @@
     "static/media/fa-v4compatibility.ttf": "/drxckkk.github.io/drxck-web-react/static/media/fa-v4compatibility.da94ef451f4969af06e6.ttf",
     "static/media/fa-v4compatibility.woff2": "/drxckkk.github.io/drxck-web-react/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
     "index.html": "/drxckkk.github.io/drxck-web-react/index.html",
-    "main.a5810448.css.map": "/drxckkk.github.io/drxck-web-react/static/css/main.a5810448.css.map",
-    "main.dbf01bc5.js.map": "/drxckkk.github.io/drxck-web-react/static/js/main.dbf01bc5.js.map",
+    "main.4752b5c2.css.map": "/drxckkk.github.io/drxck-web-react/static/css/main.4752b5c2.css.map",
+    "main.476a1143.js.map": "/drxckkk.github.io/drxck-web-react/static/js/main.476a1143.js.map",
     "453.920a9f67.chunk.js.map": "/drxckkk.github.io/drxck-web-react/static/js/453.920a9f67.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a5810448.css",
-    "static/js/main.dbf01bc5.js"
+    "static/css/main.4752b5c2.css",
+    "static/js/main.476a1143.js"
   ]
 }
