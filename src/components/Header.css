@@ -99,6 +99,8 @@ nav a:hover {
     overflow: hidden;
     transition: all 0.3s ease;
     animation: rainbow-glow 9s ease-in-out infinite;
+    border-color: #ffffff50;
+    border-style: outset;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
@@ -145,9 +147,11 @@ nav a:hover {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
@@ -158,13 +162,13 @@ nav a:hover {
     .kofi-container {
         margin-left: 10px;
     }
-    
+
     .kofi-button {
         padding: 6px 12px;
         font-size: 12px;
         gap: 6px;
     }
-    
+
     .kofi-icon {
         font-size: 14px;
     }

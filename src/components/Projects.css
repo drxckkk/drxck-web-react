@@ -20,6 +20,7 @@
   gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
+  border-color: #ffffff1f;
 }
 
 .project {
@@ -34,9 +35,12 @@
   box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
+  border-color: #ffffff50;
+  border-style: outset;
 }
 
-.project-title, .project-description {
+.project-title,
+.project-description {
   z-index: 5;
   color: #ffffff;
   padding: 10px;
