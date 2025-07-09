@@ -24,17 +24,15 @@ export default function App() {
     };
   }, []);
   return (
-    <div className="App">
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/xcrim" element={<Xcrim />} />
-          <Route path="/kixz" element={<Kixz />} />
-        </Routes>
-      </Router>
-    </div>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/xcrim" element={<Xcrim />} />
+        <Route path="/kixz" element={<Kixz />} />
+      </Routes>
+    </Router>
   )
 }
