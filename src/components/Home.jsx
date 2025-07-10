@@ -9,9 +9,9 @@ function Home() {
       <section id="home" className="section">
         <div className="home-container">
           <div className="content">
-            <h2>About Me</h2>
+            <h2>Hey, I'm Drxck!</h2>
             <p>
-              As an experienced programmer mainly for Roblox, with over 6 years of experience, I specialize in creating complex performance-friendly systems and more. My goal is to always deliver the best quality work for my clients.
+              With over 6 years of experience as a dedicated programmer, I specialize in making performance-friendly, complex systems and engaging user experiences. My passion lies in bringing complex ideas into elegant, efficient code, always looking forward to delivering quality for my clients.
             </p>
           </div>
         </div>

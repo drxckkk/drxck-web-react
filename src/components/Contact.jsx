@@ -10,9 +10,9 @@ function Contact() {
                 <h2>Contact</h2>
                 <p className="email-text">
                     <i className="fas fa-envelope"></i>
-                    <a>drxckpro123@gmail.com</a>
+                    <a href="mailto:drxckpro123@gmail.com">drxckpro123@gmail.com</a>
                     <CIcon icon={cibDiscord} />
-                    <a>drxck</a>
+                    <a href="https://discordapp.com/users/drxck" target="_blank" rel="noopener noreferrer">drxck</a>
                 </p>
                 <p className="payment-text">When contacting me for business, you agree with my <a href="https://docs.google.com/document/d/1lAAyg9JxJ-Uc4r9aaH-KvpafnYdOsE_U">Terms of Service</a> and agree on using <CIcon icon={cibPaypal} /> PayPal for transactions.</p>
             </div>
@@ -21,4 +21,5 @@ function Contact() {
 }
 
 export default Contact;
+
 

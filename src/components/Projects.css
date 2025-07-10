@@ -1,10 +1,8 @@
 #projects {
-  height: 700px;
-  overflow-y: auto;
   align-items: flex-end;
   justify-content: center;
-  margin-top: 100px;
   color: #ffffff;
+  padding-top: 40px;
 }
 
 .project h3 {
@@ -17,45 +15,51 @@
 
 .project-container {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
   justify-content: center;
   border-color: #ffffff1f;
 }
 
 .project {
   position: relative;
-  width: 300px;
-  height: 500px;
+  width: 80%;
+  max-width: 900px;
+  height: auto;
   padding: 20px;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 25px;
   background: rgba(255, 255, 255, 0);
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  text-align: center;
+  text-align: left;
   border-color: #ffffff50;
   border-style: outset;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
 }
 
 .project-title,
 .project-description {
   z-index: 5;
   color: #ffffff;
-  padding: 10px;
 }
 
 .project:hover {
   z-index: 10;
-  transform: scale(1.25);
+  transform: scale(1.05);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .project-content {
-  padding: 20px;
+  padding: 0;
   color: #000000;
   position: relative;
+  flex: 1;
 }
 
 .project-image img {
@@ -71,16 +75,13 @@
 }
 
 #projects .project video {
-  position: absolute;
-  bottom: 5%;
-  left: 50%;
-  right: 0;
-  width: 90%;
+  position: relative;
+  width: 50%;
   height: auto;
   max-width: 100%;
-  transform: translateX(-50%);
+  transform: none;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 25px;
   opacity: 0.5;
   transition: all 0.3s ease-in;
 }
@@ -105,4 +106,32 @@ ul li a i {
 
 ul li a:hover i {
   color: #ff6347;
+}
+.tech-stack {
+    font-size: 0.9em;
+    color: #ccc;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.project-detail {
+    font-size: 0.95em;
+    color: #e0e0e0;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.project-link {
+    display: inline-block;
+    background-color: #00aaff;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.project-link:hover {
+    background-color: #0088cc;
 }

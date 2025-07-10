@@ -29,6 +29,10 @@ function Projects() {
                     <div className="project-content">
                         <h3 className="project-title">Vehicle System</h3>
                         <p className="project-description">A simple car system that utilizes Raycast and BodyForces for a smooth driving experience.</p>
+                        <p className="tech-stack"><strong>Tech Stack:</strong> Lua, Roblox Studio</p>
+                        <p className="project-detail"><i>Lines of Code: 1,500</i></p>
+                        <p className="project-detail"><i>Price: $100</i></p>
+                        <p className="project-detail"><i>Time to Complete: 7 Days</i></p>
                     </div>
                     <video loop muted className="fade-in" width="100%">
                         <source src={video1Src} type="video/mp4" />
@@ -42,6 +46,10 @@ function Projects() {
                     <div className="project-content">
                         <h3 className="project-title">Orb System</h3>
                         <p className="project-description">A heavily optimized orb system with custom physics and object pooling.</p>
+                        <p className="tech-stack"><strong>Tech Stack:</strong> Lua, Roblox Studio</p>
+                        <p className="project-detail"><i>Lines of Code: 600</i></p>
+                        <p className="project-detail"><i>Price: $20</i></p>
+                        <p className="project-detail"><i>Time to Complete: 48 Hours</i></p>
                     </div>
                     <video loop muted className="fade-in" width="100%">
                         <source src={video2Src} type="video/mp4" />
@@ -55,6 +63,10 @@ function Projects() {
                     <div className="project-content">
                         <h3 className="project-title">Jump For UGC Game</h3>
                         <p className="project-description">A short showcase of a commissioned game.</p>
+                        <p className="tech-stack"><strong>Tech Stack:</strong> Lua, Roblox Studio</p>
+                        <p className="project-detail"><i>Lines of Code: 1,000</i></p>
+                        <p className="project-detail"><i>Price: $300</i></p>
+                        <p className="project-detail"><i>Time to Complete: 1 Week</i></p>
                     </div>
                     <video loop muted className="fade-in" width="100%">
                         <source src={video3Src} type="video/mp4" />

@@ -26,7 +26,6 @@ h2 {
     margin-bottom: 20px;
     font-weight: 600;
     letter-spacing: 2px;
-    text-transform: uppercase;
 }
 
 p {
@@ -52,14 +51,37 @@ p {
 @keyframes fadeIn {
     0% {
         opacity: 0;
-        transform: translateY(20px);
     }
     100% {
         opacity: 1;
-        transform: translateY(0);
     }
 }
 
 .section {
     animation: fadeIn 1s ease-out;
+}
+
+.tagline {
+    font-size: 3.5em;
+    margin-bottom: 30px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: #ffffff; /* A vibrant blue for impact */
+    text-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: #0088cc;
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .tagline {
+        font-size: 2.5em;
+    }
+
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 1em;
+    }
 }
