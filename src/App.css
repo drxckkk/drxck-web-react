@@ -6,6 +6,7 @@ html {
   text-align: center;
   background-image: url('./assets/background.png');
   background-size: cover;
+  background-color: black;
   background-position: center;
   background-attachment: fixed;
   height: 100vh;
