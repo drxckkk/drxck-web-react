@@ -1,5 +1,5 @@
 import React from 'react';
-import video from '../assets/holdervideo.mov';
+import video from '../assets/holdervideo.mp4';
 import './HolderVideo.css';
 
 function HolderVideo() {
