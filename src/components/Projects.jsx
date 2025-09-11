@@ -29,8 +29,9 @@ function Projects() {
                     <div className="project-content">
                         <p className="project-title">Vehicle System</p>
                         <p className="project-description">A simple car system that utilizes Raycast and BodyForces for a smooth driving experience.</p>
-                        <p className="project-detail"><i>Lines of code: ~1.2 thousand</i></p>
-                        <p className="project-detail"><i>Time to complete: ~5 days</i></p>
+                        <p className="project-detail"><i>Lines of Code: 1,500</i></p>
+                        <p className="project-detail"><i>Price: $100</i></p>
+                        <p className="project-detail"><i>Time to Complete: 5 Days</i></p>
                     </div>
                     <video loop muted className="fade-in" width="100%">
                         <source src={video1Src} type="video/mp4" />
@@ -44,8 +45,9 @@ function Projects() {
                     <div className="project-content">
                         <p className="project-title">Orb System</p>
                         <p className="project-description">A heavily optimized orb system with custom physics and object pooling.</p>
-                        <p className="project-detail"><i>Lines of code: ~600</i></p>
-                        <p className="project-detail"><i>Time to complete: ~48 hours</i></p>
+                        <p className="project-detail"><i>Lines of Code: 600</i></p>
+                        <p className="project-detail"><i>Price: $30</i></p>
+                        <p className="project-detail"><i>Time to Complete: 48 Hours</i></p>
                     </div>
                     <video loop muted className="fade-in" width="100%">
                         <source src={video2Src} type="video/mp4" />
@@ -59,8 +61,9 @@ function Projects() {
                     <div className="project-content">
                         <p className="project-title">Jump For UGC Game</p>
                         <p className="project-description">A short showcase of a commissioned game.</p>
-                        <p className="project-detail"><i>Lines of code: ~2,000</i></p>
-                        <p className="project-detail"><i>Time to complete: ~5 days</i></p>
+                        <p className="project-detail"><i>Lines of Code: 1,000</i></p>
+                        <p className="project-detail"><i>Price: $300</i></p>
+                        <p className="project-detail"><i>Time to Complete: 5 Days</i></p>
                     </div>
                     <video loop muted className="fade-in" width="100%">
                         <source src={video3Src} type="video/mp4" />
