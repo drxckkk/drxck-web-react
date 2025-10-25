@@ -20,19 +20,17 @@ function Projects() {
 
     return (
         <section id="projects" class="projects-container">
-            <h2>Recent Projects</h2>
-            <p class="project-description"> Showcase of my favorite projects.</p>
+            <h2 class="title">Recent Projects</h2>
+            <p class="project-description"> Showcase of some my recent projects.</p>
             <div class="project-container">
                 <div className="project" id="project1"
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}>
                     <div className="project-content">
-                        <h3 className="project-title">Vehicle System</h3>
+                        <p className="project-title">Vehicle System</p>
                         <p className="project-description">A simple car system that utilizes Raycast and BodyForces for a smooth driving experience.</p>
-                        <p className="tech-stack"><strong>Tech Stack:</strong> Lua, Roblox Studio</p>
-                        <p className="project-detail"><i>Lines of Code: 1,500</i></p>
-                        <p className="project-detail"><i>Price: $100</i></p>
-                        <p className="project-detail"><i>Time to Complete: 7 Days</i></p>
+                        <p className="project-detail"><i>Lines of code: ~1.2 thousand</i></p>
+                        <p className="project-detail"><i>Time to complete: ~5 days</i></p>
                     </div>
                     <video loop muted className="fade-in" width="100%">
                         <source src={video1Src} type="video/mp4" />
@@ -44,12 +42,10 @@ function Projects() {
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}>
                     <div className="project-content">
-                        <h3 className="project-title">Orb System</h3>
+                        <p className="project-title">Orb System</p>
                         <p className="project-description">A heavily optimized orb system with custom physics and object pooling.</p>
-                        <p className="tech-stack"><strong>Tech Stack:</strong> Lua, Roblox Studio</p>
-                        <p className="project-detail"><i>Lines of Code: 600</i></p>
-                        <p className="project-detail"><i>Price: $20</i></p>
-                        <p className="project-detail"><i>Time to Complete: 48 Hours</i></p>
+                        <p className="project-detail"><i>Lines of code: ~600</i></p>
+                        <p className="project-detail"><i>Time to complete: ~48 hours</i></p>
                     </div>
                     <video loop muted className="fade-in" width="100%">
                         <source src={video2Src} type="video/mp4" />
@@ -61,12 +57,10 @@ function Projects() {
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}>
                     <div className="project-content">
-                        <h3 className="project-title">Jump For UGC Game</h3>
+                        <p className="project-title">Jump For UGC Game</p>
                         <p className="project-description">A short showcase of a commissioned game.</p>
-                        <p className="tech-stack"><strong>Tech Stack:</strong> Lua, Roblox Studio</p>
-                        <p className="project-detail"><i>Lines of Code: 1,000</i></p>
-                        <p className="project-detail"><i>Price: $300</i></p>
-                        <p className="project-detail"><i>Time to Complete: 1 Week</i></p>
+                        <p className="project-detail"><i>Lines of code: ~2,000</i></p>
+                        <p className="project-detail"><i>Time to complete: ~5 days</i></p>
                     </div>
                     <video loop muted className="fade-in" width="100%">
                         <source src={video3Src} type="video/mp4" />

@@ -1,14 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+
 html {
   scroll-behavior: smooth;
 }
 
 .App {
   text-align: center;
-  background-image: url('./assets/background.png');
-  background-size: cover;
-  background-color: black;
-  background-position: center;
-  background-attachment: fixed;
+  background-color: #EEEEEE;
   height: 100vh;
   padding-top: 80px;
   padding-bottom: 80px;
@@ -37,16 +37,4 @@ html {
 
 .App-link {
   color: #61dafb;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
-@import '@fortawesome/fontawesome-free/css/all.min.css';
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

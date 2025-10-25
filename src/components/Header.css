@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -11,54 +10,32 @@ body {
 
 header {
     position: fixed;
-    top: 2.5%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    max-width: 1200px;
-    padding: 1.5%;
+    top: 0%;
+    width: 100%;
+    padding: 0.5%;
     z-index: 1000;
-    font-family: 'Arial', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50px;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1);
+    background: rgb(255, 255, 255, 0.1);
     filter: url(#displacementFilter);
-    backdrop-filter: blur(4px) brightness(1.1);
-}
-
-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px) saturate(120%);
-    -webkit-backdrop-filter: blur(20px) saturate(120%);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(25px) brightness(1.1);
     border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 50px;
-    z-index: -1;
 }
 
 .container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 20px;
     width: 100%;
-    /* Ensure container takes full width of header */
-    max-width: 1200px;
     margin: 0 auto;
     position: relative;
 }
 
 h1 {
     font-size: 24px;
-    color: #ffffff;
-    font-weight: bold;
+    color: #000000;
+    font-weight: 200;
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     font-family: 'Dancing Script', cursive;
     transition: color 0.3s ease;
@@ -75,168 +52,56 @@ nav ul {
 }
 
 nav a {
-    font-size: 16px;
-    font-weight: 500;
+    color: #000000;
     position: relative;
-    transition: color 0.3s ease, transform 0.3s ease;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    transition: color 0.25s ease, transform 0.25s ease;
+    text-decoration: none;
+    font-weight: 200;
+    font-size: 20px;
 }
 
 nav a:hover {
     color: #9e9e9e;
-    transform: scale(1.1);
 }
 
-/* Ko-fi Button Styles */
-.kofi-container {
-    position: relative;
-    margin-left: 20px;
-}
-
-.kofi-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    background: linear-gradient(45deg, #ff0000, #ff7f00, #8d8d00, #019401, #0000ff, #4b0082, #9400d3);
-    background-size: 400% 400%;
-    border-radius: 25px;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 14px;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    animation: rainbow-glow 9s ease-in-out infinite;
-    border-color: #ffffff50;
-    border-style: outset;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-}
-
-.kofi-button::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3);
-    background-size: 400% 400%;
-    border-radius: 25px;
-    z-index: -1;
-    animation: rainbow-glow 3s ease-in-out infinite;
-    filter: blur(8px);
-    opacity: 0.7;
-}
-
-.kofi-icon {
-    font-size: 16px;
-    position: relative;
-    z-index: 1;
-}
-
-.kofi-text {
-    position: relative;
-    z-index: 1;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-
-
-.kofi-text svg {
-    width: 1em;
-    height: 1em;
-    vertical-align: -0.125em;
-    fill: currentColor;
-}
-
-
-.kofi-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
-}
-
-.kofi-button:hover::before {
-    filter: blur(12px);
-    opacity: 1;
-}
-
-/* Rainbow Animation */
-@keyframes rainbow-glow {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-/* Responsive adjustments */
 @media (max-width: 768px) {
     header {
-        width: 95%;
-        /* Adjust width for smaller screens */
-        padding: 1%;
-    }
-
-    .kofi-container {
-        margin-left: 10px;
-    }
-
-    .kofi-button {
-        padding: 6px 12px;
-        font-size: 12px;
-        gap: 6px;
-    }
-
-    .kofi-icon {
-        font-size: 14px;
+        height: 7.5%;
+        padding: 1.5%;
     }
 
     nav ul {
-        gap: 10px;
-        /* Reduce gap between nav items on smaller screens */
+        gap: 5px;
+    }
+
+    nav a {
+        font-size: 5px;
     }
 
     h1 {
-        font-size: 20px;
-        /* Adjust heading size */
+        font-size: 10px;
     }
 }
 
 @media (max-width: 480px) {
     header {
         width: 100%;
-        /* Full width on very small screens */
         border-radius: 0;
         padding: 0.5%;
     }
 
     .container {
         flex-direction: column;
-        /* Stack items vertically */
         text-align: center;
     }
 
     h1 {
         margin-bottom: 10px;
-        /* Add space below heading */
     }
 
     nav ul {
         flex-direction: column;
-        /* Stack nav items vertically */
         gap: 5px;
         margin-bottom: 10px;
-    }
-
-    .kofi-container {
-        margin-left: 0;
-        margin-top: 10px;
     }
 }

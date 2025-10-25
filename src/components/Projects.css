@@ -1,12 +1,8 @@
 #projects {
   align-items: flex-end;
   justify-content: center;
-  color: #ffffff;
+  color: #000000;
   padding-top: 40px;
-}
-
-.project h3 {
-  font-size: 1.5em;
 }
 
 .project p {
@@ -29,24 +25,22 @@
   height: auto;
   padding: 20px;
   overflow: hidden;
-  border-radius: 25px;
-  background: rgba(255, 255, 255, 0);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: left;
   border-color: #ffffff50;
-  border-style: outset;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 20px;
 }
 
-.project-title,
+p.project-title {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #000000;
+}
+
 .project-description {
   z-index: 5;
-  color: #ffffff;
 }
 
 .project:hover {
@@ -57,7 +51,6 @@
 
 .project-content {
   padding: 0;
-  color: #000000;
   position: relative;
   flex: 1;
 }
@@ -66,7 +59,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s cubic-bezier();
+  transition: transform 0.25s cubic-bezier();
   display: block;
 }
 
@@ -81,9 +74,9 @@
   max-width: 100%;
   transform: none;
   object-fit: cover;
-  border-radius: 25px;
+  border-radius: 15px;
   opacity: 0.5;
-  transition: all 0.3s ease-in;
+  transition: all 0.25s ease-in;
 }
 
 #projects .project:hover video {
@@ -93,7 +86,6 @@
 ul li a {
   text-decoration: none;
   font-size: 1.2rem;
-  color: #ffffff;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -107,31 +99,32 @@ ul li a i {
 ul li a:hover i {
   color: #ff6347;
 }
+
 .tech-stack {
-    font-size: 0.9em;
-    color: #ccc;
-    margin-top: 10px;
-    margin-bottom: 15px;
+  font-size: 0.9em;
+  color: #000000;
+  margin-top: 10px;
+  margin-bottom: 15px;
 }
 
 .project-detail {
-    font-size: 0.95em;
-    color: #e0e0e0;
-    margin-top: 5px;
-    margin-bottom: 5px;
+  font-size: 0.95em;
+  color: #000000;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .project-link {
-    display: inline-block;
-    background-color: #00aaff;
-    color: #fff;
-    padding: 8px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 0.9em;
-    transition: background-color 0.3s ease;
+  display: inline-block;
+  background-color: #00aaff;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
 }
 
 .project-link:hover {
-    background-color: #0088cc;
+  background-color: #0088cc;
 }

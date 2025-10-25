@@ -3,7 +3,6 @@ import Home from "./components/Home";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Xcrim from "./pages/Xcrim";
-import Kixz from "./pages/Kixz";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import "./App.css";
@@ -32,7 +31,6 @@ export default function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/xcrim" element={<Xcrim />} />
-          <Route path="/kixz" element={<Kixz />} />
         </Routes>
       </Router>
     </div>

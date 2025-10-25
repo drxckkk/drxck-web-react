@@ -3,41 +3,23 @@
   justify-content: center;
   align-items: center;
   min-height: 50vh;
-  color: #fff;
+  color: #000000;
 }
 
 .contacts-container h2 {
-  font-size: 2.5em;
   margin-bottom: 20px;
 }
 
 .contact-text {
-  font-size: 1.2em;
-  color: #fff;
-  font-weight: 500;
-}
-
-.email-text svg {
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.125em;
-  fill: currentColor;
-}
-
-.payment-text svg {
-  width: 1em;
-  height: 1em;
-  vertical-align: -0.125em;
-  fill: currentColor;
-}
-
-.contact-text {
-  color: #fff;
+  color: #000000;
   margin: 0em 0.25em;
   text-decoration: none;
+  width: 90%;
+  left: 50%;
+  transform: translateX(5%);
 }
 
 .terms-text {
-  color: #fff;
+  color: #000000;
   text-decoration: underline;
 }
