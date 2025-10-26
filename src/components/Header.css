@@ -17,10 +17,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgb(255, 255, 255, 0.1);
-    filter: url(#displacementFilter);
+    background: hwb(0 100% 0% / 0.1);
     backdrop-filter: blur(25px) brightness(1.1);
-    border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .container {
