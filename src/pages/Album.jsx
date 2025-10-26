@@ -24,7 +24,7 @@ export default function Album() {
     require('../assets/album/photo16.jpg'),
     require('../assets/album/photo15.png'),
     require('../assets/album/photo8.png'),
-    require('../assets/album/photo13.jpg'),
+    require('../assets/album/photo16.jpg'),
   ]
 
   const texts = [
