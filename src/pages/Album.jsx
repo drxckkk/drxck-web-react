@@ -18,12 +18,12 @@ export default function Album() {
     require('../assets/album/photo5.jpg'),
     require('../assets/album/photo6.jpg'),
     require('../assets/album/photo7.jpg'),
-    require('../assets/album/photo11.jpg'),
+    require('../assets/album/photo8.png'),
     require('../assets/album/photo13.jpg'),
     require('../assets/album/photo12.jpg'),
     require('../assets/album/photo16.jpg'),
     require('../assets/album/photo15.png'),
-    require('../assets/album/photo8.png'),
+    require('../assets/album/photo17.jpg'),
     require('../assets/album/photo16.jpg'),
   ]
 
