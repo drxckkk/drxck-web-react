@@ -1,16 +1,131 @@
-import { useEffect } from 'react'
-import { motion, useAnimation, useViewportScroll, useTransform } from 'framer-motion'
+import { useEffect, useRef } from 'react'
+import { delay, motion, useAnimation, useScroll, useTransform } from 'framer-motion'
 import './Album.css'
 
 export default function Album() {
+  const parallaxRefs = useRef([]);
+  const canvasRef = useRef(null);
+  const heartsRef = useRef([]);
+  const audioRef = useRef(null);
   const controls = useAnimation()
-  const { scrollY } = useViewportScroll()
-  const y1 = useTransform(scrollY, [0, 500], [0, 100])
-  const y2 = useTransform(scrollY, [0, 500], [0, -100])
+  const { scrollY } = useScroll()
+  const y1 = useTransform(scrollY, [0, 300], [0, -100])
 
   useEffect(() => {
-    controls.start({ opacity: 1, y: 0, transition: { duration: 1.2 } })
-  }, [])
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      parallaxRefs.current.forEach((el, i) => {
+        const speed = 0.2 + i * 0.1;
+        el.style.transform = `translateY(${scrollY * speed}px)`;
+      });
+    };
+    window.addEventListener('scroll', handleScroll);
+
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const mouse = { x: 0, y: 0 };
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+
+    const particles = Array.from({ length: 50 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 2 + 1,
+      dx: (Math.random() - 0.5) * 0.3,
+      dy: (Math.random() - 0.5) * 0.3,
+    }));
+
+    const hearts = Array.from({ length: 30 }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 24 + 10,
+      speed: Math.random() * 0.5 + 0.3,
+      opacity: Math.random() * 0.5 + 0.5,
+      angle: Math.random() * Math.PI * 2,
+      swing: Math.random() * 1.5 + 0.5,
+    }));
+    heartsRef.current = hearts;
+
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    window.addEventListener('resize', resize);
+
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = 'rgba(255,255,255,0.6)';
+      particles.forEach((p) => {
+        const dx = p.x - mouse.x;
+        const dy = p.y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 100) {
+          p.x += dx / dist * 0.1;
+          p.y += dy / dist * 0.1;
+        }
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      heartsRef.current.forEach((h) => {
+        h.y += h.speed;
+        h.x += Math.sin(h.angle) * h.swing;
+        h.angle += 0.01;
+        if (h.y > canvas.height + 50) {
+          h.y = -50;
+          h.x = Math.random() * canvas.width;
+          h.size = Math.random() * 24 + 10;
+          h.opacity = Math.random() * 0.5 + 0.5;
+        }
+        ctx.font = `${h.size}px serif`;
+        ctx.globalAlpha = h.opacity;
+        ctx.fillText('❤️', h.x, h.y);
+      });
+
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(draw);
+    };
+    draw();
+
+    const playMusic = () => {
+      const audio = audioRef.current;
+      if (audio) {
+        audio.volume = 0.4;
+        audio.play();
+        setTimeout(() => {
+          const fadeOut = setInterval(() => {
+            if (audio.volume > 0.01) audio.volume -= 0.001;
+            else {
+              clearInterval(fadeOut);
+              audio.pause();
+            }
+          }, 1000);
+        }, 240000);
+      }
+      window.removeEventListener('click', playMusic);
+    };
+    window.addEventListener('click', playMusic);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', resize);
+      window.removeEventListener('click', playMusic);
+    };
+  }, []);
 
   const photos = [
     require('../assets/album/photo1.jpg'),
@@ -46,28 +161,11 @@ export default function Album() {
     return () => audio.pause();
   }, []);
 
-  useEffect(() => {
-    const particles = [];
-    const container = document.createElement('div');
-    container.className = 'particles-container';
-    document.body.appendChild(container);
-
-    for (let i = 0; i < 40; i++) {
-      const particle = document.createElement('div');
-      particle.className = 'particle';
-      particle.style.left = `${Math.random() * 100}%`;
-      particle.style.animationDuration = `${5 + Math.random() * 10}s`;
-      container.appendChild(particle);
-      particles.push(particle);
-    }
-
-    return () => container.remove();
-  }, []);
-
   return (
     <div className="album-container">
+      <canvas ref={canvasRef} className="background-canvas"></canvas>
       <section className="hero-section">
-        <motion.h1 initial={{ opacity: 0, y: 40 }} animate={controls} className="hero-title">
+        <motion.h1 initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1.5 }} className="hero-title">
           Isadora Maria. O Meu Amor.
         </motion.h1>
         <motion.p initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1.5 }} className="hero-subtitle">
@@ -77,6 +175,7 @@ export default function Album() {
           {photos.slice(0, 3).map((src, i) => (
             <motion.img
               key={i}
+              ref={(el) => (parallaxRefs.current[i] = el)}
               src={src}
               className={`stacked-photo stacked-photo-${i}`}
               whileHover={{ scale: 1.07, rotate: 0 }}
