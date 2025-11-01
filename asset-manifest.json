@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/drxck-web-react/static/css/main.bc380eca.css",
-    "main.js": "/drxck-web-react/static/js/main.5177ed19.js",
+    "main.js": "/drxck-web-react/static/js/main.90622c14.js",
     "static/media/project1.mp4": "/drxck-web-react/static/media/project1.6eb868ecfe977deaf484.mp4",
     "static/media/project3.mp4": "/drxck-web-react/static/media/project3.72a848c83b0070563cfa.mp4",
     "static/media/project2.mp4": "/drxck-web-react/static/media/project2.94a34d5481c3456fb5af.mp4",
@@ -23,10 +23,10 @@
     "static/media/fa-v4compatibility.woff2": "/drxck-web-react/static/media/fa-v4compatibility.e4340c52a50e727c6afa.woff2",
     "index.html": "/drxck-web-react/index.html",
     "main.bc380eca.css.map": "/drxck-web-react/static/css/main.bc380eca.css.map",
-    "main.5177ed19.js.map": "/drxck-web-react/static/js/main.5177ed19.js.map"
+    "main.90622c14.js.map": "/drxck-web-react/static/js/main.90622c14.js.map"
   },
   "entrypoints": [
     "static/css/main.bc380eca.css",
-    "static/js/main.5177ed19.js"
+    "static/js/main.90622c14.js"
   ]
 }
