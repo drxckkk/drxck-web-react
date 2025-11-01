@@ -4,7 +4,7 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Xcrim from "./pages/Xcrim";
 import Album from "./pages/Album"
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import "./App.css";
 
