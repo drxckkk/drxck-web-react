@@ -25,7 +25,7 @@ export default function App() {
   }, []);
   return (
     <div className="App">
-      <Router>
+      <Router basename="/drxck-web-react">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
