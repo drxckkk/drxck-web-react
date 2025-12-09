@@ -25,8 +25,7 @@ function Header() {
               scale="200" xChannelSelector="R" yChannelSelector="G" />
           </filter>
         </defs>
-      </svg>
-    </>
+    </header>
   );
 }
 

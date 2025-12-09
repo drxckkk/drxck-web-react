@@ -4,7 +4,6 @@ import Projects from "./components/Projects";
 import Contact from "./components/Contact";
 import Xcrim from "./pages/Xcrim";
 import Album from "./pages/Album";
-import HolderVideo from "./pages/HolderVideo";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect } from "react";
 import "./App.css";
@@ -26,7 +25,7 @@ export default function App() {
   }, []);
   return (
     <div className="App">
-      <Router basename="/drxck-web-react">
+      <Router basename="">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
@@ -34,7 +33,6 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/xcrim" element={<Xcrim />} />
           <Route path="/isadoramaria" element={<Album />} />
-          <Route path="/video-0301" element={<HolderVideo />} />
         </Routes>
       </Router>
     </div>
