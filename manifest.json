@@ -1,6 +1,6 @@
 {
-  "short_name": "Drxck",
-  "name": "A Skilled Programmer's Portfolio",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.ico",
