@@ -1,40 +1,36 @@
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Projects from "./components/Projects";
+import About from "./components/About";
+import Skills from "./components/Skills";
+import Focus from "./components/Focus";
 import Contact from "./components/Contact";
 import Xcrim from "./pages/Xcrim";
-import Album from "./pages/Album";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useEffect } from "react";
 import "./App.css";
 
+function Portfolio() {
+  return (
+    <>
+      <Header />
+      <main>
+        <Home />
+        <Projects />
+        <About />
+        <Contact />
+      </main>
+    </>
+  );
+}
+
 export default function App() {
-  useEffect(() => {
-    const handleScroll = () => {
-      const header = document.querySelector("header");
-      if (header) {
-        header.classList.toggle("scrolled", window.scrollY > 50);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
   return (
     <div className="App">
       <Router basename="">
-        <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/xcrim" element={<Xcrim />} />
-          <Route path="/isadoramaria" element={<Album />} />
+          <Route path="/" element={<Portfolio />} />
         </Routes>
       </Router>
     </div>
-  )
+  );
 }

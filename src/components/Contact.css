@@ -1,25 +1,91 @@
-.contacts-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 50vh;
-  color: #000000;
+.contact {
+  position: relative;
+  background: var(--bg);
+  text-align: center;
+  padding-bottom: 0;
+  overflow: hidden;
 }
 
-.contacts-container h2 {
-  margin-bottom: 20px;
-}
-
-.contact-text {
-  color: #000000;
-  margin: 0em 0.25em;
-  text-decoration: none;
-  width: 90%;
+.contact-glow {
+  position: absolute;
+  bottom: -30%;
   left: 50%;
-  transform: translateX(5%);
+  transform: translateX(-50%);
+  width: 900px;
+  height: 700px;
+  max-width: 160vw;
+  background: radial-gradient(circle, var(--accent-glow) 0%, rgba(112, 132, 255, 0) 70%);
+  pointer-events: none;
 }
 
-.terms-text {
-  color: #000000;
-  text-decoration: underline;
+.contact-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-heading {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(36px, 6vw, 72px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  max-width: 16ch;
+  color: var(--ink);
+}
+
+.contact-links {
+  margin-top: 48px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 0.35s var(--spring), border-color 0.35s var(--ease-out-expo),
+    box-shadow 0.35s var(--ease-out-expo);
+}
+
+.contact-link i {
+  font-size: 15px;
+  transition: transform 0.35s var(--spring);
+}
+
+.contact-link:hover {
+  transform: translateY(-3px);
+  border-color: var(--ink);
+  box-shadow: 0 14px 30px -14px rgba(14, 14, 16, 0.3);
+}
+
+.contact-link:hover i {
+  transform: rotate(-8deg);
+}
+
+.contact-terms {
+  margin-top: 40px;
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 52ch;
+  line-height: 1.6;
+}
+
+.site-footer {
+  margin-top: 100px;
+  padding: 26px var(--gutter);
+  border-top: 1px solid var(--line);
+  font-size: 12.5px;
+  color: var(--muted);
 }
