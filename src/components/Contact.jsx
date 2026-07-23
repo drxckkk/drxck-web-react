@@ -4,7 +4,6 @@ import "./Contact.css";
 const LINKS = [
   { label: "drxckpro123@gmail.com", icon: "fa-solid fa-envelope" },
   { label: "drxck", icon: "fa-brands fa-discord" },
-  { label: "drxck", icon: "fa-brands fa-discord" },
 ];
 
 function Contact() {
