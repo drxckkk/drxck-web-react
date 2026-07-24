@@ -19,7 +19,7 @@ function About() {
         <div>
           <span className="eyebrow">About</span>
           <h2 className="section-heading">
-            Six years of turning hard problems into smooth experiences.
+            Five years of turning hard problems into smooth experiences.
           </h2>
           <p className="section-sub">
             I'm a programmer who cares as much about how a system feels to use
