@@ -5,7 +5,7 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 import Focus from "./components/Focus";
 import Contact from "./components/Contact";
-import Xcrim from "./pages/Xcrim";
+import Album from "./pages/Album";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 
@@ -29,6 +29,7 @@ export default function App() {
       <Router basename="">
         <Routes>
           <Route path="/" element={<Portfolio />} />
+          <Route path="/album" element={<Album />} />
         </Routes>
       </Router>
     </div>

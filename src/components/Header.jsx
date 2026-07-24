@@ -2,11 +2,9 @@ import { useEffect, useState } from "react";
 import "./Header.css";
 
 const LINKS = [
-  { id: "work", label: "Work" },
-  { id: "about", label: "About" },
-  { id: "skills", label: "Skills" },
-  { id: "focus", label: "Focus" },
-  { id: "contact", label: "Contact" },
+  { id: "work", label: "work" },
+  { id: "about", label: "about" },
+  { id: "contact", label: "contact" },
 ];
 
 function Header() {
@@ -47,7 +45,7 @@ function Header() {
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
       <nav className="nav-pill" aria-label="Primary">
         <a href="#home" className="nav-brand" onClick={(e) => handleNav(e, "home")}>
-          Drxck
+          drxck
         </a>
         <ul className="nav-links">
           {LINKS.map((link) => (
