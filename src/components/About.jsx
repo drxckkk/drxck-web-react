@@ -4,12 +4,12 @@ import "./About.css";
 const PRINCIPLES = [
   {
     title: "Performance first",
-    body: "Every system I build is meant to modular, optimized and anti-exploitable, game-ready.",
+    body: "Every system I build is meant to be modular, optimized and anti-exploitable, game-ready.",
   },
   {
-    title: "Elegant",
+    title: "Elegant under the hood",
     body: "Clean, readable code is something you will always find in my products.",
-  },
+  }
 ];
 
 function About() {
@@ -19,13 +19,10 @@ function About() {
         <div>
           <span className="eyebrow">About</span>
           <h2 className="section-heading">
-            Five years of turning hard problems into smooth experiences.
+           Five years of turning hard problems into smooth experiences.
           </h2>
           <p className="section-sub">
-            I'm a programmer who cares as much about how a system feels to use
-            as how efficiently it runs. My work spans vehicle physics, particle
-            systems, modular UIs and full game builds, always shipped with an eye for
-            performance and polish, just-in-time.
+            I'm a programmer who cares about how my code feels to use as how efficiently it runs. My work spans vehicles, weapons, particle systems, UI functionality and full game builds, always shipped with a focus on performance and being modular.
           </p>
         </div>
 

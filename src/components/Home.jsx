@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
+import HeroCarousel from "./HeroCarousel";
 import "./Home.css";
 
-const HEADLINE = ["I build", "systems that", "feel alive."];
+const HEADLINE = ["I build", "projects that", "just feels right."];
 
 const container = {
   hidden: {},
@@ -45,8 +46,7 @@ function Home() {
           </h1>
 
           <motion.p className="hero-sub" variants={line}>
-            I'm <strong>Drxck</strong>, a programmer with over 5 years in building
-            performance-friendly modular systems and experiences.
+            I'm <strong>Drxck</strong>, a programmer with over 5 years in building performance-friendly modular systems and experiences on Roblox.
           </motion.p>
 
           <motion.div className="hero-actions" variants={line}>
@@ -65,25 +65,7 @@ function Home() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.5 }}
         >
-          <div className="code-window">
-            <div className="code-window-bar">
-              <span className="dot dot-red" />
-              <span className="dot dot-yellow" />
-              <span className="dot dot-green" />
-              <span className="code-window-title">vehicle_wheel.lua</span>
-            </div>
-            <pre className="code-window-body">
-              <code>
-{`local function apply_suspension(wheel: Wheel, dt: number)
-    local force = wheel.spring.compress(dt)
-    local damped = force - wheel.damper.rate * wheel.velocity
-
-    wheel.body.add_force(damped * wheel.normal)
-    wheel.velocity += damped * dt
-end`}
-              </code>
-            </pre>
-          </div>
+          <HeroCarousel />
         </motion.div>
       </div>
 
