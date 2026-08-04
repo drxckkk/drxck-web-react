@@ -33,10 +33,6 @@ function Home() {
           animate="show"
           variants={container}
         >
-          <motion.span className="eyebrow" variants={line}>
-            Available for work
-          </motion.span>
-
           <h1 className="hero-title">
             {HEADLINE.map((word, i) => (
               <motion.span className="hero-line" key={i} variants={line}>

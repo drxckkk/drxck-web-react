@@ -2,13 +2,13 @@ import { useEffect, useRef, useState } from "react";
 import "./HeroCarousel.css";
 import videoVehicleSrc from "../assets/project1.mp4";
 import videoOrbrc from "../assets/project2.mp4";
-import videoJumpSrc from "../assets/project3.mp4";
 import videoKartSrc from "../assets/project4.mp4";
+import videoKitchenSrc from "../assets/project5.mp4";
 
 const ITEMS = [
   { id: "project1", title: "Kart System", video: videoKartSrc },
   { id: "project2", title: "Orb System", video: videoOrbrc },
-  { id: "project3", title: "Jump for UGC Game", video: videoJumpSrc },
+  { id: "project3", title: "Kitchen Simulator", video: videoKitchenSrc },
 ];
 
 const COUNT = ITEMS.length;

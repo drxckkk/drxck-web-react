@@ -4,6 +4,7 @@ import "./Projects.css";
 import video1Src from "../assets/project4.mp4";
 import video2Src from "../assets/project2.mp4";
 import video3Src from "../assets/project3.mp4";
+import video5Src from "../assets/project5.mp4";
 
 const EASE = [0.16, 1, 0.3, 1];
 
@@ -15,7 +16,7 @@ const PROJECTS = [
       "Kart system with a smooth driving, good handling and inspired by popular kart games.",
     stack: ["BodyForces", "Raycast", "Customizable"],
     stats: [
-      { label: "Deadline", value: "5 days" },
+      { label: "Deadline", value: "5 Days" },
       { label: "Price", value: "$200" },
     ],
     video: video1Src,
@@ -29,18 +30,31 @@ const PROJECTS = [
       "A orb system built with custom physics and object pooling to keep frame times low at scale.",
     stack: ["Optimization", "Object Pooling", "Lua"],
     stats: [
-      { label: "Deadline", value: "48 hours" },
+      { label: "Deadline", value: "48 Hours" },
       { label: "Price", value: "$70" },
     ],
     video: video2Src,
     overview:
       "Object pooling and custom physics, so orbs are reused instead of constantly created and destroyed. No frame drops even with over 512 orbs on screen at once.",
   },
+  {
+    id: "project3",
+    title: "Kitchen Simulator",
+    description:
+      "A kitchen simulator game programmed by myself and fully working.",
+    stack: ["Optimization", "Object Pooling", "Lua"],
+    stats: [
+      { label: "Deadline", value: "3 Weeks" },
+      { label: "Price", value: "$400" },
+    ],
+    video: video5Src,
+    overview:
+      "Full game with Placement system, areas, shops, cooking system, collectables, and more. Built for production.",
+  },
 ];
 
 const TABS = [
   { key: "overview", label: "Overview" },
-  { key: "snippet", label: "Code Snippet" },
 ];
 
 const handleMouseEnter = (e) => e.currentTarget.querySelector("video")?.play();
@@ -239,7 +253,6 @@ function Projects() {
   return (
     <section id="work" className="section projects">
       <div className="section-inner">
-        <span className="eyebrow">Recent work</span>
         <h2 className="section-heading">Featured projects</h2>
         <p className="section-sub">
           A showcase of recent work I've built, each one shipped

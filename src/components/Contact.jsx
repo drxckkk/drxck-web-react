@@ -11,16 +11,6 @@ function Contact() {
     <section id="contact" className="section contact">
       <div className="contact-glow" aria-hidden="true" />
       <div className="section-inner contact-inner">
-        <motion.span
-          className="eyebrow"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        >
-          Get in touch
-        </motion.span>
-
         <motion.h2
           className="contact-heading"
           initial={{ opacity: 0, y: 24, filter: "blur(8px)" }}

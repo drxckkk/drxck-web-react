@@ -17,7 +17,6 @@ function About() {
     <section id="about" className="section about">
       <div className="section-inner about-grid">
         <div>
-          <span className="eyebrow">About</span>
           <h2 className="section-heading">
            Five years of turning hard problems into smooth experiences.
           </h2>
