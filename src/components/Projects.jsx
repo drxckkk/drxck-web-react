@@ -14,9 +14,8 @@ const PROJECTS = [
     title: "Kart System",
     description:
       "Kart system with a smooth driving, good handling and inspired by popular kart games.",
-    stack: ["BodyForces", "Raycast", "Customizable"],
     stats: [
-      { label: "Deadline", value: "5 Days" },
+      { label: "ETA", value: "5 Days" },
       { label: "Price", value: "$200" },
     ],
     video: video1Src,
@@ -28,9 +27,8 @@ const PROJECTS = [
     title: "Orb System",
     description:
       "A orb system built with custom physics and object pooling to keep frame times low at scale.",
-    stack: ["Optimization", "Object Pooling", "Lua"],
     stats: [
-      { label: "Deadline", value: "48 Hours" },
+      { label: "ETA", value: "48 Hours" },
       { label: "Price", value: "$70" },
     ],
     video: video2Src,
@@ -42,9 +40,8 @@ const PROJECTS = [
     title: "Kitchen Simulator",
     description:
       "A kitchen simulator game programmed by myself and fully working.",
-    stack: ["Optimization", "Object Pooling", "Lua"],
     stats: [
-      { label: "Deadline", value: "3 Weeks" },
+      { label: "ETA", value: "3 Weeks" },
       { label: "Price", value: "$400" },
     ],
     video: video5Src,
@@ -233,12 +230,6 @@ function ProjectDetail({ project, onClose }) {
                 </div>
               ))}
             </div>
-
-            <ul className="project-stack">
-              {project.stack.map((tech) => (
-                <li key={tech}>{tech}</li>
-              ))}
-            </ul>
           </div>
         </div>
       </motion.div>
