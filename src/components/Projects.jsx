@@ -307,7 +307,7 @@ function Projects() {
             as="p"
             stagger={0.022}
             delay={0.1}
-            text="Every one of these went out to a real client under real constraints — deadlines, budgets and other people's codebases."
+            text="A selection of recent featured work, some of them even shipped and published to the public."
           />
         </div>
 

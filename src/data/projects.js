@@ -44,7 +44,7 @@ export const PROJECTS = [
       "Built on a lightweight raycast suspension with body forces driving the physics, so handling stays smooth at any speed. Tuned to hold frame rate on low-end devices, and every curve is exposed as a config value so a designer can re-feel the whole kart without touching code.",
     tags: ["BodyForces", "Raycast"],
     stats: [
-      { label: "Build time", value: "5 days" },
+      { label: "Delivery", value: "2 days" },
       { label: "From", value: "$200" },
     ],
     video: kartVideo,
@@ -61,7 +61,7 @@ export const PROJECTS = [
       "Placement system, unlockable areas, shops, a full cooking loop, collectables and progression. Built for production, with the data layer and economy structured so new content drops in without a rewrite.",
     tags: ["Placement system", "Currencies", "NPCs"],
     stats: [
-      { label: "Build time", value: "3 weeks" },
+      { label: "Delivery", value: "3 weeks" },
       { label: "From", value: "$600" },
     ],
     video: kitchenSimVideo,
@@ -78,7 +78,7 @@ export const PROJECTS = [
       "Orbs are pooled and reused instead of being created and destroyed each spawn, and the motion runs on hand-rolled physics rather than the engine's. The result holds a stable frame rate with 512+ orbs live at once.",
     tags: ["Optimization", "Object pooling"],
     stats: [
-      { label: "Build time", value: "48 hours" },
+      { label: "Delivery", value: "2 days" },
       { label: "From", value: "$70" },
     ],
     video: orbVideo,
@@ -94,8 +94,8 @@ export const PROJECTS = [
       "Raycast, bodyforces, custom physics and sounds, all combined simulating realistic vehicle behavior within Roblox.",
     tags: ["Raycast", "BodyForces", "Realistic"],
     stats: [
-      { label: "Delivery", value: "3 days" },
-      { label: "From", value: "$100" },
+      { label: "Delivery", value: "4 days" },
+      { label: "From", value: "$400" },
     ],
     video: realVehVideo,
   },  {
