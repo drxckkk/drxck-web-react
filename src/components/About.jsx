@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
+import WordReveal from "./WordReveal";
 import "./About.css";
+
+const EASE = [0.16, 1, 0.3, 1];
 
 const PRINCIPLES = [
   {
@@ -9,36 +12,59 @@ const PRINCIPLES = [
   {
     title: "Elegant under the hood",
     body: "Clean, readable code is something you will always find in my products.",
-  }
+  },
+  {
+    title: "Built to be extended",
+    body: "Config over hardcoding. My code is written with the thoughts of being modular and configurable so you can re-tune it easily without touching logic.",
+  },
+];
+
+const CAPABILITIES = [
+  "Vehicles & physics",
+  "Weapons & combat",
+  "Particles & VFX",
+  "Economies & shops",
 ];
 
 function About() {
   return (
     <section id="about" className="section about">
       <div className="section-inner about-grid">
-        <div>
-          <h2 className="section-heading">
-           Five years of turning hard problems into smooth experiences.
-          </h2>
-          <p className="section-sub">
-            I'm a programmer who cares about how my code feels to use as how efficiently it runs. My work spans vehicles, weapons, particle systems, UI functionality and full game builds, always shipped with a focus on performance and being modular.
-          </p>
+        <div className="about-lead">
+          <WordReveal
+            className="section-heading"
+            as="h2"
+            text="Five years turning hard problems into *smooth* experiences."
+          />
+          <WordReveal
+            className="section-sub"
+            as="p"
+            stagger={0.022}
+            delay={0.1}
+            text="I'm a programmer who cares about how my code feels to use as how efficiently it runs. My work comes across vehicles, weapons, particle systems and full projects, always delivered with a focus on performance and being efficient."
+          />
+
+          <ul className="capability-list">
+            {CAPABILITIES.map((c, i) => (
+              <motion.li
+                key={c}
+                initial={{ opacity: 0, y: 12, filter: "blur(6px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, amount: 0.6 }}
+                transition={{ duration: 0.6, delay: i * 0.05, ease: EASE }}
+              >
+                {c}
+              </motion.li>
+            ))}
+          </ul>
         </div>
 
         <div className="principle-list">
-          {PRINCIPLES.map((p, i) => (
-            <motion.div
-              className="principle"
-              key={p.title}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.7, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <span className="principle-index">0{i + 1}</span>
-              <h3>{p.title}</h3>
-              <p>{p.body}</p>
-            </motion.div>
+          {PRINCIPLES.map((p) => (
+            <div className="principle" key={p.title}>
+              <WordReveal as="h3" text={p.title} stagger={0.04} />
+              <WordReveal as="p" text={p.body} stagger={0.02} delay={0.08} />
+            </div>
           ))}
         </div>
       </div>

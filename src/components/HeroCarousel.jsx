@@ -1,94 +1,161 @@
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { PROJECTS, platformById } from "../data/projects";
 import "./HeroCarousel.css";
-import videoVehicleSrc from "../assets/project1.mp4";
-import videoOrbrc from "../assets/project2.mp4";
-import videoKartSrc from "../assets/project4.mp4";
-import videoKitchenSrc from "../assets/project5.mp4";
 
-const ITEMS = [
-  { id: "project1", title: "Kart System", video: videoKartSrc },
-  { id: "project2", title: "Orb System", video: videoOrbrc },
-  { id: "project3", title: "Kitchen Simulator", video: videoKitchenSrc },
-];
-
-const COUNT = ITEMS.length;
+const EASE = [0.16, 1, 0.3, 1];
 const AUTOPLAY_MS = 5000;
 
-function HeroCarousel() {
-  const [active, setActive] = useState(0);
-  const hovering = useRef(false);
-  const videoRefs = useRef([]);
+/* the three most recent pieces of work, straight off the shared data layer */
+const ITEMS = PROJECTS.slice(0, 3);
+const COUNT = ITEMS.length;
 
+/* how far each card sits behind the one in front of it */
+const SLOT = [
+  { x: 0, y: 0, scale: 1, opacity: 1 },
+  { x: 34, y: 30, scale: 0.94, opacity: 0.85 },
+  { x: 66, y: 58, scale: 0.88, opacity: 0.6 },
+];
+
+/* pixel buffer size for the background cards — the canvas is drawn this
+   small and then blown up by CSS with image-rendering: pixelated, which is
+   what produces real chunky pixels rather than a plain blur */
+const PIXEL_W = 64;
+const PIXEL_H = 40;
+const PIXEL_FPS = 15;
+
+function CarouselCard({ item, slot, onSelect }) {
+  const videoRef = useRef(null);
+  const canvasRef = useRef(null);
+  const active = slot === 0;
+  const platform = platformById(item.platform);
+
+  // every card's video runs; the front one is shown sharp, the rest feed
+  // their frames into the pixel canvas
   useEffect(() => {
-    const id = setInterval(() => {
-      if (!hovering.current) setActive((a) => (a + 1) % COUNT);
-    }, AUTOPLAY_MS);
-    return () => clearInterval(id);
+    videoRef.current?.play().catch(() => {});
   }, []);
 
   useEffect(() => {
-    videoRefs.current.forEach((v, i) => {
-      if (!v) return;
-      if (i === active) v.play().catch(() => { });
-      else v.pause();
-    });
+    if (active) return undefined; // sharp video is showing, no need to draw
+
+    const canvas = canvasRef.current;
+    const ctx = canvas?.getContext("2d");
+    if (!ctx) return undefined;
+
+    let raf = 0;
+    let last = 0;
+    const interval = 1000 / PIXEL_FPS;
+
+    const draw = (time) => {
+      raf = requestAnimationFrame(draw);
+      if (time - last < interval) return;
+      last = time;
+
+      const video = videoRef.current;
+      if (!video || video.readyState < 2) return;
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    };
+
+    raf = requestAnimationFrame(draw);
+    return () => cancelAnimationFrame(raf);
   }, [active]);
 
-  const goTo = (i) => setActive(((i % COUNT) + COUNT) % COUNT);
-  const next = () => goTo(active + 1);
-  const prev = () => goTo(active - 1);
+  return (
+    <motion.div
+      className={`carousel-card ${active ? "is-active" : ""}`}
+      animate={SLOT[slot]}
+      transition={{ duration: 0.7, ease: EASE }}
+      style={{ zIndex: COUNT - slot }}
+      onClick={() => !active && onSelect()}
+      role={!active ? "button" : undefined}
+      tabIndex={!active ? 0 : -1}
+      aria-label={!active ? `Show ${item.title}` : undefined}
+      onKeyDown={(e) => {
+        if (!active && (e.key === "Enter" || e.key === " ")) {
+          e.preventDefault();
+          onSelect();
+        }
+      }}
+    >
+      <div className="carousel-card-media">
+        <video ref={videoRef} loop muted playsInline preload="auto">
+          <source src={item.video} type="video/mp4" />
+        </video>
+
+        {/* pixelated twin, cross-faded in whenever this card is behind */}
+        <canvas
+          ref={canvasRef}
+          className="carousel-card-pixels"
+          width={PIXEL_W}
+          height={PIXEL_H}
+          aria-hidden="true"
+        />
+      </div>
+
+      <div className="carousel-card-scrim" aria-hidden="true" />
+
+      <div className="carousel-card-info">
+        {platform && (
+          <span className="carousel-card-platform">
+            <i className={platform.icon} aria-hidden="true" />
+            {platform.label}
+          </span>
+        )}
+        <span className="carousel-card-title">{item.title}</span>
+      </div>
+    </motion.div>
+  );
+}
+
+function HeroCarousel() {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return undefined;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
+
+    const id = setTimeout(() => setActive((a) => (a + 1) % COUNT), AUTOPLAY_MS);
+    return () => clearTimeout(id);
+  }, [active, paused]);
 
   return (
     <div
       className="hero-carousel"
-      onMouseEnter={() => (hovering.current = true)}
-      onMouseLeave={() => (hovering.current = false)}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
     >
+      <div className="carousel-glow" aria-hidden="true" />
+
       <div className="carousel-stage">
-        {ITEMS.map((item, i) => {
-          const slot = (i - active + COUNT) % COUNT;
-          return (
-            <div
-              key={item.id}
-              className={`carousel-card slot-${slot}`}
-              onClick={() => slot !== 0 && goTo(i)}
-              role={slot !== 0 ? "button" : undefined}
-              tabIndex={slot !== 0 ? 0 : -1}
-              aria-label={slot !== 0 ? `Show ${item.title}` : undefined}
-            >
-              <video
-                ref={(el) => (videoRefs.current[i] = el)}
-                loop
-                muted
-                playsInline
-              >
-                <source src={item.video} type="video/mp4" />
-              </video>
-              <span className="carousel-card-label">{item.title}</span>
-            </div>
-          );
-        })}
+        {ITEMS.map((item, i) => (
+          <CarouselCard
+            key={item.id}
+            item={item}
+            slot={(i - active + COUNT) % COUNT}
+            onSelect={() => setActive(i)}
+          />
+        ))}
       </div>
 
-      <div className="carousel-controls">
-        <button className="carousel-arrow" onClick={prev} aria-label="Previous project">
-          <i className="fa-solid fa-chevron-left" aria-hidden="true" />
-        </button>
-
-        <div className="carousel-dots">
-          {ITEMS.map((item, i) => (
-            <button
-              key={item.id}
-              className={`carousel-dot ${i === active ? "is-active" : ""}`}
-              onClick={() => goTo(i)}
-              aria-label={`Go to ${item.title}`}
-            />
-          ))}
-        </div>
-
-        <button className="carousel-arrow" onClick={next} aria-label="Next project">
-          <i className="fa-solid fa-chevron-right" aria-hidden="true" />
-        </button>
+      <div className="carousel-bars">
+        {ITEMS.map((item, i) => (
+          <button
+            key={item.id}
+            className={`carousel-bar ${i === active ? "is-active" : ""}`}
+            onClick={() => setActive(i)}
+            aria-label={`Show ${item.title}`}
+          >
+            {i === active && (
+              // remounting on active/paused restarts the fill in step with the timer
+              <span
+                key={`${active}-${paused}`}
+                className={`carousel-bar-fill ${paused ? "is-paused" : ""}`}
+              />
+            )}
+          </button>
+        ))}
       </div>
     </div>
   );

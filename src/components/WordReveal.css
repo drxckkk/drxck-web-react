@@ -1,0 +1,10 @@
+/* inline-block so each word can carry its own transform and blur,
+   while the plain spaces between them keep normal wrapping */
+.wr-word {
+  display: inline-block;
+}
+
+.wr-accent {
+  font-style: italic;
+  color: var(--green-ink);
+}

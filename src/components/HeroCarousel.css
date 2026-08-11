@@ -1,169 +1,194 @@
 .hero-carousel {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 32px;
+  position: relative;
   width: 100%;
 }
 
+.carousel-glow {
+  position: absolute;
+  inset: -18% -12% 6% -12%;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(60% 55% at 45% 45%, var(--green-wash), transparent 70%);
+  filter: blur(30px);
+}
+
+/* the deck needs room for the two cards offset behind the front one */
 .carousel-stage {
   position: relative;
-  width: 100%;
-  max-width: 460px;
-  height: 300px;
-  perspective: 1400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  z-index: 1;
+  aspect-ratio: 16 / 10;
+  margin-right: 66px;
+  margin-bottom: 58px;
 }
+
+/* ---------------- card ---------------- */
 
 .carousel-card {
   position: absolute;
-  width: 220px;
-  aspect-ratio: 4 / 5;
-  border-radius: var(--radius-m);
-  overflow: hidden;
+  inset: 0;
+  border-radius: var(--radius-l);
   border: 1px solid var(--line);
-  background: var(--bg-raised);
-  box-shadow: 0 30px 60px -24px rgba(14, 14, 16, 0.22);
-  transition: transform 0.85s var(--ease-out-expo), opacity 0.85s var(--ease-out-expo),
-    box-shadow 0.85s var(--ease-out-expo);
-  transform-style: preserve-3d;
-  will-change: transform, opacity;
+  background: var(--surface-sunk);
+  overflow: hidden;
+  transform-origin: top left;
+  box-shadow: 0 30px 70px -34px rgba(0, 0, 0, 1);
 }
 
-.carousel-card video {
+.carousel-card:not(.is-active) {
+  cursor: pointer;
+}
+
+.carousel-card.is-active {
+  border-color: rgba(0, 232, 92, 0.32);
+  box-shadow: 0 34px 80px -32px rgba(0, 0, 0, 1),
+              0 0 0 1px rgba(0, 232, 92, 0.1);
+}
+
+.carousel-card-media {
+  position: absolute;
+  inset: 0;
+}
+
+.carousel-card-media video,
+.carousel-card-pixels {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: opacity 0.55s var(--ease-out-expo);
 }
 
-.carousel-card-label {
+/* the sharp video only shows on the front card */
+.carousel-card-media video {
+  opacity: 0;
+}
+
+.carousel-card.is-active .carousel-card-media video {
+  opacity: 1;
+}
+
+/* the 64x40 buffer scaled up with no interpolation = real pixels,
+   plus a touch of blur to soften the grid into the background */
+.carousel-card-pixels {
+  opacity: 1;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  filter: blur(1.5px) saturate(1.1) brightness(0.78);
+}
+
+.carousel-card.is-active .carousel-card-pixels {
+  opacity: 0;
+}
+
+.carousel-card-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 42%, rgba(0, 0, 0, 0.86) 100%);
+}
+
+/* ---------------- card info ---------------- */
+
+.carousel-card-info {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 14px 16px 12px;
-  font-family: var(--mono);
-  font-size: 12px;
-  color: #fff;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px;
   opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo);
+  transform: translateY(10px);
+  transition: opacity 0.55s var(--ease-out-expo), transform 0.55s var(--ease-out-expo);
 }
 
-.slot-0 {
-  transform: translate3d(0, 0, 0) rotateY(0deg) scale(1);
-  opacity: 1;
-  z-index: 3;
-  cursor: default;
-  box-shadow: 0 40px 80px -28px rgba(14, 14, 16, 0.32);
-}
-
-.slot-0 .carousel-card-label {
+.carousel-card.is-active .carousel-card-info {
   opacity: 1;
   transform: translateY(0);
 }
 
-.slot-1 {
-  transform: translate3d(148px, 6px, -200px) rotateY(-38deg) scale(0.86);
-  opacity: 0.5;
-  z-index: 2;
-  cursor: pointer;
-}
-
-.slot-2 {
-  transform: translate3d(-148px, 6px, -200px) rotateY(38deg) scale(0.86);
-  opacity: 0.5;
-  z-index: 2;
-  cursor: pointer;
-}
-
-.slot-1:hover,
-.slot-2:hover {
-  opacity: 0.85;
-}
-
-.carousel-controls {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-}
-
-.carousel-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1px solid var(--line-strong);
-  background: var(--surface);
-  color: var(--ink-soft);
-  cursor: pointer;
-  transition: transform 0.3s var(--spring), border-color 0.3s var(--ease-out-expo),
-    color 0.3s var(--ease-out-expo);
-}
-
-.carousel-arrow:hover {
-  border-color: var(--ink);
-  color: var(--ink);
-  transform: translateY(-2px);
-}
-
-.carousel-dots {
-  display: flex;
+.carousel-card-platform {
+  display: inline-flex;
   align-items: center;
   gap: 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
 }
 
-.carousel-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  border: none;
+.carousel-card-platform i {
+  font-size: 10px;
+  color: var(--green);
+}
+
+.carousel-card-title {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+/* ---------------- progress bars ---------------- */
+
+.carousel-bars {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 8px;
+  margin-right: 66px;
+}
+
+.carousel-bar {
+  position: relative;
+  flex: 1;
+  height: 2px;
+  border-radius: 2px;
   background: var(--line-strong);
-  cursor: pointer;
-  padding: 0;
-  transition: transform 0.35s var(--spring), background 0.35s var(--ease-out-expo),
-    width 0.35s var(--ease-out-expo);
+  overflow: hidden;
+  transition: background 0.3s var(--ease-out-expo);
 }
 
-.carousel-dot.is-active {
-  background: var(--ink);
-  width: 20px;
-  border-radius: 999px;
+.carousel-bar:hover {
+  background: rgba(255, 255, 255, 0.4);
 }
 
-@media (max-width: 900px) {
+.carousel-bar-fill {
+  position: absolute;
+  inset: 0;
+  transform-origin: left;
+  background: var(--green);
+  animation: carousel-fill 5s linear forwards;
+}
+
+.carousel-bar-fill.is-paused {
+  animation-play-state: paused;
+}
+
+@keyframes carousel-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+/* ---------------- responsive ---------------- */
+
+@media (max-width: 520px) {
   .carousel-stage {
-    max-width: 380px;
-    height: 260px;
+    margin-right: 44px;
+    margin-bottom: 40px;
   }
-  .carousel-card {
-    width: 180px;
-  }
-  .slot-1 {
-    transform: translate3d(112px, 6px, -160px) rotateY(-38deg) scale(0.84);
-  }
-  .slot-2 {
-    transform: translate3d(-112px, 6px, -160px) rotateY(38deg) scale(0.84);
+
+  .carousel-bars {
+    margin-right: 44px;
   }
 }
 
-@media (max-width: 480px) {
-  .carousel-stage {
-    max-width: 300px;
-    height: 220px;
-  }
-  .carousel-card {
-    width: 150px;
-  }
-  .slot-1 {
-    transform: translate3d(84px, 4px, -120px) rotateY(-38deg) scale(0.82);
-  }
-  .slot-2 {
-    transform: translate3d(-84px, 4px, -120px) rotateY(38deg) scale(0.82);
+@media (prefers-reduced-motion: reduce) {
+  .carousel-bar-fill {
+    animation: none;
+    transform: scaleX(1);
   }
 }

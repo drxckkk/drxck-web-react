@@ -1,6 +1,5 @@
 import "./Xcrim.css";
 
-import { Link } from "react-router-dom";
 import xcrimImage from "../assets/xcrim.jpg";
 
 function Xcrim() {

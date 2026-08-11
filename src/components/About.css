@@ -1,49 +1,88 @@
-.about {
-  background: var(--bg-raised);
-}
-
 .about-grid {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 72px;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 90px);
+  align-items: start;
 }
+
+.about-lead {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  position: sticky;
+  top: calc(var(--header-h) + 40px);
+}
+
+.about-lead .section-sub {
+  margin-top: 0;
+}
+
+/* ---------------- capabilities ---------------- */
+
+.capability-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin-top: 8px;
+}
+
+.capability-list li {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  font-size: 13px;
+  color: var(--ink-soft);
+  transition: border-color 0.35s var(--ease-out-expo), color 0.35s var(--ease-out-expo),
+              transform 0.35s var(--spring);
+}
+
+.capability-list li:hover {
+  border-color: rgba(0, 232, 92, 0.45);
+  color: var(--ink);
+  transform: translateY(-2px);
+}
+
+/* ---------------- principles ---------------- */
 
 .principle-list {
   display: flex;
   flex-direction: column;
-  gap: 34px;
 }
 
 .principle {
+  padding: 30px 0;
   border-top: 1px solid var(--line);
-  padding-top: 24px;
 }
 
-.principle-index {
-  font-family: var(--mono);
-  font-size: 12px;
-  color: var(--muted);
+.principle:last-child {
+  border-bottom: 1px solid var(--line);
 }
 
 .principle h3 {
   font-family: var(--serif);
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
-  margin-top: 10px;
-  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
 }
 
 .principle p {
-  margin-top: 8px;
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 14.5px;
+  line-height: 1.65;
   color: var(--ink-soft);
-  max-width: 46ch;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 900px) {
   .about-grid {
     grid-template-columns: 1fr;
-    gap: 48px;
+  }
+
+  .about-lead {
+    position: static;
   }
 }
