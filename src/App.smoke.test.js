@@ -119,17 +119,24 @@ test("filtering by platform narrows the grid, and empty platforms are disabled",
 
   expect(document.querySelectorAll(".project-card").length).toBe(PROJECTS.length);
 
-  // Unity has no projects yet, so its chip is present but not selectable
-  expect(screen.getByRole("tab", { name: /Unity/i })).toBeDisabled();
+  const chipFor = (platform) =>
+    screen.getByRole("tab", { name: new RegExp(platform.label, "i") });
+  const hasWork = (platform) => PROJECTS.some((p) => p.platform === platform.id);
 
-  const roblox = screen.getByRole("tab", { name: /Roblox/i });
-  fireEvent.click(roblox);
+  // platforms announced but not yet shipped render as "soon" and aren't selectable
+  PLATFORMS.filter((p) => !hasWork(p)).forEach((p) => {
+    expect(chipFor(p)).toBeDisabled();
+  });
 
-  expect(roblox).toHaveAttribute("aria-selected", "true");
+  const populated = PLATFORMS.find(hasWork);
+  const chip = chipFor(populated);
+  fireEvent.click(chip);
+
+  expect(chip).toHaveAttribute("aria-selected", "true");
   // cards leave via an exit animation, so settle before counting
   await waitFor(() =>
     expect(document.querySelectorAll(".project-card").length).toBe(
-      PROJECTS.filter((p) => p.platform === "roblox").length
+      PROJECTS.filter((p) => p.platform === populated.id).length
     )
   );
 });

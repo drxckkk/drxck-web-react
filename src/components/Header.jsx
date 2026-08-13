@@ -6,7 +6,6 @@ import "./Header.css";
 const LINKS = [
   { id: "work", label: "work" },
   { id: "about", label: "about" },
-  { id: "contact", label: "contact" },
 ];
 
 function Header() {

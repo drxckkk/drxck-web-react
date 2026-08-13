@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ActionButton, MagneticButton } from "./Magnetic";
+import { MagneticButton } from "./Magnetic";
 import WordReveal from "./WordReveal";
 import "./Contact.css";
 
