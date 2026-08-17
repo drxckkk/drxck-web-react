@@ -179,6 +179,10 @@ function ProjectCard({ project, index, onOpen }) {
 /* ---------------- detail ---------------- */
 
 function ProjectModal({ project, onClose }) {
+  /* the media slot takes the video's own ratio once metadata lands, so nothing
+     is ever cropped — until then it holds a neutral 16:9 box */
+  const [aspect, setAspect] = useState(null);
+
   useEffect(() => {
     const onKey = (e) => e.key === "Escape" && onClose();
     document.addEventListener("keydown", onKey);
@@ -220,12 +224,16 @@ function ProjectModal({ project, onClose }) {
           <i className="fa-solid fa-xmark" aria-hidden="true" />
         </MagneticButton>
 
-        <div className="project-modal-media">
+        <div
+          className="project-modal-media"
+          style={aspect ? { "--media-aspect": aspect } : undefined}
+        >
           <LazyVideo
             src={project.video}
             label={project.title}
             play
             spinnerClassName="is-large"
+            onAspect={setAspect}
           />
         </div>
 
