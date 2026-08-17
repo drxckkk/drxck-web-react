@@ -1,30 +1,17 @@
 import { useEffect, useRef } from "react";
 import "./DotField.css";
 
-/**
- * The site's signature layer: a fixed grid of dots that ignites green around
- * the pointer and drifts as you scroll.
- *
- * Perf notes — this runs behind every section, so it is built to stay cheap:
- *  - dots outside the cursor radius are drawn as ONE path with one fillStyle,
- *    so a full-screen grid costs a single fill call
- *  - only the few hundred dots inside the radius get individual styling
- *  - the RAF loop parks itself once the pointer settles and restarts on input
- */
+const DOT_COLOR = "rgba(8, 8, 8, 0.14)";
+const HOT_RGB = "8, 8, 8";
 
-/* kept in sync by hand with --line / --green in App.css; the canvas can't
-   read custom properties without a getComputedStyle call per frame */
-const DOT_COLOR = "rgba(255, 255, 255, 0.15)";
-const HOT_RGB = "0, 232, 92";
-
-const SPACING = 26;      // px between dots
-const RADIUS = 190;      // cursor influence radius
-const DOT_MIN = 1.1;     // resting dot radius
-const DOT_MAX = 3.4;     // radius at the cursor's centre
-const PUSH = 7;          // px each dot recoils away from the cursor
-const PARALLAX = 0.14;   // how much the grid drifts against scroll
-const LERP = 0.14;       // pointer smoothing
-const SETTLE = 0.05;     // below this delta the loop parks itself
+const SPACING = 26;
+const RADIUS = 190;
+const DOT_MIN = 1.1;
+const DOT_MAX = 3.4;
+const PUSH = 7;
+const PARALLAX = 0.14;
+const LERP = 0.14;
+const SETTLE = 0.05;
 
 function DotField() {
   const canvasRef = useRef(null);
@@ -133,7 +120,7 @@ function DotField() {
       for (let i = 0; i < hot.length; i += 1) {
         const d = hot[i];
         ctx.beginPath();
-        ctx.fillStyle = `rgba(${HOT_RGB}, ${(0.18 + 0.82 * d.t).toFixed(3)})`;
+        ctx.fillStyle = `rgba(${HOT_RGB}, ${(0.14 + 0.72 * d.t).toFixed(3)})`;
         ctx.arc(d.x, d.y, d.radius, 0, Math.PI * 2);
         ctx.fill();
       }

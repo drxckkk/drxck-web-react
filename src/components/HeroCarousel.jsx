@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import LazyVideo from "./LazyVideo";
 import { PROJECTS, platformById } from "../data/projects";
 import "./HeroCarousel.css";
 
@@ -24,18 +25,19 @@ const PIXEL_W = 64;
 const PIXEL_H = 40;
 const PIXEL_FPS = 15;
 
-function CarouselCard({ item, slot, onSelect }) {
+/* the cards behind the front one only start pulling video once the hero has
+   had a moment to settle — three 1080p streams racing on first paint is what
+   made the page feel heavy */
+const BACKDROP_DELAY_MS = 2000;
+
+function CarouselCard({ item, slot, onSelect, backdropReady }) {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
   const active = slot === 0;
   const platform = platformById(item.platform);
 
-  // every card's video runs; the front one is shown sharp, the rest feed
-  // their frames into the pixel canvas
-  useEffect(() => {
-    videoRef.current?.play().catch(() => {});
-  }, []);
-
+  // once loaded, every card's video keeps running: the front one is shown
+  // sharp, the rest feed their frames into the pixel canvas
   useEffect(() => {
     if (active) return undefined; // sharp video is showing, no need to draw
 
@@ -79,9 +81,16 @@ function CarouselCard({ item, slot, onSelect }) {
       }}
     >
       <div className="carousel-card-media">
-        <video ref={videoRef} loop muted playsInline preload="auto">
-          <source src={item.video} type="video/mp4" />
-        </video>
+        <LazyVideo
+          ref={videoRef}
+          src={item.video}
+          label={item.title}
+          play={active || backdropReady}
+          /* only the card actually being read gets a spinner — one over a
+             pixelated backdrop would just be noise */
+          showSpinner={active}
+          spinnerClassName="is-large"
+        />
 
         {/* pixelated twin, cross-faded in whenever this card is behind */}
         <canvas
@@ -111,6 +120,12 @@ function CarouselCard({ item, slot, onSelect }) {
 function HeroCarousel() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [backdropReady, setBackdropReady] = useState(false);
+
+  useEffect(() => {
+    const id = setTimeout(() => setBackdropReady(true), BACKDROP_DELAY_MS);
+    return () => clearTimeout(id);
+  }, []);
 
   useEffect(() => {
     if (paused) return undefined;
@@ -134,6 +149,7 @@ function HeroCarousel() {
             key={item.id}
             item={item}
             slot={(i - active + COUNT) % COUNT}
+            backdropReady={backdropReady}
             onSelect={() => setActive(i)}
           />
         ))}

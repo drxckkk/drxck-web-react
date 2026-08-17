@@ -4,159 +4,151 @@
   left: 0;
   right: 0;
   z-index: 100;
-  display: flex;
-  justify-content: center;
-  padding: 16px var(--gutter);
-  pointer-events: none;
-}
-
-.scroll-progress {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  transform-origin: left;
-  background: var(--green);
-}
-
-.nav-pill {
+  height: var(--header-h);
   display: flex;
   align-items: center;
-  gap: 6px;
-  width: 100%;
-  max-width: var(--container);
-  padding: 8px 8px 8px 18px;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  pointer-events: auto;
-  transition: background 0.5s var(--ease-out-expo),
-              border-color 0.5s var(--ease-out-expo),
-              box-shadow 0.5s var(--ease-out-expo),
-              max-width 0.6s var(--ease-out-expo);
+  transition: background 0.5s var(--ease-out-expo), border-color 0.5s var(--ease-out-expo);
+  border-bottom: 1px solid transparent;
 }
 
-.site-header.is-scrolled .nav-pill {
-  max-width: 720px;
-  background: rgba(16, 16, 19, 0.72);
-  border-color: var(--line);
-  backdrop-filter: blur(16px) saturate(160%);
-  box-shadow: 0 12px 34px -18px rgba(0, 0, 0, 0.9);
+.site-header.is-scrolled {
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  backdrop-filter: blur(14px) saturate(140%);
+  border-bottom-color: var(--line-soft);
+}
+
+/* color-mix is recent; this keeps older engines from showing a bare bar */
+@supports not (background: color-mix(in srgb, red 50%, transparent)) {
+  .site-header.is-scrolled {
+    background: var(--bg);
+  }
+}
+
+.site-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
 }
 
 /* ---------------- brand ---------------- */
 
-.nav-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
+.brand {
   font-family: var(--mono);
-  font-size: 14.5px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-right: auto;
-}
-
-.nav-brand-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--green);
-  transition: transform 0.45s var(--spring), box-shadow 0.45s var(--ease-out-expo);
-}
-
-.nav-brand:hover .nav-brand-dot {
-  transform: scale(1.5);
-  box-shadow: 0 0 0 5px var(--green-wash);
-}
-
-/* ---------------- links ---------------- */
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  list-style: none;
-}
-
-.nav-links a {
-  position: relative;
-  display: block;
-  isolation: isolate;
-  padding: 9px 15px;
-  border-radius: 999px;
   font-size: 13.5px;
   font-weight: 500;
-  color: var(--ink-soft);
-  transition: color 0.3s var(--ease-out-expo);
-}
-
-.nav-links a:hover,
-.nav-links a.is-active {
+  letter-spacing: 0.04em;
   color: var(--ink);
 }
 
-.nav-active-bg {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.09);
+/* ---------------- nav ---------------- */
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 2.6vw, 40px);
 }
 
-.nav-link-label {
+.nav-link {
   position: relative;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  color: var(--ink-soft);
+  padding: 4px 0;
+  transition: color 0.4s var(--ease-out-expo);
 }
 
-/* ---------------- cta ---------------- */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s var(--ease-out-expo);
+}
 
-.nav-cta {
+.nav-link:hover {
+  color: var(--ink);
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.nav-link.is-active {
+  color: var(--ink);
+}
+
+.nav-link.is-active::after {
+  transform: scaleX(1);
+}
+
+/* ---------------- contact ---------------- */
+
+.nav-contact {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  padding: 10px 17px;
+  gap: 8px;
+  padding: 9px 16px;
+  border: 1px solid var(--line);
   border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ink);
+  transition: background 0.45s var(--ease-out-expo), color 0.45s var(--ease-out-expo),
+              border-color 0.45s var(--ease-out-expo);
+}
+
+.nav-contact .arrow {
+  font-size: 11px;
+  transition: transform 0.45s var(--ease-out-expo);
+}
+
+/* inverts on hover */
+.nav-contact:hover {
   background: var(--ink);
+  border-color: var(--ink);
   color: var(--bg);
-  font-size: 13px;
-  font-weight: 600;
-  transition: background 0.4s var(--ease-out-expo), color 0.4s var(--ease-out-expo),
-              box-shadow 0.4s var(--ease-out-expo);
 }
 
-.nav-cta i {
-  font-size: 10px;
-  transition: transform 0.4s var(--ease-out-expo);
-}
-
-.nav-cta:hover {
-  background: var(--green);
-  color: #04120a;
-  box-shadow: 0 10px 30px -12px var(--green-glow);
-}
-
-.nav-cta:hover i {
+.nav-contact:hover .arrow {
   transform: translateX(3px);
 }
 
+/* ---------------- responsive ---------------- */
+
 @media (max-width: 640px) {
-  .nav-pill {
-    padding-left: 14px;
+  .site-nav {
+    gap: 16px;
   }
 
-  .nav-links a {
-    padding: 9px 11px;
-    font-size: 12.5px;
+  .nav-link {
+    font-size: 12px;
   }
 
-  .nav-cta {
-    display: none;
+  .nav-contact {
+    padding: 8px 13px;
+    font-size: 11.5px;
   }
 }
 
-/* the magnetic wrapper around the CTA must hide with it */
-@media (max-width: 640px) {
-  .nav-pill > .magnetic {
+@media (max-width: 400px) {
+  .site-nav {
+    gap: 13px;
+  }
+
+  /* the arrow is the first thing to go when space runs out */
+  .nav-contact .arrow {
     display: none;
   }
 }

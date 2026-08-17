@@ -4,7 +4,7 @@
   display: inline-block;
 }
 
+/* italic serif is the only emphasis — the site is monochrome throughout */
 .wr-accent {
   font-style: italic;
-  color: var(--green-ink);
 }

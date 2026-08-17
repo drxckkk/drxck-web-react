@@ -1,0 +1,131 @@
+.about-body {
+  padding-bottom: clamp(40px, 6vw, 90px);
+}
+
+/* ---------------- facts ---------------- */
+
+.about-facts {
+  display: grid;
+  /* auto-fit so editing the FACTS list never leaves a hole in the row */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: clamp(20px, 3vw, 44px);
+  padding: clamp(34px, 4vw, 56px) 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.about-fact {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.about-fact-value {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(28px, 3.4vw, 46px);
+  letter-spacing: -0.035em;
+  line-height: 1;
+  color: var(--ink);
+}
+
+/* ---------------- split ---------------- */
+
+.about-split {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: clamp(36px, 6vw, 96px);
+  padding-top: clamp(48px, 6vw, 84px);
+}
+
+.about-col {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.principle-stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.principle-item {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  grid-template-areas:
+    "num title"
+    "num body";
+  gap: 8px 6px;
+  padding: 28px 0;
+  border-top: 1px solid var(--line-soft);
+}
+
+.principle-item:last-child {
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.principle-number {
+  grid-area: num;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  padding-top: 6px;
+}
+
+.principle-title {
+  grid-area: title;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(20px, 2.2vw, 28px);
+  letter-spacing: -0.028em;
+  line-height: 1.06;
+}
+
+.principle-body {
+  grid-area: body;
+  font-size: 14px;
+  line-height: 1.68;
+  color: var(--ink-soft);
+  max-width: 46ch;
+}
+
+/* ---------------- capabilities ---------------- */
+
+.capability-grid {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.capability-grid li {
+  padding: 14px 0;
+  border-top: 1px solid var(--line-soft);
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.capability-grid li:last-child {
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.about-note {
+  font-size: 14px;
+}
+
+/* ---------------- responsive ---------------- */
+
+@media (max-width: 900px) {
+  .about-split {
+    grid-template-columns: 1fr;
+  }
+
+  .about-facts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .principle-item {
+    grid-template-columns: 34px 1fr;
+  }
+}

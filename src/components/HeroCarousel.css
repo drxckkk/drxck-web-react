@@ -5,11 +5,11 @@
 
 .carousel-glow {
   position: absolute;
-  inset: -18% -12% 6% -12%;
+  inset: -16% -10% 6% -10%;
   z-index: 0;
   pointer-events: none;
-  background: radial-gradient(60% 55% at 45% 45%, var(--green-wash), transparent 70%);
-  filter: blur(30px);
+  background: radial-gradient(58% 54% at 45% 45%, var(--wash), transparent 72%);
+  filter: blur(28px);
 }
 
 /* the deck needs room for the two cards offset behind the front one */
@@ -17,8 +17,8 @@
   position: relative;
   z-index: 1;
   aspect-ratio: 16 / 10;
-  margin-right: 66px;
-  margin-bottom: 58px;
+  margin-right: 58px;
+  margin-bottom: 52px;
 }
 
 /* ---------------- card ---------------- */
@@ -26,12 +26,12 @@
 .carousel-card {
   position: absolute;
   inset: 0;
-  border-radius: var(--radius-l);
+  border-radius: var(--radius-m);
   border: 1px solid var(--line);
   background: var(--surface-sunk);
   overflow: hidden;
   transform-origin: top left;
-  box-shadow: 0 30px 70px -34px rgba(0, 0, 0, 1);
+  box-shadow: 0 26px 60px -40px var(--shadow);
 }
 
 .carousel-card:not(.is-active) {
@@ -39,9 +39,8 @@
 }
 
 .carousel-card.is-active {
-  border-color: rgba(0, 232, 92, 0.32);
-  box-shadow: 0 34px 80px -32px rgba(0, 0, 0, 1),
-              0 0 0 1px rgba(0, 232, 92, 0.1);
+  border-color: var(--line-strong);
+  box-shadow: 0 30px 70px -42px var(--shadow);
 }
 
 .carousel-card-media {
@@ -62,29 +61,31 @@
 /* the sharp video only shows on the front card */
 .carousel-card-media video {
   opacity: 0;
+  filter: grayscale(1) contrast(1.04);
 }
 
 .carousel-card.is-active .carousel-card-media video {
   opacity: 1;
 }
 
-/* the 64x40 buffer scaled up with no interpolation = real pixels,
-   plus a touch of blur to soften the grid into the background */
+/* the 64x40 buffer scaled up with no interpolation = real pixels, dropped to
+   greyscale so the deck stays inside the monochrome system */
 .carousel-card-pixels {
   opacity: 1;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
-  filter: blur(1.5px) saturate(1.1) brightness(0.78);
+  filter: grayscale(1) blur(1.4px) contrast(1.1) brightness(1.05);
 }
 
 .carousel-card.is-active .carousel-card-pixels {
   opacity: 0;
 }
 
+/* the scrim and its type sit on video, so they keep their own contrast */
 .carousel-card-scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 42%, rgba(0, 0, 0, 0.86) 100%);
+  background: linear-gradient(180deg, transparent 44%, rgba(8, 8, 8, 0.82) 100%);
 }
 
 /* ---------------- card info ---------------- */
@@ -113,23 +114,22 @@
   align-items: center;
   gap: 8px;
   font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--ink-soft);
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .carousel-card-platform i {
   font-size: 10px;
-  color: var(--green);
 }
 
 .carousel-card-title {
   font-family: var(--serif);
   font-size: clamp(20px, 2vw, 26px);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  color: var(--ink);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  color: #fff;
 }
 
 /* ---------------- progress bars ---------------- */
@@ -139,28 +139,27 @@
   z-index: 1;
   display: flex;
   gap: 8px;
-  margin-right: 66px;
+  margin-right: 58px;
 }
 
 .carousel-bar {
   position: relative;
   flex: 1;
-  height: 2px;
-  border-radius: 2px;
-  background: var(--line-strong);
+  height: 1px;
+  background: var(--line);
   overflow: hidden;
-  transition: background 0.3s var(--ease-out-expo);
+  transition: background 0.35s var(--ease-out-expo);
 }
 
 .carousel-bar:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--line-strong);
 }
 
 .carousel-bar-fill {
   position: absolute;
   inset: 0;
   transform-origin: left;
-  background: var(--green);
+  background: var(--ink);
   animation: carousel-fill 5s linear forwards;
 }
 
@@ -177,12 +176,12 @@
 
 @media (max-width: 520px) {
   .carousel-stage {
-    margin-right: 44px;
-    margin-bottom: 40px;
+    margin-right: 40px;
+    margin-bottom: 36px;
   }
 
   .carousel-bars {
-    margin-right: 44px;
+    margin-right: 40px;
   }
 }
 

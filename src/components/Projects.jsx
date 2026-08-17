@@ -6,6 +6,7 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
+import LazyVideo from "./LazyVideo";
 import Magnetic, { MagneticButton } from "./Magnetic";
 import WordReveal from "./WordReveal";
 import { PLATFORMS, PROJECTS, countFor, platformById } from "../data/projects";
@@ -65,7 +66,7 @@ function PlatformBar({ active, onChange }) {
 
 function ProjectCard({ project, index, onOpen }) {
   const ref = useRef(null);
-  const videoRef = useRef(null);
+  const [hovered, setHovered] = useState(false);
 
   const rx = useMotionValue(0);
   const ry = useMotionValue(0);
@@ -82,7 +83,7 @@ function ProjectCard({ project, index, onOpen }) {
   const glowX = useSpring(gx, config);
   const glowY = useSpring(gy, config);
 
-  const glow = useMotionTemplate`radial-gradient(340px circle at ${glowX}% ${glowY}%, var(--green-wash), transparent 70%)`;
+  const glow = useMotionTemplate`radial-gradient(340px circle at ${glowX}% ${glowY}%, var(--wash), transparent 70%)`;
 
   const onMove = (e) => {
     const el = ref.current;
@@ -99,9 +100,7 @@ function ProjectCard({ project, index, onOpen }) {
     gy.set(py * 100);
   };
 
-  const onEnter = () => {
-    videoRef.current?.play().catch(() => {});
-  };
+  const onEnter = () => setHovered(true);
 
   const onLeave = () => {
     rx.set(0);
@@ -110,11 +109,7 @@ function ProjectCard({ project, index, onOpen }) {
     ty.set(0);
     gx.set(50);
     gy.set(50);
-    const video = videoRef.current;
-    if (video) {
-      video.pause();
-      video.currentTime = 0;
-    }
+    setHovered(false);
   };
 
   const platform = platformById(project.platform);
@@ -150,9 +145,14 @@ function ProjectCard({ project, index, onOpen }) {
         <motion.span className="project-card-glow" style={{ background: glow }} aria-hidden="true" />
 
         <div className="project-media">
-          <video ref={videoRef} loop muted playsInline preload="metadata">
-            <source src={project.video} type="video/mp4" />
-          </video>
+          <LazyVideo
+            src={project.video}
+            label={project.title}
+            play={hovered}
+            warm
+            resetOnPause
+            spinnerClassName="is-small"
+          />
           <span className="project-index">{String(index + 1).padStart(2, "0")}</span>
           {project.featured && <span className="project-flag">Featured</span>}
         </div>
@@ -170,12 +170,6 @@ function ProjectCard({ project, index, onOpen }) {
 
           <h3 className="project-title">{project.title}</h3>
           <p className="project-summary">{project.summary}</p>
-
-          <ul className="project-stack">
-            {project.tags.map((tag) => (
-              <li key={tag}>{tag}</li>
-            ))}
-          </ul>
         </div>
       </motion.article>
     </motion.div>
@@ -227,9 +221,12 @@ function ProjectModal({ project, onClose }) {
         </MagneticButton>
 
         <div className="project-modal-media">
-          <video autoPlay loop muted playsInline>
-            <source src={project.video} type="video/mp4" />
-          </video>
+          <LazyVideo
+            src={project.video}
+            label={project.title}
+            play
+            spinnerClassName="is-large"
+          />
         </div>
 
         <div className="project-modal-body">
@@ -252,12 +249,6 @@ function ProjectModal({ project, onClose }) {
             stagger={0.022}
             text={project.overview}
           />
-
-          <ul className="project-stack">
-            {project.tags.map((tag) => (
-              <li key={tag}>{tag}</li>
-            ))}
-          </ul>
 
           <div className="project-stats">
             {project.stats.map((stat) => (
@@ -294,16 +285,17 @@ function Projects() {
   const openProject = PROJECTS.find((p) => p.id === openId) || null;
 
   return (
-    <section id="work" className="section projects">
-      <div className="section-inner">
-        <div className="section-head">
+    <section id="work" className="projects">
+      <div className="shell">
+        <div className="projects-head">
+          <span className="label">Selected work</span>
           <WordReveal
-            className="section-heading"
+            className="display display-l page-title"
             as="h2"
             text="Featured projects, *shipped*."
           />
           <WordReveal
-            className="section-sub"
+            className="copy page-lead"
             as="p"
             stagger={0.022}
             delay={0.1}
