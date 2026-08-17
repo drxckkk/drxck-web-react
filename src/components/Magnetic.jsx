@@ -3,12 +3,12 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import "./Magnetic.css";
 
 /**
- * Wraps any element so it sways toward the cursor and springs back on exit.
- * `strength` is the fraction of the cursor offset the element travels;
- * the inner content travels a little further, which reads as depth.
+ * Wraps any element so it leans toward the cursor and springs back on exit.
+ * `strength` is the fraction of the cursor offset the element travels; the
+ * inner content travels a little further, which reads as depth.
  *
- * Every button on the site goes through this — either directly, via
- * <MagneticButton>, or via <ActionButton> for the two hero-weight styles.
+ * Kept deliberately small — the site's motion is restrained, so this is a few
+ * pixels of lean on small controls, never a whole component chasing a pointer.
  */
 function Magnetic({
   children,
@@ -58,10 +58,7 @@ function Magnetic({
   );
 }
 
-/**
- * Drop-in swaying <button>. Use for any control that isn't one of the two
- * primary ActionButton styles — filter chips, copy buttons, close buttons.
- */
+/** Drop-in leaning <button> — filter chips, copy buttons, close buttons. */
 export function MagneticButton({
   children,
   className = "",
@@ -75,36 +72,6 @@ export function MagneticButton({
       <button className={className} disabled={disabled} {...rest}>
         {children}
       </button>
-    </Magnetic>
-  );
-}
-
-/**
- * The site's primary control. `variant` switches between the filled green
- * signature button and the outlined companion; both share the arrow motion.
- */
-export function ActionButton({
-  as = "a",
-  variant = "solid",
-  children,
-  className = "",
-  icon = "fa-solid fa-arrow-right",
-  ...rest
-}) {
-  const Tag = motion[as] || motion.a;
-
-  return (
-    <Magnetic>
-      <Tag className={`action-btn action-btn--${variant} ${className}`} {...rest}>
-        <span className="action-btn-fill" aria-hidden="true" />
-        <span className="action-btn-label">
-          <span className="action-btn-text">{children}</span>
-          <span className="action-btn-icons" aria-hidden="true">
-            <i className={icon} />
-            <i className={icon} />
-          </span>
-        </span>
-      </Tag>
     </Magnetic>
   );
 }

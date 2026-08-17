@@ -1,0 +1,120 @@
+/* ---------------- game list ---------------- */
+
+.games-section {
+  padding-bottom: clamp(40px, 6vw, 80px);
+}
+
+.game-list {
+  list-style: none;
+}
+
+.game-row {
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.game-link {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) minmax(0, 200px) 64px 88px 24px;
+  align-items: center;
+  gap: 18px;
+  padding: 26px 0;
+  transition: opacity 0.4s var(--ease-out-expo);
+}
+
+.game-row.is-linked .game-link:hover {
+  opacity: 1;
+}
+
+.game-index,
+.game-year,
+.game-status {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.game-title-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.game-title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(24px, 2.8vw, 38px);
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  color: var(--ink);
+  transition: transform 0.55s var(--ease-out-expo);
+}
+
+.game-row.is-linked:hover .game-title {
+  transform: translateX(10px);
+}
+
+.game-summary {
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 54ch;
+  /* the list stays scannable — two lines, then it clips */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.game-status {
+  color: var(--ink);
+}
+
+.game-arrow {
+  font-size: 14px;
+  color: var(--ink);
+  transition: transform 0.55s var(--ease-out-expo);
+}
+
+.game-row.is-linked:hover .game-arrow {
+  transform: translateX(6px);
+}
+
+.games-note {
+  margin-top: 40px;
+  font-size: 13.5px;
+}
+
+.games-note-link {
+  font-size: 13.5px;
+}
+
+/* ---------------- responsive ---------------- */
+
+@media (max-width: 1024px) {
+  .game-link {
+    grid-template-columns: 36px minmax(0, 1fr) 88px 24px;
+  }
+
+  .game-year {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .game-link {
+    grid-template-columns: 30px minmax(0, 1fr) 20px;
+    gap: 14px;
+    padding: 22px 0;
+  }
+
+  .game-status {
+    display: none;
+  }
+
+  .game-row.is-linked:hover .game-title {
+    transform: none;
+  }
+}

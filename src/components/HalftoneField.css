@@ -1,0 +1,8 @@
+/* the canvas reads its ink from `color`, so themes drive it with no JS */
+.halftone {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: var(--ink);
+  pointer-events: none;
+}

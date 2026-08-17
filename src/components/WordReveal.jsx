@@ -18,8 +18,8 @@ const word = {
  * Reveals a string one word at a time, each word rising out of a blur —
  * the same motion as the hero headline, reused for every block of copy.
  *
- * Wrap a word in asterisks to accent it: "make it *real*" renders "real"
- * in italic green. That keeps markup out of the caller while still allowing
+ * Wrap a word in asterisks to accent it: "make it *real*" renders "real" in
+ * italic serif. That keeps markup out of the caller while still allowing
  * emphasis inside an animated line.
  */
 function WordReveal({

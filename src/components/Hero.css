@@ -1,0 +1,108 @@
+.lp-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100svh;
+  padding: calc(var(--header-h) + 60px) 0 90px;
+  overflow: hidden;
+}
+
+/* ---------------- composition ---------------- */
+
+.lp-hero-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  /* the artwork bleeds off the right edge rather than sitting in a box */
+  padding-right: max(0px, calc((100vw - var(--container)) / 2));
+}
+
+/* held still on purpose: the device inside carries real hit targets, and an
+   animated wrapper would drag them around under the cursor */
+.lp-hero-composition {
+  position: relative;
+  width: min(88vh, 60vw);
+  aspect-ratio: 1;
+  margin-right: -8vw;
+}
+
+/* ---------------- copy ---------------- */
+
+.lp-hero-shell {
+  position: relative;
+  z-index: 1;
+}
+
+.lp-hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 26px;
+  max-width: 15ch;
+}
+
+.lp-hero-label {
+  display: block;
+}
+
+.lp-hero-statement {
+  max-width: 13ch;
+}
+
+.lp-hero-sub {
+  max-width: 42ch;
+  font-size: 15px;
+}
+
+.lp-hero-more {
+  margin-top: 6px;
+}
+
+/* ---------------- responsive ---------------- */
+
+@media (max-width: 1024px) {
+  .lp-hero-composition {
+    width: min(70vh, 82vw);
+    margin-right: -22vw;
+    opacity: 0.72;
+  }
+
+  .lp-hero-copy {
+    max-width: none;
+  }
+
+  .lp-hero-statement {
+    max-width: 11ch;
+  }
+}
+
+@media (max-width: 720px) {
+  .lp-hero {
+    min-height: auto;
+    padding: calc(var(--header-h) + 48px) 0 64px;
+  }
+
+  .lp-hero-canvas {
+    justify-content: center;
+    align-items: flex-start;
+    padding-right: 0;
+    /* behind the type on small screens, and quiet enough to read over */
+    opacity: 0.5;
+  }
+
+  .lp-hero-composition {
+    width: 128vw;
+    margin: -14vh 0 0;
+  }
+
+  .lp-hero-sub {
+    max-width: none;
+  }
+}
+
+/* motion inside the composition is handled by IpodField, which checks
+   prefers-reduced-motion itself and drops to a single static frame */

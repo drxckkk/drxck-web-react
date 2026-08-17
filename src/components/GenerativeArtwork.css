@@ -1,0 +1,46 @@
+.artwork {
+  position: relative;
+  z-index: 1;
+  padding: clamp(40px, 6vw, 90px) 0 clamp(70px, 9vw, 130px);
+}
+
+.artwork-head,
+.artwork-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.artwork-foot {
+  justify-content: flex-end;
+}
+
+/* the reading changes as the core morphs, so it gets its own settle */
+.artwork-reading {
+  color: var(--ink);
+  transition: color 0.6s var(--ease-out-expo);
+}
+
+.artwork-stage {
+  position: relative;
+  height: clamp(440px, 80vh, 880px);
+  margin: 22px 0;
+}
+
+/* inset 0 keeps the orbit geometry predictable — the field vignettes to
+   nothing at its edges, so there are no corners to fill */
+.artwork-plate {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+@media (max-width: 720px) {
+  .artwork-stage {
+    height: clamp(340px, 56vh, 520px);
+  }
+
+  .artwork-plate {
+    inset: -18%;
+  }
+}
