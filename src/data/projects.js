@@ -4,6 +4,7 @@ import kitchenVideo from "../assets/project3.mp4";
 import kitchenSimVideo from "../assets/project5.mp4";
 import realVehVideo from "../assets/project6.mp4";
 import luckyVideo from "../assets/project1.mp4";
+import signalVideo from "../assets/project7.mp4";
 
 /* ---------------------------------------------------------------------------
  * ADDING A NEW PLATFORM
@@ -26,7 +27,7 @@ export const PLATFORMS = [
     blurb: "Gameplay systems, full builds and tooling in Luau.",
   },
   {
-    id: "Others",
+    id: "others",
     label: "Others",
     icon: "fa-solid fa-layer-group",
     blurb: "C++, physics and voxel engines",
@@ -48,6 +49,19 @@ export const PROJECTS = [
       { label: "From", value: "$500" },
     ],
     video: luckyVideo,
+    featured: true,
+  },
+  {
+    id: "scangame",
+    platform: "others",
+    title: "1440 MHz",
+    year: "2026",
+    summary:
+      "A work-in-progress side project and demo for a LIDAR scanning and radio frequency detection game, where the gameplay is focused mainly on scanning the world that is invisible until it gets revealed in points. Built with focus on atmosphere, feel and performance, and entirely coded by myself.",
+    overview:
+      "Demo built as a side project, planned to be atmospheric, tense and satisfying to play with. The whole view is made of dots that only exist after you scan them, you find signals, interferences and fragments and reconstruct what was or is there. Built with Electron, TypeScript, Three.js, Vite.",
+    stats: [],
+    video: signalVideo,
     featured: true,
   }, {
     id: "kartsystem",

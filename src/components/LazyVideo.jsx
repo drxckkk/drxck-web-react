@@ -20,6 +20,9 @@ const LazyVideo = forwardRef(function LazyVideo(
     resetOnPause = false,
     /* off for purely decorative media, where a spinner is only noise */
     showSpinner = true,
+    /* called with the intrinsic width / height once metadata lands, so a slot
+       can size itself to the file instead of guessing a ratio */
+    onAspect,
     className = "",
     spinnerClassName = "",
     label,
@@ -119,7 +122,11 @@ const LazyVideo = forwardRef(function LazyVideo(
         onPlaying={stopLoading}
         /* a metadata-only warm-up may never reach loadeddata — that is as
            ready as it is going to get, so drop the spinner there too */
-        onLoadedMetadata={() => !wanted && stopLoading()}
+        onLoadedMetadata={(e) => {
+          const { videoWidth, videoHeight } = e.currentTarget;
+          if (videoWidth && videoHeight) onAspect?.(videoWidth / videoHeight);
+          if (!wanted) stopLoading();
+        }}
         onWaiting={() => setLoading(true)}
         onStalled={() => setLoading(true)}
         onError={() => {
