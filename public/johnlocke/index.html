@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Locke nos dias atuais · Racismo e privacidade na internet</title>
+<meta name="description" content="Ensaio visual sobre o que John Locke pensaria a respeito do racismo e da privacidade na internet. Direitos naturais do século XVII aplicados a problemas do século XXI." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="./style.css" />
+<script>
+/* esconde o que sera revelado por JS — e devolve tudo se o JS falhar */
+document.documentElement.classList.add("js");
+setTimeout(function () { document.documentElement.classList.add("failsafe"); }, 3000);
+</script>
+</head>
+<body>
+
+<!-- fundos: o papel cede lugar à tinta durante a seção de transição -->
+<div class="backdrop" aria-hidden="true">
+  <div class="backdrop-paper"></div>
+  <div class="backdrop-ink"></div>
+  <div class="backdrop-grid"></div>
+</div>
+
+<a class="skip" href="#manchete">Pular para o conteúdo</a>
+
+<!-- índice lateral (desktop) -->
+<nav class="rail" aria-label="Índice das seções">
+  <p class="rail-title">Índice</p>
+  <ol class="rail-list">
+    <li><a href="#manchete"><span class="rail-num">01</span><span class="rail-label">Manchete</span></a></li>
+    <li><a href="#locke"><span class="rail-num">02</span><span class="rail-label">Quem foi Locke</span></a></li>
+    <li><a href="#racismo"><span class="rail-num">03</span><span class="rail-label">Racismo</span></a></li>
+    <li><a href="#errata"><span class="rail-num">04</span><span class="rail-label">Errata</span></a></li>
+    <li><a href="#transicao"><span class="rail-num">05</span><span class="rail-label">Transição</span></a></li>
+    <li><a href="#privacidade"><span class="rail-num">06</span><span class="rail-label">Privacidade na internet</span></a></li>
+    <li><a href="#classificados"><span class="rail-num">07</span><span class="rail-label">Classificados</span></a></li>
+    <li><a href="#estado"><span class="rail-num">08</span><span class="rail-label">Estado e leis</span></a></li>
+    <li><a href="#conclusao"><span class="rail-num">09</span><span class="rail-label">Conclusão</span></a></li>
+    <li><a href="#fontes"><span class="rail-num">10</span><span class="rail-label">Fontes</span></a></li>
+    <li><a href="#creditos"><span class="rail-num">11</span><span class="rail-label">Créditos</span></a></li>
+  </ol>
+</nav>
+
+<main>
+
+  <!-- 01 ............................................................. -->
+  <section id="manchete" class="section section-hero" data-era="antiga">
+    <div class="wrap">
+      <header class="masthead">
+        <p class="masthead-name">The London Chronicle (A Crônica de Londres)</p>
+        <div class="masthead-meta">
+          <span>Edição de 2026</span>
+          <span>N.º 1</span>
+          <span>Livre circulação</span>
+        </div>
+      </header>
+
+      <h1 class="headline" data-split>
+        Locke se posicionaria contra o racismo e a favor da privacidade na internet
+      </h1>
+
+      <p class="hero-standfirst reveal">
+        Três séculos depois dos <em>Dois Tratados sobre o Governo Civil</em>, os direitos naturais
+        à vida, à liberdade e à propriedade continuam sendo o argumento mais direto contra a
+        discriminação racial e contra o uso indevido dos nossos dados.
+      </p>
+
+      <ul class="datastrip">
+        <li class="datastrip-item reveal">
+          <p class="datastrip-num">1689</p>
+          <p class="datastrip-label">Publicação dos <em>Dois Tratados sobre o Governo Civil</em></p>
+        </li>
+        <li class="datastrip-item reveal">
+          <p class="datastrip-num">1989</p>
+          <p class="datastrip-label">Lei 7.716, que define os crimes de racismo no Brasil</p>
+        </li>
+        <li class="datastrip-item reveal">
+          <p class="datastrip-num">2018</p>
+          <p class="datastrip-label">Lei 13.709, a LGPD, que regula o uso de dados pessoais</p>
+        </li>
+        <li class="datastrip-item reveal">
+          <p class="datastrip-num">2022</p>
+          <p class="datastrip-label">Emenda Constitucional 115, que torna a proteção de dados um direito fundamental</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 02 ............................................................. -->
+  <section id="locke" class="section" data-era="antiga">
+    <div class="wrap grid">
+      <figure class="plate col-4" data-parallax>
+        <div class="plate-frame">
+          <img class="plate-img" src="./locke.webp" alt="Retrato gravado de John Locke" loading="lazy" decoding="async" />
+          <svg class="plate-ornament" viewBox="0 0 240 300" role="img" aria-label="Placa ornamental">
+            <defs>
+              <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                <line x1="0" y1="0" x2="0" y2="6" stroke="currentColor" stroke-width="0.7" opacity="0.5" />
+              </pattern>
+            </defs>
+            <ellipse cx="120" cy="140" rx="92" ry="118" fill="url(#hatch)" opacity="0.3" />
+            <ellipse cx="120" cy="140" rx="92" ry="118" fill="none" stroke="currentColor" stroke-width="1.2" />
+            <ellipse cx="120" cy="140" rx="86" ry="112" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.7" />
+            <path d="M92 276 h56 M104 283 h32" stroke="currentColor" stroke-width="0.8" opacity="0.6" />
+          </svg>
+        </div>
+        <figcaption class="plate-caption">John Locke &middot; 1632&ndash;1704</figcaption>
+      </figure>
+
+      <div class="col-8">
+        <p class="eyebrow reveal">Quem foi Locke</p>
+        <h2 class="h-display reveal">O filósofo que fundou os direitos naturais</h2>
+        <p class="lede reveal">
+          John Locke (1632&ndash;1704) foi um filósofo inglês e um dos principais pensadores do
+          Iluminismo. Defendeu o empirismo e a razão, e escreveu os <em>Dois Tratados sobre o
+          Governo Civil</em>, onde sustenta que todo ser humano nasce com direitos que não dependem
+          de concessão do Estado.
+        </p>
+
+        <ul class="pillars">
+          <li class="pillar reveal">
+            <p class="pillar-num">i</p>
+            <h3 class="pillar-title">Empirismo</h3>
+            <p class="pillar-text">O conhecimento vem da experiência, não de ideias inatas. Ninguém nasce superior a ninguém.</p>
+          </li>
+          <li class="pillar reveal">
+            <p class="pillar-num">ii</p>
+            <h3 class="pillar-title">Direitos naturais</h3>
+            <p class="pillar-text">Vida, liberdade e propriedade pertencem à pessoa antes de qualquer governo existir.</p>
+          </li>
+          <li class="pillar reveal">
+            <p class="pillar-num">iii</p>
+            <h3 class="pillar-title">Governo legítimo</h3>
+            <p class="pillar-text">O poder só se justifica enquanto protege esses direitos. Quando os viola, perde a legitimidade.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 ............................................................. -->
+  <section id="racismo" class="section" data-era="antiga">
+    <div class="wrap">
+      <p class="eyebrow eyebrow-center reveal">Caderno A, Racismo</p>
+
+      <!-- NÃO é citação de Locke: é inferência a partir dos princípios dele -->
+      <div class="hypothesis reveal">
+        <p class="hypothesis-label">Reconstrução hipotética &middot; a partir do Segundo Tratado, §4 e §6</p>
+        <p class="hypothesis-text">Todos os seres humanos possuem os mesmos direitos naturais,
+        portanto ninguém deve ser discriminado por sua raça.</p>
+      </div>
+
+      <div class="grid argument-grid">
+        <aside class="col-4 marginalia reveal">
+          <blockquote class="marginalia-quote">
+            <p class="marginalia-text">A liberdade não consiste em fazer o que queremos, mas em não
+            ser impedido de fazer o que temos direito.</p>
+            <footer class="marginalia-source">
+              <cite>John Locke, <em>Segundo Tratado sobre o Governo Civil</em></cite>,
+              1689, §57
+            </footer>
+          </blockquote>
+        </aside>
+
+        <div class="col-8">
+          <p class="label reveal">Argumento</p>
+          <p class="body reveal">
+            Se todos os seres humanos têm os mesmos direitos naturais, discriminar por raça
+            contradiz diretamente a igualdade de direitos e a liberdade que Locke defende. Não há
+            leitura possível dos <em>Dois Tratados</em> em que uma pessoa nasça com menos direito à
+            vida, à liberdade ou à propriedade por causa da sua cor.
+          </p>
+          <p class="body reveal">
+            O racismo viola o princípio fundamental de que todos nascem livres e iguais em
+            dignidade. Ele cria, na prática, duas classes de pessoas: as que têm seus direitos
+            reconhecidos e as que precisam justificá-los. Para Locke, isso é exatamente aquilo que
+            o governo civil existe para impedir.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 ............................................................. -->
+  <section id="errata" class="section section-errata" data-era="antiga">
+    <div class="wrap">
+      <div class="errata">
+        <p class="errata-label reveal">Errata</p>
+
+        <p class="errata-body reveal">
+          Esta edição afirmou que John Locke se posicionaria contra o racismo. O registro histórico
+          exige uma correção.
+        </p>
+        <p class="errata-body reveal">
+          Locke foi acionista da Royal African Company, empresa inglesa que traficava pessoas
+          escravizadas da África para as colônias, e participou da redação das Constituições
+          Fundamentais da Carolina, de 1669, cujo artigo 110 concedia a todo homem livre
+          &ldquo;poder e autoridade absolutos&rdquo; sobre seus escravizados negros. O filósofo dos
+          direitos naturais lucrou com a negação desses mesmos direitos.
+        </p>
+        <p class="errata-body reveal">
+          A contradição não é um detalhe biográfico: é o centro da questão. O princípio que Locke
+          formulou mostrou-se mais consistente do que a vida que ele levou. No século seguinte,
+          abolicionistas usaram exatamente o argumento dos direitos naturais contra a escravidão,
+          inclusive contra o próprio Locke.
+        </p>
+        <p class="errata-body reveal">
+          É por isso que este jornal mantém a manchete. Não porque Locke foi coerente, mas porque a
+          ideia dele é. Quando um princípio condena quem o escreveu, ele passou no teste mais duro
+          que existe.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 ............................................................. -->
+  <section id="transicao" class="section section-transition" data-era="virada">
+    <div class="wrap">
+      <p class="transition-line">Do século XVII ao século XXI.</p>
+      <p class="transition-line">Os direitos naturais continuam atuais.</p>
+    </div>
+  </section>
+
+  <!-- 06 ............................................................. -->
+  <section id="privacidade" class="section" data-era="moderna">
+    <div class="wrap">
+      <p class="eyebrow eyebrow-center reveal">Caderno B, Privacidade na internet</p>
+
+      <!-- NÃO é citação de Locke: é inferência a partir dos princípios dele -->
+      <div class="hypothesis hypothesis-redacted reveal" id="redacted">
+        <p class="hypothesis-label">Reconstrução hipotética &middot; a partir do Segundo Tratado, §27</p>
+        <p class="hypothesis-text" data-redact>Assim como tenho <em data-keep>direito à minha
+        propriedade</em>, também devo ter o direito de proteger meus dados e minha vida privada na
+        internet.</p>
+      </div>
+
+      <div class="grid argument-grid">
+        <aside class="col-4 marginalia reveal">
+          <blockquote class="marginalia-quote">
+            <p class="marginalia-text">Cada homem tem uma propriedade em sua própria pessoa; a esta
+            ninguém tem direito senão ele mesmo.</p>
+            <footer class="marginalia-source">
+              <cite>John Locke, <em>Segundo Tratado sobre o Governo Civil</em></cite>,
+              1689, §27
+            </footer>
+          </blockquote>
+        </aside>
+
+        <div class="col-8">
+          <p class="label reveal">Argumento</p>
+          <p class="body reveal">
+            Se tenho o direito de possuir e proteger bens materiais, também devo poder proteger
+            meus dados, mensagens, fotos e informações privadas. A privacidade é uma extensão
+            natural da liberdade individual no mundo digital, não um privilégio concedido
+            por quem opera a plataforma.
+          </p>
+          <p class="body reveal">
+            Locke escreveu que cada pessoa é proprietária de si mesma e daquilo que produz com o
+            próprio trabalho. Aquilo que produzimos hoje inclui um rastro constante de dados. Se
+            esse rastro pertence a quem o gerou, coletá-lo sem consentimento é uma forma de tomar
+            propriedade alheia.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 ............................................................. -->
+  <section id="classificados" class="section" data-era="moderna">
+    <div class="wrap">
+      <p class="eyebrow reveal">Classificados &middot; Caderno C</p>
+
+      <div class="ads reveal">
+        <div class="ad">
+          <p class="ad-title">Vende-se</p>
+          <p class="ad-text">Histórico de navegação de três anos, íntegro, estado de novo. Inclui
+          buscas já apagadas pelo titular. Entrega imediata.</p>
+        </div>
+        <div class="ad">
+          <p class="ad-title">Procura-se</p>
+          <p class="ad-text">Consentimento. Aceita-se em qualquer formato: caixa marcada, silêncio,
+          uso continuado. Letra miúda de preferência.</p>
+        </div>
+        <div class="ad">
+          <p class="ad-title">Vende-se</p>
+          <p class="ad-text">Localização em tempo real. Lote com 40 mil unidades, atualização a
+          cada quinze segundos. Não se aceita devolução.</p>
+        </div>
+        <div class="ad">
+          <p class="ad-title">Troca-se</p>
+          <p class="ad-text">Acesso à lista de contatos por filtro de rosto com orelhas de gato.
+          Negócio fechado em dois toques, sem leitura prévia.</p>
+        </div>
+        <div class="ad">
+          <p class="ad-title">Aluga-se</p>
+          <p class="ad-text">Atenção alheia. Oito segundos por unidade, renovável em rolagem
+          infinita. Paga-se em conteúdo gratuito.</p>
+        </div>
+        <div class="ad">
+          <p class="ad-title">Aceitam-se</p>
+          <p class="ad-text">Termos de uso. Vinte e quatro páginas, revisão dispensada pelo
+          contratante. Assinatura no botão azul.</p>
+        </div>
+        <div class="ad">
+          <p class="ad-title">Perdeu-se</p>
+          <p class="ad-text">Anonimato, entre 2009 e 2014. Sem sinais de arrombamento. Não há
+          recompensa e não se pede que procurem.</p>
+        </div>
+        <div class="ad">
+          <p class="ad-title">Compra-se</p>
+          <p class="ad-text">Base de dados biométricos, qualquer volume. Origem irrelevante,
+          procedência não será verificada. Discrição garantida.</p>
+        </div>
+      </div>
+
+      <p class="ads-footer reveal">Nenhum destes anúncios é fictício o suficiente.</p>
+    </div>
+  </section>
+
+  <!-- 08 ............................................................. -->
+  <section id="estado" class="section" data-era="moderna">
+    <div class="wrap grid">
+      <div class="col-5">
+        <p class="eyebrow reveal">Estado e leis</p>
+        <h2 class="h-display reveal">Proteção suficiente, controle nenhum</h2>
+        <p class="body reveal">
+          Locke defenderia leis que protejam as pessoas do racismo e do uso indevido de dados, mas
+          sem permitir controle excessivo do governo sobre a liberdade dos cidadãos. O mesmo poder
+          que protege um direito pode aboli-lo.
+        </p>
+        <p class="body reveal">
+          O equilíbrio não é um meio-termo confortável: é a condição para que o governo continue
+          legítimo. Leis demais sufocam a liberdade que deveriam garantir; leis de menos deixam a
+          discriminação e a vigilância sem limite.
+        </p>
+      </div>
+
+      <div class="col-7 scale-wrap">
+        <svg class="scale" id="scale" viewBox="0 0 520 360" role="img"
+             aria-label="Balança equilibrando proteção e liberdade">
+          <g class="scale-arc">
+            <path d="M110 150 A150 150 0 0 1 410 150" fill="none" stroke="currentColor"
+                  stroke-width="1" opacity="0.3" />
+            <g class="scale-ticks"></g>
+          </g>
+          <line x1="260" y1="150" x2="260" y2="300" stroke="currentColor" stroke-width="2" />
+          <path d="M212 300 L308 300 L296 316 L224 316 Z" fill="none" stroke="currentColor" stroke-width="1.4" />
+          <g id="scale-beam" class="scale-beam">
+            <line x1="120" y1="150" x2="400" y2="150" stroke="currentColor" stroke-width="2" />
+            <line x1="120" y1="150" x2="120" y2="196" stroke="currentColor" stroke-width="1" opacity="0.8" />
+            <line x1="400" y1="150" x2="400" y2="196" stroke="currentColor" stroke-width="1" opacity="0.8" />
+            <path d="M84 196 L156 196 L120 236 Z" fill="none" stroke="currentColor" stroke-width="1.4" />
+            <path d="M364 196 L436 196 L400 236 Z" fill="none" stroke="currentColor" stroke-width="1.4" />
+          </g>
+          <circle class="scale-pivot" cx="260" cy="150" r="6" fill="currentColor" />
+          <circle class="scale-halo" cx="260" cy="150" r="11" fill="none" stroke="currentColor" stroke-width="1" opacity="0.45" />
+        </svg>
+
+        <div class="scale-legend">
+          <div class="scale-side">
+            <p class="scale-side-title">Proteção</p>
+            <p class="scale-side-text">Leis contra racismo, discriminação e abuso de dados.</p>
+          </div>
+          <div class="scale-side scale-side-right">
+            <p class="scale-side-title">Liberdade</p>
+            <p class="scale-side-text">Garantia de liberdade individual e limite ao poder do Estado.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 ............................................................. -->
+  <section id="conclusao" class="section" data-era="moderna">
+    <div class="wrap">
+      <p class="eyebrow reveal">Conclusão</p>
+      <h2 class="conclusion reveal">
+        Igualdade de direitos, liberdade individual e proteção da privacidade.
+      </h2>
+      <p class="conclusion-sub reveal">
+        Princípios do século XVII aplicados a problemas atuais.
+      </p>
+      <p class="body body-wide reveal">
+        Locke não escreveu sobre internet, redes sociais ou bancos de dados. Escreveu sobre algo
+        anterior: que ninguém pode dispor da vida, da liberdade ou da propriedade de outra pessoa
+        sem o consentimento dela. Aplicado hoje, esse mesmo princípio condena o racismo e sustenta
+        o direito à privacidade pelas mesmas razões, e com a mesma força.
+      </p>
+    </div>
+  </section>
+
+  <!-- 10 ............................................................. -->
+  <section id="fontes" class="section" data-era="moderna">
+    <div class="wrap">
+      <p class="eyebrow reveal">Fontes e referências</p>
+
+      <div class="refs">
+        <div class="ref reveal">
+          <p class="ref-label">Fonte primária</p>
+          <p class="ref-text">
+            LOCKE, John. <em>Dois Tratados sobre o Governo Civil</em>. 1689.
+            <!-- ================================================================
+                 INSIRA AQUI a edição e a tradução usadas em sala, caso o
+                 professor peça. Formato ABNT sugerido:
+                 LOCKE, John. Dois Tratados sobre o Governo Civil.
+                 Tradução de <TRADUTOR>. <CIDADE>: <EDITORA>, <ANO>.
+                 ================================================================ -->
+          </p>
+        </div>
+
+        <div class="ref reveal">
+          <p class="ref-label">Legislação brasileira</p>
+          <p class="ref-text">
+            BRASIL. <em>Constituição da República Federativa do Brasil</em>, 1988, art. 5.º,
+            incisos XLI e XLII (racismo como crime inafiançável e imprescritível) e inciso LXXIX
+            (proteção de dados como direito fundamental, incluído pela EC 115/2022).
+          </p>
+          <p class="ref-text">
+            BRASIL. <em>Lei 7.716/1989</em> (crimes de racismo); <em>Lei 14.532/2023</em> (equipara
+            injúria racial a racismo); <em>Lei 12.965/2014</em> (Marco Civil da Internet);
+            <em>Lei 13.709/2018</em> (Lei Geral de Proteção de Dados Pessoais).
+          </p>
+        </div>
+
+        <div class="ref reveal">
+          <p class="ref-label">Contexto histórico</p>
+          <p class="ref-text">
+            <em>Constituições Fundamentais da Carolina</em>, 1669, art. 110.
+          </p>
+          <p class="ref-text">
+            Registros de participação de John Locke na <em>Royal African Company</em>, na condição
+            de acionista.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 ............................................................. -->
+  <footer id="creditos" class="section section-footer" data-era="moderna">
+    <div class="wrap">
+      <p class="eyebrow reveal">Créditos</p>
+      <dl class="credits reveal">
+        <div class="credit"><dt>Disciplina</dt><dd>História</dd></div>
+        <div class="credit"><dt>Site</dt><dd>Matheus M</dd></div>
+        <div class="credit"><dt>Contribuição</dt><dd>Otávio H</dd></div>
+      </dl>
+      <p class="colophon">
+        As passagens em destaque nos cadernos A e B são reconstruções hipotéticas, formuladas a
+        partir dos princípios do <em>Segundo Tratado sobre o Governo Civil</em> (1689), e não
+        citações de John Locke. As citações literais aparecem nas laterais, com referência de
+        parágrafo.
+      </p>
+    </div>
+  </footer>
+
+</main>
+
+<!-- barra de navegação (mobile) -->
+<nav class="dock" aria-label="Índice das seções">
+  <a href="#manchete">01</a><a href="#locke">02</a><a href="#racismo">03</a><a href="#errata">04</a><a href="#transicao">05</a><a href="#privacidade">06</a><a href="#classificados">07</a><a href="#estado">08</a><a href="#conclusao">09</a><a href="#fontes">10</a><a href="#creditos">11</a>
+</nav>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.13/lenis.min.js" defer></script>
+<script src="./main.js" defer></script>
+</body>
+</html>
