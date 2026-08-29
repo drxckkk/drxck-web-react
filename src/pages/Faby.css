@@ -301,6 +301,55 @@ body.faby-modo .dot-field {
   color: var(--f-ink-soft);
 }
 
+/* selinho de "esse parou aqui" — o contador de cima virou lembrança */
+.faby-contador-parado {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 2px solid var(--f-line);
+  border-radius: 999px;
+  background: var(--f-card);
+  box-shadow: var(--f-shadow);
+  font-size: 13px;
+  color: var(--f-pink-deep);
+}
+
+/* ---------------- contador do namoro ---------------- */
+
+.faby-namoro-deboche {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 340px;
+  margin-top: 4px;
+  padding: 12px 16px 12px 12px;
+  background: var(--f-card);
+  border: 2px solid var(--f-line);
+  border-radius: 22px;
+  box-shadow: var(--f-shadow);
+  text-align: left;
+}
+
+.faby-namoro-bicho {
+  flex: none;
+  filter: drop-shadow(0 6px 10px rgba(232, 98, 155, 0.24));
+}
+
+.faby-namoro-fala {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--f-ink);
+}
+
+@media (max-width: 420px) {
+  .faby-namoro-deboche {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
+
 /* ---------------- cartinha ---------------- */
 
 .faby-envelope {

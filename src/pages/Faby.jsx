@@ -7,6 +7,7 @@ import Contador from "./faby/Contador";
 import Final from "./faby/Final";
 import Frasinhas from "./faby/Frasinhas";
 import Motivos from "./faby/Motivos";
+import Namoro from "./faby/Namoro";
 import Perguntas from "./faby/Perguntas";
 import "./Faby.css";
 
@@ -133,7 +134,6 @@ function Faby() {
 
       <main className="faby-shell">
         <Abertura />
-        <Contador />
         <div id="faby-cartinha" />
         <Cartinha />
         <Perguntas />

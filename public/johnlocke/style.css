@@ -219,7 +219,7 @@ body.is-modern .rail-list a.is-active .rail-num { color: var(--sinal); }
   padding: var(--respiro) 0;
 }
 
-section[data-era="moderna"],
+[data-era="moderna"],
 .section-footer {
   --fg: var(--papel);
   --accent: var(--sinal);
@@ -786,10 +786,146 @@ section[data-era="moderna"],
   color: var(--muted);
 }
 
+/* crédito de ilustração: linha de ficha, não de texto corrido */
+.colophon-credit {
+  margin: 14px 0 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+  color: var(--sepia);
+}
+
+/* --------------------------------------------------- prancha de herbário -- */
+
+/* Faixa de largura total entre os cadernos B e C. O lírio entra catalogado —
+   moldura, hachura, legenda —, no mesmo vocabulário da placa oval do retrato.
+   Não é ornamento floral: é espécime, e a legenda é a prova disso. */
+
+.section-specimen {
+  padding-block: calc(var(--respiro) * 1.15);
+  border-top: 1px solid var(--rule-soft);
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.specimen-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 340px) minmax(0, 380px);
+  gap: 72px;
+  align-items: end;
+}
+
+.specimen { margin: 0; }
+
+/* mesma moldura do retrato em #locke: 4/5, filete simples, respiro de 14px */
+.specimen-frame {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border: 1px solid var(--rule);
+  padding: 14px;
+  color: var(--sepia);
+}
+
+/* a elipse do recorte repete a do SVG: rx 168/400, ry 204/500, cy 240/500 */
+.specimen-media {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  isolation: isolate;
+  clip-path: ellipse(42% 40.8% at 50% 48%);
+}
+
+.specimen-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.08);
+}
+
+/* a cor não está na imagem: está nesta camada, e é a mesma do resto da página */
+.specimen-tint {
+  position: absolute;
+  inset: 0;
+  background: var(--verdigris);
+  opacity: 0.34;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+/* sem arquivo, sobra a moldura hachurada — como uma prancha ainda por colar */
+.specimen.no-image .specimen-media { display: none; }
+
+
+.specimen-caption {
+  display: grid;
+  gap: 4px;
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: var(--t-12);
+  line-height: 1.5;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sepia);
+}
+
+.specimen-note {
+  max-width: 380px;
+  padding-left: 24px;
+  border-left: 1px solid var(--rule-soft);
+}
+
+.specimen-text {
+  margin: 0;
+  font-family: var(--corpo);
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.62;
+  color: var(--muted);
+}
+
+/* ---------------------------------------------------------------- lírio -- */
+
+/* traçado e nada mais: sem preenchimento, sem gradiente, largura constante */
+.lily {
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible;
+}
+
+/* fecho de caderno, centralizado, como nos livros impressos do século XVII */
+.tailpiece {
+  display: flex;
+  justify-content: center;
+  margin-top: 96px;
+  color: var(--verdigris);
+}
+
+[data-era="moderna"] .tailpiece { color: var(--sinal); }
+
+.tailpiece .lily { width: auto; height: 64px; }
+
+/* o mesmo lírio sobre a prancha, em voz baixa: quem desenha é o scroll */
+.lily-scrub {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: 44%;
+  height: auto;
+  transform: translate(-50%, -50%);
+  color: var(--sinal);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
 /* ------------------------------------------------------------- revelação -- */
 
 /* só escondemos quando há JS para revelar de volta */
 html.js .reveal { opacity: 0; }
+html.js .lily path { opacity: 0; }
 html.js .headline .line > span { transform: translateY(105%); }
 
 /* a manchete espera a medição das linhas antes de aparecer */
@@ -798,6 +934,7 @@ html.js .headline:not(.is-split) { opacity: 0; }
 /* rede de segurança: se o JS não chegou a rodar, nada fica invisível.
    Só alcança o que o GSAP não tocou — ele escreve style inline. */
 html.failsafe .reveal,
+html.failsafe .lily path,
 html.failsafe .headline { opacity: 1; }
 html.failsafe .headline .line > span { transform: none; }
 
@@ -830,6 +967,13 @@ html.failsafe .headline .line > span { transform: none; }
 
   .plate { max-width: 260px; }
   .pillars { grid-template-columns: 1fr; gap: 28px; }
+
+  /* a prancha empilha: figura em cima, nota embaixo, na mesma coluna */
+  .specimen-wrap { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .specimen { max-width: 260px; }
+  .specimen-note { max-width: 100%; }
+  .tailpiece { margin-top: 64px; }
+  .tailpiece .lily { height: 52px; }
   .credits { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
 
   .marginalia {
@@ -875,6 +1019,7 @@ html.failsafe .headline .line > span { transform: none; }
   html { scroll-behavior: auto; }
 
   html.js .reveal { opacity: 1; }
+  html.js .lily path { opacity: 1; }
   html.js .headline .line > span { transform: none; }
 
   .scale-beam { transform: rotate(0deg); }
@@ -903,7 +1048,7 @@ html.failsafe .headline .line > span { transform: none; }
   /* no papel não existe era: tudo volta a ser tinta sobre branco */
   .backdrop, .rail, .dock, .skip { display: none; }
 
-  section[data-era="moderna"],
+  [data-era="moderna"],
   .section-footer,
   .section-transition {
     --fg: #000;
@@ -937,7 +1082,7 @@ html.failsafe .headline .line > span { transform: none; }
   .ads { column-count: 4; column-gap: 6mm; }
   .refs { columns: 2; }
 
-  h1, h2, h3, .hypothesis, .ad, .ref, .datastrip-item, .credit {
+  h1, h2, h3, .hypothesis, .ad, .ref, .datastrip-item, .credit, .specimen {
     break-inside: avoid;
   }
 
@@ -955,6 +1100,14 @@ html.failsafe .headline .line > span { transform: none; }
   /* sem animação no papel */
   html.js .reveal,
   html.js .headline { opacity: 1 !important; }
+
+  /* no papel o lírio já está desenhado: o traço nunca fica pela metade */
+  .lily path { opacity: 1 !important; stroke-dashoffset: 0 !important; }
+  .specimen-tint { display: none; }
+  .section-specimen { border: 0; padding-block: 0 8mm; }
+  .specimen-wrap { grid-template-columns: 55mm 1fr; gap: 8mm; }
+  .tailpiece { margin-top: 6mm; }
+  .tailpiece .lily { height: 14mm; }
   html.js .headline .line > span { transform: none !important; }
   [data-redact] .bar { display: none !important; }
   .scale-beam { transform: rotate(0deg) !important; }
