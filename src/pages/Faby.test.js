@@ -1,11 +1,12 @@
 import "@testing-library/jest-dom";
-import { fireEvent, render, screen, within } from "@testing-library/react";
+import { act, fireEvent, render, screen, within } from "@testing-library/react";
 import Cartinha from "./faby/Cartinha";
 import Contador from "./faby/Contador";
 import Frasinhas from "./faby/Frasinhas";
 import Motivos from "./faby/Motivos";
+import Namoro from "./faby/Namoro";
 import Perguntas from "./faby/Perguntas";
-import { CARTINHA, FRASINHAS, FUGAS, MOTIVOS, PERGUNTAS } from "./faby/content";
+import { CARTINHA, FRASINHAS, FUGAS, MOTIVOS, NAMORO_CONTADOR, PERGUNTAS } from "./faby/content";
 
 /* framer-motion usa IntersectionObserver pro whileInView e jsdom não tem;
    sem ele os blocos ficam no estado inicial, mas continuam no documento. */
@@ -122,13 +123,50 @@ test("a frasinha muda quando ela pede outra", async () => {
   expect(outra).toBeInTheDocument();
 });
 
-test("o contador mostra os dias desde 18 de junho de 2026", () => {
+test("o primeiro contador fica parado no dia 66, não importa que dia seja hoje", () => {
+  /* 12 dias em junho + 31 em julho + 23 em agosto = 66 */
   jest.useFakeTimers().setSystemTime(new Date("2026-08-15T12:00:00"));
   try {
+    const { unmount } = render(<Contador />);
+    expect(screen.getByText("66")).toBeInTheDocument();
+    expect(screen.getByText(/23 de agosto de 2026/)).toBeInTheDocument();
+    unmount();
+
+    /* muito tempo depois, continua 66 */
+    jest.setSystemTime(new Date("2027-03-01T12:00:00"));
     render(<Contador />);
-    /* 12 dias em junho + 31 em julho + 15 em agosto */
-    expect(screen.getByText("58")).toBeInTheDocument();
-    expect(screen.getByText(/18 de junho de 2026/)).toBeInTheDocument();
+    expect(screen.getByText("66")).toBeInTheDocument();
+  } finally {
+    jest.useRealTimers();
+  }
+});
+
+test("o contador do namoro conta a partir de 23 de agosto de 2026", () => {
+  jest.useFakeTimers().setSystemTime(new Date("2026-08-30T00:00:00"));
+  try {
+    render(<Namoro />);
+    expect(screen.getByText("7")).toBeInTheDocument();
+    expect(screen.getByText(/23 de agosto de 2026/)).toBeInTheDocument();
+    expect(screen.getByText(NAMORO_CONTADOR.deboche)).toBeInTheDocument();
+  } finally {
+    jest.useRealTimers();
+  }
+});
+
+test("o contador do namoro anda sozinho a cada segundo", () => {
+  jest.useFakeTimers().setSystemTime(new Date("2026-08-30T00:00:00"));
+  try {
+    render(<Namoro />);
+
+    const segundos = () =>
+      screen.getAllByText(/^\d{2}$/).map((n) => n.textContent);
+    expect(segundos()).toContain("00");
+
+    act(() => {
+      jest.advanceTimersByTime(5000);
+    });
+
+    expect(segundos()).toContain("05");
   } finally {
     jest.useRealTimers();
   }

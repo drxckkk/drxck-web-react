@@ -14,13 +14,14 @@
   var EASE = "expo.out";
 
   /* -------------------------------------------------- gravura opcional -- */
-  /* a placa ornamental entra no lugar da gravura quando não há arquivo */
-  var plateImg = document.querySelector(".plate-img");
-  if (plateImg) {
-    var markMissing = function () { plateImg.closest(".plate").classList.add("no-image"); };
-    if (plateImg.complete && plateImg.naturalWidth === 0) markMissing();
-    plateImg.addEventListener("error", markMissing);
-  }
+  /* a moldura vazia entra no lugar da gravura quando não há arquivo */
+  [[".plate-img", ".plate"], [".specimen-img", ".specimen"]].forEach(function (pair) {
+    var img = document.querySelector(pair[0]);
+    if (!img) return;
+    var markMissing = function () { img.closest(pair[1]).classList.add("no-image"); };
+    if (img.complete && img.naturalWidth === 0) markMissing();
+    img.addEventListener("error", markMissing);
+  });
 
   /* ------------------------------------------------------------ Lenis -- */
 
@@ -334,6 +335,63 @@
     );
   }
 
+  /* --------------------------------------------------- lírio: o traçado -- */
+
+  /* O lírio se desenha com dasharray: parece tinta sendo aplicada, não um logo
+     aparecendo. Com movimento reduzido, o traço já está pronto e só surge. */
+  function drawLily(svg, trigger, scrub) {
+    var paths = Array.prototype.slice.call(svg.querySelectorAll("path"));
+    if (!paths.length) return;
+
+    if (!hasGsap) {
+      paths.forEach(function (p) { p.style.opacity = 1; });
+      return;
+    }
+
+    if (reduced) {
+      gsap.fromTo(paths, { opacity: 0 }, {
+        opacity: 1,
+        duration: 0.2,
+        scrollTrigger: { trigger: trigger, start: "top 85%" }
+      });
+      return;
+    }
+
+    /* o comprimento é medido por traçado; as hastes com duas subcurvas
+       (estame + antera) contam as duas, e por isso se desenham juntas */
+    var lengths = paths.map(function (p) {
+      var len = 0;
+      try { len = p.getTotalLength(); } catch (e) { len = 0; }
+      len = len || 200;
+      p.style.strokeDasharray = len;
+      return len;
+    });
+
+    gsap.fromTo(
+      paths,
+      { strokeDashoffset: function (i) { return lengths[i]; }, opacity: 1 },
+      {
+        strokeDashoffset: 0,
+        opacity: 1,
+        ease: "power2.out",
+        duration: scrub ? 1 : 0.9,
+        stagger: 0.09,
+        scrollTrigger: scrub
+          ? { trigger: trigger, start: "top 85%", end: "bottom 45%", scrub: 0.5 }
+          : { trigger: trigger, start: "top 88%" }
+      }
+    );
+  }
+
+  function bootLily() {
+    document.querySelectorAll(".tailpiece .lily").forEach(function (svg) {
+      drawLily(svg, svg.closest(".tailpiece"), false);
+    });
+
+    var scrubbed = document.querySelector(".lily-scrub");
+    if (scrubbed) drawLily(scrubbed, scrubbed.closest(".specimen"), true);
+  }
+
   /* ------------------------------------------------------ índice ativo -- */
 
   function bootRail() {
@@ -370,6 +428,7 @@
     bootEra();
     bootRedaction();
     bootScale();
+    bootLily();
     bootRail();
     if (hasGsap) ScrollTrigger.refresh();
   }

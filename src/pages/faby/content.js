@@ -9,9 +9,18 @@ export const APELIDOS = {
   fofo: "byby",
 };
 
-/* dia em que tudo começou — usado no contador */
+/* dia em que tudo começou — usado no primeiro contador */
 export const INICIO = "2026-06-18T00:00:00";
 export const INICIO_TEXTO = "18 de junho de 2026";
+
+/* o primeiro contador não corre mais: ele congela neste dia, que é o mesmo
+   dia em que o namoro começou. Trocar esta data move o "66" junto. */
+export const PARADA = "2026-08-23T00:00:00";
+export const PARADA_TEXTO = "23 de agosto de 2026";
+
+/* daqui em diante quem conta é o contador de baixo */
+export const NAMORO = PARADA;
+export const NAMORO_TEXTO = PARADA_TEXTO;
 
 export const ABERTURA = {
   ola: "pra você, faby, minha princesa",
@@ -20,10 +29,18 @@ export const ABERTURA = {
 };
 
 export const CONTADOR = {
-  titulo: "a gente tá junto há",
-  desde: `desde ${INICIO_TEXTO} 🙀 uauu como o tempo passá rapido né..`,
-  rodape: "e eu quero muitos e muitos mais dias com você",
+  titulo: "a gente ficou junto por",
+  desde: `de ${INICIO_TEXTO} até ${PARADA_TEXTO} 🙀 uauu como o tempo passá rapido né..`,
+  parado: "esse aqui parou no dia 66 de propósito 💗",
+  rodape: "foi o dia em que a gente parou de contar assim e começou a contar de outro jeito",
   unidades: { dias: "dias", horas: "horas", minutos: "min", segundos: "seg" },
+};
+
+export const NAMORO_CONTADOR = {
+  titulo: "e a gente tá namorando há",
+  desde: `desde ${NAMORO_TEXTO} 💗 agora vale esse aqui`,
+  rodape: "e esse eu não vou parar nunca, pode deixar",
+  deboche: "aah que fofo, mais um contador 🙄 tá bom, eu conto pra vocês então",
 };
 
 export const CARTINHA = {
