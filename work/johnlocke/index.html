@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>John Locke</title>
+  <meta name="description"
+    content="Investigação editorial sobre John Locke: direitos naturais, a contradição da escravidão e uma leitura contemporânea da privacidade digital." />
+  <meta name="color-scheme" content="light" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Libre+Caslon+Display&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+  <script>
+    /* esconde o que será revelado por JS — e devolve tudo se o JS falhar */
+    document.documentElement.classList.add("js");
+    setTimeout(function () { document.documentElement.classList.add("failsafe"); }, 3000);
+  </script>
+</head>
+
+<body>
+
+  <!-- fundo único: papel e tinta trocam de lugar conforme o tom da cena -->
+  <div class="backdrop" aria-hidden="true">
+    <div class="backdrop-paper"></div>
+    <div class="backdrop-grain"></div>
+  </div>
+
+  <a class="skip" href="#abertura">Pular para o conteúdo</a>
+
+  <!-- cabeçalho fixo: identificação da publicação e controles -->
+  <header class="topbar">
+    <p class="topbar-mark">
+      <span class="topbar-mark-name">John Locke</span>
+      <span class="topbar-mark-meta">1632-1704</span>
+    </p>
+    <button type="button" class="btn" id="present-toggle" aria-pressed="false">
+      <span class="btn-dot" aria-hidden="true"></span>
+      <span class="btn-label">Apresentar</span>
+    </button>
+  </header>
+
+  <!-- índice de progresso (desktop) -->
+  <nav class="rail" aria-label="Índice das cenas">
+    <ol class="rail-list">
+      <li><a href="#abertura"><span class="rail-num">01</span><span class="rail-label">Abertura</span></a></li>
+      <li><a href="#retrato"><span class="rail-num">02</span><span class="rail-label">O objeto de estudo</span></a></li>
+      <li><a href="#ideias"><span class="rail-num">03</span><span class="rail-label">As ideias</span></a></li>
+      <li><a href="#linha"><span class="rail-num">04</span><span class="rail-label">Linha do tempo</span></a></li>
+      <li><a href="#errata"><span class="rail-num">05</span><span class="rail-label">Errata</span></a></li>
+      <li><a href="#privacidade"><span class="rail-num">06</span><span class="rail-label">Privacidade</span></a></li>
+      <li><a href="#confronto"><span class="rail-num">07</span><span class="rail-label">Locke &times; 2026</span></a>
+      </li>
+      <li><a href="#pergunta"><span class="rail-num">08</span><span class="rail-label">A pergunta</span></a></li>
+      <li><a href="#final"><span class="rail-num">09</span><span class="rail-label">Fecho</span></a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <!-- 01 ═══ ABERTURA ═══════════════════════════════════════════════════ -->
+    <section id="abertura" class="scene scene-hero" data-tone="light" data-scene="01">
+      <div class="wrap hero">
+
+        <p class="tag hero-tag" data-stream data-stream-delay="0.15">Arquivo / Filosofia / 01</p>
+        <p class="hero-dates" data-stream data-stream-delay="0.5" data-stream-caret="true">1632 - 1704</p>
+
+        <h1 class="hero-name">
+          <span class="hero-name-line" data-stream data-stream-delay="0.85" data-stream-speed="0.045">John</span>
+          <span class="hero-name-line" data-stream data-stream-delay="1.15" data-stream-speed="0.045">Locke</span>
+        </h1>
+
+        <p class="hero-question" data-lines data-lines-delay="1.7">
+          E se John Locke <em>estivesse vivo</em> <span class="hero-today">hoje</span>?
+        </p>
+
+        <!-- fragmento do retrato: responde ao ponteiro, 12px no máximo -->
+        <figure class="hero-plate" data-magnet="12" aria-hidden="true">
+          <div class="hero-plate-media">
+            <img src="./locke.webp" alt="" loading="eager" decoding="async" />
+          </div>
+        </figure>
+
+        <div class="hero-foot">
+          <a class="cue" href="#retrato">
+            <span class="cue-label">Role para investigar</span>
+            <span class="cue-arrow" aria-hidden="true">&darr;</span>
+          </a>
+          <p class="cue-count"><span>01</span> / 09</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 02 ═══ O OBJETO DE ESTUDO ═════════════════════════════════════════ -->
+    <section id="retrato" class="scene" data-tone="light" data-scene="02">
+      <div class="wrap">
+        <p class="tag" data-reveal>Registro histórico &middot; 02</p>
+
+        <div class="artifact">
+
+          <figure class="artifact-plate" data-magnet="10">
+            <div class="plate-frame">
+              <div class="plate-media">
+                <div class="plate-reveal" data-clip>
+                  <img class="plate-img" src="./locke.webp" data-drift="14"
+                    alt="Retrato gravado de John Locke, filósofo inglês do século XVII" loading="lazy"
+                    decoding="async" />
+                </div>
+              </div>
+              <svg class="plate-ornament" viewBox="0 0 240 300" aria-hidden="true" focusable="false">
+                <defs>
+                  <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                    <line x1="0" y1="0" x2="0" y2="6" stroke="currentColor" stroke-width="0.7" opacity="0.5" />
+                  </pattern>
+                  <mask id="mat-plate">
+                    <rect width="240" height="300" fill="#fff" />
+                    <ellipse cx="120" cy="140" rx="92" ry="118" fill="#000" />
+                  </mask>
+                </defs>
+                <rect width="240" height="300" fill="url(#hatch)" mask="url(#mat-plate)" opacity="0.3" />
+                <ellipse cx="120" cy="140" rx="92" ry="118" fill="none" stroke="currentColor" stroke-width="1.2" />
+                <ellipse cx="120" cy="140" rx="86" ry="112" fill="none" stroke="currentColor" stroke-width="0.6"
+                  opacity="0.7" />
+                <path d="M92 276 h56 M104 283 h32" stroke="currentColor" stroke-width="0.8" opacity="0.6" />
+              </svg>
+            </div>
+          </figure>
+
+          <div class="artifact-meta">
+            <dl class="meta-list">
+              <div class="meta-row" data-reveal>
+                <dt>Sujeito</dt>
+                <dd>John Locke</dd>
+              </div>
+              <div class="meta-row" data-reveal>
+                <dt>Período</dt>
+                <dd>1632 - 1704</dd>
+              </div>
+              <div class="meta-row" data-reveal>
+                <dt>Origem</dt>
+                <dd>Wrington, Inglaterra</dd>
+              </div>
+              <div class="meta-row" data-reveal>
+                <dt>Campo</dt>
+                <dd>Filosofia política &middot; Epistemologia</dd>
+              </div>
+              <div class="meta-row" data-reveal>
+                <dt>Obra de referência</dt>
+                <dd><em>Dois Tratados sobre o Governo Civil</em>, 1689</dd>
+              </div>
+            </dl>
+
+            <ul class="chiplist" data-reveal>
+              <li class="chip">Filósofo inglês</li>
+              <li class="chip">Empirista</li>
+              <li class="chip">Pensador político</li>
+            </ul>
+          </div>
+
+          <div class="artifact-text">
+            <p class="lede" data-reveal>
+              John Locke (1632-1704) foi um filósofo inglês e um dos principais pensadores do
+              Iluminismo. Defendeu o empirismo e a razão, e escreveu os <em>Dois Tratados sobre o
+                Governo Civil</em>, onde sustenta que todo ser humano nasce com direitos que não dependem
+              de concessão do Estado.
+            </p>
+            <p class="body" data-reveal>
+              Três séculos depois, os direitos naturais à vida, à liberdade e à propriedade continuam
+              sendo o argumento mais direto contra a discriminação racial e contra o uso indevido dos
+              nossos dados. É esse percurso que esta investigação acompanha, incluindo aquilo
+              que não fecha.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 ═══ AS IDEIAS ══════════════════════════════════════════════════ -->
+    <section id="ideias" class="scene" data-tone="light" data-scene="03">
+      <div class="wrap">
+        <p class="tag" data-reveal>Os princípios &middot; 03</p>
+        <h2 class="h-display" data-lines>Três ideias que sustentam todo o resto</h2>
+
+        <!-- as linhas ligam os conceitos; desenham-se com o scroll -->
+        <ul class="ideas" id="ideas">
+          <li class="idea" data-idea>
+            <p class="idea-num">i</p>
+            <h3 class="idea-word" data-magnet="3">Empirismo</h3>
+            <div class="idea-body">
+              <p class="idea-text">O conhecimento vem da experiência, não de ideias inatas. Ninguém
+                nasce superior a ninguém.</p>
+            </div>
+          </li>
+
+          <li class="idea" data-idea>
+            <p class="idea-num">ii</p>
+            <h3 class="idea-word" data-magnet="3">Direitos naturais</h3>
+            <div class="idea-body">
+              <ul class="idea-triad">
+                <li>Vida</li>
+                <li>Liberdade</li>
+                <li>Propriedade</li>
+              </ul>
+              <p class="idea-text">Pertencem à pessoa antes de qualquer governo existir.</p>
+            </div>
+          </li>
+
+          <li class="idea" data-idea>
+            <p class="idea-num">iii</p>
+            <h3 class="idea-word" data-magnet="3">Governo legítimo</h3>
+            <div class="idea-body">
+              <p class="idea-text">O poder só se justifica enquanto protege esses direitos. Quando os
+                viola, perde a legitimidade.</p>
+            </div>
+          </li>
+        </ul>
+
+        <p class="ideas-hint" data-reveal>
+          <span class="ideas-hint-desktop">Passe o cursor sobre cada ideia.</span>
+          <span class="ideas-hint-touch">Toque em cada ideia.</span>
+        </p>
+
+        <!-- tail-piece: o lírio fecha o caderno, à maneira dos livros do século XVII -->
+        <div class="tailpiece" aria-hidden="true">
+          <svg class="lily" viewBox="0 0 48 64" aria-hidden="true" focusable="false">
+            <path d="M24 30 C25.6 20.4 19.7 12.6 13.5 11.8 C11.1 17.6 14.9 26.6 24 30" />
+            <path d="M24 30 C33.1 26.6 36.9 17.6 34.5 11.8 C28.3 12.6 22.4 20.4 24 30" />
+            <path d="M24 30 C17.2 23.8 8.4 25 5 30 C8.4 35 17.2 36.2 24 30" />
+            <path d="M24 30 C30.8 36.2 39.6 35 43 30 C39.6 25 30.8 23.8 24 30" />
+            <path d="M24 30 C15 33.1 11.5 41.7 14 47.3 C20.1 46.7 25.8 39.3 24 30" />
+            <path d="M24 30 C22.2 39.3 27.9 46.7 34 47.3 C36.5 41.7 33 33.1 24 30" />
+            <path d="M24 30 Q20.8 23.8 19.9 18.2 M18.5 18 L20.1 15.4" />
+            <path d="M24 30 Q24.9 21.8 24.5 15 M23.2 14.4 L25.5 12.4" />
+            <path d="M24 30 Q27.2 23.8 28.1 18.2 M27 17.2 L29.8 16" />
+            <path d="M24 30 C24.4 41 23.8 51 22.8 58" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 ═══ LINHA DO TEMPO ═════════════════════════════════════════════ -->
+    <section id="linha" class="scene" data-tone="light" data-scene="04">
+      <div class="wrap">
+        <p class="tag" data-reveal>Linha do tempo &middot; 04</p>
+        <h2 class="h-display" data-lines>Do tratado à lei</h2>
+
+        <div class="timeline" id="timeline">
+          <div class="timeline-track" aria-hidden="true">
+            <span class="timeline-progress"></span>
+          </div>
+
+          <ol class="timeline-list">
+            <li class="tl" data-tl>
+              <p class="tl-year">1689</p>
+              <div class="tl-body">
+                <p class="tl-title">Dois Tratados sobre o Governo Civil</p>
+                <p class="tl-text">Locke publica a obra em que sustenta que a vida, a liberdade e a
+                  propriedade pertencem à pessoa antes de qualquer governo existir.</p>
+              </div>
+            </li>
+
+            <li class="tl" data-tl>
+              <p class="tl-year">1989</p>
+              <div class="tl-body">
+                <p class="tl-title">Lei 7.716</p>
+                <p class="tl-text">O Brasil define os crimes resultantes de discriminação ou preconceito
+                  de raça, cor, etnia, religião ou procedência nacional.</p>
+              </div>
+            </li>
+
+            <li class="tl" data-tl>
+              <p class="tl-year">2014</p>
+              <div class="tl-body">
+                <p class="tl-title">Marco Civil da Internet</p>
+                <p class="tl-text">A Lei 12.965 estabelece princípios, garantias e deveres para o uso da
+                  internet no país.</p>
+              </div>
+            </li>
+
+            <li class="tl" data-tl>
+              <p class="tl-year">2018</p>
+              <div class="tl-body">
+                <p class="tl-title">Lei Geral de Proteção de Dados</p>
+                <p class="tl-text">A Lei 13.709 regula o tratamento de dados pessoais e coloca o
+                  consentimento no centro da relação entre pessoa e plataforma.</p>
+              </div>
+            </li>
+
+            <li class="tl" data-tl>
+              <p class="tl-year">2022</p>
+              <div class="tl-body">
+                <p class="tl-title">Emenda Constitucional 115</p>
+                <p class="tl-text">A proteção de dados pessoais passa a ser um direito fundamental,
+                  inscrito no artigo 5.º da Constituição.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 ═══ ERRATA ═════════════════════════════════════════════════════ -->
+    <section id="errata" class="scene scene-errata" data-tone="dark" data-scene="05">
+      <div class="wrap">
+
+        <div class="turn">
+          <p class="turn-line" data-lines>O princípio parece claro.</p>
+          <p class="turn-line turn-line-alt" data-lines data-lines-delay="0.5">A história não é.</p>
+        </div>
+
+        <!-- não é citação de Locke: é inferência a partir dos princípios dele -->
+        <div class="hypothesis" data-reveal>
+          <p class="hypothesis-label">Reconstrução hipotética &middot; a partir do Segundo Tratado, §4 e §6</p>
+          <p class="hypothesis-text">Todos os seres humanos possuem os mesmos direitos naturais,
+            portanto ninguém deve ser discriminado por sua raça.</p>
+        </div>
+
+        <div class="argument">
+          <aside class="marginalia" data-reveal>
+            <blockquote class="marginalia-quote">
+              <p class="marginalia-text">A liberdade não consiste em fazer o que queremos, mas em não
+                ser impedido de fazer o que temos direito.</p>
+              <footer class="marginalia-source">
+                <cite>John Locke, <em>Segundo Tratado sobre o Governo Civil</em></cite>,
+                1689, §57
+              </footer>
+            </blockquote>
+          </aside>
+
+          <div class="argument-body">
+            <p class="label" data-reveal>Argumento</p>
+            <p class="body" data-reveal>
+              Se todos os seres humanos têm os mesmos direitos naturais, discriminar por raça
+              contradiz diretamente a igualdade de direitos e a liberdade que Locke defende. Não há
+              leitura possível dos <em>Dois Tratados</em> em que uma pessoa nasça com menos direito à
+              vida, à liberdade ou à propriedade por causa da sua cor.
+            </p>
+            <p class="body" data-reveal>
+              O racismo viola o princípio fundamental de que todos nascem livres e iguais em
+              dignidade. Ele cria, na prática, duas classes de pessoas: as que têm seus direitos
+              reconhecidos e as que precisam justificá-los. Para Locke, isso é exatamente aquilo que
+              o governo civil existe para impedir.
+            </p>
+          </div>
+        </div>
+
+        <!-- metáfora de investigação: o registro sendo conferido antes da correção -->
+        <div class="probe" id="probe" data-reveal>
+          <p class="probe-line" data-probe>Cruzando registro biográfico</p>
+          <p class="probe-line" data-probe>Royal African Company &middot; 1672</p>
+          <p class="probe-line" data-probe>Constituições Fundamentais da Carolina &middot; 1669</p>
+          <p class="probe-line probe-hit" data-probe>Contradição encontrada</p>
+        </div>
+
+        <div class="errata-card" id="errata-card">
+          <p class="errata-stamp" data-lines>Errata</p>
+
+          <div class="errata-body-wrap">
+            <p class="errata-body" data-reveal>
+              Esta edição afirmou que John Locke se posicionaria contra o racismo. O registro histórico
+              exige uma correção.
+            </p>
+            <p class="errata-body" data-reveal>
+              Locke foi acionista da Royal African Company, empresa inglesa que traficava pessoas
+              escravizadas da África para as colônias, e participou da redação das Constituições
+              Fundamentais da Carolina, de 1669, cujo artigo 110 concedia a todo homem livre
+              &ldquo;poder e autoridade absolutos&rdquo; sobre seus escravizados negros. O filósofo dos
+              direitos naturais lucrou com a negação desses mesmos direitos.
+            </p>
+            <p class="errata-body" data-reveal>
+              A contradição não é um detalhe biográfico: é o centro da questão. O princípio que Locke
+              formulou mostrou-se mais consistente do que a vida que ele levou. No século seguinte,
+              abolicionistas usaram exatamente o argumento dos direitos naturais contra a escravidão,
+              inclusive contra o próprio Locke.
+            </p>
+            <p class="errata-body" data-reveal>
+              É por isso que esta investigação mantém a pergunta de partida. Não porque Locke foi
+              coerente, mas porque a ideia dele é. Quando um princípio condena quem o escreveu, ele
+              passou no teste mais duro que existe.
+            </p>
+          </div>
+        </div>
+
+        <p class="verdict" data-lines>
+          O filósofo e a filosofia não coincidem.
+        </p>
+
+        <!-- tail-piece -->
+        <div class="tailpiece" aria-hidden="true">
+          <svg class="lily" viewBox="0 0 48 64" aria-hidden="true" focusable="false">
+            <path d="M24 30 C25.6 20.4 19.7 12.6 13.5 11.8 C11.1 17.6 14.9 26.6 24 30" />
+            <path d="M24 30 C33.1 26.6 36.9 17.6 34.5 11.8 C28.3 12.6 22.4 20.4 24 30" />
+            <path d="M24 30 C17.2 23.8 8.4 25 5 30 C8.4 35 17.2 36.2 24 30" />
+            <path d="M24 30 C30.8 36.2 39.6 35 43 30 C39.6 25 30.8 23.8 24 30" />
+            <path d="M24 30 C15 33.1 11.5 41.7 14 47.3 C20.1 46.7 25.8 39.3 24 30" />
+            <path d="M24 30 C22.2 39.3 27.9 46.7 34 47.3 C36.5 41.7 33 33.1 24 30" />
+            <path d="M24 30 Q20.8 23.8 19.9 18.2 M18.5 18 L20.1 15.4" />
+            <path d="M24 30 Q24.9 21.8 24.5 15 M23.2 14.4 L25.5 12.4" />
+            <path d="M24 30 Q27.2 23.8 28.1 18.2 M27 17.2 L29.8 16" />
+            <path d="M24 30 C24.4 41 23.8 51 22.8 58" />
+          </svg>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 06 ═══ PRIVACIDADE ════════════════════════════════════════════════ -->
+    <section id="privacidade" class="scene" data-tone="dark" data-scene="06">
+      <div class="wrap">
+        <p class="tag" data-reveal>Privacidade digital &middot; 06</p>
+
+        <!-- a palavra atravessa três séculos sem trocar de eixo -->
+        <div class="morph" id="morph" aria-label="De propriedade, em 1689, a dados e privacidade, em 2026">
+          <div class="morph-stack" aria-hidden="true">
+            <p class="morph-word" data-morph><span class="morph-year">1689</span>Propriedade</p>
+            <p class="morph-word" data-morph><span class="morph-year">2026</span>Dados</p>
+            <p class="morph-word" data-morph><span class="morph-year">2026</span>Privacidade</p>
+          </div>
+        </div>
+
+        <!-- painel de dados: representações abstratas, nenhum dado real -->
+        <div class="console" id="console" data-reveal>
+          <div class="console-head">
+            <p class="console-title">Solicitação de acesso</p>
+            <p class="console-state" data-console-state>em análise</p>
+          </div>
+
+          <ul class="console-rows">
+            <li class="console-row" data-row><span class="console-key">Nome</span><span class="console-bar"
+                aria-hidden="true"></span><span class="console-val">retido</span></li>
+            <li class="console-row" data-row><span class="console-key">Localização</span><span class="console-bar"
+                aria-hidden="true"></span><span class="console-val">retido</span></li>
+            <li class="console-row" data-row><span class="console-key">Fotos</span><span class="console-bar"
+                aria-hidden="true"></span><span class="console-val">retido</span></li>
+            <li class="console-row" data-row><span class="console-key">Mensagens</span><span class="console-bar"
+                aria-hidden="true"></span><span class="console-val">retido</span></li>
+            <li class="console-row" data-row><span class="console-key">Histórico de busca</span><span
+                class="console-bar" aria-hidden="true"></span><span class="console-val">retido</span></li>
+          </ul>
+
+          <div class="console-foot">
+            <p class="console-q"><span>Consentimento</span><b data-console-mark>?</b></p>
+            <p class="console-q"><span>Propriedade</span><b data-console-mark>?</b></p>
+            <p class="console-q"><span>Privacidade</span><b data-console-mark>?</b></p>
+          </div>
+        </div>
+
+        <!-- não é citação de Locke: é inferência a partir dos princípios dele -->
+        <div class="hypothesis hypothesis-redacted" id="redacted" data-reveal>
+          <p class="hypothesis-label">Reconstrução hipotética &middot; a partir do Segundo Tratado, §27</p>
+          <p class="hypothesis-text" data-redact>Assim como tenho <em data-keep>direito à minha
+              propriedade</em>, também devo ter o direito de proteger meus dados e minha vida privada na
+            internet.</p>
+        </div>
+
+        <div class="argument">
+          <aside class="marginalia" data-reveal>
+            <blockquote class="marginalia-quote">
+              <p class="marginalia-text">Cada homem tem uma propriedade em sua própria pessoa; a esta
+                ninguém tem direito senão ele mesmo.</p>
+            </blockquote>
+
+            <figure class="specimen" data-magnet="8">
+              <div class="specimen-frame">
+                <div class="specimen-media">
+                  <div class="specimen-reveal" data-clip>
+                    <img class="specimen-img" src="./lirio.webp" data-drift="10"
+                      alt="Fotografia de um lírio-branco: a flor aberta de seis pétalas, os estames e o caule, em preto e branco."
+                      loading="lazy" decoding="async" />
+                  </div>
+                </div>
+
+                <svg class="specimen-oval" viewBox="0 0 400 500" aria-hidden="true" focusable="false">
+                  <defs>
+                    <pattern id="hatch-specimen" width="6" height="6" patternUnits="userSpaceOnUse"
+                      patternTransform="rotate(45)">
+                      <line x1="0" y1="0" x2="0" y2="6" stroke="currentColor" stroke-width="0.7" opacity="0.5" />
+                    </pattern>
+                    <mask id="mat-specimen">
+                      <rect width="400" height="500" fill="#fff" />
+                      <ellipse cx="200" cy="240" rx="168" ry="204" fill="#000" />
+                    </mask>
+                  </defs>
+                  <rect width="400" height="500" fill="url(#hatch-specimen)" mask="url(#mat-specimen)" opacity="0.32" />
+                  <ellipse cx="200" cy="240" rx="168" ry="204" fill="none" stroke="currentColor" stroke-width="1.2" />
+                  <ellipse cx="200" cy="240" rx="160" ry="196" fill="none" stroke="currentColor" stroke-width="0.6"
+                    opacity="0.7" />
+                  <path d="M152 468 h96 M176 476 h48" stroke="currentColor" stroke-width="0.8" opacity="0.6" />
+                </svg>
+              </div>
+            </figure>
+
+          </aside>
+
+          <div class="argument-body">
+            <p class="label" data-reveal>Argumento</p>
+            <p class="body" data-reveal>
+              Se tenho o direito de possuir e proteger bens materiais, também devo poder proteger
+              meus dados, mensagens, fotos e informações privadas. A privacidade é uma extensão
+              natural da liberdade individual no mundo digital, não um privilégio concedido
+              por quem opera a plataforma.
+            </p>
+            <p class="body" data-reveal>
+              Locke escreveu que cada pessoa é proprietária de si mesma e daquilo que produz com o
+              próprio trabalho. Aquilo que produzimos hoje inclui um rastro constante de dados. Se
+              esse rastro pertence a quem o gerou, coletá-lo sem consentimento é uma forma de tomar
+              propriedade alheia.
+            </p>
+            <p class="body" data-reveal>
+              Tudo o que sabemos entra
+              pela experiência: pelo que se vê, se toca, se observa. Um lírio não pode ser deduzido.
+              Precisa ser olhado. É por isso que uma prancha botânica cabe numa investigação sobre
+              direitos naturais, ela é o método antes de ser a flor.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- classificados: a sátira continua sendo o argumento mais direto -->
+      <div class="wrap">
+        <p class="label label-wide" data-reveal>Classificados</p>
+
+        <div class="ads" data-reveal>
+          <div class="ad">
+            <p class="ad-title">Vende-se</p>
+            <p class="ad-text">Histórico de navegação de três anos, íntegro, estado de novo. Inclui
+              buscas já apagadas pelo titular. Entrega imediata.</p>
+          </div>
+          <div class="ad">
+            <p class="ad-title">Procura-se</p>
+            <p class="ad-text">Consentimento. Aceita-se em qualquer formato: caixa marcada, silêncio,
+              uso continuado. Letra miúda de preferência.</p>
+          </div>
+          <div class="ad">
+            <p class="ad-title">Vende-se</p>
+            <p class="ad-text">Localização em tempo real. Lote com 40 mil unidades, atualização a
+              cada quinze segundos. Não se aceita devolução.</p>
+          </div>
+          <div class="ad">
+            <p class="ad-title">Troca-se</p>
+            <p class="ad-text">Acesso à lista de contatos por filtro de rosto com orelhas de gato.
+              Negócio fechado em dois toques, sem leitura prévia.</p>
+          </div>
+          <div class="ad">
+            <p class="ad-title">Aluga-se</p>
+            <p class="ad-text">Atenção alheia. Oito segundos por unidade, renovável em rolagem
+              infinita. Paga-se em conteúdo gratuito.</p>
+          </div>
+          <div class="ad">
+            <p class="ad-title">Aceitam-se</p>
+            <p class="ad-text">Termos de uso. Vinte e quatro páginas, revisão dispensada pelo
+              contratante. Assinatura no botão azul.</p>
+          </div>
+          <div class="ad">
+            <p class="ad-title">Perdeu-se</p>
+            <p class="ad-text">Anonimato, entre 2009 e 2014. Sem sinais de arrombamento. Não há
+              recompensa e não se pede que procurem.</p>
+          </div>
+          <div class="ad">
+            <p class="ad-title">Compra-se</p>
+            <p class="ad-text">Base de dados biométricos, qualquer volume. Origem irrelevante,
+              procedência não será verificada. Discrição garantida.</p>
+          </div>
+        </div>
+
+        <p class="ads-footer" data-reveal>Nenhum destes anúncios é fictício o suficiente.</p>
+      </div>
+    </section>
+
+    <!-- 07 ═══ LOCKE × 2026 ═══════════════════════════════════════════════ -->
+    <section id="confronto" class="scene" data-tone="dark" data-scene="07">
+      <div class="wrap">
+        <p class="tag" data-reveal>Confronto &middot; 07</p>
+        <h2 class="h-display" data-lines>Uma filosofia do século XVII sobrevive a uma sociedade digital?</h2>
+
+        <div class="versus" id="versus">
+          <header class="versus-head">
+            <div class="versus-side" data-reveal>
+              <p class="versus-who">Locke</p>
+              <p class="versus-when">1689</p>
+            </div>
+            <div class="versus-side versus-side-right" data-reveal>
+              <p class="versus-who">Mundo digital</p>
+              <p class="versus-when">2026</p>
+            </div>
+          </header>
+
+          <ol class="bridge-list">
+            <li class="bridge" data-bridge>
+              <p class="bridge-from">Liberdade</p>
+              <span class="bridge-line" aria-hidden="true"></span>
+              <p class="bridge-to">Autonomia digital</p>
+            </li>
+            <li class="bridge" data-bridge>
+              <p class="bridge-from">Propriedade</p>
+              <span class="bridge-line" aria-hidden="true"></span>
+              <p class="bridge-to">Dados pessoais</p>
+            </li>
+            <li class="bridge" data-bridge>
+              <p class="bridge-from">Consentimento</p>
+              <span class="bridge-line" aria-hidden="true"></span>
+              <p class="bridge-to">Controle</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="balance">
+          <div class="balance-text">
+            <p class="label" data-reveal>Estado e leis</p>
+            <h3 class="h-sub" data-reveal>Proteção suficiente, controle nenhum</h3>
+            <p class="body" data-reveal>
+              Locke defenderia leis que protejam as pessoas do racismo e do uso indevido de dados, mas
+              sem permitir controle excessivo do governo sobre a liberdade dos cidadãos. O mesmo poder
+              que protege um direito pode aboli-lo.
+            </p>
+            <p class="body" data-reveal>
+              O equilíbrio não é um meio-termo confortável: é a condição para que o governo continue
+              legítimo. Leis demais sufocam a liberdade que deveriam garantir; leis de menos deixam a
+              discriminação e a vigilância sem limite.
+            </p>
+          </div>
+
+          <div class="balance-figure">
+            <svg class="scale" id="scale" viewBox="0 0 520 360" role="img"
+              aria-label="Balança equilibrando proteção e liberdade">
+              <g class="scale-arc">
+                <path d="M110 150 A150 150 0 0 1 410 150" fill="none" stroke="currentColor" stroke-width="1"
+                  opacity="0.3" />
+                <g class="scale-ticks"></g>
+              </g>
+              <line x1="260" y1="150" x2="260" y2="300" stroke="currentColor" stroke-width="2" />
+              <path d="M212 300 L308 300 L296 316 L224 316 Z" fill="none" stroke="currentColor" stroke-width="1.4" />
+              <g id="scale-beam" class="scale-beam">
+                <line x1="120" y1="150" x2="400" y2="150" stroke="currentColor" stroke-width="2" />
+                <line x1="120" y1="150" x2="120" y2="196" stroke="currentColor" stroke-width="1" opacity="0.8" />
+                <line x1="400" y1="150" x2="400" y2="196" stroke="currentColor" stroke-width="1" opacity="0.8" />
+                <path d="M84 196 L156 196 L120 236 Z" fill="none" stroke="currentColor" stroke-width="1.4" />
+                <path d="M364 196 L436 196 L400 236 Z" fill="none" stroke="currentColor" stroke-width="1.4" />
+              </g>
+              <circle class="scale-pivot" cx="260" cy="150" r="6" fill="currentColor" />
+              <circle class="scale-halo" cx="260" cy="150" r="11" fill="none" stroke="currentColor" stroke-width="1"
+                opacity="0.45" />
+            </svg>
+
+            <div class="scale-legend">
+              <div class="scale-side">
+                <p class="scale-side-title">Proteção</p>
+                <p class="scale-side-text">Leis contra racismo, discriminação e abuso de dados.</p>
+              </div>
+              <div class="scale-side scale-side-right">
+                <p class="scale-side-title">Liberdade</p>
+                <p class="scale-side-text">Garantia de liberdade individual e limite ao poder do Estado.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- tail-piece -->
+        <div class="tailpiece" aria-hidden="true">
+          <svg class="lily" viewBox="0 0 48 64" aria-hidden="true" focusable="false">
+            <path d="M24 30 C25.6 20.4 19.7 12.6 13.5 11.8 C11.1 17.6 14.9 26.6 24 30" />
+            <path d="M24 30 C33.1 26.6 36.9 17.6 34.5 11.8 C28.3 12.6 22.4 20.4 24 30" />
+            <path d="M24 30 C17.2 23.8 8.4 25 5 30 C8.4 35 17.2 36.2 24 30" />
+            <path d="M24 30 C30.8 36.2 39.6 35 43 30 C39.6 25 30.8 23.8 24 30" />
+            <path d="M24 30 C15 33.1 11.5 41.7 14 47.3 C20.1 46.7 25.8 39.3 24 30" />
+            <path d="M24 30 C22.2 39.3 27.9 46.7 34 47.3 C36.5 41.7 33 33.1 24 30" />
+            <path d="M24 30 Q20.8 23.8 19.9 18.2 M18.5 18 L20.1 15.4" />
+            <path d="M24 30 Q24.9 21.8 24.5 15 M23.2 14.4 L25.5 12.4" />
+            <path d="M24 30 Q27.2 23.8 28.1 18.2 M27 17.2 L29.8 16" />
+            <path d="M24 30 C24.4 41 23.8 51 22.8 58" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 ═══ A PERGUNTA ═════════════════════════════════════════════════ -->
+    <section id="pergunta" class="scene scene-question" data-tone="dark" data-scene="08">
+      <div class="wrap">
+        <p class="tag" data-reveal>A pergunta &middot; 08</p>
+
+        <h2 class="ask" data-lines>Locke concordaria?</h2>
+
+        <ol class="subasks">
+          <li class="subask" data-reveal>Com a luta contra o racismo?</li>
+          <li class="subask" data-reveal>Com a privacidade digital?</li>
+          <li class="subask" data-reveal>Com a compreensão moderna de propriedade?</li>
+        </ol>
+
+        <p class="answer" data-lines>
+          Provavelmente. <em>Mas não sem contradições.</em>
+        </p>
+
+        <p class="answer-note" data-reveal>
+          A resposta não é absoluta, e não deveria ser. Locke não deixou escrito o que pensaria sobre
+          estes temas: o que existe são princípios que ele formulou e uma vida que nem sempre os
+          seguiu. Julgar os dois juntos é o trabalho.
+        </p>
+      </div>
+    </section>
+
+    <!-- 09 ═══ FECHO ══════════════════════════════════════════════════════ -->
+    <section id="final" class="scene scene-final" data-tone="light" data-scene="09">
+      <div class="wrap">
+
+        <div class="coda">
+          <p class="coda-line" data-lines>A ideia sobrevive ao homem.</p>
+          <p class="coda-alt" data-lines data-lines-delay="0.8">Ou não?</p>
+        </div>
+
+        <div class="colophon-card" data-reveal>
+          <p class="colophon-name">John Locke</p>
+          <p class="colophon-dates">1632 - 1704</p>
+          <p class="colophon-desc">
+            Um estudo sobre direitos, liberdade,<br />contradição e modernidade.
+          </p>
+        </div>
+
+        <div class="refs-block">
+          <p class="label label-wide" data-reveal>Fontes e referências</p>
+
+          <div class="refs">
+            <div class="ref" data-reveal>
+              <p class="ref-label">Fonte primária</p>
+              <p class="ref-text">
+                LOCKE, John. <em>Dois Tratados sobre o Governo Civil</em>. 1689.
+                <!-- ================================================================
+                   INSIRA AQUI a edição e a tradução usadas em sala, caso o
+                   professor peça. Formato ABNT sugerido:
+                   LOCKE, John. Dois Tratados sobre o Governo Civil.
+                   Tradução de <TRADUTOR>. <CIDADE>: <EDITORA>, <ANO>.
+                   ================================================================ -->
+              </p>
+            </div>
+
+            <div class="ref" data-reveal>
+              <p class="ref-label">Legislação brasileira</p>
+              <p class="ref-text">
+                BRASIL. <em>Constituição da República Federativa do Brasil</em>, 1988, art. 5.º,
+                incisos XLI e XLII (racismo como crime inafiançável e imprescritível) e inciso LXXIX
+                (proteção de dados como direito fundamental, incluído pela EC 115/2022).
+              </p>
+              <p class="ref-text">
+                BRASIL. <em>Lei 7.716/1989</em> (crimes de racismo); <em>Lei 14.532/2023</em> (equipara
+                injúria racial a racismo); <em>Lei 12.965/2014</em> (Marco Civil da Internet);
+                <em>Lei 13.709/2018</em> (Lei Geral de Proteção de Dados Pessoais).
+              </p>
+            </div>
+
+            <div class="ref" data-reveal>
+              <p class="ref-label">Contexto histórico</p>
+              <p class="ref-text">
+                <em>Constituições Fundamentais da Carolina</em>, 1669, art. 110.
+              </p>
+              <p class="ref-text">
+                Registros de participação de John Locke na <em>Royal African Company</em>, na condição
+                de acionista.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <footer id="creditos" class="credits-block">
+          <dl class="credits" data-reveal>
+            <div class="credit">
+              <dt>Disciplina</dt>
+              <dd>História</dd>
+            </div>
+            <div class="credit">
+              <dt>Site</dt>
+              <dd>Matheus Morais</dd>
+            </div>
+            <div class="credit">
+              <dt>Contribuição</dt>
+              <dd>Otavio Henrique</dd>
+            </div>
+          </dl>
+        </footer>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- barra de navegação (mobile) -->
+  <nav class="dock" aria-label="Índice das cenas">
+    <a href="#abertura">01</a><a href="#retrato">02</a><a href="#ideias">03</a><a href="#linha">04</a><a
+      href="#errata">05</a><a href="#privacidade">06</a><a href="#confronto">07</a><a href="#pergunta">08</a><a
+      href="#final">09</a>
+  </nav>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lenis/1.1.13/lenis.min.js" defer></script>
+  <script src="./main.js" defer></script>
+</body>
+
+</html>
