@@ -26,7 +26,6 @@ const PAGES = [
 ];
 
 const ELSEWHERE = [
-  { id: "l-github", title: "GitHub", hint: CONTACT.github.user, href: CONTACT.github.url, Icon: GitHubIcon },
   { id: "l-email", title: "Send an email", hint: CONTACT.email, href: `mailto:${CONTACT.email}`, Icon: Mail },
 ];
 

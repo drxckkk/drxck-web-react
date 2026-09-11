@@ -244,10 +244,6 @@ test("contact uses the real channels", () => {
 
   expect(within(contact).getByText(CONTACT.email)).toBeInTheDocument();
   expect(within(contact).getByRole("button", { name: /copy email/i })).toBeInTheDocument();
-  expect(within(contact).getByRole("link", { name: /github/i })).toHaveAttribute(
-    "href",
-    CONTACT.github.url
-  );
   expect(within(contact).getByRole("button", { name: /copy discord/i })).toBeInTheDocument();
 });
 
