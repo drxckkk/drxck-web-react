@@ -7,8 +7,6 @@ import Motivos from "./faby/Motivos";
 import Perguntas from "./faby/Perguntas";
 import { CARTINHA, FRASINHAS, FUGAS, MOTIVOS, PERGUNTAS } from "./faby/content";
 
-/* framer-motion usa IntersectionObserver pro whileInView e jsdom não tem;
-   sem ele os blocos ficam no estado inicial, mas continuam no documento. */
 beforeAll(() => {
   global.IntersectionObserver = class {
     observe() {}
@@ -54,7 +52,6 @@ test('o botão "não" da primeira pergunta foge em vez de responder', () => {
 
   fireEvent.pointerDown(fujao);
 
-  /* mudou de texto, continua na mesma pergunta e não respondeu nada */
   expect(screen.getByRole("button", { name: /esse botão foge/i }))
     .toHaveTextContent(FUGAS[1]);
   expect(screen.getByText(PERGUNTAS[0].pergunta)).toBeInTheDocument();
@@ -126,7 +123,6 @@ test("o contador mostra os dias desde 18 de junho de 2026", () => {
   jest.useFakeTimers().setSystemTime(new Date("2026-08-15T12:00:00"));
   try {
     render(<Contador />);
-    /* 12 dias em junho + 31 em julho + 15 em agosto */
     expect(screen.getByText("58")).toBeInTheDocument();
     expect(screen.getByText(/18 de junho de 2026/)).toBeInTheDocument();
   } finally {

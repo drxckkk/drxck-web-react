@@ -2,8 +2,6 @@ import "@testing-library/jest-dom";
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import LazyVideo from "./LazyVideo";
 
-/* jsdom has no IntersectionObserver, and LazyVideo leans on it to decide when
-   a video is allowed to touch the network — so drive it by hand */
 let observed = [];
 
 beforeEach(() => {
@@ -51,7 +49,6 @@ test("an on-screen video that is not wanted stays unloaded", () => {
 
   expect(videoEl().getAttribute("src")).toBeNull();
 
-  /* hovering the card asks for playback, which is what pulls the full file */
   rerender(<LazyVideo src="/clip.mp4" play />);
 
   expect(videoEl().getAttribute("src")).toBe("/clip.mp4");
@@ -68,7 +65,6 @@ test("the spinner marks loading media and clears once there are frames", () => {
   fireEvent.loadedData(videoEl());
   expect(spinner()).not.toBeInTheDocument();
 
-  /* and comes back when the buffer runs dry mid-loop */
   fireEvent.waiting(videoEl());
   expect(spinner()).toBeInTheDocument();
 

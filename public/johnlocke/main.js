@@ -1,8 +1,3 @@
-/* ===========================================================================
-   Locke nos dias atuais — coreografia de scroll
-   Uma sequência por seção. Se um efeito não serve ao argumento, ele não existe.
-   ======================================================================== */
-
 (function () {
   "use strict";
 
@@ -13,16 +8,12 @@
 
   var EASE = "expo.out";
 
-  /* -------------------------------------------------- gravura opcional -- */
-  /* a placa ornamental entra no lugar da gravura quando não há arquivo */
   var plateImg = document.querySelector(".plate-img");
   if (plateImg) {
     var markMissing = function () { plateImg.closest(".plate").classList.add("no-image"); };
     if (plateImg.complete && plateImg.naturalWidth === 0) markMissing();
     plateImg.addEventListener("error", markMissing);
   }
-
-  /* ------------------------------------------------------------ Lenis -- */
 
   var lenis = null;
 
@@ -39,7 +30,6 @@
     }
   }
 
-  /* âncoras: uma única página, nada recarrega */
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener("click", function (e) {
       var target = document.querySelector(link.getAttribute("href"));
@@ -49,8 +39,6 @@
       else target.scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
     });
   });
-
-  /* ------------------------------------------- manchete: linha por linha -- */
 
   function splitHeadline(el) {
     var text = el.textContent.trim().replace(/\s+/g, " ");
@@ -64,7 +52,6 @@
       return s;
     });
 
-    /* agrupa as palavras por altura: é assim que descobrimos onde a linha quebra */
     var lines = [];
     var currentTop = null;
     probes.forEach(function (span) {
@@ -111,8 +98,6 @@
     });
   }
 
-  /* ---------------------------------------------------------- revelações -- */
-
   function bootReveals() {
     if (!hasGsap) {
       document.querySelectorAll(".reveal").forEach(function (el) { el.style.opacity = 1; });
@@ -120,7 +105,6 @@
     }
 
     document.querySelectorAll(".section").forEach(function (section) {
-      /* a faixa de datas tem cadência própria — ver bootDatastrip */
       var items = section.querySelectorAll(".reveal:not(.datastrip-item)");
       if (!items.length) return;
 
@@ -139,10 +123,6 @@
     });
   }
 
-  /* ------------------------------------------------------ faixa de datas -- */
-
-  /* marcos legais entram em sequência. Sem contador crescente: os números são
-     datas, não métricas — animá-los como placar seria mentir sobre o que são. */
   function bootDatastrip() {
     var items = document.querySelectorAll(".datastrip-item");
     if (!items.length) return;
@@ -167,8 +147,6 @@
     );
   }
 
-  /* ------------------------------------------------------------ parallax -- */
-
   function bootParallax() {
     if (!hasGsap || reduced) return;
 
@@ -184,8 +162,6 @@
       );
     });
   }
-
-  /* --------------------------------------------- virada: papel -> tinta -- */
 
   function bootEra() {
     var section = document.getElementById("transicao");
@@ -220,8 +196,6 @@
               { opacity: 0.85, color: "#E6E2D6", ease: "none", stagger: 0.1 }, 0.15);
   }
 
-  /* --------------------------------------- assinatura: o texto redigido -- */
-
   function bootRedaction() {
     var quote = document.getElementById("redacted");
     if (!quote) return;
@@ -229,7 +203,6 @@
     var target = quote.querySelector("[data-redact]");
     var bars = [];
 
-    /* envolve cada palavra; o trecho marcado como data-keep nunca recebe tarja */
     (function wrap(node, keep) {
       Array.prototype.slice.call(node.childNodes).forEach(function (child) {
         if (child.nodeType === 3) {
@@ -257,7 +230,6 @@
 
     if (!hasGsap || reduced || !bars.length) return;
 
-    /* pin só onde há altura para isso — em telas curtas o scrub sozinho basta */
     var canPin = window.innerHeight >= 760;
 
     var tl = gsap.timeline({
@@ -289,14 +261,11 @@
       });
   }
 
-  /* ------------------------------------------------------------- balança -- */
-
   function bootScale() {
     var beam = document.getElementById("scale-beam");
     var section = document.getElementById("estado");
     if (!beam || !section) return;
 
-    /* marcações do arco, desenhadas em vez de escritas à mão no HTML */
     var ticks = section.querySelector(".scale-ticks");
     if (ticks) {
       for (var i = 0; i <= 20; i++) {
@@ -334,8 +303,6 @@
     );
   }
 
-  /* ------------------------------------------------------ índice ativo -- */
-
   function bootRail() {
     var links = Array.prototype.slice.call(
       document.querySelectorAll(".rail-list a, .dock a")
@@ -360,8 +327,6 @@
     });
   }
 
-  /* ---------------------------------------------------------------- boot -- */
-
   function boot() {
     bootHeadline();
     bootReveals();
@@ -374,14 +339,12 @@
     if (hasGsap) ScrollTrigger.refresh();
   }
 
-  /* as linhas da manchete só podem ser medidas com a fonte final carregada */
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(boot);
   } else {
     window.addEventListener("load", boot);
   }
 
-  /* recalcula pin e scrub quando a altura da janela muda de verdade */
   var lastW = window.innerWidth;
   window.addEventListener("resize", function () {
     if (!hasGsap) return;

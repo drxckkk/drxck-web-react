@@ -1,11 +1,14 @@
+import DotField from "../components/DotField";
+import xcrimImage from "../assets/xcrim.jpg";
 import "./Xcrim.css";
 
-import xcrimImage from "../assets/xcrim.jpg";
-
 function Xcrim() {
-    return (
-        <img src={xcrimImage} alt="Xcrim Project" className="project-detail-image" />
-    );
+  return (
+    <>
+      <DotField />
+      <img src={xcrimImage} alt="Xcrim Project" className="project-detail-image" />
+    </>
+  );
 }
 
 export default Xcrim;

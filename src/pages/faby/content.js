@@ -1,15 +1,8 @@
-/* Todos os textos da página da faby ficam aqui.
-
-   É de propósito: pra trocar qualquer frase é só mexer neste arquivo, sem
-   encostar no resto do código. Adicione ou remova itens das listas à vontade —
-   a página se ajusta sozinha. */
-
 export const APELIDOS = {
   nome: "faby",
   fofo: "byby",
 };
 
-/* dia em que tudo começou — usado no contador */
 export const INICIO = "2026-06-18T00:00:00";
 export const INICIO_TEXTO = "18 de junho de 2026";
 
@@ -63,7 +56,6 @@ export const PERGUNTAS = [
   },
 ];
 
-/* o que o botão do "não" vai falando conforme ela tenta apertar */
 export const FUGAS = [
   "não",
   "tem certeza?",

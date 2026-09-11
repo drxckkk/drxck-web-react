@@ -10,15 +10,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="./style.css" />
-<script>
-/* esconde o que sera revelado por JS — e devolve tudo se o JS falhar */
-document.documentElement.classList.add("js");
+<script>document.documentElement.classList.add("js");
 setTimeout(function () { document.documentElement.classList.add("failsafe"); }, 3000);
-</script>
+    </script>
 </head>
 <body>
 
-<!-- fundos: o papel cede lugar à tinta durante a seção de transição -->
 <div class="backdrop" aria-hidden="true">
   <div class="backdrop-paper"></div>
   <div class="backdrop-ink"></div>
@@ -27,7 +24,6 @@ setTimeout(function () { document.documentElement.classList.add("failsafe"); }, 
 
 <a class="skip" href="#manchete">Pular para o conteúdo</a>
 
-<!-- índice lateral (desktop) -->
 <nav class="rail" aria-label="Índice das seções">
   <p class="rail-title">Índice</p>
   <ol class="rail-list">
@@ -47,7 +43,6 @@ setTimeout(function () { document.documentElement.classList.add("failsafe"); }, 
 
 <main>
 
-  <!-- 01 ............................................................. -->
   <section id="manchete" class="section section-hero" data-era="antiga">
     <div class="wrap">
       <header class="masthead">
@@ -90,7 +85,6 @@ setTimeout(function () { document.documentElement.classList.add("failsafe"); }, 
     </div>
   </section>
 
-  <!-- 02 ............................................................. -->
   <section id="locke" class="section" data-era="antiga">
     <div class="wrap grid">
       <figure class="plate col-4" data-parallax>
@@ -142,12 +136,10 @@ setTimeout(function () { document.documentElement.classList.add("failsafe"); }, 
     </div>
   </section>
 
-  <!-- 03 ............................................................. -->
   <section id="racismo" class="section" data-era="antiga">
     <div class="wrap">
       <p class="eyebrow eyebrow-center reveal">Caderno A, Racismo</p>
 
-      <!-- NÃO é citação de Locke: é inferência a partir dos princípios dele -->
       <div class="hypothesis reveal">
         <p class="hypothesis-label">Reconstrução hipotética &middot; a partir do Segundo Tratado, §4 e §6</p>
         <p class="hypothesis-text">Todos os seres humanos possuem os mesmos direitos naturais,
@@ -185,7 +177,6 @@ setTimeout(function () { document.documentElement.classList.add("failsafe"); }, 
     </div>
   </section>
 
-  <!-- 04 ............................................................. -->
   <section id="errata" class="section section-errata" data-era="antiga">
     <div class="wrap">
       <div class="errata">
@@ -217,7 +208,6 @@ setTimeout(function () { document.documentElement.classList.add("failsafe"); }, 
     </div>
   </section>
 
-  <!-- 05 ............................................................. -->
   <section id="transicao" class="section section-transition" data-era="virada">
     <div class="wrap">
       <p class="transition-line">Do século XVII ao século XXI.</p>
@@ -225,12 +215,10 @@ setTimeout(function () { document.documentElement.classList.add("failsafe"); }, 
     </div>
   </section>
 
-  <!-- 06 ............................................................. -->
   <section id="privacidade" class="section" data-era="moderna">
     <div class="wrap">
       <p class="eyebrow eyebrow-center reveal">Caderno B, Privacidade na internet</p>
 
-      <!-- NÃO é citação de Locke: é inferência a partir dos princípios dele -->
       <div class="hypothesis hypothesis-redacted reveal" id="redacted">
         <p class="hypothesis-label">Reconstrução hipotética &middot; a partir do Segundo Tratado, §27</p>
         <p class="hypothesis-text" data-redact>Assim como tenho <em data-keep>direito à minha
@@ -269,7 +257,6 @@ setTimeout(function () { document.documentElement.classList.add("failsafe"); }, 
     </div>
   </section>
 
-  <!-- 07 ............................................................. -->
   <section id="classificados" class="section" data-era="moderna">
     <div class="wrap">
       <p class="eyebrow reveal">Classificados &middot; Caderno C</p>
@@ -321,7 +308,6 @@ setTimeout(function () { document.documentElement.classList.add("failsafe"); }, 
     </div>
   </section>
 
-  <!-- 08 ............................................................. -->
   <section id="estado" class="section" data-era="moderna">
     <div class="wrap grid">
       <div class="col-5">
@@ -374,7 +360,6 @@ setTimeout(function () { document.documentElement.classList.add("failsafe"); }, 
     </div>
   </section>
 
-  <!-- 09 ............................................................. -->
   <section id="conclusao" class="section" data-era="moderna">
     <div class="wrap">
       <p class="eyebrow reveal">Conclusão</p>
@@ -393,7 +378,6 @@ setTimeout(function () { document.documentElement.classList.add("failsafe"); }, 
     </div>
   </section>
 
-  <!-- 10 ............................................................. -->
   <section id="fontes" class="section" data-era="moderna">
     <div class="wrap">
       <p class="eyebrow reveal">Fontes e referências</p>
@@ -403,12 +387,6 @@ setTimeout(function () { document.documentElement.classList.add("failsafe"); }, 
           <p class="ref-label">Fonte primária</p>
           <p class="ref-text">
             LOCKE, John. <em>Dois Tratados sobre o Governo Civil</em>. 1689.
-            <!-- ================================================================
-                 INSIRA AQUI a edição e a tradução usadas em sala, caso o
-                 professor peça. Formato ABNT sugerido:
-                 LOCKE, John. Dois Tratados sobre o Governo Civil.
-                 Tradução de <TRADUTOR>. <CIDADE>: <EDITORA>, <ANO>.
-                 ================================================================ -->
           </p>
         </div>
 
@@ -440,13 +418,12 @@ setTimeout(function () { document.documentElement.classList.add("failsafe"); }, 
     </div>
   </section>
 
-  <!-- 11 ............................................................. -->
   <footer id="creditos" class="section section-footer" data-era="moderna">
     <div class="wrap">
       <p class="eyebrow reveal">Créditos</p>
       <dl class="credits reveal">
         <div class="credit"><dt>Disciplina</dt><dd>História</dd></div>
-        <div class="credit"><dt>Site</dt><dd>Matheus M</dd></div>
+        <div class="credit"><dt>Site</dt><dd>drxck</dd></div>
         <div class="credit"><dt>Contribuição</dt><dd>Otávio H</dd></div>
       </dl>
       <p class="colophon">
@@ -460,7 +437,6 @@ setTimeout(function () { document.documentElement.classList.add("failsafe"); }, 
 
 </main>
 
-<!-- barra de navegação (mobile) -->
 <nav class="dock" aria-label="Índice das seções">
   <a href="#manchete">01</a><a href="#locke">02</a><a href="#racismo">03</a><a href="#errata">04</a><a href="#transicao">05</a><a href="#privacidade">06</a><a href="#classificados">07</a><a href="#estado">08</a><a href="#conclusao">09</a><a href="#fontes">10</a><a href="#creditos">11</a>
 </nav>

@@ -2,9 +2,6 @@ import { useCallback, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import PixelSprite from "./PixelSprite";
 
-/* Chuvinha de corações: `soltar()` joga alguns pra cima a partir do centro do
-   elemento que os guarda. Cada coração se limpa sozinho quando termina. */
-
 const VIDA_MS = 1700;
 
 export function useCoracoes() {

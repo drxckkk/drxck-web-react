@@ -32,7 +32,6 @@ function DotField() {
     let frame = 0;
     let running = false;
 
-    // target pointer (raw) and rendered pointer (smoothed)
     const target = { x: -9999, y: -9999, on: 0 };
     const eased = { x: -9999, y: -9999, on: 0 };
     let scrollOffset = 0;
@@ -51,7 +50,6 @@ function DotField() {
     const draw = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // the grid slides with scroll, wrapping so it never runs out of dots
       const drift = easedScroll % SPACING;
       const cols = Math.ceil(width / SPACING) + 2;
       const rows = Math.ceil(height / SPACING) + 2;
@@ -60,18 +58,15 @@ function DotField() {
       const py = eased.y;
       const lit = eased.on > 0.01;
 
-      // pass 1 — every resting dot in a single path
       ctx.beginPath();
       ctx.fillStyle = DOT_COLOR;
 
-      // pass 2 is collected here so we only style the handful near the cursor
       const hot = [];
 
       for (let c = 0; c < cols; c += 1) {
         const x = c * SPACING - SPACING;
         const dx = x - px;
         if (lit && (dx > RADIUS || dx < -RADIUS)) {
-          // this whole column is out of range — draw it flat and move on
           for (let r = 0; r < rows; r += 1) {
             const y = r * SPACING - SPACING + drift;
             ctx.moveTo(x + DOT_MIN, y);
@@ -99,7 +94,6 @@ function DotField() {
           }
 
           const dist = Math.sqrt(distSq) || 0.0001;
-          // smoothstep so the falloff has no hard edge
           const raw = 1 - dist / RADIUS;
           const t = raw * raw * (3 - 2 * raw) * eased.on;
           const nx = dx / dist;
@@ -116,7 +110,6 @@ function DotField() {
 
       ctx.fill();
 
-      // pass 2 — the lit dots, warmest at the centre
       for (let i = 0; i < hot.length; i += 1) {
         const d = hot[i];
         ctx.beginPath();
@@ -147,7 +140,6 @@ function DotField() {
 
       if (settled) {
         running = false;
-        // snap to target so the next wake-up starts clean
         eased.x = target.x;
         eased.y = target.y;
         eased.on = target.on;

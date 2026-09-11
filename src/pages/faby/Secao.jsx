@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 
-/* Bloco padrão da página: aparece com um pulinho suave quando entra na tela. */
-
 const SOBE = {
   oculto: { opacity: 0, y: 28 },
   visivel: { opacity: 1, y: 0 },

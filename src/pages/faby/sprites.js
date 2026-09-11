@@ -1,9 +1,3 @@
-/* Pixel art desenhado à mão para a página da faby.
-
-   Cada sprite é uma grade de caracteres: um caractere por pixel, '.'
-   para transparente, e a paleta mapeia caractere -> cor. PixelSprite
-   transforma isso em SVG, então escala sem borrar. */
-
 export const SPRITES = {
   myMelody: {
     w: 26,

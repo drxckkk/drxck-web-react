@@ -7,8 +7,6 @@ import Secao from "./Secao";
 
 const EASE = [0.16, 1, 0.3, 1];
 
-/* O "não" da primeira pergunta foge do dedo dela. Nas outras os dois botões
-   valem — as duas respostas são fofas do mesmo jeito. */
 function BotaoQueFoge({ onDesistir }) {
   const areaRef = useRef(null);
   const botaoRef = useRef(null);
@@ -18,7 +16,6 @@ function BotaoQueFoge({ onDesistir }) {
   const sumiu = fugas >= FUGAS.length;
 
   const fugir = (e) => {
-    /* impede que o toque vire clique — esse botão nunca é apertado de verdade */
     e.preventDefault();
     if (sumiu) return;
 
@@ -30,7 +27,6 @@ function BotaoQueFoge({ onDesistir }) {
       const maxY = Math.max(0, (area.height - botao.height) / 2 - 6);
       const sorteioX = Math.random() * maxX;
       const sorteioY = (Math.random() * 2 - 1) * maxY;
-      /* sempre pula pro outro lado, senão ele fugiria pra onde o dedo já está */
       setPos({ x: pos.x >= 0 ? -sorteioX : sorteioX, y: sorteioY });
     }
 

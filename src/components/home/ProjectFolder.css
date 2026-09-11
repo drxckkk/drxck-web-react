@@ -1,0 +1,477 @@
+.folder {
+  --folder-top: #8cc2f4;
+  --folder-mid: #5d9de3;
+  --folder-bottom: #3472c5;
+  --folder-back-top: #62a1e6;
+  --folder-back-bottom: #3d7fcc;
+  --folder-shadow: rgba(24, 72, 140, 0.4);
+
+  --radius: clamp(14px, 3.4vw, 24px);
+
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin-inline: auto;
+  padding-top: 31%;
+}
+
+.folder-body {
+  position: relative;
+  aspect-ratio: 1.45;
+  transition: transform 420ms var(--ease);
+}
+
+.folder-back {
+  position: absolute;
+  inset: 7% 0 0 0;
+  z-index: 1;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--folder-back-top), var(--folder-back-bottom));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.folder-tab {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% - var(--radius));
+  width: 34%;
+  height: calc(10% + var(--radius));
+  border-radius: calc(var(--radius) * 0.7) 0 0 0;
+  background: var(--folder-back-top);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.folder-tab::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: calc(100% - 12px);
+  width: 40px;
+  height: 100%;
+  border-top-right-radius: calc(var(--radius) * 0.7);
+  background: inherit;
+  box-shadow: inherit;
+  transform: skewX(32deg);
+  transform-origin: 0 100%;
+}
+
+.folder-sheets {
+  position: absolute;
+  inset: 4% 7% 12%;
+  z-index: 2;
+}
+
+.folder-slot {
+  --x: var(--rx);
+  --y: var(--ry);
+  --r: var(--rr);
+  position: absolute;
+  top: 0;
+  left: 22%;
+  width: 56%;
+  transform: translate3d(var(--x), var(--y), 0) rotate(var(--r));
+  transition: transform 380ms var(--ease) calc(var(--out) * 28ms);
+}
+
+.folder-slot[data-slot="0"] { --rx: -28%; --ry: 12%; --rr: -4deg; --ox: -70%; --oy: -56%; --or: -9deg; --in: 1; --out: 0; z-index: 1; }
+.folder-slot[data-slot="1"] { --rx: -9%; --ry: 1%; --rr: -1.5deg; --ox: -24%; --oy: -76%; --or: -3deg; --in: 0; --out: 2; z-index: 3; }
+.folder-slot[data-slot="2"] { --rx: 10%; --ry: 6%; --rr: 2deg; --ox: 25%; --oy: -70%; --or: 3.5deg; --in: 2; --out: 1; z-index: 2; }
+.folder-slot[data-slot="3"] { --rx: 29%; --ry: 16%; --rr: 5deg; --ox: 70%; --oy: -52%; --or: 9deg; --in: 3; --out: 0; z-index: 1; }
+
+.sheet {
+  display: block;
+  padding: 5px 5px 0;
+  border-radius: 14px;
+  background: var(--surface-raised);
+  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.08),
+    0 12px 26px -10px rgba(0, 20, 60, 0.35);
+  transition: transform 300ms var(--ease-spring);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sheet-media {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--fill);
+}
+
+.sheet-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sheet-caption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 4px 9px;
+  min-width: 0;
+}
+
+.sheet-icon {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  flex: none;
+  border-radius: 7px;
+  background: var(--fill);
+  color: var(--text-secondary);
+}
+
+.sheet-icon svg {
+  width: 13px;
+  height: 13px;
+}
+
+.sheet-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.2;
+}
+
+.sheet-title {
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: -0.012em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--text);
+}
+
+.sheet-category {
+  overflow: hidden;
+  font-size: 11px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--text-secondary);
+}
+
+.folder-front {
+  position: absolute;
+  inset: 24% 0 0 0;
+  z-index: 3;
+  display: block;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--folder-top) 0%, var(--folder-mid) 42%, var(--folder-bottom) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.07),
+    inset 0 -18px 30px -18px rgba(0, 30, 80, 0.28),
+    0 1px 1px rgba(0, 0, 0, 0.04),
+    0 26px 44px -22px var(--folder-shadow);
+  color: #fff;
+  transform-origin: 50% 100%;
+  transition: transform 520ms var(--ease-spring);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.folder-front::before {
+  content: "";
+  position: absolute;
+  top: 11%;
+  left: 3%;
+  right: 3%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28) 12%, rgba(255, 255, 255, 0.28) 88%, transparent);
+}
+
+.folder-front::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 55%;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: linear-gradient(180deg, rgba(0, 25, 70, 0.26), rgba(0, 25, 70, 0));
+  opacity: 0;
+  transition: opacity 360ms var(--ease);
+  pointer-events: none;
+}
+
+.folder-front-face {
+  position: absolute;
+  left: clamp(18px, 5%, 30px);
+  bottom: clamp(16px, 6%, 28px);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-shadow: 0 1px 1px rgba(0, 40, 100, 0.25);
+}
+
+.folder-label {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.folder-count {
+  font-size: clamp(13px, 1.6vw, 15px);
+  font-weight: 600;
+  opacity: 0.92;
+}
+
+.folder-open-chip {
+  position: absolute;
+  top: 20%;
+  right: clamp(14px, 4%, 24px);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  height: 30px;
+  padding: 0 10px 0 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.35);
+  font-size: 13px;
+  font-weight: 600;
+  transition: background-color var(--t-hover) var(--ease);
+}
+
+.folder-open-chip svg {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--t-hover) var(--ease);
+}
+
+.folder-front:hover .folder-open-chip {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.folder-front:hover .folder-open-chip svg {
+  transform: translate(2px, -2px);
+}
+
+.folder-mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(9px, 2vw, 14px);
+  transform: translate(-50%, -58%);
+}
+
+.folder-mark span {
+  width: clamp(10px, 2.1vw, 15px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(0, 32, 90, 0.2);
+  box-shadow: inset 0 1px 1px rgba(0, 20, 60, 0.28), 0 1px 0 rgba(255, 255, 255, 0.32);
+}
+
+.folder-mark span:nth-child(5) {
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 1px 1px rgba(0, 20, 60, 0.2), 0 0 0 4px rgba(255, 255, 255, 0.14);
+}
+
+.folder-front:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.folder.is-open .folder-slot,
+.folder:focus-within .folder-slot {
+  --x: var(--ox);
+  --y: var(--oy);
+  --r: var(--or);
+  transition: transform 640ms var(--ease-spring) calc(var(--in) * 40ms);
+}
+
+.folder.is-open .folder-body,
+.folder:focus-within .folder-body {
+  transform: translate3d(0, -3px, 0);
+}
+
+.folder.is-open .folder-front,
+.folder:focus-within .folder-front {
+  transform: translate3d(0, 5px, 0) rotateX(-11deg);
+}
+
+.folder.is-open .folder-front::after,
+.folder:focus-within .folder-front::after {
+  opacity: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .folder:hover .folder-slot {
+    --x: var(--ox);
+    --y: var(--oy);
+    --r: var(--or);
+    transition: transform 640ms var(--ease-spring) calc(var(--in) * 40ms);
+  }
+
+  .folder:hover .folder-body {
+    transform: translate3d(0, -3px, 0);
+  }
+
+  .folder:hover .folder-front {
+    transform: translate3d(0, 5px, 0) rotateX(-11deg);
+  }
+
+  .folder:hover .folder-front::after {
+    opacity: 1;
+  }
+
+  .folder:hover .folder-slot,
+  .folder:focus-within .folder-slot {
+    will-change: transform;
+  }
+
+  .folder-slot:hover {
+    z-index: 5;
+  }
+
+  .folder-slot:hover .sheet {
+    transform: translate3d(0, -10px, 0) scale(1.035);
+  }
+}
+
+.folder-body {
+  perspective: 1400px;
+}
+
+.sheet:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.folder-slot:focus-within {
+  z-index: 5;
+}
+
+.folder-slot:focus-within .sheet {
+  transform: translate3d(0, -10px, 0) scale(1.035);
+}
+
+.sheet:active {
+  transform: translate3d(0, -6px, 0) scale(1.01);
+}
+
+.folder-hint {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-tertiary);
+}
+
+.folder-hint-touch {
+  display: none;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .folder-hint-hover {
+    display: none;
+  }
+
+  .folder-hint-touch {
+    display: inline;
+  }
+}
+
+:root[data-theme="dark"] .folder {
+  --folder-top: #4d8fd6;
+  --folder-mid: #2f6fba;
+  --folder-bottom: #235ea6;
+  --folder-back-top: #2f68ad;
+  --folder-back-bottom: #1f4f8f;
+  --folder-shadow: rgba(0, 0, 0, 0.7);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .folder {
+    --folder-top: #4d8fd6;
+    --folder-mid: #2f6fba;
+    --folder-bottom: #235ea6;
+    --folder-back-top: #2f68ad;
+    --folder-back-bottom: #1f4f8f;
+    --folder-shadow: rgba(0, 0, 0, 0.7);
+  }
+}
+
+@media (max-width: 600px) {
+  .folder {
+    padding-top: 30%;
+  }
+
+  .folder-sheets {
+    inset: 5% 6% 12%;
+  }
+
+  .folder-slot {
+    left: 20%;
+    width: 60%;
+  }
+
+  .folder-slot[data-slot="0"] { --ox: -44%; --oy: -40%; --or: -7deg; }
+  .folder-slot[data-slot="1"] { --ox: -15%; --oy: -62%; --or: -2.5deg; }
+  .folder-slot[data-slot="2"] { --ox: 16%; --oy: -58%; --or: 3deg; }
+  .folder-slot[data-slot="3"] { --ox: 44%; --oy: -36%; --or: 7deg; }
+
+  .sheet {
+    padding: 4px 4px 0;
+    border-radius: 12px;
+  }
+
+  .sheet-media {
+    border-radius: 9px;
+  }
+
+  .sheet-caption {
+    gap: 6px;
+    padding: 6px 3px 7px;
+  }
+
+  .sheet-icon {
+    display: none;
+  }
+
+  .sheet-title {
+    font-size: 11.5px;
+  }
+
+  .sheet-category {
+    font-size: 10px;
+  }
+
+  .folder-open-chip {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .folder-slot,
+  .folder.is-open .folder-slot,
+  .folder:focus-within .folder-slot,
+  .folder:hover .folder-slot {
+    transition: none;
+  }
+
+  .folder-slot[data-slot] {
+    --or: 0deg;
+    --rr: 0deg;
+  }
+
+  .folder-body,
+  .folder-front,
+  .sheet {
+    transition: opacity 200ms linear;
+  }
+
+  .folder.is-open .folder-body,
+  .folder:focus-within .folder-body,
+  .folder:hover .folder-body,
+  .folder.is-open .folder-front,
+  .folder:focus-within .folder-front,
+  .folder:hover .folder-front,
+  .folder-slot:hover .sheet,
+  .folder-slot:focus-within .sheet {
+    transform: none;
+  }
+}

@@ -1,29 +1,20 @@
-/* ===========================================================================
-   Locke nos dias atuais
-   Papel de 1689 no topo, tinta e dado no fim. Nenhum raio de canto: é impresso.
-   ======================================================================== */
-
 :root {
-  /* paleta */
   --tinta:     #1B2430;
   --papel:     #E6E2D6;
   --verdigris: #2E6F63;
   --sinal:     #4FD1E8;
   --sepia:     #9A8C73;
 
-  /* papéis do momento — trocados por seção conforme a era */
   --fg: var(--tinta);
   --accent: var(--verdigris);
   --muted: #5B5546;
   --rule: rgba(27, 36, 48, 0.22);
   --rule-soft: rgba(27, 36, 48, 0.1);
 
-  /* tipografia */
   --display: "Libre Caslon Display", "Times New Roman", serif;
   --corpo: "Spectral", Georgia, serif;
   --mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
 
-  /* escala 12 / 14 / 18 / 24 / 40 / 72 / 120 */
   --t-12: 12px;
   --t-14: 14px;
   --t-18: 18px;
@@ -32,7 +23,6 @@
   --t-72: clamp(40px, 6vw, 72px);
   --t-120: clamp(44px, 8.4vw, 120px);
 
-  /* medidas */
   --gutter: 24px;
   --respiro: 160px;
   --medida: 68ch;
@@ -42,7 +32,6 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
-  /* a rolagem suave real vem do Lenis; isto cobre âncoras sem JS */
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
 }
@@ -64,28 +53,22 @@ em { font-style: italic; }
 
 ::selection { background: var(--accent); color: var(--papel); }
 
-/* --------------------------------------------------------------- fundos -- */
-
 .backdrop { position: fixed; inset: 0; z-index: -1; }
 .backdrop > * { position: absolute; inset: 0; }
 
 .backdrop-paper {
   background-color: var(--papel);
-  /* fibra de linho: ruído fino, quase subliminar */
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
 }
 
 .backdrop-ink { background: var(--tinta); opacity: 0; }
 
-/* malha de dados da metade moderna */
 .backdrop-grid {
   opacity: 0;
   background-image:
     radial-gradient(circle at 1px 1px, rgba(79, 209, 232, 0.16) 1px, transparent 0);
   background-size: 32px 32px;
 }
-
-/* ------------------------------------------------------------ utilidades -- */
 
 .skip {
   position: absolute;
@@ -104,8 +87,6 @@ em { font-style: italic; }
   outline: 2px solid var(--accent);
   outline-offset: 4px;
 }
-
-/* ---------------------------------------------------------------- índice -- */
 
 .rail {
   position: fixed;
@@ -173,7 +154,6 @@ em { font-style: italic; }
 .rail-list a.is-active .rail-num { color: var(--accent); }
 .rail-label { line-height: 1.35; letter-spacing: 0.08em; text-transform: none; }
 
-/* barra inferior (mobile) */
 .dock {
   position: fixed;
   left: 0;
@@ -212,8 +192,6 @@ body.is-modern .rail-title { color: rgba(230, 226, 214, 0.5); }
 body.is-modern .rail-list { border-left-color: rgba(230, 226, 214, 0.16); }
 body.is-modern .rail-list a.is-active .rail-num { color: var(--sinal); }
 
-/* --------------------------------------------------------------- seções -- */
-
 .section {
   position: relative;
   padding: var(--respiro) 0;
@@ -247,8 +225,6 @@ section[data-era="moderna"],
 .col-8 { grid-column: span 8; }
 .col-offset-2 { grid-column: 3 / span 8; }
 
-/* ------------------------------------------------------------- manchete -- */
-
 .section-hero {
   min-height: 100svh;
   display: flex;
@@ -256,7 +232,6 @@ section[data-era="moderna"],
   padding-block: 120px;
 }
 
-/* filete duplo: convenção de cabeçalho de jornal impresso */
 .masthead {
   padding-bottom: 10px;
   margin-bottom: 48px;
@@ -304,7 +279,6 @@ section[data-era="moderna"],
   text-wrap: balance;
 }
 
-/* cada linha é uma máscara vertical; o JS anima o interior */
 .headline .line { display: block; overflow: hidden; }
 .headline .line > span { display: block; }
 
@@ -333,8 +307,6 @@ section[data-era="moderna"],
   background: currentColor;
   opacity: 0.5;
 }
-
-/* -------------------------------------------------------- faixa de datas -- */
 
 .datastrip {
   display: grid;
@@ -365,8 +337,6 @@ section[data-era="moderna"],
   line-height: 1.5;
   color: var(--muted);
 }
-
-/* --------------------------------------------------------- tipos comuns -- */
 
 .eyebrow {
   margin: 0 0 20px;
@@ -403,7 +373,6 @@ section[data-era="moderna"],
 .body { margin: 0 0 20px; max-width: var(--medida); }
 .body-wide { max-width: 62ch; }
 
-/* capitular no primeiro parágrafo de cada caderno (o que segue o rótulo) */
 .label + .body::first-letter {
   float: left;
   font-family: var(--display);
@@ -412,8 +381,6 @@ section[data-era="moderna"],
   padding: 6px 10px 0 0;
   color: var(--accent);
 }
-
-/* --------------------------------------------------------------- retrato -- */
 
 .plate { margin: 0; }
 
@@ -433,7 +400,6 @@ section[data-era="moderna"],
   mix-blend-mode: multiply;
 }
 
-/* a ornamentação só aparece quando não há gravura para mostrar */
 .plate-ornament { display: none; position: absolute; inset: 14px; width: auto; height: auto; }
 .plate.no-image .plate-img { display: none; }
 .plate.no-image .plate-ornament { display: block; }
@@ -445,8 +411,6 @@ section[data-era="moderna"],
   letter-spacing: 0.12em;
   color: var(--muted);
 }
-
-/* -------------------------------------------------------------- pilares -- */
 
 .pillars {
   display: grid;
@@ -477,15 +441,8 @@ section[data-era="moderna"],
 
 .pillar-text { margin: 0; font-size: var(--t-14); line-height: 1.6; color: var(--muted); }
 
-/* ----------------------------------------------------------- hipóteses -- */
-
-/* Estas NÃO são citações: são inferências a partir dos princípios de Locke.
-   Por isso não levam aspas — a barra lateral marca "leitura", não "fala". */
-
 .hypothesis {
   position: relative;
-  /* o ch precisa ser medido na fonte de display, não no corpo: por isso a
-     escala vive aqui e o rótulo volta ao tamanho pequeno abaixo */
   font-family: var(--display);
   font-size: var(--t-72);
   max-width: 30ch;
@@ -512,8 +469,6 @@ section[data-era="moderna"],
   letter-spacing: -0.022em;
 }
 
-/* ------------------------------------------- assinatura: texto redigido -- */
-
 [data-redact] .w {
   position: relative;
   display: inline-block;
@@ -532,8 +487,6 @@ section[data-era="moderna"],
   pointer-events: none;
 }
 
-/* ----------------------------------------------------------- marginália -- */
-
 .argument-grid { align-items: start; }
 
 .marginalia {
@@ -542,7 +495,6 @@ section[data-era="moderna"],
   text-align: right;
 }
 
-/* aqui, sim, é citação literal — e por isso leva aspas */
 .marginalia-quote { margin: 0; }
 
 .marginalia-text {
@@ -569,9 +521,6 @@ section[data-era="moderna"],
 .marginalia-source cite { font-style: normal; }
 .marginalia-source em { font-style: italic; }
 
-/* -------------------------------------------------------------- errata -- */
-
-/* nota de correção: coluna estreita, filete duplo, corpo menor que o ensaio */
 .section-errata .wrap {
   width: min(620px, calc(100% - 48px));
   margin-inline: auto;
@@ -601,9 +550,6 @@ section[data-era="moderna"],
 
 .errata-body:last-child { margin-bottom: 0; }
 
-/* -------------------------------------------------------- classificados -- */
-
-/* a única seção apertada do site: é o aperto que faz a sátira funcionar */
 .ads {
   margin-top: 8px;
   padding-top: 20px;
@@ -649,8 +595,6 @@ section[data-era="moderna"],
   color: var(--muted);
 }
 
-/* -------------------------------------------------------------- fontes -- */
-
 .refs {
   columns: 2;
   column-gap: 48px;
@@ -682,8 +626,6 @@ section[data-era="moderna"],
   color: var(--muted);
 }
 
-/* -------------------------------------------------------------- virada -- */
-
 .section-transition {
   min-height: 130svh;
   display: flex;
@@ -699,8 +641,6 @@ section[data-era="moderna"],
   color: var(--papel);
   opacity: 0.85;
 }
-
-/* -------------------------------------------------------------- balança -- */
 
 .scale-wrap { display: flex; flex-direction: column; gap: 24px; }
 
@@ -729,8 +669,6 @@ section[data-era="moderna"],
 
 .scale-side-text { margin: 0; font-size: var(--t-14); line-height: 1.6; color: var(--muted); }
 
-/* ------------------------------------------------------------ conclusão -- */
-
 .conclusion {
   margin: 0 0 16px;
   max-width: 22ch;
@@ -748,8 +686,6 @@ section[data-era="moderna"],
   letter-spacing: 0.08em;
   color: var(--accent);
 }
-
-/* -------------------------------------------------------------- rodapé -- */
 
 .section-footer { padding-bottom: 120px; }
 
@@ -786,22 +722,14 @@ section[data-era="moderna"],
   color: var(--muted);
 }
 
-/* ------------------------------------------------------------- revelação -- */
-
-/* só escondemos quando há JS para revelar de volta */
 html.js .reveal { opacity: 0; }
 html.js .headline .line > span { transform: translateY(105%); }
 
-/* a manchete espera a medição das linhas antes de aparecer */
 html.js .headline:not(.is-split) { opacity: 0; }
 
-/* rede de segurança: se o JS não chegou a rodar, nada fica invisível.
-   Só alcança o que o GSAP não tocou — ele escreve style inline. */
 html.failsafe .reveal,
 html.failsafe .headline { opacity: 1; }
 html.failsafe .headline .line > span { transform: none; }
-
-/* ----------------------------------------------------------- responsivo -- */
 
 @media (max-width: 1180px) {
   .rail { display: none; }
@@ -845,7 +773,6 @@ html.failsafe .headline .line > span { transform: none; }
 }
 
 @media (max-width: 640px) {
-  /* capitular exige medida de linha que o celular não tem */
   .label + .body::first-letter {
     float: none;
     font-family: inherit;
@@ -869,8 +796,6 @@ html.failsafe .headline .line > span { transform: none; }
   .masthead-meta { font-size: 11px; letter-spacing: 0.1em; }
 }
 
-/* --------------------------------------------------- movimento reduzido -- */
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 
@@ -879,7 +804,6 @@ html.failsafe .headline .line > span { transform: none; }
 
   .scale-beam { transform: rotate(0deg); }
 
-  /* sem tarjas: a hipótese da privacidade continua legível do começo ao fim */
   [data-redact] .bar { display: none; }
 
   *, *::before, *::after {
@@ -887,8 +811,6 @@ html.failsafe .headline .line > span { transform: none; }
     transition-duration: 0.01ms !important;
   }
 }
-
-/* ------------------------------------------------------------ impressão -- */
 
 @media print {
   @page { margin: 18mm 14mm; }
@@ -900,7 +822,6 @@ html.failsafe .headline .line > span { transform: none; }
     line-height: 1.42;
   }
 
-  /* no papel não existe era: tudo volta a ser tinta sobre branco */
   .backdrop, .rail, .dock, .skip { display: none; }
 
   section[data-era="moderna"],
@@ -923,7 +844,6 @@ html.failsafe .headline .line > span { transform: none; }
 
   .section { padding: 0 0 10mm; }
 
-  /* corpo em duas colunas, como jornal */
   .argument-grid .col-8,
   .errata {
     columns: 2;
@@ -952,7 +872,6 @@ html.failsafe .headline .line > span { transform: none; }
   .hypothesis-text { font-size: 20pt; }
   .conclusion { font-size: 22pt; }
 
-  /* sem animação no papel */
   html.js .reveal,
   html.js .headline { opacity: 1 !important; }
   html.js .headline .line > span { transform: none !important; }
@@ -961,7 +880,6 @@ html.failsafe .headline .line > span { transform: none; }
 
   .plate { max-width: 45mm; }
 
-  /* endereços expandidos: o leitor de papel não tem link para clicar */
   a[href^="http"]::after {
     content: " <" attr(href) ">";
     font-family: var(--mono);

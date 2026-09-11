@@ -1,13 +1,17 @@
+import fs from "fs";
+import path from "path";
 import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { Shell } from "./App";
-import HalftoneField from "./components/HalftoneField";
-import { PLATFORMS, PROJECTS } from "./data/projects";
-import { GAMES } from "./data/games";
-import { OBJECTS, SHAPES } from "./components/scanObjects";
-import { DEVICE } from "./components/ipodArt";
+import { FEATURED, FILTERS, PROJECTS, searchProjects } from "./data/projects";
+import { CONTACT, CURRENTLY } from "./data/profile";
+import { PLACES } from "./data/places";
+import { HARDWARE, SOFTWARE, STACK } from "./data/uses";
+import { ICONS } from "./components/icons";
 
-beforeAll(() => {
+const PUBLIC = path.join(__dirname, "..", "public");
+
+beforeEach(() => {
   global.IntersectionObserver = class {
     observe() {}
     unobserve() {}
@@ -15,32 +19,11 @@ beforeAll(() => {
   };
   global.ResizeObserver = class {
     observe() {}
-    unobserve() {}
     disconnect() {}
   };
-  Object.defineProperty(window.HTMLMediaElement.prototype, "play", {
-    configurable: true,
-    writable: true,
-    value: () => Promise.resolve(),
-  });
-  Object.defineProperty(window.HTMLMediaElement.prototype, "pause", {
-    configurable: true,
-    writable: true,
-    value: () => {},
-  });
-  Object.defineProperty(window.HTMLMediaElement.prototype, "load", {
-    configurable: true,
-    writable: true,
-    value: () => {},
-  });
-  window.scrollTo = jest.fn();
-});
-
-/* Several components branch on pointer type / reduced motion. CRA's jest config
-   sets resetMocks:true, so this must be a plain function re-installed per test
-   rather than a jest.fn() defined once in beforeAll. */
-beforeEach(() => {
-  window.scrollTo = jest.fn();
+  window.scrollTo = () => {};
+  Element.prototype.scrollIntoView = () => {};
+  HTMLCanvasElement.prototype.getContext = () => null;
   window.matchMedia = (query) => ({
     matches: false,
     media: query,
@@ -51,286 +34,258 @@ beforeEach(() => {
     removeListener: () => {},
     dispatchEvent: () => false,
   });
+  ["load", "pause"].forEach((method) =>
+    Object.defineProperty(window.HTMLMediaElement.prototype, method, {
+      configurable: true,
+      value: () => {},
+    })
+  );
+  Object.defineProperty(window.HTMLMediaElement.prototype, "play", {
+    configurable: true,
+    value: () => Promise.resolve(),
+  });
+  localStorage.clear();
+  delete document.documentElement.dataset.theme;
 });
 
-const renderAt = (path) =>
+const renderAt = (url) =>
   render(
-    <MemoryRouter initialEntries={[path]}>
+    <MemoryRouter initialEntries={[url]}>
       <Shell />
     </MemoryRouter>
   );
 
-/* ---------------- information architecture ---------------- */
+test("the homepage leads with the name, then work, about, places, uses and contact", () => {
+  renderAt("/");
 
-test("every route in the IA renders its own page", () => {
-  const cases = [
-    ["/", ".lp-hero-statement"],
-    ["/work", ".project-grid"],
-    ["/games", ".game-list"],
-    ["/about", ".about-facts"],
-    ["/catchaluckyblock", ".game-hero-title"],
-  ];
+  expect(screen.getByRole("heading", { level: 1, name: "Drxck" })).toBeInTheDocument();
+  ["work", "about", "places", "uses", "contact"].forEach((id) => {
+    expect(document.getElementById(id)).toBeInTheDocument();
+  });
+});
 
-  cases.forEach(([path, marker]) => {
-    const { unmount } = renderAt(path);
-    expect(document.querySelector(marker)).toBeInTheDocument();
+test("/work is the full archive and lists every project", async () => {
+  renderAt("/work");
+  expect(await screen.findByRole("heading", { level: 1, name: "Work" })).toBeInTheDocument();
+  expect(document.querySelectorAll(".project-card")).toHaveLength(PROJECTS.length);
+});
+
+test("every project has its own page", async () => {
+  for (const project of PROJECTS) {
+    const { unmount } = renderAt(`/work/${project.id}`);
+    expect(
+      await screen.findByRole("heading", { level: 1, name: project.title })
+    ).toBeInTheDocument();
     unmount();
-  });
+  }
 });
 
-test("unknown routes fall through to a 404 rather than a blank page", () => {
-  renderAt("/definitely-not-a-page");
+test("older URLs still land somewhere useful", async () => {
+  let view = renderAt("/catchaluckyblock");
+  expect(
+    await screen.findByRole("heading", { level: 1, name: "Catch a Lucky Block" })
+  ).toBeInTheDocument();
+  view.unmount();
+
+  view = renderAt("/games");
+  expect(await screen.findByRole("button", { name: /^Games/ })).toHaveAttribute(
+    "aria-pressed",
+    "true"
+  );
+  view.unmount();
+
+  renderAt("/about");
+  expect(screen.getByRole("heading", { level: 1, name: "Drxck" })).toBeInTheDocument();
+  expect(document.getElementById("about")).toBeInTheDocument();
+});
+
+test("unknown routes and unknown projects render a 404, not a blank page", async () => {
+  let view = renderAt("/definitely-not-a-page");
   expect(document.querySelector(".not-found")).toBeInTheDocument();
+  view.unmount();
+
+  view = renderAt("/work/not-a-project");
+  expect(await screen.findByText(/isn't in the folder/i)).toBeInTheDocument();
 });
 
-test("the pre-existing /xcrim route still renders", () => {
+test("the pre-existing /xcrim route still renders, without site chrome", async () => {
   renderAt("/xcrim");
-  expect(screen.getByAltText(/xcrim/i)).toBeInTheDocument();
+  expect(await screen.findByAltText(/xcrim/i)).toBeInTheDocument();
+  expect(screen.queryByRole("navigation", { name: /primary/i })).not.toBeInTheDocument();
 });
 
-/* ---------------- the homepage is not a portfolio ---------------- */
-
-test("the homepage leads with the editorial statement, not project cards", () => {
+test("one primary nav with Home, Work, About and Contact", () => {
   renderAt("/");
+  const nav = screen.getByRole("navigation", { name: /primary/i });
+  const links = within(nav).getAllByRole("link");
 
-  // the wording is the author's to change; only its presence is structural
-  const statement = document.querySelector(".lp-hero-statement");
-  expect(statement.textContent.trim().length).toBeGreaterThan(10);
-  expect(statement.querySelectorAll(".wr-word").length).toBeGreaterThan(2);
-
-  // the whole point of the redesign: no portfolio grid on the landing page
-  expect(document.querySelector(".project-grid")).not.toBeInTheDocument();
-  expect(document.querySelector(".project-card")).not.toBeInTheDocument();
-});
-
-test("projects appear on the homepage only as the three introduction links", () => {
-  renderAt("/");
-
-  const intro = document.querySelector(".intro-links");
-  const links = within(intro).getAllByRole("link");
-
+  expect(links.map((a) => a.textContent)).toEqual(["Home", "Work", "About", "Contact"]);
   expect(links.map((a) => a.getAttribute("href"))).toEqual([
-    "/work",
-    "/games",
-    "/about",
+    "/",
+    "/#work",
+    "/#about",
+    "/#contact",
   ]);
 });
 
-/* ---------------- the hero device ---------------- */
+test("away from the homepage, Work opens the archive and is marked current", async () => {
+  renderAt("/work");
+  await screen.findByRole("heading", { level: 1, name: "Work" });
+  const nav = screen.getByRole("navigation", { name: /primary/i });
+  const work = within(nav).getByRole("link", { name: "Work" });
 
-test("the hero centrepiece exposes a real, reachable player menu", () => {
-  renderAt("/");
-
-  const menu = screen.getByRole("navigation", { name: /player menu/i });
-  const rows = within(menu).getAllByRole("link");
-
-  expect(rows.map((a) => a.getAttribute("href"))).toEqual([
-    "/work",
-    "/games",
-    "/about",
-  ]);
-  // the drawing itself is decorative
-  expect(document.querySelector(".ipod-canvas")).toHaveAttribute("aria-hidden", "true");
-  // and the centre button announces what it will open
-  expect(screen.getByRole("button", { name: /open work/i })).toBeInTheDocument();
+  expect(work).toHaveAttribute("href", "/work");
+  expect(work).toHaveAttribute("aria-current", "page");
 });
 
-test("hovering a menu row moves the selection, and the centre button follows", () => {
+test("the theme toggle flips the appearance and remembers the choice", () => {
   renderAt("/");
+  fireEvent.click(screen.getByRole("button", { name: /switch to dark appearance/i }));
 
-  const menu = screen.getByRole("navigation", { name: /player menu/i });
-  const rows = within(menu).getAllByRole("link");
-
-  expect(rows[0]).toHaveClass("is-active");
-
-  fireEvent.pointerEnter(rows[2]);
-  expect(rows[2]).toHaveClass("is-active");
-  expect(rows[0]).not.toHaveClass("is-active");
-  expect(screen.getByRole("button", { name: /open about/i })).toBeInTheDocument();
+  expect(document.documentElement.dataset.theme).toBe("dark");
+  expect(localStorage.getItem("theme")).toBe("dark");
+  expect(screen.getByRole("button", { name: /switch to light appearance/i })).toBeInTheDocument();
 });
 
-test("the device geometry stays inside the monochrome palette", () => {
-  const allowed = new Set(["#ffffff", "#dcdcd8", "#a8a8a3", "#444444", "#080808"]);
-  DEVICE.forEach((p) => {
-    if (p.fill) expect(allowed.has(p.fill)).toBe(true);
-    if (p.stroke) expect(allowed.has(p.stroke)).toBe(true);
-    expect(["rrect", "circle"]).toContain(p.t);
+test("the folder is a real link to /work, and each file inside opens its project", () => {
+  renderAt("/");
+
+  const front = screen.getByRole("link", { name: /work, open the archive/i });
+  expect(front).toHaveAttribute("href", "/work");
+
+  const files = within(screen.getByRole("list", { name: /featured projects/i })).getAllByRole(
+    "link"
+  );
+  expect(files).toHaveLength(Math.min(4, FEATURED.length));
+  files.forEach((file, i) => {
+    expect(file).toHaveAttribute("href", `/work/${FEATURED[i].id}`);
+    expect(file).toHaveTextContent(FEATURED[i].title);
   });
 });
 
-test("every player menu entry points at a route the app actually serves", () => {
-  const served = ["/work", "/games", "/about"];
+test("the folder's back panel is a pointer-only duplicate, hidden from assistive tech", () => {
   renderAt("/");
-  const menu = screen.getByRole("navigation", { name: /player menu/i });
-  within(menu)
-    .getAllByRole("link")
-    .forEach((a) => expect(served).toContain(a.getAttribute("href")));
+  const back = document.querySelector(".folder-back");
+  expect(back).toHaveAttribute("aria-hidden", "true");
+  expect(back).toHaveAttribute("tabindex", "-1");
 });
 
-test("the homepage carries the marquee and the generative artwork", () => {
-  renderAt("/");
-  expect(document.querySelector(".marquee-track")).toBeInTheDocument();
-  expect(document.querySelector(".artwork-plate")).toBeInTheDocument();
+test("filters narrow the archive", async () => {
+  renderAt("/work");
+  await screen.findByRole("heading", { level: 1, name: "Work" });
+
+  const systems = screen.getByRole("button", { name: /^Systems/ });
+  fireEvent.click(systems);
+
+  expect(systems).toHaveAttribute("aria-pressed", "true");
+  const expected = PROJECTS.filter((p) => p.filters.includes("systems")).length;
+  await waitFor(() => expect(document.querySelectorAll(".project-card")).toHaveLength(expected));
 });
 
-/* ---------------- the scanned field doubles as navigation ---------------- */
+test("search narrows the archive and offers a way back when nothing matches", async () => {
+  renderAt("/work");
+  const input = await screen.findByRole("searchbox", { name: /search projects/i });
 
-test("the orbiting objects are real links, reachable without a pointer", () => {
-  renderAt("/");
+  fireEvent.change(input, { target: { value: "luau physics" } });
+  expect(document.querySelectorAll(".project-card")).toHaveLength(
+    searchProjects("luau physics").length
+  );
 
-  const orbit = screen.getByRole("navigation", { name: /explore/i });
-  const links = within(orbit).getAllByRole("link");
+  fireEvent.change(input, { target: { value: "zzzz" } });
+  expect(screen.getByText(/nothing matches/i)).toBeInTheDocument();
 
-  expect(links.map((a) => a.getAttribute("href"))).toEqual([
-    "/work",
-    "/games",
-    "/about",
-  ]);
-
-  // canvas is decorative; the labels are what assistive tech reads
-  links.forEach((link) => {
-    expect(link).toHaveAccessibleName(/work|games|about/i);
-  });
-  expect(document.querySelector(".scanned-canvas")).toHaveAttribute("aria-hidden", "true");
+  fireEvent.click(screen.getByRole("button", { name: /show everything/i }));
+  expect(document.querySelectorAll(".project-card")).toHaveLength(PROJECTS.length);
 });
 
-test("hovering an orbiting object marks it as focused", () => {
-  renderAt("/");
-
-  const orbit = screen.getByRole("navigation", { name: /explore/i });
-  const [first] = within(orbit).getAllByRole("link");
-
-  expect(first).not.toHaveClass("is-hot");
-  fireEvent.pointerEnter(first);
-  expect(first).toHaveClass("is-hot");
-  fireEvent.pointerLeave(first);
-  expect(first).not.toHaveClass("is-hot");
+test("the archive has a list view as well as a grid", async () => {
+  renderAt("/work");
+  fireEvent.click(await screen.findByRole("button", { name: /list view/i }));
+  expect(document.querySelector(".work-collection.is-list")).toBeInTheDocument();
 });
 
-test("every scan object has drawable geometry and a label", () => {
-  Object.keys(OBJECTS).forEach((key) => {
-    expect(Array.isArray(SHAPES[key])).toBe(true);
-    expect(SHAPES[key].length).toBeGreaterThan(0);
-    expect(OBJECTS[key].label).toBeTruthy();
+test("tuning the radio to 1440 MHz reveals the project it's named after", () => {
+  renderAt("/");
+  const dial = screen.getByLabelText(/radio frequency/i);
 
-    // every primitive must be a shape the renderer understands
-    SHAPES[key].forEach((p) => {
-      expect(["rrect", "circle", "line", "poly"]).toContain(p.t);
-      if (p.t === "line" || p.t === "poly") {
-        expect(p.pts.length % 2).toBe(0);
-        expect(p.pts.length).toBeGreaterThanOrEqual(4);
-      }
+  expect(screen.queryByRole("link", { name: /signal found/i })).not.toBeInTheDocument();
+  fireEvent.change(dial, { target: { value: "1440" } });
+  expect(screen.getByRole("link", { name: /signal found/i })).toHaveAttribute(
+    "href",
+    `/work/${CURRENTLY.building}`
+  );
+});
+
+test("a revealed card stays visible when its own classes change", () => {
+  global.IntersectionObserver = class {
+    constructor(callback) {
+      this.callback = callback;
+    }
+    observe(target) {
+      this.callback([{ isIntersecting: true, target }]);
+    }
+    unobserve() {}
+    disconnect() {}
+  };
+
+  renderAt("/");
+  const dial = screen.getByLabelText(/radio frequency/i);
+  const card = dial.closest("[data-reveal]");
+
+  expect(card).toHaveAttribute("data-revealed");
+  fireEvent.change(dial, { target: { value: "1440" } });
+  expect(card).toHaveClass("is-locked");
+  expect(card).toHaveAttribute("data-revealed");
+});
+
+test("contact uses the real channels", () => {
+  renderAt("/");
+  const contact = document.getElementById("contact");
+
+  expect(within(contact).getByText(CONTACT.email)).toBeInTheDocument();
+  expect(within(contact).getByRole("button", { name: /copy email/i })).toBeInTheDocument();
+  expect(within(contact).getByRole("link", { name: /github/i })).toHaveAttribute(
+    "href",
+    CONTACT.github.url
+  );
+  expect(within(contact).getByRole("button", { name: /copy discord/i })).toBeInTheDocument();
+});
+
+test("places without a photo are not pretending to be clickable", () => {
+  renderAt("/");
+  const places = document.getElementById("places");
+  const withPhoto = PLACES.slice(0, 5).filter((p) => p.image).length;
+  expect(within(places).queryAllByRole("button")).toHaveLength(withPhoto);
+});
+
+test("project ids are unique and every filter a project uses exists", () => {
+  const ids = PROJECTS.map((p) => p.id);
+  expect(new Set(ids).size).toBe(ids.length);
+
+  const filters = new Set(FILTERS.map((f) => f.id));
+  PROJECTS.forEach((p) => p.filters.forEach((f) => expect(filters.has(f)).toBe(true)));
+});
+
+test("every project still image exists on disk, at both sizes", () => {
+  PROJECTS.forEach((p) => {
+    [640, 1280].forEach((size) => {
+      const file = path.join(PUBLIC, "images", "projects", `${p.id}-${size}.webp`);
+      expect(fs.existsSync(file)).toBe(true);
     });
   });
 });
 
-test("each orbiting object points at geometry that exists", () => {
-  renderAt("/");
-  // the three satellites are drawn from SHAPES by key; a typo would silently
-  // render nothing at all, so assert the keys resolve
-  ["keyboard", "controller", "camera"].forEach((key) => {
-    expect(SHAPES[key]).toBeDefined();
+test("every place photo that's set exists on disk", () => {
+  PLACES.filter((p) => p.image).forEach((p) => {
+    expect(fs.existsSync(path.join(PUBLIC, p.image))).toBe(true);
   });
 });
 
-/* ---------------- header ---------------- */
-
-test("the header exposes brand plus the four navigation destinations", () => {
-  renderAt("/");
-
-  const header = document.querySelector(".site-header");
-  expect(within(header).getByRole("link", { name: /drxck/i })).toHaveAttribute(
-    "href",
-    "/"
-  );
-
-  const nav = within(header).getByRole("navigation", { name: /primary/i });
-  expect(within(nav).getAllByRole("link").map((a) => a.getAttribute("href"))).toEqual([
-    "/work",
-    "/games",
-    "/about",
-    "#contact",
-  ]);
+test("the currently-building card points at a real project", () => {
+  expect(PROJECTS.some((p) => p.id === CURRENTLY.building)).toBe(true);
 });
 
-test("the active route is marked in the navigation", () => {
-  renderAt("/games");
-  const active = document.querySelector(".nav-link.is-active");
-  expect(active).toHaveTextContent("games");
-});
-
-/* ---------------- halftone system ---------------- */
-
-test("the halftone field mounts for every variant without a canvas context", () => {
-  ["radial", "wave", "orbital", "perspective", "blob", "field"].forEach((variant) => {
-    const { unmount } = render(<HalftoneField variant={variant} />);
-    expect(document.querySelector(`.halftone[data-variant="${variant}"]`)).toBeInTheDocument();
-    unmount();
-  });
-});
-
-test("interactive fields do not attach pointer listeners on coarse pointers", () => {
-  // matchMedia is stubbed to matches:false, i.e. no fine pointer
-  const spy = jest.spyOn(window, "addEventListener");
-  const { unmount } = render(<HalftoneField variant="radial" interactive />);
-  expect(spy.mock.calls.some(([type]) => type === "pointermove")).toBe(false);
-  spy.mockRestore();
-  unmount();
-});
-
-/* ---------------- data integrity ---------------- */
-
-test("every project points at a platform that exists", () => {
-  const ids = new Set(PLATFORMS.map((p) => p.id));
-  PROJECTS.forEach((project) => {
-    expect(ids.has(project.platform)).toBe(true);
-  });
-});
-
-test("every listed game resolves to a real project", () => {
-  expect(GAMES.length).toBeGreaterThan(0);
-  GAMES.forEach((game) => {
-    expect(PROJECTS.some((p) => p.id === game.id)).toBe(true);
-    expect(game.title).toBeTruthy();
-  });
-});
-
-test("the games page lists every game, linking the ones with their own page", () => {
-  renderAt("/games");
-
-  const rows = document.querySelectorAll(".game-row");
-  expect(rows.length).toBe(GAMES.length);
-
-  GAMES.filter((g) => g.route).forEach((game) => {
-    expect(
-      screen.getByRole("link", { name: new RegExp(game.title, "i") })
-    ).toHaveAttribute("href", game.route);
-  });
-});
-
-/* ---------------- /work still works ---------------- */
-
-test("filtering by platform narrows the work grid, and empty platforms are disabled", async () => {
-  renderAt("/work");
-
-  expect(document.querySelectorAll(".project-card").length).toBe(PROJECTS.length);
-
-  const chipFor = (platform) =>
-    screen.getByRole("tab", { name: new RegExp(platform.label, "i") });
-  const hasWork = (platform) => PROJECTS.some((p) => p.platform === platform.id);
-
-  PLATFORMS.filter((p) => !hasWork(p)).forEach((p) => {
-    expect(chipFor(p)).toBeDisabled();
-  });
-
-  const populated = PLATFORMS.find(hasWork);
-  const chip = chipFor(populated);
-  fireEvent.click(chip);
-
-  expect(chip).toHaveAttribute("aria-selected", "true");
-  await waitFor(() =>
-    expect(document.querySelectorAll(".project-card").length).toBe(
-      PROJECTS.filter((p) => p.platform === populated.id).length
-    )
-  );
+test("every uses entry has a known icon and every stack entry a symbol", () => {
+  [...HARDWARE, ...SOFTWARE].forEach((item) => expect(ICONS[item.icon]).toBeDefined());
+  STACK.forEach((item) => expect(item.symbol).toBeTruthy());
 });
