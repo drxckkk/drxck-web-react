@@ -13,7 +13,6 @@ export const PROFILE = {
 export const CONTACT = {
   email: "drxckpro123@gmail.com",
   discord: "drxck",
-  github: { user: "drxckkk", url: "https://github.com/drxckkk" },
   terms:
     "https://docs.google.com/document/d/1lAAyg9JxJ-Uc4r9aaH-KvpafnYdOsE_U/edit?usp=sharing&ouid=118064404027309110262&rtpof=true&sd=true",
 };

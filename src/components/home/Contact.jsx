@@ -19,14 +19,6 @@ const CHANNELS = [
     Icon: DiscordIcon,
     copy: true,
   },
-  {
-    id: "github",
-    label: "GitHub",
-    value: CONTACT.github.user,
-    href: CONTACT.github.url,
-    Icon: GitHubIcon,
-    external: true,
-  },
 ];
 
 function useCopy() {
