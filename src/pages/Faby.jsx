@@ -13,7 +13,6 @@ import "./Faby.css";
 const FONTES =
   "https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap";
 
-/* enfeites que ficam flutuando no fundo da página */
 const ENFEITES = [
   { nome: "cloud", tamanho: 46, classe: "faby-enfeite-1" },
   { nome: "heart", tamanho: 22, classe: "faby-enfeite-2" },

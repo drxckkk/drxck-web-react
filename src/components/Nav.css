@@ -1,0 +1,243 @@
+.nav-sentinel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 24px;
+  pointer-events: none;
+}
+
+.nav-wrap {
+  position: fixed;
+  top: var(--nav-top);
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  padding-inline: 8px;
+  pointer-events: none;
+  animation: nav-in 520ms var(--ease) backwards;
+}
+
+@keyframes nav-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  max-width: 100%;
+  padding: 5px;
+  border-radius: 999px;
+  pointer-events: auto;
+  transition: padding var(--t-control) var(--ease), background-color var(--t-control) var(--ease);
+}
+
+.nav-wrap.is-scrolled .nav {
+  padding: 3px;
+  background: var(--glass-bg-strong);
+}
+
+.nav-track {
+  position: relative;
+}
+
+.nav-list {
+  position: relative;
+  display: flex;
+  gap: 2px;
+}
+
+.nav-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  opacity: 0;
+  border-radius: 999px;
+  background: var(--glass-selected);
+  box-shadow: var(--glass-selected-shadow);
+  pointer-events: none;
+}
+
+.nav-track.is-ready .nav-indicator {
+  transition: transform 420ms var(--ease-spring), width 420ms var(--ease-spring),
+    height var(--t-control) var(--ease), opacity var(--t-hover) var(--ease);
+}
+
+.nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 40px;
+  padding: 0 15px 0 13px;
+  border-radius: 999px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 560;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: color var(--t-hover) var(--ease), height var(--t-control) var(--ease),
+    background-color var(--t-hover) var(--ease);
+}
+
+.nav-item svg {
+  width: 17px;
+  height: 17px;
+  flex: none;
+  transition: color var(--t-hover) var(--ease), transform var(--t-hover) var(--ease);
+}
+
+.nav-item:hover {
+  color: var(--text);
+}
+
+.nav-item:not(.is-active):hover {
+  background: var(--fill);
+}
+
+.nav-item:active svg {
+  transform: scale(0.9);
+}
+
+.nav-item.is-active {
+  color: var(--text);
+}
+
+.nav-item.is-active svg {
+  color: var(--accent);
+}
+
+.nav-wrap.is-scrolled .nav-item {
+  height: 36px;
+}
+
+.nav-divider {
+  width: 1px;
+  height: 20px;
+  margin: 0 5px;
+  background: var(--border-strong);
+  flex: none;
+}
+
+.nav-icon-btn {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 50%;
+  color: var(--text-secondary);
+  transition: background-color var(--t-hover) var(--ease), color var(--t-hover) var(--ease),
+    width var(--t-control) var(--ease), height var(--t-control) var(--ease);
+}
+
+.nav-wrap.is-scrolled .nav-icon-btn {
+  width: 36px;
+  height: 36px;
+}
+
+.nav-icon-btn:hover {
+  background: var(--fill);
+  color: var(--text);
+}
+
+.nav-icon-btn:active {
+  transform: scale(0.94);
+}
+
+.nav-icon-btn svg {
+  grid-area: 1 / 1;
+  width: 17px;
+  height: 17px;
+}
+
+.nav-theme svg {
+  transition: opacity var(--t-control) var(--ease), transform 420ms var(--ease-spring);
+}
+
+.nav-theme[data-mode="light"] .nav-theme-sun,
+.nav-theme[data-mode="dark"] .nav-theme-moon {
+  opacity: 0;
+  transform: rotate(-70deg) scale(0.6);
+}
+
+@media (max-width: 600px) {
+  :root {
+    --nav-top: 10px;
+    --nav-space: 80px;
+  }
+
+  .nav {
+    padding: 4px;
+  }
+
+  .nav-item {
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    height: 48px;
+    min-width: 56px;
+    padding: 0 10px;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  .nav-item svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .nav-wrap.is-scrolled .nav-item {
+    height: 44px;
+  }
+
+  .nav-divider {
+    margin: 0 3px;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav-item {
+    min-width: 50px;
+    padding: 0 6px;
+  }
+
+  .nav-search {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-wrap {
+    animation-name: nav-fade;
+  }
+
+  .nav-track.is-ready .nav-indicator {
+    transition: opacity var(--t-hover) linear;
+  }
+
+  .nav-theme svg {
+    transition: opacity var(--t-control) linear;
+  }
+
+  .nav-theme[data-mode="light"] .nav-theme-sun,
+  .nav-theme[data-mode="dark"] .nav-theme-moon {
+    transform: none;
+  }
+}
+
+@keyframes nav-fade {
+  from {
+    opacity: 0;
+  }
+}

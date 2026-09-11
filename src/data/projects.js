@@ -1,89 +1,94 @@
-import kartVideo from "../assets/project4.mp4";
+import luckyVideo from "../assets/project1.mp4";
 import orbVideo from "../assets/project2.mp4";
-import kitchenVideo from "../assets/project3.mp4";
+import jumpVideo from "../assets/project3.mp4";
+import kartVideo from "../assets/project4.mp4";
 import kitchenSimVideo from "../assets/project5.mp4";
 import realVehVideo from "../assets/project6.mp4";
-import luckyVideo from "../assets/project1.mp4";
 import signalVideo from "../assets/project7.mp4";
 
-/* ---------------------------------------------------------------------------
- * ADDING A NEW PLATFORM
- *
- * 1. Add an entry to PLATFORMS below (Unity and Apps are already stubbed).
- * 2. Drop its projects into PROJECTS with `platform: "<that id>"`.
- *
- * That's it. The filter bar, counts, empty states and "in progress" chips all
- * derive from this file — no component needs to change.
- *
- * A platform with zero projects renders as a dimmed "soon" chip automatically,
- * so you can announce a platform before the work is public.
- * ------------------------------------------------------------------------- */
-
-export const PLATFORMS = [
-  {
-    id: "roblox",
-    label: "Roblox",
-    icon: "fa-solid fa-cube",
-    blurb: "Gameplay systems, full builds and tooling in Luau.",
-  },
-  {
-    id: "others",
-    label: "Others",
-    icon: "fa-solid fa-layer-group",
-    blurb: "C++, physics and voxel engines",
-  },
-];
+const still = (id) => ({
+  src: `/images/projects/${id}-640.webp`,
+  srcSet: `/images/projects/${id}-640.webp 640w, /images/projects/${id}-1280.webp 1280w`,
+  large: `/images/projects/${id}-1280.webp`,
+});
 
 export const PROJECTS = [
   {
     id: "luckyblock",
-    platform: "roblox",
     title: "Catch a Lucky Block",
+    category: "Roblox game",
+    platform: "Roblox",
+    filters: ["games", "roblox"],
+    icon: "game",
     year: "2026",
+    status: "Shipped",
+    shortDescription: "Break Lucky Blocks, collect what falls out. Shipped and ready.",
     summary:
-      "Project built and shipped, where the gameplay is focused mainly on players breaking Lucky Blocks to get rewards and items. The project was built with a focus on modularity and reusability, heavily optimized and entirely coded by myself.",
+      "A shipped game where players break Lucky Blocks to earn rewards and items. Built for modularity and reuse, heavily optimized and entirely coded by me.",
     overview:
-      "Project is built focused on optimization, modularity and being high quality. The UI is made to be satisfying and attractive to those players that end up playing front-page games. The game was planned to be satisfying, attractive and fun.",
+      "Built with a focus on optimization, modularity and quality. The UI is made to be satisfying and attractive to the players who end up on front-page games, and the whole loop was planned to be satisfying, attractive and fun.",
     stats: [
       { label: "Delivery", value: "7 days" },
       { label: "From", value: "$500" },
     ],
+    tags: ["Luau", "UI", "Rewards"],
     video: luckyVideo,
+    image: still("luckyblock"),
     featured: true,
   },
   {
     id: "scangame",
-    platform: "others",
     title: "1440 MHz",
+    category: "Side project",
+    platform: "Desktop",
+    filters: ["games"],
+    icon: "signal",
     year: "2026",
+    status: "In progress",
+    shortDescription: "A scanning game where the world only exists once you've scanned it.",
     summary:
-      "A work-in-progress side project and demo for a LIDAR scanning and radio frequency detection game, where the gameplay is focused mainly on scanning the world that is invisible until it gets revealed in points. Built with focus on atmosphere, feel and performance, and entirely coded by myself.",
+      "A work-in-progress demo for a LIDAR-scanning and radio-frequency detection game. The world is invisible until it's revealed in points. Built for atmosphere, feel and performance, entirely coded by me.",
     overview:
-      "Demo built as a side project, planned to be atmospheric, tense and satisfying to play with. The whole view is made of dots that only exist after you scan them, you find signals, interferences and fragments and reconstruct what was or is there. Built with Electron, TypeScript, Three.js, Vite.",
+      "A side project planned to be atmospheric, tense and satisfying to play. The whole view is made of dots that only exist after you scan them. You find signals, interference and fragments, and reconstruct what was, or is, there.",
     stats: [],
+    tags: ["Electron", "TypeScript", "Three.js", "Vite"],
     video: signalVideo,
+    image: still("scangame"),
     featured: true,
-  }, {
+  },
+  {
     id: "kartsystem",
-    platform: "roblox",
     title: "Kart System",
+    category: "Vehicle system",
+    platform: "Roblox",
+    filters: ["systems", "roblox"],
+    icon: "vehicle",
     year: "2026",
+    status: "Shipped",
+    shortDescription: "Smooth, drifty kart handling with a suspension that's fun on purpose.",
     summary:
-      "A kart vehicle system with a smooth driving, good handling and funny suspension inspired by popular kart games people already know how to play.",
+      "A kart system with smooth driving, good handling and a funny suspension, inspired by the kart games people already know how to play.",
     overview:
       "Built on a lightweight raycast suspension with body forces driving the physics, so handling stays smooth at any speed. Tuned to hold frame rate on low-end devices, and every curve is exposed as a config value so a designer can re-feel the whole kart without touching code.",
     stats: [
       { label: "Delivery", value: "5 days" },
       { label: "From", value: "$200" },
     ],
+    tags: ["Luau", "Raycast suspension", "Physics"],
     video: kartVideo,
+    image: still("kartsystem"),
     featured: true,
   },
   {
     id: "kitchensim",
-    platform: "roblox",
     title: "Kitchen Simulator",
+    category: "Roblox game",
+    platform: "Roblox",
+    filters: ["games", "roblox"],
+    icon: "game",
     year: "2026",
+    status: "Shipped",
+    shortDescription: "A complete simulator, designed, programmed and optimized from corner to corner.",
     summary:
       "A complete, shipped simulator game, designed, programmed and balanced end to end. Configurable, optimized and satisfying.",
     overview:
@@ -92,57 +97,111 @@ export const PROJECTS = [
       { label: "Delivery", value: "3 weeks" },
       { label: "From", value: "$600" },
     ],
+    tags: ["Luau", "Placement", "Economy", "Data"],
     video: kitchenSimVideo,
+    image: still("kitchensim"),
     featured: true,
   },
   {
-    id: "orbsystem",
-    platform: "roblox",
-    title: "Orb System",
-    year: "2025",
-    summary:
-      "Custom physics and object pooling with cluster, optimized and no matter how many orbs are on screen it will perform well.",
-    overview:
-      "Orbs are pooled and reused instead of being created and destroyed each spawn, and the motion runs on hand-rolled physics rather than the engine's. The result holds a stable frame rate with 512+ orbs live at once.",
-    stats: [
-      { label: "Delivery", value: "2 days" },
-      { label: "From", value: "$70" },
-    ],
-    video: orbVideo,
-  },
-  {
     id: "realveh",
-    platform: "roblox",
     title: "Realistic Vehicle System",
+    category: "Vehicle system",
+    platform: "Roblox",
+    filters: ["systems", "roblox"],
+    icon: "vehicle",
     year: "2026",
+    status: "Shipped",
+    shortDescription: "Raycast suspension, springs and air resistance, all configurable.",
     summary:
-      "Realistic vehicle system with Raycast suspension, configurable handling model. Simulating realistic suspension, springs, air resistance and more. Also built to be modular and reusable.",
+      "A realistic vehicle system with raycast suspension and a configurable handling model: springs, air resistance and more. Built to be modular and reusable.",
     overview:
-      "Raycast, bodyforces, custom physics and sounds, all combined simulating realistic vehicle behavior within Roblox.",
+      "Raycasts, body forces, custom physics and sounds, all combined to simulate realistic vehicle behaviour inside Roblox.",
     stats: [
       { label: "Delivery", value: "4 days" },
       { label: "From", value: "$400" },
     ],
+    tags: ["Luau", "Physics", "Audio"],
     video: realVehVideo,
-  }, {
-    id: "jumpugc",
-    platform: "roblox",
-    title: "Jump for UGC",
+    image: still("realveh"),
+  },
+  {
+    id: "orbsystem",
+    title: "Orb System",
+    category: "Gameplay system",
+    platform: "Roblox",
+    filters: ["systems", "roblox"],
+    icon: "system",
     year: "2025",
+    shortDescription: "Pooled orbs on custom physics: 512+ on screen at a stable frame rate.",
     summary:
-      "Basic 'Jump for UGC' game where players jump and complete obbies to earn gold and unlock free UGC items.",
+      "Custom physics and clustered object pooling. No matter how many orbs are on screen, it keeps performing.",
     overview:
-      "This project was built entirely focused on being modular and easily customizaly, using Roact, Nevermore Engine and was a side project mainly as a proof of concept.",
+      "Orbs are pooled and reused instead of being created and destroyed on each spawn, and the motion runs on hand-rolled physics rather than the engine's. The result holds a stable frame rate with 512+ orbs live at once.",
+    stats: [
+      { label: "Delivery", value: "2 days" },
+      { label: "From", value: "$70" },
+    ],
+    tags: ["Luau", "Object pooling", "Physics"],
+    video: orbVideo,
+    image: still("orbsystem"),
+  },
+  {
+    id: "jumpugc",
+    title: "Jump for UGC",
+    category: "Roblox game",
+    platform: "Roblox",
+    filters: ["games", "roblox"],
+    icon: "game",
+    year: "2025",
+    shortDescription: "Jump, clear obbies, earn gold and unlock free UGC items.",
+    summary:
+      "A 'Jump for UGC' game where players jump and complete obbies to earn gold and unlock free UGC items.",
+    overview:
+      "Built to be modular and easy to customize, using Roact and Nevermore Engine. A old small project I worked on years past.",
     stats: [
       { label: "Delivery", value: "3 days" },
       { label: "From", value: "$100" },
     ],
-    video: kitchenVideo,
+    tags: ["Luau", "Roact", "Nevermore"],
+    video: jumpVideo,
+    image: still("jumpugc"),
   },
 ];
 
-/** Platforms that currently have shipped work, in PLATFORMS order. */
-export const countFor = (platformId) =>
-  PROJECTS.filter((p) => p.platform === platformId).length;
+export const FILTERS = [
+  { id: "all", label: "All" },
+  { id: "games", label: "Games" },
+  { id: "systems", label: "Systems" },
+  { id: "web", label: "Web" },
+  { id: "roblox", label: "Roblox" },
+];
 
-export const platformById = (id) => PLATFORMS.find((p) => p.id === id);
+export const projectById = (id) => PROJECTS.find((p) => p.id === id);
+
+export const FEATURED = PROJECTS.filter((p) => p.featured).slice(0, 4);
+
+export const matchesFilter = (project, filterId) =>
+  filterId === "all" || project.filters.includes(filterId);
+
+export const countFor = (filterId) =>
+  PROJECTS.filter((p) => matchesFilter(p, filterId)).length;
+
+const normalize = (text) =>
+  text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "");
+
+export function searchProjects(query, list = PROJECTS) {
+  const words = normalize(query).split(/\s+/).filter(Boolean);
+  if (!words.length) return list;
+
+  return list.filter((p) => {
+    const haystack = normalize(
+      [p.title, p.category, p.platform, p.shortDescription, p.summary, p.status, p.year, ...p.tags]
+        .filter(Boolean)
+        .join(" ")
+    );
+    return words.every((word) => haystack.includes(word));
+  });
+}

@@ -1,0 +1,236 @@
+.home-contact {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 72vh;
+  padding-block: clamp(72px, 10vw, 150px) clamp(56px, 7vw, 96px);
+  isolation: isolate;
+}
+
+.contact-field {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 55% at 22% 58%, var(--accent-soft), transparent 70%),
+    radial-gradient(circle, var(--dot) 1.1px, transparent 1.6px) 0 0 / 22px 22px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 30% 55%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse 70% 70% at 30% 55%, #000 20%, transparent 75%);
+}
+
+.contact-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  align-items: center;
+  gap: clamp(32px, 6vw, 88px);
+}
+
+.contact-lead {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contact-title {
+  margin-top: 12px;
+  font-family: var(--font-display);
+  font-size: clamp(44px, 5.2vw + 10px, 88px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.contact-copy {
+  max-width: 34ch;
+  margin-top: 20px;
+}
+
+.contact-cta {
+  margin-top: 32px;
+}
+
+.contact-channels {
+  padding: 6px;
+  gap: 0;
+}
+
+.channel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 18px;
+}
+
+.channel + .channel {
+  position: relative;
+}
+
+.channel + .channel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 70px;
+  right: 14px;
+  height: 1px;
+  background: var(--border);
+}
+
+.channel-main {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  min-height: 64px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  transition: background-color var(--t-hover) var(--ease);
+}
+
+a.channel-main:hover {
+  background: var(--fill);
+}
+
+.channel-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex: none;
+  border-radius: 12px;
+  background: var(--surface-subtle);
+  box-shadow: inset 0 0 0 1px var(--border);
+}
+
+.channel-icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+.channel-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.channel-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.channel-value {
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.channel-go {
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  flex: none;
+  color: var(--text-tertiary);
+  transition: transform var(--t-hover) var(--ease), color var(--t-hover) var(--ease);
+}
+
+a.channel-main:hover .channel-go {
+  transform: translate(2px, -2px);
+  color: var(--text);
+}
+
+.channel-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 36px;
+  margin-right: 8px;
+  padding: 0 12px;
+  flex: none;
+  border-radius: 999px;
+  background: var(--fill);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: background-color var(--t-hover) var(--ease), color var(--t-hover) var(--ease),
+    transform var(--t-hover) var(--ease);
+}
+
+.channel-copy svg {
+  width: 14px;
+  height: 14px;
+}
+
+.channel-copy:hover {
+  background: var(--fill-strong);
+  color: var(--text);
+}
+
+.channel-copy:active {
+  transform: scale(0.95);
+}
+
+.channel-copy.is-copied {
+  color: var(--positive);
+}
+
+.contact-terms {
+  margin-top: 16px;
+  padding-inline: 12px;
+}
+
+.contact-terms a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--t-hover) var(--ease);
+}
+
+.contact-terms a:hover {
+  text-decoration-color: currentColor;
+}
+
+@media (max-width: 900px) {
+  .home-contact {
+    min-height: 0;
+  }
+
+  .contact-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  .channel-main {
+    gap: 12px;
+    padding-inline: 8px;
+  }
+
+  .channel-value {
+    font-size: 15px;
+  }
+
+  .channel:has(.channel-copy) .channel-go {
+    display: none;
+  }
+
+  .channel-copy span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .channel-copy {
+    width: 40px;
+    padding: 0;
+    justify-content: center;
+  }
+}

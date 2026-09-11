@@ -1,27 +1,15 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
 import "./LazyVideo.css";
 
-/* Video that keeps its weight off the first paint.
-
-   Nothing is fetched until the element is near the viewport, and the full
-   download only starts once the video is actually wanted (`play`). A spinner
-   sits over the frame from the moment bytes are requested until there is
-   something to show, and comes back if the buffer runs dry mid-loop. */
-
 const NEAR_VIEWPORT = "300px";
 
 const LazyVideo = forwardRef(function LazyVideo(
   {
     src,
     play = false,
-    /* pull metadata + first frame as soon as it is on screen, without
-       waiting for `play` */
     warm = false,
     resetOnPause = false,
-    /* off for purely decorative media, where a spinner is only noise */
     showSpinner = true,
-    /* called with the intrinsic width / height once metadata lands, so a slot
-       can size itself to the file instead of guessing a ratio */
     onAspect,
     className = "",
     spinnerClassName = "",
@@ -32,16 +20,12 @@ const LazyVideo = forwardRef(function LazyVideo(
 ) {
   const videoRef = useRef(null);
   const [visible, setVisible] = useState(false);
-  /* latches: once a video has been asked to play we keep the buffered data
-     around rather than throwing it away when the pointer leaves */
   const [wanted, setWanted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [failed, setFailed] = useState(false);
 
   useImperativeHandle(ref, () => videoRef.current, []);
 
-  /* only care about the viewport once — after that the source stays attached
-     so scrolling back and forth never re-downloads anything */
   useEffect(() => {
     const el = videoRef.current;
     if (!el || visible) return undefined;
@@ -71,13 +55,10 @@ const LazyVideo = forwardRef(function LazyVideo(
 
   const shouldLoad = visible && (warm || wanted);
 
-  /* React keeps a src attribute around for the life of the element, so the
-     source is attached imperatively the first time loading is allowed */
   useEffect(() => {
     const el = videoRef.current;
     if (!el || !shouldLoad) return;
 
-    /* a warm video only pulls metadata; wanting it upgrades to a full download */
     el.preload = wanted ? "auto" : "metadata";
 
     if (el.getAttribute("src") === src) return;
@@ -92,12 +73,8 @@ const LazyVideo = forwardRef(function LazyVideo(
     if (!el || !shouldLoad) return;
 
     if (play) {
-      /* a warmed video holds metadata but rarely enough frames to run — say so
-         straight away rather than waiting for the browser's stall event */
       if (el.readyState < 3) setLoading(true);
 
-      /* playback can still be refused (low power mode, user settings) — the
-         spinner must not hang around in that case */
       const started = el.play();
       if (started?.catch) started.catch(() => setLoading(false));
     } else {
@@ -120,8 +97,6 @@ const LazyVideo = forwardRef(function LazyVideo(
         onLoadedData={stopLoading}
         onCanPlay={stopLoading}
         onPlaying={stopLoading}
-        /* a metadata-only warm-up may never reach loadeddata — that is as
-           ready as it is going to get, so drop the spinner there too */
         onLoadedMetadata={(e) => {
           const { videoWidth, videoHeight } = e.currentTarget;
           if (videoWidth && videoHeight) onAspect?.(videoWidth / videoHeight);

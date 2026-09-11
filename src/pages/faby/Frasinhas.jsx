@@ -7,7 +7,6 @@ import Secao from "./Secao";
 function Frasinhas() {
   const [indice, setIndice] = useState(0);
 
-  /* sorteia sempre uma frase diferente da que está na tela */
   const sortear = () => {
     if (FRASINHAS.length < 2) return;
     let proximo = indice;

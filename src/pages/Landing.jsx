@@ -1,26 +1,41 @@
-import Header from "../components/Header";
-import Hero from "../components/Hero";
-import Marquee from "../components/Marquee";
-import Introduction from "../components/Introduction";
-import GenerativeArtwork from "../components/GenerativeArtwork";
-import Footer from "../components/Footer";
+import { useEffect, useRef } from "react";
+import { useLocation } from "react-router-dom";
+import Hero from "../components/home/Hero";
+import WorkSection from "../components/home/WorkSection";
+import About from "../components/home/About";
+import Places from "../components/home/Places";
+import Toolbox from "../components/home/Toolbox";
+import Contact from "../components/home/Contact";
+import useReveal from "../hooks/useReveal";
+import usePageMeta from "../hooks/usePageMeta";
+import { prefersReducedMotion } from "../routes";
 
-/**
- * The personal landing page. Deliberately not a portfolio: work only appears
- * as three small destinations inside <Introduction />.
- */
 function Landing() {
+  const ref = useRef(null);
+  const { hash } = useLocation();
+
+  usePageMeta({ path: "/" });
+  useReveal(ref);
+
+  useEffect(() => {
+    if (!hash) return undefined;
+    const target = document.getElementById(decodeURIComponent(hash.slice(1)));
+    if (!target) return undefined;
+    const frame = requestAnimationFrame(() =>
+      target.scrollIntoView({ behavior: prefersReducedMotion() ? "auto" : "smooth" })
+    );
+    return () => cancelAnimationFrame(frame);
+  }, [hash]);
+
   return (
-    <>
-      <Header />
-      <main className="site-main">
-        <Hero />
-        <Marquee />
-        <Introduction />
-        <GenerativeArtwork />
-      </main>
-      <Footer />
-    </>
+    <main id="main" className="site-main landing" ref={ref}>
+      <Hero />
+      <WorkSection />
+      <About />
+      <Places />
+      <Toolbox />
+      <Contact />
+    </main>
   );
 }
 

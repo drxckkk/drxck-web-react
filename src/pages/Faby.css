@@ -1,18 +1,12 @@
-/* Página da faby — pensada primeiro pro celular, na vertical.
-   Tudo aqui é escopado em .faby (ou em body.faby-modo) pra não encostar
-   no resto do portfólio, que é escuro. */
-
 body.faby-modo {
   background: #fff5fa;
   color-scheme: light;
 }
 
-/* o campo de pontinhos do portfólio não existe nesta página */
 body.faby-modo .dot-field {
   display: none;
 }
 
-/* a página não depende do reset global do portfólio pra se manter no lugar */
 .faby,
 .faby *,
 .faby *::before,
@@ -52,7 +46,6 @@ body.faby-modo .dot-field {
   overflow-x: clip;
 }
 
-/* pontinhos bem clarinhos, tipo papel de carta */
 .faby::before {
   content: "";
   position: fixed;
@@ -63,8 +56,6 @@ body.faby-modo .dot-field {
   background-size: 18px 18px;
   opacity: 0.55;
 }
-
-/* ---------------- enfeites do fundo ---------------- */
 
 .faby-fundo {
   position: fixed;
@@ -93,8 +84,6 @@ body.faby-modo .dot-field {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   50%      { transform: translateY(-14px) rotate(4deg); }
 }
-
-/* ---------------- estrutura ---------------- */
 
 .faby-shell {
   position: relative;
@@ -145,8 +134,6 @@ body.faby-modo .dot-field {
   margin: 0 4px;
 }
 
-/* ---------------- botões ---------------- */
-
 .faby-botao {
   display: inline-flex;
   align-items: center;
@@ -196,8 +183,6 @@ body.faby-modo .dot-field {
   outline-offset: 3px;
 }
 
-/* ---------------- abertura ---------------- */
-
 .faby-abertura {
   display: flex;
   flex-direction: column;
@@ -225,8 +210,6 @@ body.faby-modo .dot-field {
   line-height: 1.55;
   color: var(--f-ink);
 }
-
-/* ---------------- contador ---------------- */
 
 .faby-contador-titulo {
   font-family: var(--f-titulo);
@@ -301,8 +284,6 @@ body.faby-modo .dot-field {
   color: var(--f-ink-soft);
 }
 
-/* ---------------- cartinha ---------------- */
-
 .faby-envelope {
   position: relative;
   display: flex;
@@ -321,7 +302,6 @@ body.faby-modo .dot-field {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* a aba de cima do envelope */
 .faby-envelope-aba {
   position: absolute;
   top: 0;
@@ -397,8 +377,6 @@ body.faby-modo .dot-field {
   color: var(--f-pink-deep);
 }
 
-/* ---------------- perguntinhas ---------------- */
-
 .faby-cartao-perguntas {
   overflow: hidden;
   min-height: 260px;
@@ -454,7 +432,6 @@ body.faby-modo .dot-field {
   color: var(--f-ink-soft);
 }
 
-/* espaço onde o "não" corre — precisa de altura própria pra ele não escapar */
 .faby-fuga-area {
   position: relative;
   display: block;
@@ -473,8 +450,6 @@ body.faby-modo .dot-field {
   padding: 12px 18px;
   font-size: 15px;
 }
-
-/* ---------------- motivos ---------------- */
 
 .faby-motivos-lista {
   display: flex;
@@ -527,8 +502,6 @@ body.faby-modo .dot-field {
   color: var(--f-pink-deep);
 }
 
-/* ---------------- frasinhas e amiguinhos ---------------- */
-
 .faby-balao-area {
   display: flex;
   flex-direction: column;
@@ -550,7 +523,6 @@ body.faby-modo .dot-field {
   box-shadow: var(--f-shadow);
 }
 
-/* rabinho do balão de fala */
 .faby-balao::after {
   content: "";
   position: absolute;
@@ -581,7 +553,6 @@ body.faby-modo .dot-field {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* os bichinhos têm alturas diferentes — encostar tudo embaixo alinha os nomes */
   justify-content: flex-end;
   gap: 6px;
   flex: 1;
@@ -611,8 +582,6 @@ body.faby-modo .dot-field {
   color: var(--f-pink-deep);
 }
 
-/* ---------------- chuva de corações ---------------- */
-
 .faby-coracoes {
   position: absolute;
   left: 50%;
@@ -628,8 +597,6 @@ body.faby-modo .dot-field {
   left: 0;
   bottom: 0;
 }
-
-/* ---------------- final ---------------- */
 
 .faby-cartao-final {
   display: flex;
@@ -667,8 +634,6 @@ body.faby-modo .dot-field {
   font-size: 13px;
   color: var(--f-ink-soft);
 }
-
-/* ---------------- telas maiores ---------------- */
 
 @media (min-width: 720px) {
   .faby-shell {

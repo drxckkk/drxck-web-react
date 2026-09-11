@@ -1,12 +1,6 @@
 import { useMemo } from "react";
 import { SPRITES } from "./sprites";
 
-/* Desenha um sprite da grade de pixels como SVG.
-
-   Pixels vizinhos da mesma cor viram um retângulo só, então cada sprite sai
-   com poucas dezenas de nós em vez de centenas — e como é SVG, escala pra
-   qualquer tamanho sem borrar. */
-
 function runs(sprite) {
   const out = [];
 
