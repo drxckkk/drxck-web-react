@@ -1,0 +1,83 @@
+[ {
+	"args": [],
+	"block": "on_night_start",
+	"subcode": [ {
+		"args": [ "freddyai", "%ai(Freddy)" ],
+		"block": "set_var"
+	}, {
+		"args": [ "foxyai", "%ai(Foxy)" ],
+		"block": "set_var"
+	}, {
+		"args": [ "AI for Foxy and Freddy" ],
+		"block": "comment"
+	} ]
+}, {
+	"args": [],
+	"block": "on_game_loop",
+	"subcode": [ {
+		"args": [ "EastHall" ],
+		"block": "if_current_cam",
+		"subcode": [ {
+			"args": [ "Freddy", "EastHall" ],
+			"block": "if_animatronic_on_camera",
+			"subcode": [ {
+				"args": [ "Freddy", "0" ],
+				"block": "set_ai"
+			} ]
+		} ]
+	}, {
+		"args": [ "WestHall" ],
+		"block": "if_current_cam",
+		"negated": true,
+		"subcode": [ {
+			"args": [ "Freddy", "%var(freddyai)" ],
+			"block": "set_ai"
+		} ]
+	} ]
+}, {
+	"args": [],
+	"block": "on_game_loop",
+	"subcode": [ {
+		"args": [ "DiningArea" ],
+		"block": "if_current_cam",
+		"subcode": [ {
+			"args": [ "Freddy", "DiningArea" ],
+			"block": "if_animatronic_on_camera",
+			"subcode": [ {
+				"args": [ "Freddy", "0" ],
+				"block": "set_ai"
+			} ]
+		} ]
+	}, {
+		"args": [ "DiningArea" ],
+		"block": "if_current_cam",
+		"negated": true,
+		"subcode": [ {
+			"args": [ "Freddy", "%var(freddyai)" ],
+			"block": "set_ai"
+		} ]
+	} ]
+}, {
+	"args": [],
+	"block": "on_game_loop",
+	"subcode": [ {
+		"args": [ "PirateCove" ],
+		"block": "if_current_cam",
+		"subcode": [ {
+			"args": [ "Foxy", "PirateCove" ],
+			"block": "if_animatronic_on_camera",
+			"subcode": [ {
+				"args": [ "Foxy", "0" ],
+				"block": "set_ai"
+			} ]
+		} ]
+	}, {
+		"args": [ "PirateCove" ],
+		"block": "if_current_cam",
+		"negated": true,
+		"subcode": [ {
+			"args": [ "Foxy", "%var(foxyai)" ],
+			"block": "set_ai"
+		} ]
+	} ]
+} ]

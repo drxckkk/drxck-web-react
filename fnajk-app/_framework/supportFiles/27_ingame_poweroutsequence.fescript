@@ -1,0 +1,137 @@
+[ {
+	"args": [],
+	"block": "on_powerout",
+	"subcode": [ {
+		"args": [ "Bonnie" ],
+		"block": "aio"
+	}, {
+		"args": [ "Chica" ],
+		"block": "aio"
+	}, {
+		"args": [ "Foxy" ],
+		"block": "aio"
+	}, {
+		"args": [ "Freddy" ],
+		"block": "aio"
+	}, {
+		"args": [ "This is the power out sequence script" ],
+		"block": "comment"
+	}, {
+		"args": [ "The entire mechanism relies on a hidden animatronic that doesn't interfere with the normal gameplay until there's no more power in the office." ],
+		"block": "comment"
+	}, {
+		"args": [ "Each sequence (Freddy playing Carmen Toreador, the office going pitch black, etc.) is triggered by the hidden animatronic that moves through cameras not visible to the player." ],
+		"block": "comment"
+	}, {
+		"args": [ "The jumpscare given to the player occurs when the hidden animatronic reaches the office." ],
+		"block": "comment"
+	} ]
+}, {
+	"args": [],
+	"block": "on_night_start",
+	"subcode": [ {
+		"args": [ "isPowerOutOffice", "0" ],
+		"block": "set_var"
+	} ]
+}, {
+	"args": [ "15" ],
+	"block": "every_num_ticks",
+	"subcode": [ {
+		"args": [ "%var(isPowerOutOffice)", "==", "1" ],
+		"block": "compare_values",
+		"subcode": [ {
+			"args": [ "NPC_PowerOutAI", "15" ],
+			"block": "set_ai"
+		}, {
+			"args": [ "isPowerOutOffice", "2" ],
+			"block": "set_var"
+		} ]
+	} ]
+}, {
+	"args": [ "NPC_PowerOutAI" ],
+	"block": "on_animatronic_move",
+	"subcode": [ {
+		"args": [ "NPC_PowerOutAI", "NPC_PowerOut1" ],
+		"block": "if_animatronic_on_camera",
+		"subcode": [ {
+			"args": [ "FreddySing" ],
+			"block": "show_office_object"
+		}, {
+			"args": [ "FreddySing" ],
+			"block": "start_animation"
+		}, {
+			"args": [ "music box.wav", "33", false ],
+			"block": "play_sound"
+		}, {
+			"args": [ "11", "0" ],
+			"block": "set_channel_volume"
+		} ]
+	}, {
+		"args": [ "NPC_PowerOutAI", "NPC_PowerOut3" ],
+		"block": "if_animatronic_on_camera",
+		"subcode": [ {
+			"args": [ "FreddySing" ],
+			"block": "hide_office_object"
+		}, {
+			"args": [ "33", "0" ],
+			"block": "set_channel_volume"
+		}, {
+			"args": [ "powerout_black" ],
+			"block": "change_office_state"
+		}, {
+			"args": [ "lightnotworking.mp3", "34", false ],
+			"block": "play_sound"
+		}, {
+			"args": [ "PowerOutCover" ],
+			"block": "hide_office_object"
+		} ]
+	} ]
+}, {
+	"args": [],
+	"block": "on_game_loop",
+	"subcode": [ {
+		"args": [ "%var(isPowerOutOffice)", "==", "2" ],
+		"block": "compare_values",
+		"subcode": [ {
+			"args": [ "Bonnie", "0" ],
+			"block": "set_ai"
+		}, {
+			"args": [ "Chica", "0" ],
+			"block": "set_ai"
+		}, {
+			"args": [ "Foxy", "0" ],
+			"block": "set_ai"
+		}, {
+			"args": [ "Freddy", "0" ],
+			"block": "set_ai"
+		}, {
+			"args": [ "6", "0" ],
+			"block": "set_channel_volume"
+		}, {
+			"args": [ "9", "0" ],
+			"block": "set_channel_volume"
+		} ]
+	}, {
+		"args": [ "powerout" ],
+		"block": "if_office_state",
+		"subcode": [ {
+			"args": [ "isPowerOutOffice", "1" ],
+			"block": "set_var"
+		}, {
+			"args": [ "Bonnie" ],
+			"block": "aio"
+		}, {
+			"args": [ "Chica" ],
+			"block": "aio"
+		}, {
+			"args": [ "Foxy" ],
+			"block": "aio"
+		}, {
+			"args": [ "Freddy" ],
+			"block": "aio"
+		}, {
+			"args": [ "fanAnimation" ],
+			"block": "hide_office_object"
+		} ]
+	} ]
+} ]

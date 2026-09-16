@@ -1,0 +1,30 @@
+[ {
+	"args": [],
+	"block": "on_night_start",
+	"subcode": [ {
+		"args": [ "%ai(Freddy)", "==", "1" ],
+		"block": "compare_values",
+		"subcode": [ {
+			"args": [ "%ai(Bonnie)", "==", "9" ],
+			"block": "compare_values",
+			"subcode": [ {
+				"args": [ "%ai(Chica)", "==", "8" ],
+				"block": "compare_values",
+				"subcode": [ {
+					"args": [ "%ai(Foxy)", "==", "7" ],
+					"block": "compare_values",
+					"subcode": [ {
+						"args": [ "GoldenFreddy" ],
+						"block": "show_office_object"
+					}, {
+						"args": [ "GN_jumpscare" ],
+						"block": "goto_menu"
+					}, {
+						"args": [ "Classic Golden Freddy Easter Egg" ],
+						"block": "comment"
+					} ]
+				} ]
+			} ]
+		} ]
+	} ]
+} ]

@@ -1,0 +1,72 @@
+[ {
+	"args": [],
+	"block": "on_night_start",
+	"subcode": [ {
+		"args": [ "GoldenFreddy" ],
+		"block": "hide_office_object"
+	}, {
+		"args": [ "gn timer", "0" ],
+		"block": "set_var"
+	}, {
+		"args": [ "Golden Freddy Mechanic (broken cause the random doesn't work)" ],
+		"block": "comment"
+	} ]
+}, {
+	"args": [],
+	"block": "on_game_loop",
+	"subcode": [ {
+		"args": [ "%random(1,50000)", "==", "1" ],
+		"block": "compare_values",
+		"subcode": [ {
+			"args": [ "GoldenFreddy" ],
+			"block": "show_office_object"
+		}, {
+			"args": [ "gn timer", "160" ],
+			"block": "set_var"
+		} ]
+	}, {
+		"args": [],
+		"block": "if_camera_up",
+		"subcode": [ {
+			"args": [ "GoldenFreddy" ],
+			"block": "is_object_visible",
+			"subcode": [ {
+				"args": [ "GoldenFreddy" ],
+				"block": "hide_office_object"
+			} ]
+		} ]
+	} ]
+}, {
+	"args": [ "1" ],
+	"block": "every_num_ticks",
+	"subcode": [ {
+		"args": [ "GoldenFreddy" ],
+		"block": "is_object_visible",
+		"subcode": [ {
+			"args": [ "%var(gn timer)", ">", "0" ],
+			"block": "compare_values",
+			"subcode": [ {
+				"args": [ "gn timer", "%math(%var(gn timer)-1)" ],
+				"block": "set_var"
+			}, {
+				"args": [ "%var(gn timer)", "==", "0" ],
+				"block": "compare_values",
+				"subcode": [ {
+					"args": [ "GN_jumpscare" ],
+					"block": "goto_menu"
+				} ]
+			} ]
+		} ]
+	} ]
+}, {
+	"args": [],
+	"block": "on_game_loop",
+	"subcode": [ {
+		"args": [],
+		"block": "is_power_down",
+		"subcode": [ {
+			"args": [ "GoldenFreddy" ],
+			"block": "hide_office_object"
+		} ]
+	} ]
+} ]

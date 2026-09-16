@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>FNAF Parody</title>
+<style>
+  :root { color-scheme: dark; }
+  html,body{margin:0;min-height:100%;background:#0b0b0d;color:#eee;
+    font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    -webkit-text-size-adjust:100%}
+  body{display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:12px;padding:12px;box-sizing:border-box}
+
+  /* The canvas must keep a 1280x720 backing store: emscripten resizes the
+     backing store to match any CSS size set on the canvas, and raylib then
+     draws 1280-space UI into a smaller framebuffer while reporting the mouse in
+     canvas pixels, so input lands in the wrong place. Leaving the canvas at its
+     natural size and scaling a wrapper with a transform avoids that - and
+     emscripten maps pointer coords through canvas.width/rect.width, so a
+     transformed canvas still reads correctly. */
+  #frame{width:100%;max-width:1280px;overflow:hidden}
+  #stage{width:1280px;height:720px;transform-origin:top left}
+  canvas{display:block;background:#000;touch-action:none}
+
+  #status{color:#9a9aa2;min-height:1.4em;text-align:center}
+
+  #pad{display:none;gap:8px;user-select:none;-webkit-user-select:none;
+    touch-action:none;align-items:center}
+  #pad.on{display:flex}
+  #dpad{display:grid;grid-template-columns:repeat(3,56px);
+    grid-template-rows:repeat(2,56px);gap:6px}
+  .k{display:grid;place-items:center;background:#1b1b20;color:#e8e8ec;
+    border:1px solid #33333c;border-radius:12px;font:600 17px/1 inherit;
+    touch-action:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
+  .k:active,.k[data-held="1"]{background:#33333e;border-color:#55556a}
+  #kw{grid-column:2;grid-row:1}
+  #ka{grid-column:1;grid-row:2}
+  #ks{grid-column:2;grid-row:2}
+  #kd{grid-column:3;grid-row:2}
+  #kspace{width:96px;height:56px}
+</style>
+</head>
+<body>
+  <div id="frame"><div id="stage">
+    <canvas id="canvas" width="1280" height="720"></canvas>
+  </div></div>
+  <div id="status">Loading…</div>
+
+  <div id="pad">
+    <div id="dpad">
+      <div class="k" id="kw" data-key="w">W</div>
+      <div class="k" id="ka" data-key="a">A</div>
+      <div class="k" id="ks" data-key="s">S</div>
+      <div class="k" id="kd" data-key="d">D</div>
+    </div>
+    <div class="k" id="kspace" data-key=" ">Action</div>
+  </div>
+
+  <script>
+  // Scale the stage to fit without ever touching the canvas' CSS size.
+  (function () {
+    const frame = document.getElementById('frame');
+    const stage = document.getElementById('stage');
+    const fit = () => {
+      const maxH = Math.max(240, innerHeight - 190);
+      const k = Math.min(frame.clientWidth / 1280, maxH / 720);
+      stage.style.transform = 'scale(' + k + ')';
+      frame.style.height = (720 * k) + 'px';
+    };
+    addEventListener('resize', fit);
+    addEventListener('orientationchange', fit);
+    fit();
+  })();
+  </script>
+
+  <script>
+  // Touch controls. The minigames read movement with IsKeyDown, so a button has
+  // to hold the key down for as long as it is pressed rather than firing a
+  // single tap - hence the keydown/keyup pair tied to pointer down/up.
+  (function () {
+    const KEYS = {
+      w: { code: 'KeyW', keyCode: 87 },
+      a: { code: 'KeyA', keyCode: 65 },
+      s: { code: 'KeyS', keyCode: 83 },
+      d: { code: 'KeyD', keyCode: 68 },
+      ' ': { code: 'Space', keyCode: 32 },
+    };
+
+    const send = (type, key) => {
+      const k = KEYS[key];
+      if (!k) return;
+      // Emscripten's GLFW shim reads keyCode/which, and listens on the
+      // document, so the event has to bubble from there.
+      const ev = new KeyboardEvent(type, {
+        key, code: k.code, keyCode: k.keyCode, which: k.keyCode,
+        bubbles: true, cancelable: true, view: window,
+      });
+      document.dispatchEvent(ev);
+    };
+
+    const held = new Set();
+    const press = (el, key) => {
+      if (held.has(key)) return;
+      held.add(key);
+      el.dataset.held = '1';
+      send('keydown', key);
+    };
+    const release = (el, key) => {
+      if (!held.has(key)) return;
+      held.delete(key);
+      delete el.dataset.held;
+      send('keyup', key);
+    };
+
+    for (const el of document.querySelectorAll('.k')) {
+      const key = el.dataset.key;
+      el.addEventListener('pointerdown', (e) => {
+        e.preventDefault();
+        // Capture keeps the key held if the finger slides off the button.
+        // It throws for a pointer id the element never saw, so never let that
+        // abort the keypress below.
+        try { el.setPointerCapture?.(e.pointerId); } catch {}
+        press(el, key);
+      });
+      const up = (e) => { e.preventDefault(); release(el, key); };
+      el.addEventListener('pointerup', up);
+      el.addEventListener('pointercancel', up);
+      el.addEventListener('lostpointercapture', up);
+      // A pointer that leaves the button without capture would otherwise stick.
+      el.addEventListener('pointerleave', up);
+    }
+
+    // Never leave a key stuck down if the tab goes away mid-press.
+    addEventListener('blur', () => {
+      for (const el of document.querySelectorAll('.k[data-held="1"]')) {
+        release(el, el.dataset.key);
+      }
+    });
+
+    // Show the pad on touch devices, or when the viewport is phone-sized.
+    const touch = matchMedia('(hover: none), (pointer: coarse)').matches
+      || 'ontouchstart' in window;
+    if (touch || innerWidth < 820) document.getElementById('pad').classList.add('on');
+    window.__showPad = () => document.getElementById('pad').classList.add('on');
+  })();
+  </script>
+  <script type="module" src="main.js"></script>
+</body>
+</html>

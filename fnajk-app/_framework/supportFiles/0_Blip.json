@@ -1,0 +1,13 @@
+[ {
+	"duration": 1,
+	"sprite": "BlipAnim\\01.png"
+}, {
+	"duration": 1,
+	"sprite": "BlipAnim\\03.png"
+}, {
+	"duration": 1,
+	"sprite": "BlipAnim\\07.png"
+}, {
+	"duration": 1,
+	"sprite": "BlipAnim\\04.png"
+} ]

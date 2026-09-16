@@ -1,0 +1,33 @@
+[ {
+	"args": [ "600" ],
+	"block": "current_tick_equals",
+	"subcode": [ {
+		"args": [ "EerieAmbienceLargeSca_MV005.wav", "6", false ],
+		"block": "play_sound"
+	} ]
+}, {
+	"args": [ "3000" ],
+	"block": "every_num_ticks",
+	"subcode": [ {
+		"args": [],
+		"block": "if_camera_up",
+		"subcode": [ {
+			"args": [ "EerieAmbienceLargeSca_MV005.wav", "6", false ],
+			"block": "play_sound"
+		} ]
+	} ]
+}, {
+	"args": [ "5000" ],
+	"block": "every_num_ticks",
+	"subcode": [ {
+		"args": [],
+		"block": "if_camera_up",
+		"subcode": [ {
+			"args": [ "circus.wav", "9", false ],
+			"block": "play_sound"
+		} ]
+	}, {
+		"args": [ "Just some random events to play the misc sounds" ],
+		"block": "comment"
+	} ]
+} ]

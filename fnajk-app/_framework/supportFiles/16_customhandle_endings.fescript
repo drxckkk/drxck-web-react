@@ -1,0 +1,36 @@
+[ {
+	"args": [],
+	"block": "on_night_end",
+	"subcode": [ {
+		"args": [ "%game(Night)", "<", "5" ],
+		"block": "compare_values",
+		"subcode": [ {
+			"args": [ "6AM" ],
+			"block": "goto_menu"
+		} ]
+	}, {
+		"args": [ "%game(Night)", "==", "5" ],
+		"block": "compare_values",
+		"subcode": [ {
+			"args": [ "Ending5" ],
+			"block": "goto_menu"
+		} ]
+	}, {
+		"args": [ "%game(Night)", "==", "6" ],
+		"block": "compare_values",
+		"subcode": [ {
+			"args": [ "Ending6" ],
+			"block": "goto_menu"
+		} ]
+	}, {
+		"args": [ "%game(Night)", "==", "7" ],
+		"block": "compare_values",
+		"subcode": [ {
+			"args": [ "Ending7" ],
+			"block": "goto_menu"
+		} ]
+	}, {
+		"args": [ "At the end of the night, I check which night has been loaded and proceed to the specific ending accordingly" ],
+		"block": "comment"
+	} ]
+} ]

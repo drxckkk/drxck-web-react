@@ -1,0 +1,449 @@
+[ {
+	"args": [],
+	"block": "on_game_loop",
+	"subcode": [ {
+		"args": [],
+		"block": "if_camera_up",
+		"subcode": [ {
+			"args": [ "Bathrooms" ],
+			"block": "if_current_cam",
+			"subcode": [ {
+				"args": [ "restrooms" ],
+				"block": "show_cam_sprite"
+			}, {
+				"args": [ "cameradisabled" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "supplycloset" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "showShowstage" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "piratecove" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "backShowstage" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "diningarea" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "westhall" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "ehallcorner" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "whallcorner" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "kitchen" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "easthall" ],
+				"block": "hide_cam_sprite"
+			} ]
+		}, {
+			"args": [ "DiningArea" ],
+			"block": "if_current_cam",
+			"subcode": [ {
+				"args": [ "diningarea" ],
+				"block": "show_cam_sprite"
+			}, {
+				"args": [ "cameradisabled" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "supplycloset" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "showShowstage" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "piratecove" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "backShowstage" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "restrooms" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "westhall" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "ehallcorner" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "whallcorner" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "kitchen" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "easthall" ],
+				"block": "hide_cam_sprite"
+			} ]
+		}, {
+			"args": [ "Backstage" ],
+			"block": "if_current_cam",
+			"subcode": [ {
+				"args": [ "backShowstage" ],
+				"block": "show_cam_sprite"
+			}, {
+				"args": [ "cameradisabled" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "supplycloset" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "showShowstage" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "piratecove" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "restrooms" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "diningarea" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "westhall" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "ehallcorner" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "whallcorner" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "kitchen" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "easthall" ],
+				"block": "hide_cam_sprite"
+			} ]
+		}, {
+			"args": [ "WestCloset" ],
+			"block": "if_current_cam",
+			"subcode": [ {
+				"args": [ "supplycloset" ],
+				"block": "show_cam_sprite"
+			}, {
+				"args": [ "cameradisabled" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "restrooms" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "showShowstage" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "piratecove" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "backShowstage" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "diningarea" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "westhall" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "ehallcorner" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "whallcorner" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "kitchen" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "easthall" ],
+				"block": "hide_cam_sprite"
+			} ]
+		}, {
+			"args": [ "Kitchen" ],
+			"block": "if_current_cam",
+			"subcode": [ {
+				"args": [ "kitchen" ],
+				"block": "show_cam_sprite"
+			}, {
+				"args": [ "cameradisabled" ],
+				"block": "show_cam_sprite"
+			}, {
+				"args": [ "supplycloset" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "showShowstage" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "piratecove" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "backShowstage" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "diningarea" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "westhall" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "ehallcorner" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "whallcorner" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "restrooms" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "easthall" ],
+				"block": "hide_cam_sprite"
+			} ]
+		}, {
+			"args": [ "WestHall" ],
+			"block": "if_current_cam",
+			"subcode": [ {
+				"args": [ "westhall" ],
+				"block": "show_cam_sprite"
+			}, {
+				"args": [ "cameradisabled" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "supplycloset" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "showShowstage" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "piratecove" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "backShowstage" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "diningarea" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "restrooms" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "ehallcorner" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "whallcorner" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "kitchen" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "easthall" ],
+				"block": "hide_cam_sprite"
+			} ]
+		}, {
+			"args": [ "WestHallCorner" ],
+			"block": "if_current_cam",
+			"subcode": [ {
+				"args": [ "whallcorner" ],
+				"block": "show_cam_sprite"
+			}, {
+				"args": [ "cameradisabled" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "supplycloset" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "showShowstage" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "piratecove" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "backShowstage" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "diningarea" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "westhall" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "ehallcorner" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "restrooms" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "kitchen" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "easthall" ],
+				"block": "hide_cam_sprite"
+			} ]
+		}, {
+			"args": [ "PirateCove" ],
+			"block": "if_current_cam",
+			"subcode": [ {
+				"args": [ "piratecove" ],
+				"block": "show_cam_sprite"
+			}, {
+				"args": [ "cameradisabled" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "supplycloset" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "showShowstage" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "restrooms" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "backShowstage" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "diningarea" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "westhall" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "ehallcorner" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "whallcorner" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "kitchen" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "easthall" ],
+				"block": "hide_cam_sprite"
+			} ]
+		}, {
+			"args": [ "EastHall" ],
+			"block": "if_current_cam",
+			"subcode": [ {
+				"args": [ "easthall" ],
+				"block": "show_cam_sprite"
+			}, {
+				"args": [ "cameradisabled" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "supplycloset" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "showShowstage" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "piratecove" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "backShowstage" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "diningarea" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "westhall" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "ehallcorner" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "whallcorner" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "kitchen" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "restrooms" ],
+				"block": "hide_cam_sprite"
+			} ]
+		}, {
+			"args": [ "EastHallCorner" ],
+			"block": "if_current_cam",
+			"subcode": [ {
+				"args": [ "ehallcorner" ],
+				"block": "show_cam_sprite"
+			}, {
+				"args": [ "cameradisabled" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "supplycloset" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "showShowstage" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "piratecove" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "backShowstage" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "diningarea" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "westhall" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "restrooms" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "whallcorner" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "kitchen" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "easthall" ],
+				"block": "hide_cam_sprite"
+			} ]
+		}, {
+			"args": [ "Showstage" ],
+			"block": "if_current_cam",
+			"subcode": [ {
+				"args": [ "showShowstage" ],
+				"block": "show_cam_sprite"
+			}, {
+				"args": [ "cameradisabled" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "supplycloset" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "restrooms" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "piratecove" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "backShowstage" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "diningarea" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "westhall" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "ehallcorner" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "whallcorner" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "kitchen" ],
+				"block": "hide_cam_sprite"
+			}, {
+				"args": [ "easthall" ],
+				"block": "hide_cam_sprite"
+			} ]
+		} ]
+	} ]
+} ]

@@ -1,0 +1,34 @@
+[ {
+	"duration": 1,
+	"sprite": "Camera Panel\\cam_01.png"
+}, {
+	"duration": 1,
+	"sprite": "Camera Panel\\cam_02.png"
+}, {
+	"duration": 1,
+	"sprite": "Camera Panel\\cam_03.png"
+}, {
+	"duration": 1,
+	"sprite": "Camera Panel\\cam_04.png"
+}, {
+	"duration": 1,
+	"sprite": "Camera Panel\\cam_05.png"
+}, {
+	"duration": 1,
+	"sprite": "Camera Panel\\cam_06.png"
+}, {
+	"duration": 1,
+	"sprite": "Camera Panel\\cam_07.png"
+}, {
+	"duration": 1,
+	"sprite": "Camera Panel\\cam_08.png"
+}, {
+	"duration": 1,
+	"sprite": "Camera Panel\\cam_09.png"
+}, {
+	"duration": 1,
+	"sprite": "Camera Panel\\cam_10.png"
+}, {
+	"duration": 1,
+	"sprite": "Camera Panel\\cam_11.png"
+} ]

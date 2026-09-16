@@ -1,0 +1,23 @@
+[ {
+	"args": [ "40" ],
+	"block": "every_num_ticks",
+	"subcode": [ {
+		"args": [],
+		"block": "if_camera_up",
+		"subcode": [ {
+			"args": [ "reddotcam" ],
+			"block": "show_cam_sprite"
+		} ]
+	} ]
+}, {
+	"args": [ "80" ],
+	"block": "every_num_ticks",
+	"subcode": [ {
+		"args": [],
+		"block": "if_camera_up",
+		"subcode": [ {
+			"args": [ "reddotcam" ],
+			"block": "hide_cam_sprite"
+		} ]
+	} ]
+} ]

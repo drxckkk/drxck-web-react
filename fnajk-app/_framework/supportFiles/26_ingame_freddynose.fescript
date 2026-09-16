@@ -1,0 +1,15 @@
+[ {
+	"args": [],
+	"block": "user_left_clicked",
+	"subcode": [ {
+		"args": [ "freddynose" ],
+		"block": "is_mouse_over_object",
+		"subcode": [ {
+			"args": [ "honk.mp3", "6", false ],
+			"block": "play_sound"
+		}, {
+			"args": [ "boop" ],
+			"block": "comment"
+		} ]
+	} ]
+} ]

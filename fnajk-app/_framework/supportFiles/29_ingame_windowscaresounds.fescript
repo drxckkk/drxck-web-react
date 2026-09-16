@@ -1,0 +1,94 @@
+[ {
+	"args": [],
+	"block": "on_night_start",
+	"subcode": [ {
+		"args": [ "bonnieCooldown", "0" ],
+		"block": "set_var"
+	}, {
+		"args": [ "chicaCooldown", "0" ],
+		"block": "set_var"
+	}, {
+		"args": [ "This will play the spooky sound when an animatronic is at your door" ],
+		"block": "comment"
+	} ]
+}, {
+	"args": [],
+	"block": "on_game_loop",
+	"subcode": [ {
+		"args": [ "Bonnie", "LeftLight" ],
+		"block": "if_anim_light",
+		"subcode": [ {
+			"args": [ "LeftLight" ],
+			"block": "is_light_on",
+			"subcode": [ {
+				"args": [ "%var(bonnieCooldown)", "==", "0" ],
+				"block": "compare_values",
+				"subcode": [ {
+					"args": [],
+					"block": "if_camera_up",
+					"negated": true,
+					"subcode": [ {
+						"args": [ "windowscare.mp3", "30", false ],
+						"block": "play_sound"
+					}, {
+						"args": [ "bonnieCooldown", "1" ],
+						"block": "set_var"
+					} ]
+				} ]
+			}, {
+				"args": [ "%var(bonnieCooldown)", "==", "1" ],
+				"block": "compare_values",
+				"subcode": [ {
+					"args": [ "Do nothing" ],
+					"block": "comment"
+				} ]
+			} ]
+		} ]
+	}, {
+		"args": [ "Bonnie", "LeftLight" ],
+		"block": "if_anim_light",
+		"negated": true,
+		"subcode": [ {
+			"args": [ "bonnieCooldown", "0" ],
+			"block": "set_var"
+		} ]
+	}, {
+		"args": [ "Chica", "RightLight" ],
+		"block": "if_anim_light",
+		"subcode": [ {
+			"args": [ "RightLight" ],
+			"block": "is_light_on",
+			"subcode": [ {
+				"args": [ "%var(chicaCooldown)", "==", "0" ],
+				"block": "compare_values",
+				"subcode": [ {
+					"args": [],
+					"block": "if_camera_up",
+					"negated": true,
+					"subcode": [ {
+						"args": [ "windowscare.mp3", "30", false ],
+						"block": "play_sound"
+					}, {
+						"args": [ "chicaCooldown", "1" ],
+						"block": "set_var"
+					} ]
+				} ]
+			}, {
+				"args": [ "%var(chicaCooldown)", "==", "1" ],
+				"block": "compare_values",
+				"subcode": [ {
+					"args": [ "Do nothing" ],
+					"block": "comment"
+				} ]
+			} ]
+		} ]
+	}, {
+		"args": [ "Chica", "RightLight" ],
+		"block": "if_anim_light",
+		"negated": true,
+		"subcode": [ {
+			"args": [ "chicaCooldown", "0" ],
+			"block": "set_var"
+		} ]
+	} ]
+} ]

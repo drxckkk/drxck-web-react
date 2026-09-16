@@ -1,0 +1,36 @@
+[ {
+	"args": [],
+	"block": "on_night_end",
+	"subcode": [ {
+		"args": [ "%game(Night)", "<", "5" ],
+		"block": "compare_values",
+		"subcode": [ {
+			"args": [ "Night", "%math(%data(Night) + 1)" ],
+			"block": "set_data"
+		} ]
+	}, {
+		"args": [ "%game(Night)", "==", "5" ],
+		"block": "compare_values",
+		"subcode": [ {
+			"args": [ "beat5", "1" ],
+			"block": "set_data"
+		} ]
+	}, {
+		"args": [ "%game(Night)", "==", "6" ],
+		"block": "compare_values",
+		"subcode": [ {
+			"args": [ "beat6", "1" ],
+			"block": "set_data"
+		} ]
+	}, {
+		"args": [ "%game(Night)", "==", "7" ],
+		"block": "compare_values",
+		"subcode": [ {
+			"args": [ "beatgame", "1" ],
+			"block": "set_data"
+		} ]
+	}, {
+		"args": [ "DO NOT TOUCH! This is how the engine saves the data" ],
+		"block": "comment"
+	} ]
+} ]

@@ -1,0 +1,3299 @@
+{
+	"animatronics": {
+		"Bonnie": {
+			"ai": [ 3, 7, 11, 15, 18, 20, 20 ],
+			"ignoremask": true,
+			"jumpscare": [ "XSCREAM.mp3", "Bonnie_Jumpscare" ],
+			"path": [ {
+				"id": "Classroom",
+				"type": "camera"
+			}, {
+				"id": "DiningArea",
+				"type": "camera"
+			}, {
+				"id": "Backstage",
+				"type": "camera"
+			}, {
+				"id": "WestHall",
+				"type": "camera"
+			}, {
+				"id": "WestHallCorner",
+				"type": "camera"
+			}, {
+				"id": "LeftLight",
+				"type": "light"
+			}, {
+				"id": "LeftDoor",
+				"type": "door"
+			}, {
+				"type": "office"
+			} ]
+		},
+		"Chica": {
+			"ai": [ 2, 6, 10, 14, 17, 20, 20 ],
+			"ignoremask": true,
+			"jumpscare": [ "XSCREAM.mp3", "Chica_Jumpscare" ],
+			"path": [ {
+				"id": "Classroom",
+				"type": "camera"
+			}, {
+				"id": "DiningArea",
+				"type": "camera"
+			}, {
+				"id": "Bathrooms",
+				"type": "camera"
+			}, {
+				"id": "Kitchen",
+				"type": "camera"
+			}, {
+				"id": "EastHall",
+				"type": "camera"
+			}, {
+				"id": "EastHallCorner",
+				"type": "camera"
+			}, {
+				"id": "RightLight",
+				"type": "light"
+			}, {
+				"id": "RightDoor",
+				"type": "door"
+			}, {
+				"type": "office"
+			} ]
+		},
+		"Foxy": {
+			"ai": [ 0, 4, 9, 14, 17, 20, 20 ],
+			"ignoremask": true,
+			"jumpscare": [ "XSCREAM.mp3", "Foxy_Jumpscare" ],
+			"path": [ {
+				"id": "Classroom",
+				"type": "camera"
+			}, {
+				"id": "PirateCove",
+				"type": "camera"
+			}, {
+				"state": "peek",
+				"type": "change_state"
+			}, {
+				"state": "peek2",
+				"type": "change_state"
+			}, {
+				"state": "peek3",
+				"type": "change_state"
+			}, {
+				"id": "LeftLight",
+				"type": "light"
+			}, {
+				"id": "LeftDoor",
+				"type": "door"
+			}, {
+				"type": "office"
+			} ]
+		},
+		"Denisquinte": {
+			"ai": [ 2, 4, 6, 9, 12, 15, 20 ],
+			"start_night": 2,
+			"attention_camera": "WestCloset",
+			"overwatch_ticks": 180,
+			"neglect_ticks": 480,
+    "rush_ticks": 180,
+			"ignoremask": true,
+			"jumpscare": [ "XSCREAM.mp3", "Denisquinte_Jumpscare" ],
+			"path": [ {
+				"id": "WestCloset",
+				"type": "camera"
+			}, {
+				"state": "peeking",
+				"type": "change_state"
+			}, {
+				"state": "leaving",
+				"type": "change_state"
+			}, {
+				"state": "rush",
+				"type": "change_state"
+			}, {
+				"id": "LeftDoor",
+				"type": "door"
+			}, {
+				"type": "office"
+			} ]
+		},
+		"Freddy": {
+			"ai": [ 0, 1, 6, 11, 16, 20, 20 ],
+			"ignoremask": true,
+			"jumpscare": [ "XSCREAM.mp3", "Freddy_Jumpscare" ],
+			"path": [ {
+				"id": "Classroom",
+				"type": "camera"
+			}, {
+				"id": "DiningArea",
+				"type": "camera"
+			}, {
+				"id": "Bathrooms",
+				"type": "camera"
+			}, {
+				"id": "Kitchen",
+				"type": "camera"
+			}, {
+				"id": "EastHall",
+				"type": "camera"
+			}, {
+				"id": "EastHallCorner",
+				"type": "camera"
+			}, {
+				"id": "RightDoor",
+				"type": "door"
+			}, {
+				"type": "office"
+			} ]
+		},
+		"NPC_PowerOutAI": {
+			"ai": [ 0, 0, 0, 0, 0, 0, 0 ],
+			"ignoremask": false,
+			"jumpscare": [ "XSCREAM.mp3", "Freddy_PowerOutJumpscare" ],
+			"path": [ {
+				"id": "NPC_PowerOutPRE",
+				"type": "camera"
+			}, {
+				"id": "NPC_PowerOut0",
+				"type": "camera"
+			}, {
+				"id": "NPC_PowerOut1",
+				"type": "camera"
+			}, {
+				"id": "NPC_PowerOut2",
+				"type": "camera"
+			}, {
+				"id": "NPC_PowerOut3",
+				"type": "camera"
+			}, {
+				"type": "office"
+			} ]
+		}
+	},
+	"cameras": {
+		"Backstage": {
+			"display_code": "CAM 1C",
+			"display_name": "CAM 1C - CANTINA",
+			"panorama": false,
+			"states": {
+				"Bonnie": "School Animatronics\\BonnieReplacement\\cam-1c.png",
+				"Default": "School Cameras\\cam-1c-canteen.png"
+			},
+			"static": true
+		},
+		"Bathrooms": {
+			"display_code": "CAM WC",
+			"display_name": "CAM WC - BANHEIROS",
+			"panorama": false,
+			"states": {
+				"Chica": "School Animatronics\\ChicaReplacement\\cam-wc.png",
+				"Default": "School Cameras\\cam-wc-bathrooms.png",
+				"Freddy": "School Animatronics\\FreddyReplacement\\cam-wc.png",
+				"Freddy,Chica": "School Animatronics\\SharedStates\\wc-freddy-chica.png"
+			},
+			"static": true
+		},
+		"CamUI": {
+			"buttons": {
+				"Backstage": [ "a_cameranotselected.png", 560, 235, "a_cameraselected.png" ],
+				"Bathrooms": [ "a_cameranotselected.png", 560, 315, "a_cameraselected.png" ],
+				"Classroom": [ "a_cameranotselected.png", 408, 155, "a_cameraselected.png" ],
+				"DiningArea": [ "a_cameranotselected.png", 560, 185, "a_cameraselected.png" ],
+				"EastHall": [ "a_cameranotselected.png", 520, 230, "a_cameraselected.png" ],
+				"EastHallCorner": [ "a_cameranotselected.png", 520, 285, "a_cameraselected.png" ],
+				"Entrance": [ "a_cameranotselected.png", 485, 138, "a_cameraselected.png" ],
+				"Kitchen": [ "a_cameranotselected.png", 560, 145, "a_cameraselected.png" ],
+				"PirateCove": [ "a_cameranotselected.png", 420, 290, "a_cameraselected.png" ],
+				"Showstage": [ "a_cameranotselected.png", 485, 180, "a_cameraselected.png" ],
+				"WestCloset": [ "a_cameranotselected.png", 408, 205, "a_cameraselected.png" ],
+				"WestHall": [ "a_cameranotselected.png", 465, 230, "a_cameraselected.png" ],
+				"WestHallCorner": [ "a_cameranotselected.png", 465, 285, "a_cameraselected.png" ]
+			},
+			"music_box": [ 244, -102 ],
+			"sprites": {
+				"a_map": [ "School Cameras\\school-camera-map.png", 403, 120 ],
+				"reddotcam": [ "Cams\\7.png", 15, 17 ],
+				"sprite2309": [ "CamBorder\\11.png", 0, 0 ]
+			}
+		},
+		"DiningArea": {
+			"display_code": "CAM 1B",
+			"display_name": "CAM 1B - REFEITORIO",
+			"panorama": false,
+			"states": {
+				"Bonnie": "School Animatronics\\BonnieReplacement\\cam-1b.png",
+				"Chica": "School Animatronics\\ChicaReplacement\\cam-1b.png",
+				"Chica,Bonnie": "School Animatronics\\SharedStates\\dining-bonnie-chica.png",
+				"Chica,Freddy": "School Animatronics\\SharedStates\\dining-chica-freddy.png",
+				"Default": "School Cameras\\cam-1b-cafeteria.png",
+				"Freddy": "School Animatronics\\FreddyReplacement\\cam-1b.png",
+				"Freddy,Bonnie": "School Animatronics\\SharedStates\\dining-bonnie-freddy.png",
+				"Freddy,Bonnie,Chica": "School Animatronics\\SharedStates\\dining-all-three.png"
+			},
+			"static": true
+		},
+		"EastHall": {
+			"display_code": "CAM 4A",
+			"display_name": "CAM 4A - CORREDOR DIREITO",
+			"panorama": false,
+			"states": {
+				"Chica": "School Animatronics\\ChicaReplacement\\cam-4a.png",
+				"Default": "School Cameras\\cam-4a-right-hall.png",
+				"Freddy": "School Animatronics\\FreddyReplacement\\cam-4a.png",
+				"Freddy,Chica": "School Animatronics\\SharedStates\\right-hall-freddy-chica.png"
+			},
+			"static": true
+		},
+		"EastHallCorner": {
+			"display_code": "CAM 4B",
+			"display_name": "CAM 4B - ACESSO DIREITO DA SALA DO VIGIA",
+			"panorama": false,
+			"states": {
+				"Chica": "School Animatronics\\ChicaReplacement\\cam-4b.png",
+				"Default": "School Cameras\\cam-4b-right-corner.png",
+				"Freddy": "School Animatronics\\FreddyReplacement\\cam-4b.png",
+				"Freddy,Chica": "School Animatronics\\SharedStates\\right-corner-freddy-chica.png"
+			},
+			"static": true
+		},
+		"Kitchen": {
+			"display_code": "CAM 6",
+			"display_name": "CAM 6 - COZINHA",
+			"panorama": false,
+			"states": {
+				"Chica": "School Animatronics\\ChicaReplacement\\cam-6.png",
+				"Default": "School Cameras\\cam-6-kitchen.png",
+				"Freddy": "School Animatronics\\FreddyReplacement\\cam-6.png",
+				"Freddy,Chica": "School Animatronics\\SharedStates\\kitchen-freddy-chica.png"
+			},
+			"static": true
+		},
+		"NPC_PowerOut0": {
+			"panorama": false,
+			"states": {
+				"Default": ""
+			},
+			"static": true
+		},
+		"NPC_PowerOut1": {
+			"panorama": false,
+			"states": {
+				"Default": ""
+			},
+			"static": true
+		},
+		"NPC_PowerOut2": {
+			"panorama": false,
+			"states": {
+				"Default": ""
+			},
+			"static": true
+		},
+		"NPC_PowerOut3": {
+			"panorama": false,
+			"states": {
+				"Default": ""
+			},
+			"static": true
+		},
+		"NPC_PowerOutPRE": {
+			"panorama": false,
+			"states": {
+				"Default": ""
+			},
+			"static": true
+		},
+		"PirateCove": {
+			"display_code": "CAM PC",
+			"display_name": "CAM PC - QUADRA COBERTA",
+			"panorama": false,
+			"states": {
+				"Default": "School Cameras\\cam-pc-gym.png",
+				"Foxy:peek": "School Animatronics\\FoxyReplacement\\cam-pc-peek.png",
+				"Foxy:peek2": "School Animatronics\\FoxyReplacement\\cam-pc-peek2.png",
+				"Foxy:peek3": "School Animatronics\\FoxyReplacement\\cam-pc-peek3.png"
+			},
+			"static": true
+		},
+		"Showstage": {
+			"display_code": "CAM 1A",
+			"display_name": "CAM 1A - PATIO CENTRAL",
+			"panorama": false,
+			"states": {
+				"Bonnie": "School Animatronics\\BonnieReplacement\\cam-1a.png",
+				"Bonnie,Chica": "School Animatronics\\BonnieReplacement\\cam-1a.png",
+				"Chica": "School Animatronics\\ChicaReplacement\\cam-1a.png",
+				"Default": "School Cameras\\cam-1a-central-courtyard.png",
+				"Freddy": "School Cameras\\cam-1a-central-courtyard.png",
+				"Freddy,Bonnie": "School Animatronics\\BonnieReplacement\\cam-1a.png",
+				"Freddy,Bonnie,Chica": "School Animatronics\\BonnieReplacement\\cam-1a.png",
+				"Freddy,Chica": "School Animatronics\\ChicaReplacement\\cam-1a.png"
+			},
+			"static": true
+		},
+		"WestCloset": {
+			"display_code": "CAM 3",
+		"display_name": "CAM 3 - BIBLIOTECA",
+		"panorama": false,
+			"states": {
+				"Bonnie": "School Animatronics\\BonnieReplacement\\cam-3.png",
+				"Default": "School Cameras\\cam-3-library.png",
+				"Denisquinte": "School Animatronics\\Denisquinte\\library-stage-1.png",
+				"Denisquinte:peeking": "School Animatronics\\Denisquinte\\library-stage-2.png",
+				"Denisquinte:leaving": "School Animatronics\\Denisquinte\\library-stage-3.png",
+				"Denisquinte:rush": "School Animatronics\\Denisquinte\\library-stage-4-rush.png"
+			},
+		"static": false
+		},
+		"WestHall": {
+			"display_code": "CAM 2A",
+			"display_name": "CAM 2A - CORREDOR ESQUERDO",
+			"panorama": false,
+			"states": {
+				"Bonnie": "School Animatronics\\BonnieReplacement\\cam-2a.png",
+				"Bonnie,Foxy": "School Animatronics\\BonnieReplacement\\cam-2a.png",
+				"Chica": "School Animatronics\\ChicaReplacement\\cam-2a.png",
+				"Chica,Bonnie": "School Animatronics\\SharedStates\\left-hall-bonnie-chica.png",
+				"Chica,Foxy": "School Animatronics\\ChicaReplacement\\cam-2a.png",
+				"Chica,Bonnie,Foxy": "School Animatronics\\BonnieReplacement\\cam-2a.png",
+				"Default": "School Cameras\\cam-2a-left-hall.png",
+				"Foxy": "School Cameras\\cam-2a-left-hall.png"
+			},
+			"static": true
+		},
+		"WestHallCorner": {
+			"display_code": "CAM 2B",
+			"display_name": "CAM 2B - ACESSO ESQUERDO DA SALA DO VIGIA",
+			"panorama": false,
+			"states": {
+				"Bonnie": "School Animatronics\\BonnieReplacement\\cam-2b.png",
+				"Chica": "School Animatronics\\ChicaReplacement\\cam-2b.png",
+				"Chica,Bonnie": "School Animatronics\\SharedStates\\left-corner-bonnie-chica.png",
+				"Default": "School Cameras\\cam-2b-left-corner.png"
+			},
+			"static": true
+		},
+		"Classroom": {
+			"display_code": "CAM 5",
+			"display_name": "CAM 5 - SALA DE AULA",
+			"panorama": false,
+			"states": {
+				"Default": "School Cameras\\cam-5-classroom.png",
+				"Bonnie": "School Animatronics\\ClassroomStates\\bonnie.png",
+				"Chica": "School Animatronics\\ClassroomStates\\chica.png",
+				"Foxy": "School Animatronics\\ClassroomStates\\foxy.png",
+				"Freddy": "School Animatronics\\ClassroomStates\\freddy.png",
+				"Bonnie,Chica": "School Animatronics\\ClassroomStates\\bonnie-chica.png",
+				"Bonnie,Foxy": "School Animatronics\\ClassroomStates\\bonnie-foxy.png",
+				"Bonnie,Freddy": "School Animatronics\\ClassroomStates\\bonnie-freddy.png",
+				"Chica,Foxy": "School Animatronics\\ClassroomStates\\chica-foxy.png",
+				"Chica,Freddy": "School Animatronics\\ClassroomStates\\chica-freddy.png",
+				"Foxy,Freddy": "School Animatronics\\ClassroomStates\\foxy-freddy.png",
+				"Bonnie,Chica,Foxy": "School Animatronics\\ClassroomStates\\bonnie-chica-foxy.png",
+				"Bonnie,Chica,Freddy": "School Animatronics\\ClassroomStates\\bonnie-chica-freddy.png",
+				"Bonnie,Foxy,Freddy": "School Animatronics\\ClassroomStates\\bonnie-foxy-freddy.png",
+				"Chica,Foxy,Freddy": "School Animatronics\\ClassroomStates\\chica-foxy-freddy.png",
+				"Bonnie,Chica,Foxy,Freddy": "School Animatronics\\ClassroomStates\\all-four.png"
+			},
+			"static": true
+		},
+		"Entrance": {
+			"display_code": "CAM 7",
+			"display_name": "CAM 7 - PORTAO PRINCIPAL",
+			"panorama": false,
+			"states": {
+				"Default": "School Cameras\\cam-7-entrance.png"
+			},
+			"static": true
+		}
+	},
+	"ext_data": {
+		"skmutecall": {
+			"HideDelay": 400
+		},
+		"skpanoramamodifier": {
+			"Camera": 100,
+			"Office": 300
+		}
+	},
+	"game_info": {
+		"fnaf1": false,
+		"fnaf3": false,
+		"fnaf4": false,
+		"fps": 60,
+		"height": "720",
+		"id": "FNAF",
+		"invert": false,
+		"multiplayer": false,
+		"opacity": 255,
+		"style": 0,
+		"title": "Five Night's At Juscelino Kubitschek",
+		"vhs": false,
+		"width": "1280"
+	},
+	"loaded_extensions": [ "Advanced Visual", "Mute Call", "More Scripting Blocks", "Panorama Modifier", "AI toggle" ],
+	"menus": {
+		"6AM": {
+			"code": [ {
+				"args": [ "20" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM (8).png" ],
+					"block": "set_background"
+				}, {
+					"args": [ "At the beginning of the menu the 6AM chime will play." ],
+					"block": "comment"
+				}, {
+					"args": [ "Every 5 ticks, I modify the background to create the 6 AM animation." ],
+					"block": "comment"
+				}, {
+					"args": [ "To change the animation, please inspect the \"6AM2\" folder in your project's sprites directory." ],
+					"block": "comment"
+				} ]
+			}, {
+				"args": [ "25" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM (9).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "30" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (1).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "35" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (2).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "40" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (3).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "45" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (4).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "50" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (5).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "55" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (6).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "60" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (7).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "65" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (8).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "70" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (9).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "75" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (10).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "80" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (1).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "85" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (2).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "90" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (3).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "95" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (4).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "100" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (5).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "105" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (6).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "110" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (7).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "115" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (8).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "120" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (9).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "125" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (10).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "130" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM4 (1).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "135" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM4 (2).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "140" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM4 (3).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "145" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM4 (4).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "200" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Main" ],
+					"block": "goto_menu"
+				} ]
+			} ],
+			"elements": [],
+			"properties": {
+				"BackgroundImage": "6AM2\\6AM (1).png",
+				"BackgroundMusic": "6 AM\\fnaf-6-am.mp3",
+				"ButtonArrowColor": "255,255,255",
+				"ButtonArrowFont": "Consolas",
+				"ButtonArrowStr": ">>",
+				"ButtonArrows": true,
+				"FadeIn": true,
+				"FadeSpeed": 40,
+				"Panorama": false,
+				"StaticEffect": false
+			}
+		},
+		"AfterOver": {
+			"code": [ {
+				"args": [ "340" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Main" ],
+					"block": "goto_menu"
+				} ]
+			}, {
+				"args": [],
+				"block": "user_left_clicked",
+				"subcode": [ {
+					"args": [ "Main" ],
+					"block": "goto_menu"
+				} ]
+			} ],
+			"elements": [ {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 36,
+				"hidden": false,
+				"id": "",
+				"text": "Game Over",
+				"type": "StaticText",
+				"x": 474,
+				"y": 295
+			} ],
+			"properties": {
+				"BackgroundImage": "School Game Over\\archive-classroom.png",
+				"BackgroundMusic": "",
+				"ButtonArrowColor": "255,255,255",
+				"ButtonArrowFont": "Consolas",
+				"ButtonArrowStr": ">>",
+				"ButtonArrows": true,
+				"FadeIn": true,
+				"FadeSpeed": 20,
+				"Panorama": false,
+				"StaticEffect": true
+			}
+		},
+		"CustomNight": {
+			"code": [ {
+				"args": [ "start" ],
+				"block": "button_clicked",
+				"subcode": [ {
+					"args": [ "night7" ],
+					"block": "show_element"
+				}, {
+					"args": [ "t1" ],
+					"block": "hide_element"
+				}, {
+					"args": [ "t2" ],
+					"block": "hide_element"
+				}, {
+					"args": [ "t3" ],
+					"block": "hide_element"
+				}, {
+					"args": [ "mainmenuback" ],
+					"block": "hide_element"
+				}, {
+					"args": [ "start" ],
+					"block": "hide_element"
+				}, {
+					"args": [ "easy" ],
+					"block": "hide_element"
+				}, {
+					"args": [ "medium" ],
+					"block": "hide_element"
+				}, {
+					"args": [ "hard" ],
+					"block": "hide_element"
+				}, {
+					"args": [ "goldenfreddycn" ],
+					"block": "hide_element"
+				}, {
+					"args": [ "freddy" ],
+					"block": "hide_element"
+				}, {
+					"args": [ "bonnie" ],
+					"block": "hide_element"
+				}, {
+					"args": [ "chica" ],
+					"block": "hide_element"
+				}, {
+					"args": [ "foxy" ],
+					"block": "hide_element"
+				}, {
+					"args": [ "office" ],
+					"block": "setoff"
+				}, {
+					"args": [],
+					"block": "start_custom_night"
+				}, {
+					"args": [ "When I press the \"Start\" button, I display the text for the 7th night and load the custom night" ],
+					"block": "comment"
+				} ]
+			}, {
+				"args": [ "easy" ],
+				"block": "button_clicked",
+				"subcode": [ {
+					"args": [ "freddy", "1" ],
+					"block": "set_cn_icon_ai"
+				}, {
+					"args": [ "bonnie", "3" ],
+					"block": "set_cn_icon_ai"
+				}, {
+					"args": [ "chica", "3" ],
+					"block": "set_cn_icon_ai"
+				}, {
+					"args": [ "foxy", "1" ],
+					"block": "set_cn_icon_ai"
+				} ]
+			}, {
+				"args": [ "medium" ],
+				"block": "button_clicked",
+				"subcode": [ {
+					"args": [ "freddy", "7" ],
+					"block": "set_cn_icon_ai"
+				}, {
+					"args": [ "bonnie", "9" ],
+					"block": "set_cn_icon_ai"
+				}, {
+					"args": [ "chica", "9" ],
+					"block": "set_cn_icon_ai"
+				}, {
+					"args": [ "foxy", "7" ],
+					"block": "set_cn_icon_ai"
+				} ]
+			}, {
+				"args": [ "hard" ],
+				"block": "button_clicked",
+				"subcode": [ {
+					"args": [ "freddy", "15" ],
+					"block": "set_cn_icon_ai"
+				}, {
+					"args": [ "bonnie", "17" ],
+					"block": "set_cn_icon_ai"
+				}, {
+					"args": [ "chica", "17" ],
+					"block": "set_cn_icon_ai"
+				}, {
+					"args": [ "foxy", "15" ],
+					"block": "set_cn_icon_ai"
+				} ]
+			}, {
+				"args": [ "goldenfreddycn" ],
+				"block": "button_clicked",
+				"subcode": [ {
+					"args": [ "freddy", "20" ],
+					"block": "set_cn_icon_ai"
+				}, {
+					"args": [ "bonnie", "20" ],
+					"block": "set_cn_icon_ai"
+				}, {
+					"args": [ "chica", "20" ],
+					"block": "set_cn_icon_ai"
+				}, {
+					"args": [ "foxy", "20" ],
+					"block": "set_cn_icon_ai"
+				} ]
+			}, {
+				"args": [ "mainmenuback" ],
+				"block": "button_clicked",
+				"subcode": [ {
+					"args": [ "Main" ],
+					"block": "goto_menu"
+				} ]
+			} ],
+			"elements": [ {
+				"animatronic": "Bonnie",
+				"hidden": false,
+				"id": "bonnie",
+				"sprite": "Custom Night\\528.png",
+				"type": "CustomNightIcon",
+				"x": 362,
+				"y": 185
+			}, {
+				"animatronic": "Chica",
+				"hidden": false,
+				"id": "chica",
+				"sprite": "Custom Night\\529.png",
+				"type": "CustomNightIcon",
+				"x": 429,
+				"y": 185
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 48,
+				"hidden": false,
+				"id": "t1",
+				"text": "Custom Night",
+				"type": "StaticText",
+				"x": 37,
+				"y": 70
+			}, {
+				"animatronic": "Freddy",
+				"hidden": false,
+				"id": "freddy",
+				"sprite": "Custom Night\\527.png",
+				"type": "CustomNightIcon",
+				"x": 295,
+				"y": 185
+			}, {
+				"animatronic": "Foxy",
+				"hidden": false,
+				"id": "foxy",
+				"sprite": "Custom Night\\536.png",
+				"type": "CustomNightIcon",
+				"x": 496,
+				"y": 185
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 32,
+				"hidden": false,
+				"id": "easy",
+				"text": "Easy",
+				"type": "Button",
+				"x": 37,
+				"y": 192
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 32,
+				"hidden": false,
+				"id": "medium",
+				"text": "Medium",
+				"type": "Button",
+				"x": 37,
+				"y": 219
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 32,
+				"hidden": false,
+				"id": "hard",
+				"text": "Hard",
+				"type": "Button",
+				"x": 37,
+				"y": 246
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 32,
+				"hidden": false,
+				"id": "goldenfreddycn",
+				"text": "Impossible",
+				"type": "Button",
+				"x": 37,
+				"y": 273
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 40,
+				"hidden": false,
+				"id": "t3",
+				"text": "Presets",
+				"type": "StaticText",
+				"x": 37,
+				"y": 157
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 32,
+				"hidden": false,
+				"id": "mainmenuback",
+				"text": "Back",
+				"type": "Button",
+				"x": 507,
+				"y": 75
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 32,
+				"hidden": false,
+				"id": "start",
+				"text": "Start",
+				"type": "Button",
+				"x": 381,
+				"y": 75
+			}, {
+				"hidden": false,
+				"id": "t2",
+				"sprite": "Custom Night\\532_nb.png",
+				"type": "Image",
+				"x": 118,
+				"y": 126
+			}, {
+				"hidden": true,
+				"id": "night7",
+				"sprite": "WhatDay\\538.png",
+				"type": "Image",
+				"x": 243,
+				"y": 142
+			}, {
+				"hidden": true,
+				"id": "clock",
+				"sprite": "WhatDay\\482.png",
+				"type": "Image",
+				"x": 571,
+				"y": 306
+			} ],
+			"properties": {
+				"BackgroundImage": "",
+				"BackgroundMusic": "",
+				"ButtonArrowColor": "255,255,255",
+				"ButtonArrowFont": "Consolas",
+				"ButtonArrowStr": ">>",
+				"ButtonArrows": true,
+				"FadeIn": false,
+				"FadeSpeed": 20,
+				"Panorama": false,
+				"StaticEffect": false
+			}
+		},
+		"Ending5": {
+			"code": [ {
+				"args": [],
+				"block": "on_menu_start",
+				"subcode": [ {
+					"args": [ "6 AM\\fnaf-6-am.mp3", "39", false ],
+					"block": "play_sound"
+				}, {
+					"args": [ "clickAllowed", "0" ],
+					"block": "set_var"
+				}, {
+					"args": [ "Check \"Ending6\" to see the comments" ],
+					"block": "comment"
+				} ]
+			}, {
+				"args": [ "20" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM (8).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "25" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM (9).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "30" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (1).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "35" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (2).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "40" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (3).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "45" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (4).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "50" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (5).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "55" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (6).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "60" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (7).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "65" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (8).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "70" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (9).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "75" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (10).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "80" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (1).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "85" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (2).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "90" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (3).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "95" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (4).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "100" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (5).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "105" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (6).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "110" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (7).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "115" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (8).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "120" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (9).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "125" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (10).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "130" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM4 (1).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "135" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM4 (2).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "140" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM4 (3).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "145" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM4 (4).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "200" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "End\\210.png" ],
+					"block": "set_background"
+				}, {
+					"args": [ "music box.wav", "39", false ],
+					"block": "play_sound"
+				}, {
+					"args": [ "clickAllowed", "1" ],
+					"block": "set_var"
+				} ]
+			}, {
+				"args": [ "1700" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Main" ],
+					"block": "goto_menu"
+				} ]
+			}, {
+				"args": [],
+				"block": "user_left_clicked",
+				"subcode": [ {
+					"args": [ "%var(clickAllowed)", "==", "1" ],
+					"block": "compare_values",
+					"subcode": [ {
+						"args": [ "Main" ],
+						"block": "goto_menu"
+					} ]
+				} ]
+			} ],
+			"elements": [],
+			"properties": {
+				"BackgroundImage": "6AM2\\6AM (1).png",
+				"BackgroundMusic": "",
+				"ButtonArrowColor": "255,255,255",
+				"ButtonArrowFont": "Consolas",
+				"ButtonArrowStr": ">>",
+				"ButtonArrows": true,
+				"FadeIn": true,
+				"FadeSpeed": 40,
+				"Panorama": false,
+				"StaticEffect": false
+			}
+		},
+		"Ending6": {
+			"code": [ {
+				"args": [],
+				"block": "on_menu_start",
+				"subcode": [ {
+					"args": [ "6 AM\\fnaf-6-am.mp3", "39", false ],
+					"block": "play_sound"
+				}, {
+					"args": [ "clickAllowed", "0" ],
+					"block": "set_var"
+				}, {
+					"args": [ "I play the 6 AM chime sound at the beginning of the menu." ],
+					"block": "comment"
+				}, {
+					"args": [ "I've also set a variable called \"clickAllowed\" to determine whether the player can click to skip the menu" ],
+					"block": "comment"
+				}, {
+					"args": [ "Every 5 ticks, I modify the background to create the 6 AM animation." ],
+					"block": "comment"
+				}, {
+					"args": [ "To change the animation, please inspect the \"6AM2\" folder in your project's sprites directory." ],
+					"block": "comment"
+				} ]
+			}, {
+				"args": [ "20" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM (8).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "25" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM (9).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "30" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (1).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "35" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (2).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "40" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (3).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "45" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (4).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "50" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (5).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "55" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (6).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "60" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (7).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "65" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (8).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "70" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (9).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "75" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (10).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "80" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (1).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "85" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (2).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "90" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (3).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "95" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (4).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "100" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (5).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "105" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (6).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "110" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (7).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "115" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (8).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "120" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (9).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "125" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (10).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "130" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM4 (1).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "135" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM4 (2).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "140" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM4 (3).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "145" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM4 (4).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "200" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "End\\522.png" ],
+					"block": "set_background"
+				}, {
+					"args": [ "music box.wav", "39", false ],
+					"block": "play_sound"
+				}, {
+					"args": [ "clickAllowed", "1" ],
+					"block": "set_var"
+				}, {
+					"args": [ "Once the animation concludes, the player can click, triggering another background change to display the end screen" ],
+					"block": "comment"
+				}, {
+					"args": [ "I'll play the music box sound, and if the player remains inactive, the game will teleport them back to the main menu" ],
+					"block": "comment"
+				} ]
+			}, {
+				"args": [ "1700" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Main" ],
+					"block": "goto_menu"
+				} ]
+			}, {
+				"args": [],
+				"block": "user_left_clicked",
+				"subcode": [ {
+					"args": [ "%var(clickAllowed)", "==", "1" ],
+					"block": "compare_values",
+					"subcode": [ {
+						"args": [ "Main" ],
+						"block": "goto_menu"
+					} ]
+				} ]
+			} ],
+			"elements": [],
+			"properties": {
+				"BackgroundImage": "6AM2\\6AM (1).png",
+				"BackgroundMusic": "",
+				"ButtonArrowColor": "255,255,255",
+				"ButtonArrowFont": "Consolas",
+				"ButtonArrowStr": ">>",
+				"ButtonArrows": true,
+				"FadeIn": false,
+				"FadeSpeed": 20,
+				"Panorama": false,
+				"StaticEffect": false
+			}
+		},
+		"Ending7": {
+			"code": [ {
+				"args": [],
+				"block": "on_menu_start",
+				"subcode": [ {
+					"args": [ "6 AM\\fnaf-6-am.mp3", "39", false ],
+					"block": "play_sound"
+				}, {
+					"args": [ "clickAllowed", "0" ],
+					"block": "set_var"
+				}, {
+					"args": [ "Check \"Ending6\" to see the comments" ],
+					"block": "comment"
+				} ]
+			}, {
+				"args": [ "20" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM (8).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "25" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM (9).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "30" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (1).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "35" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (2).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "40" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (3).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "45" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (4).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "50" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (5).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "55" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (6).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "60" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (7).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "65" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (8).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "70" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (9).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "75" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM2 (10).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "80" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (1).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "85" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (2).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "90" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (3).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "95" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (4).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "100" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (5).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "105" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (6).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "110" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (7).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "115" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (8).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "120" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (9).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "125" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM3 (10).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "130" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM4 (1).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "135" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM4 (2).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "140" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM4 (3).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "145" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "6AM2\\6AM4 (4).png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "200" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "End\\523.png" ],
+					"block": "set_background"
+				}, {
+					"args": [ "music box.wav", "39", false ],
+					"block": "play_sound"
+				}, {
+					"args": [ "clickAllowed", "1" ],
+					"block": "set_var"
+				} ]
+			}, {
+				"args": [ "1700" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Main" ],
+					"block": "goto_menu"
+				} ]
+			}, {
+				"args": [],
+				"block": "user_left_clicked",
+				"subcode": [ {
+					"args": [ "%var(clickAllowed)", "==", "1" ],
+					"block": "compare_values",
+					"subcode": [ {
+						"args": [ "Main" ],
+						"block": "goto_menu"
+					} ]
+				} ]
+			} ],
+			"elements": [],
+			"properties": {
+				"BackgroundImage": "6AM2\\6AM (1).png",
+				"BackgroundMusic": "",
+				"ButtonArrowColor": "255,255,255",
+				"ButtonArrowFont": "Consolas",
+				"ButtonArrowStr": ">>",
+				"ButtonArrows": true,
+				"FadeIn": true,
+				"FadeSpeed": 40,
+				"Panorama": false,
+				"StaticEffect": false
+			}
+		},
+		"GN_jumpscare": {
+			"code": [ {
+				"args": [ "150" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [],
+					"block": "quit"
+				} ]
+			} ],
+			"elements": [],
+			"properties": {
+				"BackgroundImage": "Creeps\\548.png",
+				"BackgroundMusic": "XSCREAM2.wav",
+				"ButtonArrowColor": "255,255,255",
+				"ButtonArrowFont": "Consolas",
+				"ButtonArrowStr": ">>",
+				"ButtonArrows": true,
+				"FadeIn": false,
+				"FadeSpeed": 20,
+				"Panorama": false,
+				"StaticEffect": false
+			}
+		},
+		"GameOver": {
+			"code": [ {
+				"args": [ "150" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "AfterOver" ],
+					"block": "goto_menu"
+				} ]
+			} ],
+			"elements": [],
+			"properties": {
+				"BackgroundImage": "black.png",
+				"BackgroundMusic": "static.wav",
+				"ButtonArrowColor": "255,255,255",
+				"ButtonArrowFont": "Consolas",
+				"ButtonArrowStr": ">>",
+				"ButtonArrows": true,
+				"FadeIn": false,
+				"FadeSpeed": 20,
+				"Panorama": false,
+				"StaticEffect": true
+			}
+		},
+		"JumpscarePowerOut": {
+			"code": [ {
+				"args": [ "125" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "XSCREAM.mp3", "33", false ],
+					"block": "play_sound"
+				} ]
+			}, {
+				"args": [ "127" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\01.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "129" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\02.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "131" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\03.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "133" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\04.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "135" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\05.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "137" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\06.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "139" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\07.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "141" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\08.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "143" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\09.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "145" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\10.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "147" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\11.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "149" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\12.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "151" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\13.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "153" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\14.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "155" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\15.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "157" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\16.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "159" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\17.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "161" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\18.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "163" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\19.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "165" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\20.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "167" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Freddy PowerOut\\21.png" ],
+					"block": "set_background"
+				}, {
+					"args": [ "GameOver" ],
+					"block": "goto_menu"
+				} ]
+			} ],
+			"elements": [],
+			"properties": {
+				"BackgroundImage": "",
+				"BackgroundMusic": "",
+				"ButtonArrowColor": "255,255,255",
+				"ButtonArrowFont": "Consolas",
+				"ButtonArrowStr": ">>",
+				"ButtonArrows": true,
+				"FadeIn": false,
+				"FadeSpeed": 20,
+				"Panorama": false,
+				"StaticEffect": false
+			}
+		},
+		"Loading": {
+			"code": [ {
+				"args": [ "30" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "%data(NightLoad)", "==", "1" ],
+					"block": "compare_values",
+					"subcode": [ {
+						"args": [ "office" ],
+						"block": "setoff"
+					}, {
+						"args": [ "1" ],
+						"block": "start_night"
+					}, {
+						"args": [ "I set the office to be loaded, read the data value, and load the night accordingly" ],
+						"block": "comment"
+					} ]
+				}, {
+					"args": [ "%data(NightLoad)", "==", "2" ],
+					"block": "compare_values",
+					"subcode": [ {
+						"args": [ "office" ],
+						"block": "setoff"
+					}, {
+						"args": [ "2" ],
+						"block": "start_night"
+					}, {
+						"args": [ "I set the office to be loaded, read the data value, and load the night accordingly" ],
+						"block": "comment"
+					} ]
+				}, {
+					"args": [ "%data(NightLoad)", "==", "3" ],
+					"block": "compare_values",
+					"subcode": [ {
+						"args": [ "office" ],
+						"block": "setoff"
+					}, {
+						"args": [ "3" ],
+						"block": "start_night"
+					}, {
+						"args": [ "I set the office to be loaded, read the data value, and load the night accordingly" ],
+						"block": "comment"
+					} ]
+				}, {
+					"args": [ "%data(NightLoad)", "==", "4" ],
+					"block": "compare_values",
+					"subcode": [ {
+						"args": [ "office" ],
+						"block": "setoff"
+					}, {
+						"args": [ "4" ],
+						"block": "start_night"
+					}, {
+						"args": [ "I set the office to be loaded, read the data value, and load the night accordingly" ],
+						"block": "comment"
+					} ]
+				}, {
+					"args": [ "%data(NightLoad)", "==", "5" ],
+					"block": "compare_values",
+					"subcode": [ {
+						"args": [ "office" ],
+						"block": "setoff"
+					}, {
+						"args": [ "5" ],
+						"block": "start_night"
+					}, {
+						"args": [ "I set the office to be loaded, read the data value, and load the night accordingly" ],
+						"block": "comment"
+					} ]
+				}, {
+					"args": [ "%data(NightLoad)", "==", "6" ],
+					"block": "compare_values",
+					"subcode": [ {
+						"args": [ "office" ],
+						"block": "setoff"
+					}, {
+						"args": [ "6" ],
+						"block": "start_night"
+					}, {
+						"args": [ "I set the office to be loaded, read the data value, and load the night accordingly" ],
+						"block": "comment"
+					} ]
+				} ]
+			} ],
+			"elements": [ {
+				"hidden": false,
+				"id": "",
+				"sprite": "WhatDay\\482.png",
+				"type": "Image",
+				"x": 571,
+				"y": 306
+			} ],
+			"properties": {
+				"BackgroundImage": "",
+				"BackgroundMusic": "",
+				"ButtonArrowColor": "255,255,255",
+				"ButtonArrowFont": "Consolas",
+				"ButtonArrowStr": ">>",
+				"ButtonArrows": true,
+				"FadeIn": true,
+				"FadeSpeed": 20,
+				"Panorama": false,
+				"StaticEffect": false
+			}
+		},
+		"Main": {
+			"code": [ {
+				"args": [ "newgame" ],
+				"block": "button_clicked",
+				"subcode": [ {
+					"args": [ "Night", "1" ],
+					"block": "set_data"
+				}, {
+					"args": [ "NightLoad", "1" ],
+					"block": "set_data"
+				}, {
+					"args": [ "PrologueTitle" ],
+					"block": "goto_menu"
+				} ]
+			}, {
+				"args": [ "continue" ],
+				"block": "button_clicked",
+				"subcode": [ {
+					"args": [],
+					"block": "prepare_continue"
+				}, {
+					"args": [ "%data(NightLoad)", "==", "2" ],
+					"block": "compare_values",
+					"subcode": [ {
+						"args": [ "Night2PrologueTitle" ],
+						"block": "goto_menu"
+					} ]
+				}, {
+					"args": [ "%data(NightLoad)", "==", "2" ],
+					"block": "compare_values",
+					"negated": true,
+					"subcode": [ {
+						"args": [ "WhatDay" ],
+						"block": "goto_menu"
+					} ]
+				}, {
+					"args": [ "\"NightLoad\" is a data value used to inform the engine about which night to load." ],
+					"block": "comment"
+				} ]
+			}, {
+				"args": [],
+				"block": "on_game_loop",
+				"subcode": [ {
+					"args": [ "continue" ],
+					"block": "is_button_selected",
+					"subcode": [ {
+						"args": [ "night_txt" ],
+						"block": "show_element"
+					}, {
+						"args": [ "night_txt", "Night %data(Night)" ],
+						"block": "set_text"
+					} ]
+				}, {
+					"args": [ "continue" ],
+					"block": "is_button_selected",
+					"negated": true,
+					"subcode": [ {
+						"args": [ "night_txt" ],
+						"block": "hide_element"
+					} ]
+				} ]
+			}, {
+				"args": [],
+				"block": "on_menu_start",
+				"subcode": [ {
+					"args": [ "%data(beat5)", "==", "1" ],
+					"block": "compare_values",
+					"subcode": [ {
+						"args": [ "6thnight" ],
+						"block": "show_element"
+					}, {
+						"args": [ "night5" ],
+						"block": "show_element"
+					} ]
+				}, {
+					"args": [ "%data(beat6)", "==", "1" ],
+					"block": "compare_values",
+					"subcode": [ {
+						"args": [ "cn" ],
+						"block": "show_element"
+					}, {
+						"args": [ "night6" ],
+						"block": "show_element"
+					} ]
+				}, {
+					"args": [ "%data(beatgame)", "==", "1" ],
+					"block": "compare_values",
+					"subcode": [ {
+						"args": [ "customnight" ],
+						"block": "show_element"
+					} ]
+				}, {
+					"args": [ "In the game's start menu, it checks whether the player has completed the 5th, 6th, and 7th nights" ],
+					"block": "comment"
+				} ]
+			}, {
+				"args": [ "6thnight" ],
+				"block": "button_clicked",
+				"subcode": [ {
+					"args": [ "NightLoad", "6" ],
+					"block": "set_data"
+				}, {
+					"args": [ "WhatDay" ],
+					"block": "goto_menu"
+				}, {
+					"args": [ "\"NightLoad\" is a data value used to inform the engine about which night to load." ],
+					"block": "comment"
+				} ]
+			}, {
+				"args": [ "cn" ],
+				"block": "button_clicked",
+				"subcode": [ {
+					"args": [ "CustomNight" ],
+					"block": "goto_menu"
+				} ]
+			}, {
+				"args": [ "7" ],
+				"block": "every_num_ticks",
+				"subcode": [ {
+					"args": [ "School Menu\\main-menu.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "25" ],
+				"block": "every_num_ticks",
+				"subcode": [ {
+					"args": [ "School Menu\\main-menu-glitch-1.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "144" ],
+				"block": "every_num_ticks",
+				"subcode": [ {
+					"args": [ "School Menu\\main-menu-glitch-3.png" ],
+					"block": "set_background"
+				} ]
+			}, {
+				"args": [ "46" ],
+				"block": "every_num_ticks",
+				"subcode": [ {
+					"args": [ "School Menu\\main-menu-glitch-2.png" ],
+					"block": "set_background"
+				}, {
+					"args": [ "This section of \"Every x tick(s)\" is used for making Freddy twitch and glitchy" ],
+					"block": "comment"
+				} ]
+			}, {
+				"args": [],
+				"block": "on_menu_start",
+				"subcode": [ {
+					"args": [ "static2.wav", "40", false ],
+					"block": "play_sound"
+				} ]
+			} ],
+			"elements": [ {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 32,
+				"hidden": false,
+				"id": "newgame",
+				"text": "New Game",
+				"type": "Button",
+				"x": 370,
+				"y": 202
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 32,
+				"hidden": false,
+				"id": "continue",
+				"text": "Continue",
+				"type": "Button",
+				"x": 370,
+				"y": 232
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 32,
+				"hidden": true,
+				"id": "6thnight",
+				"text": "6th Night",
+				"type": "Button",
+				"x": 370,
+				"y": 267
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Hidden": false,
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 32,
+				"hidden": true,
+				"id": "cn",
+				"text": "Custom Night",
+				"type": "Button",
+				"x": 370,
+				"y": 297
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 36,
+				"hidden": false,
+				"id": "",
+				"text": "Five",
+				"type": "StaticText",
+				"x": 370,
+				"y": 33
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 36,
+				"hidden": false,
+				"id": "",
+				"text": "Night's",
+				"type": "StaticText",
+				"x": 370,
+				"y": 57
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 36,
+				"hidden": false,
+				"id": "",
+				"text": "At",
+				"type": "StaticText",
+				"x": 370,
+				"y": 81
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 36,
+				"hidden": false,
+				"id": "",
+				"text": "Juscelino",
+				"type": "StaticText",
+				"x": 370,
+				"y": 105
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 32,
+				"hidden": false,
+				"id": "",
+				"text": "Kubitschek",
+				"type": "StaticText",
+				"x": 370,
+				"y": 132
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 16,
+				"hidden": false,
+				"id": "",
+				"text": "v 1.0.0",
+				"type": "StaticText",
+				"x": 610,
+				"y": 315
+			}, {
+				"hidden": true,
+				"id": "night5",
+				"sprite": "goldstar.png",
+				"type": "Image",
+				"x": 374,
+				"y": 148
+			}, {
+				"hidden": true,
+				"id": "night6",
+				"sprite": "goldstar.png",
+				"type": "Image",
+				"x": 500,
+				"y": -113
+			}, {
+				"hidden": true,
+				"id": "customnight",
+				"sprite": "goldstar.png",
+				"type": "Image",
+				"x": 434,
+				"y": 148
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 12,
+				"hidden": false,
+				"id": "",
+				"text": "Baseado em fatos reais no EEB Juscelino Kubitschek",
+				"type": "StaticText",
+				"x": 370,
+				"y": 300
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 18,
+				"hidden": false,
+				"id": "",
+				"text": "Será que você consegue sobreviver",
+				"type": "StaticText",
+				"x": 370,
+				"y": 168
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 18,
+				"hidden": false,
+				"id": "",
+				"text": "5 noites de terror com Otávio, Kleinrara, e os outros?",
+				"type": "StaticText",
+				"x": 370,
+				"y": 178
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Consolas",
+				"fontsize": 18,
+				"hidden": true,
+				"id": "night_txt",
+				"text": "Night 1",
+				"type": "StaticText",
+				"x": 505,
+				"y": 238
+			}, {
+				"hidden": true,
+				"id": "night6",
+				"sprite": "goldstar.png",
+				"type": "Image",
+				"x": 404,
+				"y": 148
+			} ],
+			"properties": {
+				"BackgroundImage": "School Menu\\main-menu.png",
+				"BackgroundMusic": "main.mp3",
+				"ButtonArrowColor": "255,255,255",
+				"ButtonArrowFont": "Consolas",
+				"ButtonArrowStr": ">>",
+				"ButtonArrows": true,
+				"FadeIn": true,
+				"FadeSpeed": 20,
+				"Panorama": false,
+				"StaticEffect": true
+			}
+		},
+		"News": {
+			"code": [ {
+				"args": [ "80" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "NightLoad", "1" ],
+					"block": "set_data"
+				}, {
+					"args": [ "WhatDay" ],
+					"block": "goto_menu"
+				}, {
+					"args": [ "\"NightLoad\" is a data value used to inform the engine about which night to load." ],
+					"block": "comment"
+				} ]
+			}, {
+				"args": [],
+				"block": "user_left_clicked",
+				"subcode": [ {
+					"args": [ "NightLoad", "1" ],
+					"block": "set_data"
+				}, {
+					"args": [ "WhatDay" ],
+					"block": "goto_menu"
+				}, {
+					"args": [ "\"NightLoad\" is a data value used to inform the engine about which night to load." ],
+					"block": "comment"
+				} ]
+			} ],
+			"elements": [],
+			"properties": {
+				"BackgroundImage": "539.png",
+				"BackgroundMusic": "",
+				"ButtonArrowColor": "255,255,255",
+				"ButtonArrowFont": "Consolas",
+				"ButtonArrowStr": ">>",
+				"ButtonArrows": true,
+				"FadeIn": false,
+				"FadeSpeed": 20,
+				"Panorama": false,
+				"StaticEffect": false
+			}
+		},
+		"Warning": {
+			"code": [ {
+				"args": [ "80" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Main" ],
+					"block": "goto_menu"
+				} ]
+			}, {
+				"args": [],
+				"block": "user_left_clicked",
+				"subcode": [ {
+					"args": [ "Main" ],
+					"block": "goto_menu"
+				} ]
+			} ],
+			"elements": [ {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Tahoma",
+				"fontsize": 20,
+				"hidden": false,
+				"id": "",
+				"text": "WARNING!",
+				"type": "StaticText",
+				"x": 270,
+				"y": 126
+			}, {
+				"Blue": "255",
+				"Green": "255",
+				"Red": "255",
+				"fontname": "Tahoma",
+				"fontsize": 20,
+				"hidden": false,
+				"id": "",
+				"text": "This game contains flashing lights, loud  \r\n       noises, and lots of jumpscares!",
+				"type": "StaticText",
+				"x": 191,
+				"y": 156
+			} ],
+			"properties": {
+				"BackgroundImage": "",
+				"BackgroundMusic": "",
+				"ButtonArrowColor": "255,255,255",
+				"ButtonArrowFont": "Consolas",
+				"ButtonArrowStr": ">>",
+				"ButtonArrows": true,
+				"FadeIn": true,
+				"FadeSpeed": 20,
+				"Panorama": false,
+				"StaticEffect": false
+			}
+		},
+		"Night2PrologueTitle": {
+			"code": [ {
+				"args": [ "3" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "blip3.wav", "5", false ],
+					"block": "play_sound"
+				} ]
+			}, {
+				"args": [ "4" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "blip2" ],
+					"block": "show_element"
+				}, {
+					"args": [ "blip1" ],
+					"block": "hide_element"
+				}, {
+					"args": [ "school_title" ],
+					"block": "show_element"
+				} ]
+			}, {
+				"args": [ "7" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "blip3" ],
+					"block": "show_element"
+				}, {
+					"args": [ "blip2" ],
+					"block": "hide_element"
+				} ]
+			}, {
+				"args": [ "9" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "blip3" ],
+					"block": "hide_element"
+				} ]
+			}, {
+				"args": [ "20" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "blip3.wav", "5", false ],
+					"block": "play_sound"
+				}, {
+					"args": [ "time_card" ],
+					"block": "show_element"
+				} ]
+			}, {
+				"args": [ "100" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [],
+					"block": "start_night2_minigame"
+				} ]
+			} ],
+			"elements": [ {
+				"hidden": true,
+				"id": "school_title",
+				"fontname": "Consolas",
+				"fontsize": 34,
+				"text": "EEB Juscelino Kubitschek",
+				"type": "StaticText",
+				"x": 95,
+				"y": 140
+			}, {
+				"hidden": true,
+				"id": "time_card",
+				"fontname": "Consolas",
+				"fontsize": 24,
+				"text": "Quatro dias antes do incidente",
+				"type": "StaticText",
+				"x": 252,
+				"y": 185
+			}, {
+				"hidden": false,
+				"id": "blip1",
+				"sprite": "BlipAnim\\01.png",
+				"type": "Image",
+				"x": 0,
+				"y": 0
+			}, {
+				"hidden": true,
+				"id": "blip2",
+				"sprite": "BlipAnim\\05.png",
+				"type": "Image",
+				"x": 0,
+				"y": 0
+			}, {
+				"hidden": true,
+				"id": "blip3",
+				"sprite": "BlipAnim\\09.png",
+				"type": "Image",
+				"x": 0,
+				"y": 0
+			} ],
+			"properties": {
+				"BackgroundImage": "",
+				"BackgroundMusic": "",
+				"ButtonArrowColor": "255,255,255",
+				"ButtonArrowFont": "Consolas",
+				"ButtonArrowStr": ">>",
+				"ButtonArrows": false,
+				"FadeIn": false,
+				"FadeSpeed": 20,
+				"Panorama": false,
+				"StaticEffect": false
+			}
+		},
+		"PrologueTitle": {
+			"code": [ {
+				"args": [ "3" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "blip3.wav", "5", false ],
+					"block": "play_sound"
+				} ]
+			}, {
+				"args": [ "4" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "blip2" ],
+					"block": "show_element"
+				}, {
+					"args": [ "blip1" ],
+					"block": "hide_element"
+				}, {
+					"args": [ "school_title" ],
+					"block": "show_element"
+				} ]
+			}, {
+				"args": [ "7" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "blip3" ],
+					"block": "show_element"
+				}, {
+					"args": [ "blip2" ],
+					"block": "hide_element"
+				} ]
+			}, {
+				"args": [ "9" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "blip3" ],
+					"block": "hide_element"
+				} ]
+			}, {
+				"args": [ "20" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "blip3.wav", "5", false ],
+					"block": "play_sound"
+				}, {
+					"args": [ "time_card" ],
+					"block": "show_element"
+				} ]
+			}, {
+				"args": [ "100" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [],
+					"block": "start_intro_minigame"
+				} ]
+			} ],
+			"elements": [ {
+				"hidden": true,
+				"id": "school_title",
+				"fontname": "Consolas",
+				"fontsize": 34,
+				"text": "EEB Juscelino Kubitschek",
+				"type": "StaticText",
+				"x": 95,
+				"y": 140
+			}, {
+				"hidden": true,
+				"id": "time_card",
+				"fontname": "Consolas",
+				"fontsize": 24,
+				"text": "Cinco dias antes do incidente",
+				"type": "StaticText",
+				"x": 220,
+				"y": 185
+			}, {
+				"hidden": false,
+				"id": "blip1",
+				"sprite": "BlipAnim\\01.png",
+				"type": "Image",
+				"x": 0,
+				"y": 0
+			}, {
+				"hidden": true,
+				"id": "blip2",
+				"sprite": "BlipAnim\\05.png",
+				"type": "Image",
+				"x": 0,
+				"y": 0
+			}, {
+				"hidden": true,
+				"id": "blip3",
+				"sprite": "BlipAnim\\09.png",
+				"type": "Image",
+				"x": 0,
+				"y": 0
+			} ],
+			"properties": {
+				"BackgroundImage": "",
+				"BackgroundMusic": "",
+				"ButtonArrowColor": "255,255,255",
+				"ButtonArrowFont": "Consolas",
+				"ButtonArrowStr": ">>",
+				"ButtonArrows": false,
+				"FadeIn": false,
+				"FadeSpeed": 20,
+				"Panorama": false,
+				"StaticEffect": false
+			}
+		},
+		"WhatDay": {
+			"code": [ {
+				"args": [ "3" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "blip3.wav", "5", false ],
+					"block": "play_sound"
+				} ]
+			}, {
+				"args": [ "4" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "blip2" ],
+					"block": "show_element"
+				}, {
+					"args": [ "blip1" ],
+					"block": "hide_element"
+				}, {
+					"args": [ "Simple Blip Animation" ],
+					"block": "comment"
+				} ]
+			}, {
+				"args": [ "7" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "blip3" ],
+					"block": "show_element"
+				}, {
+					"args": [ "blip2" ],
+					"block": "hide_element"
+				}, {
+					"args": [ "Simple Blip Animation" ],
+					"block": "comment"
+				} ]
+			}, {
+				"args": [ "9" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "blip3" ],
+					"block": "hide_element"
+				}, {
+					"args": [ "Simple Blip Animation" ],
+					"block": "comment"
+				} ]
+			}, {
+				"args": [ "80" ],
+				"block": "current_tick_equals",
+				"subcode": [ {
+					"args": [ "Loading" ],
+					"block": "goto_menu"
+				} ]
+			}, {
+				"args": [],
+				"block": "on_menu_start",
+				"subcode": [ {
+					"args": [ "%data(NightLoad)", "==", "1" ],
+					"block": "compare_values",
+					"subcode": [ {
+						"args": [ "night1" ],
+						"block": "show_element"
+					} ]
+				}, {
+					"args": [ "%data(NightLoad)", "==", "2" ],
+					"block": "compare_values",
+					"subcode": [ {
+						"args": [ "night2" ],
+						"block": "show_element"
+					} ]
+				}, {
+					"args": [ "%data(NightLoad)", "==", "3" ],
+					"block": "compare_values",
+					"subcode": [ {
+						"args": [ "night3" ],
+						"block": "show_element"
+					} ]
+				}, {
+					"args": [ "%data(NightLoad)", "==", "4" ],
+					"block": "compare_values",
+					"subcode": [ {
+						"args": [ "night4" ],
+						"block": "show_element"
+					} ]
+				}, {
+					"args": [ "%data(NightLoad)", "==", "5" ],
+					"block": "compare_values",
+					"subcode": [ {
+						"args": [ "night5" ],
+						"block": "show_element"
+					} ]
+				}, {
+					"args": [ "%data(NightLoad)", "==", "6" ],
+					"block": "compare_values",
+					"subcode": [ {
+						"args": [ "night6" ],
+						"block": "show_element"
+					} ]
+				}, {
+					"args": [ "At this point, it checks the data value and displays the appropriate text corresponding to the current night" ],
+					"block": "comment"
+				} ]
+			} ],
+			"elements": [ {
+				"hidden": true,
+				"id": "night6",
+				"sprite": "WhatDay\\446.png",
+				"type": "Image",
+				"x": 245,
+				"y": 142
+			}, {
+				"hidden": true,
+				"id": "night1",
+				"sprite": "WhatDay\\453.png",
+				"type": "Image",
+				"x": 248,
+				"y": 142
+			}, {
+				"hidden": true,
+				"id": "night2",
+				"sprite": "WhatDay\\454.png",
+				"type": "Image",
+				"x": 246,
+				"y": 142
+			}, {
+				"hidden": true,
+				"id": "night3",
+				"sprite": "WhatDay\\472.png",
+				"type": "Image",
+				"x": 246,
+				"y": 142
+			}, {
+				"hidden": true,
+				"id": "night4",
+				"sprite": "WhatDay\\473.png",
+				"type": "Image",
+				"x": 246,
+				"y": 142
+			}, {
+				"hidden": true,
+				"id": "night5",
+				"sprite": "WhatDay\\474.png",
+				"type": "Image",
+				"x": 246,
+				"y": 142
+			}, {
+				"hidden": true,
+				"id": "night7",
+				"sprite": "WhatDay\\538.png",
+				"type": "Image",
+				"x": 243,
+				"y": 142
+			}, {
+				"hidden": false,
+				"id": "blip1",
+				"sprite": "BlipAnim\\01.png",
+				"type": "Image",
+				"x": 0,
+				"y": 0
+			}, {
+				"hidden": true,
+				"id": "blip2",
+				"sprite": "BlipAnim\\05.png",
+				"type": "Image",
+				"x": 0,
+				"y": 0
+			}, {
+				"hidden": true,
+				"id": "blip3",
+				"sprite": "BlipAnim\\09.png",
+				"type": "Image",
+				"x": 0,
+				"y": 0
+			} ],
+			"properties": {
+				"BackgroundImage": "",
+				"BackgroundMusic": "",
+				"ButtonArrowColor": "255,255,255",
+				"ButtonArrowFont": "Consolas",
+				"ButtonArrowStr": ">>",
+				"ButtonArrows": false,
+				"FadeIn": false,
+				"FadeSpeed": 20,
+				"Panorama": false,
+				"StaticEffect": false
+			}
+		}
+	},
+	"office": {
+		"archive": {
+			"enabled": false,
+			"title": "ARQUIVO RESTRITO - EEB JK",
+			"hint": "E  INVESTIGAR ARQUIVO",
+			"entries": [ {
+				"id": "manutencao_2009",
+				"type": "document",
+				"title": "RELATORIO DE MANUTENCAO",
+				"date": "14/08/2009 - 18:40",
+				"required_night": 1,
+				"body": "O circuito das cameras foi reiniciado tres vezes. A CAM 5 continuou registrando cadeiras fora do lugar depois do fechamento. A equipe noturna afirma que ninguem permaneceu na sala. Ordem: nao desligar o gravador durante a madrugada."
+			}, {
+				"id": "ocorrencia_0213",
+				"type": "document",
+				"title": "LIVRO DE OCORRENCIAS",
+				"date": "03/11/2011 - 02:13",
+				"required_night": 1,
+				"body": "O sinal tocou as 02:13 sem comando no painel. Passos foram ouvidos entre a sala de aula e o corredor esquerdo. Quando a luz foi acesa, o corredor estava vazio. A porta do arquivo apareceu aberta pela manha."
+			}, {
+				"id": "fita_biblioteca",
+				"type": "recording",
+				"title": "FITA DA BIBLIOTECA 04",
+				"date": "DATA CORROMPIDA",
+				"required_night": 2,
+				"duration_seconds": 18,
+				"body": "[RUIDO] Ele fica perto do pequeno podio. Nao consigo ver os olhos e nao existe boca naquele rosto. Se eu observo por muito tempo, ele percebe. Se deixo de olhar, ele tambem se aproxima. Preciso alternar... preciso manter um ritmo... [BATIDA METALICA]"
+			}, {
+				"id": "inventario_jk05",
+				"type": "document",
+				"title": "INVENTARIO JK-05",
+				"date": "22/06/2013 - ARQUIVO 5B",
+				"required_night": 3,
+				"body": "Caixa recebida sem remetente. Conteudo: quatro placas escolares, cabos de controle, penas azuis sinteticas e fotografias da CAM 5. Em todas as fotos, as figuras estao sentadas de costas. Em uma delas existe uma quinta cadeira ocupada."
+			}, {
+				"id": "mensagem_final",
+				"type": "recording",
+				"title": "MENSAGEM SEM REMETENTE",
+				"date": "05/09/2014 - 05:51",
+				"required_night": 4,
+				"duration_seconds": 22,
+				"body": "Se voce encontrou esta fita, eles ja aprenderam o caminho ate a sala do vigia. As portas conseguem impedir a entrada, mas somente enquanto houver energia. Nao confie em uma camera parada. O que parece imovel pode estar apenas esperando voce olhar para outro lado."
+			} ]
+		},
+		"night_rounds": [ {
+			"id": "night1_library_repair",
+			"night": 1,
+			"start_hour": 2,
+			"title": "CAM 3 SIGNAL FAILURE",
+			"destination": "LIBRARY - CAMERA JUNCTION",
+			"travel_background": "NightRounds\\school-walk-step-a.png",
+			"travel_background_alt": "NightRounds\\school-walk-step-b.png",
+			"task_background": "School Cameras\\cam-3-library.png",
+			"reward_power": 10
+		} ],
+		"animations": {
+			"camera": "Camera Monitor",
+			"mask": "Mask",
+			"powerout": ""
+		},
+		"battery": false,
+		"display": true,
+		"display2": false,
+		"fast": false,
+		"flashlight": false,
+		"keybind": "CTRL",
+		"mask": false,
+		"nightfont": "Segoe UI",
+		"objects": [ {
+			"animation": "Right Door",
+			"close_sound": "dooropenclose.mp3",
+			"id": "RightDoor",
+			"open_sound": "dooropenclose.mp3",
+			"position": [ 350, 30 ],
+			"type": "door"
+		}, {
+			"id": "GoldenFreddy",
+			"position": [ 244, 9 ],
+			"sprite": "Golden Freddy office.png",
+			"type": "sprite"
+		}, {
+			"animation": "Left Door",
+			"close_sound": "SFXBible_12478.wav",
+			"id": "LeftDoor",
+			"open_sound": "SFXBible_12478.wav",
+			"position": [ 44, 7 ],
+			"type": "door"
+		}, {
+			"id": "LeftDoor",
+			"on_sprite": "1241.png",
+			"position": [ 164, 104 ],
+			"sprite": "122.png",
+			"trigger": [ 0, 0, 32, 32 ],
+			"type": "door_button"
+		}, {
+			"click_style": false,
+			"id": "LeftLight",
+			"on_sprite": "125.png",
+			"position": [ 164, 166 ],
+			"sound": "BallastHumMedium2.wav",
+			"sprite": "124.png",
+			"trigger": [ 0, 0, 32, 32 ],
+			"type": "light_button"
+		}, {
+			"id": "RightDoor",
+			"on_sprite": "135.png",
+			"position": [ 478, 104 ],
+			"sprite": "1341.png",
+			"trigger": [ 0, 0, 32, 32 ],
+			"type": "door_button"
+		}, {
+			"click_style": false,
+			"id": "RightLight",
+			"on_sprite": "47.png",
+			"position": [ 478, 166 ],
+			"sound": "BallastHumMedium2.wav",
+			"sprite": "134.png",
+			"trigger": [ 0, 0, 32, 32 ],
+			"type": "light_button"
+		}, {
+			"id": "GoldenFreddy",
+			"position": [ 168, 119 ],
+			"sprite": "YellowBear.png",
+			"type": "sprite"
+		}, {
+			"animation": "Fan",
+			"id": "fanAnimation",
+			"position": [ 30, 190 ],
+			"type": "animation"
+		}, {
+			"animation": "FreddySing",
+			"id": "FreddySing",
+			"position": [ 47, 96 ],
+			"type": "animation"
+		}, {
+			"id": "freddynose",
+			"position": [ 316, 110 ],
+			"sprite": "freddynosetrigger.png",
+			"type": "sprite"
+		} ],
+		"office": {
+			"nightfont": "LCD Solid"
+		},
+		"panorama": true,
+		"power": {
+			"animatronic": "NPC_PowerOutAI",
+			"enabled": true,
+			"starting_level": 100,
+			"ucn": true
+		},
+		"states": {
+			"Default": "Office\\39.png",
+		"LeftLight:Bonnie": "School Animatronics\\BonnieReplacement\\left-door-aligned.png",
+		"LeftLight:Chica": "School Animatronics\\ChicaReplacement\\left-door-aligned.png",
+		"LeftLight:Chica,Bonnie": "School Animatronics\\BonnieReplacement\\left-door-aligned.png",
+		"LeftLight:Chica,Foxy": "School Animatronics\\ChicaReplacement\\left-door-aligned.png",
+		"LeftLight:Chica,Foxy,Bonnie": "School Animatronics\\BonnieReplacement\\left-door-aligned.png",
+		"LeftLight:Default": "Office\\58-aligned.png",
+		"LeftLight:Foxy": "School Animatronics\\FoxyReplacement\\left-door-aligned.png",
+		"LeftLight:Foxy,Bonnie": "School Animatronics\\BonnieReplacement\\left-door-aligned.png",
+		"RightLight:Default": "Office\\127-aligned.png",
+		"RightLight:Chica": "School Animatronics\\ChicaReplacement\\right-door-aligned.png",
+		"RightLight:Freddy": "School Animatronics\\FreddyReplacement\\right-door-aligned.png",
+		"RightLight:Freddy,Chica": "School Animatronics\\FreddyReplacement\\right-door-aligned.png",
+			"poweoutFreddyLight": "Office\\305.png",
+			"powerout": "Office\\304.png",
+			"powerout_black": "black.png"
+		},
+		"strong": true,
+		"textfont": "LCD Solid",
+		"toggle": true,
+		"toxic": false,
+		"uibuttons": {
+			"camera": {
+				"image": "e.defaultcamera",
+				"position": [ 295, 312 ]
+			},
+			"mask": {
+				"image": "e.defaultmask",
+				"position": [ 315, 21 ]
+			}
+		}
+	},
+	"offices": {
+		"office": {
+			"archive": {
+				"enabled": false,
+				"title": "ARQUIVO RESTRITO - EEB JK",
+				"hint": "E  INVESTIGAR ARQUIVO",
+				"entries": [ {
+					"id": "manutencao_2009",
+					"type": "document",
+					"title": "RELATORIO DE MANUTENCAO",
+					"date": "14/08/2009 - 18:40",
+					"required_night": 1,
+					"body": "O circuito das cameras foi reiniciado tres vezes. A CAM 5 continuou registrando cadeiras fora do lugar depois do fechamento. A equipe noturna afirma que ninguem permaneceu na sala. Ordem: nao desligar o gravador durante a madrugada."
+				}, {
+					"id": "ocorrencia_0213",
+					"type": "document",
+					"title": "LIVRO DE OCORRENCIAS",
+					"date": "03/11/2011 - 02:13",
+					"required_night": 1,
+					"body": "O sinal tocou as 02:13 sem comando no painel. Passos foram ouvidos entre a sala de aula e o corredor esquerdo. Quando a luz foi acesa, o corredor estava vazio. A porta do arquivo apareceu aberta pela manha."
+				}, {
+					"id": "fita_biblioteca",
+					"type": "recording",
+					"title": "FITA DA BIBLIOTECA 04",
+					"date": "DATA CORROMPIDA",
+					"required_night": 2,
+					"duration_seconds": 18,
+					"body": "[RUIDO] Ele fica perto do pequeno podio. Nao consigo ver os olhos e nao existe boca naquele rosto. Se eu observo por muito tempo, ele percebe. Se deixo de olhar, ele tambem se aproxima. Preciso alternar... preciso manter um ritmo... [BATIDA METALICA]"
+				}, {
+					"id": "inventario_jk05",
+					"type": "document",
+					"title": "INVENTARIO JK-05",
+					"date": "22/06/2013 - ARQUIVO 5B",
+					"required_night": 3,
+					"body": "Caixa recebida sem remetente. Conteudo: quatro placas escolares, cabos de controle, penas azuis sinteticas e fotografias da CAM 5. Em todas as fotos, as figuras estao sentadas de costas. Em uma delas existe uma quinta cadeira ocupada."
+				}, {
+					"id": "mensagem_final",
+					"type": "recording",
+					"title": "MENSAGEM SEM REMETENTE",
+					"date": "05/09/2014 - 05:51",
+					"required_night": 4,
+					"duration_seconds": 22,
+					"body": "Se voce encontrou esta fita, eles ja aprenderam o caminho ate a sala do vigia. As portas conseguem impedir a entrada, mas somente enquanto houver energia. Nao confie em uma camera parada. O que parece imovel pode estar apenas esperando voce olhar para outro lado."
+				} ]
+			},
+			"night_rounds": [ {
+				"id": "night1_library_repair",
+				"night": 1,
+				"start_hour": 2,
+				"title": "CAM 3 SIGNAL FAILURE",
+				"destination": "LIBRARY - CAMERA JUNCTION",
+				"travel_background": "NightRounds\\school-walk-step-a.png",
+				"travel_background_alt": "NightRounds\\school-walk-step-b.png",
+				"task_background": "School Cameras\\cam-3-library.png",
+				"reward_power": 10
+			} ],
+			"animations": {
+				"camera": "Camera Monitor",
+				"mask": "Mask",
+				"powerout": ""
+			},
+			"battery": false,
+			"display": true,
+			"display2": false,
+			"fast": false,
+			"flashlight": false,
+			"keybind": "CTRL",
+			"mask": false,
+			"nightfont": "Segoe UI",
+			"objects": [ {
+				"animation": "Right Door",
+				"close_sound": "dooropenclose.mp3",
+				"id": "RightDoor",
+				"open_sound": "dooropenclose.mp3",
+				"position": [ 350, 30 ],
+				"type": "door"
+			}, {
+				"id": "GoldenFreddy",
+				"position": [ 244, 9 ],
+				"sprite": "Golden Freddy office.png",
+				"type": "sprite"
+			}, {
+				"animation": "Left Door",
+				"close_sound": "SFXBible_12478.wav",
+				"id": "LeftDoor",
+				"open_sound": "SFXBible_12478.wav",
+				"position": [ 44, 7 ],
+				"type": "door"
+			}, {
+				"id": "LeftDoor",
+				"on_sprite": "1241.png",
+				"position": [ 164, 104 ],
+				"sprite": "122.png",
+				"trigger": [ 0, 0, 32, 32 ],
+				"type": "door_button"
+			}, {
+				"click_style": false,
+				"id": "LeftLight",
+				"on_sprite": "125.png",
+				"position": [ 164, 166 ],
+				"sound": "BallastHumMedium2.wav",
+				"sprite": "124.png",
+				"trigger": [ 0, 0, 32, 32 ],
+				"type": "light_button"
+			}, {
+				"id": "RightDoor",
+				"on_sprite": "135.png",
+				"position": [ 478, 104 ],
+				"sprite": "1341.png",
+				"trigger": [ 0, 0, 32, 32 ],
+				"type": "door_button"
+			}, {
+				"click_style": false,
+				"id": "RightLight",
+				"on_sprite": "47.png",
+				"position": [ 478, 166 ],
+				"sound": "BallastHumMedium2.wav",
+				"sprite": "134.png",
+				"trigger": [ 0, 0, 32, 32 ],
+				"type": "light_button"
+			}, {
+				"id": "GoldenFreddy",
+				"position": [ 168, 119 ],
+				"sprite": "YellowBear.png",
+				"type": "sprite"
+			}, {
+				"animation": "Fan",
+				"id": "fanAnimation",
+				"position": [ 30, 190 ],
+				"type": "animation"
+			}, {
+				"animation": "FreddySing",
+				"id": "FreddySing",
+				"position": [ 47, 96 ],
+				"type": "animation"
+			}, {
+				"id": "freddynose",
+				"position": [ 316, 110 ],
+				"sprite": "freddynosetrigger.png",
+				"type": "sprite"
+			} ],
+			"office": {
+				"nightfont": "LCD Solid"
+			},
+			"panorama": true,
+			"power": {
+				"animatronic": "NPC_PowerOutAI",
+				"enabled": true,
+				"starting_level": 100,
+				"ucn": true
+			},
+			"states": {
+				"Default": "Office\\39.png",
+			"LeftLight:Bonnie": "School Animatronics\\BonnieReplacement\\left-door-aligned.png",
+			"LeftLight:Chica": "School Animatronics\\ChicaReplacement\\left-door-aligned.png",
+			"LeftLight:Chica,Bonnie": "School Animatronics\\BonnieReplacement\\left-door-aligned.png",
+			"LeftLight:Chica,Foxy": "School Animatronics\\ChicaReplacement\\left-door-aligned.png",
+			"LeftLight:Chica,Foxy,Bonnie": "School Animatronics\\BonnieReplacement\\left-door-aligned.png",
+			"LeftLight:Default": "Office\\58-aligned.png",
+			"LeftLight:Foxy": "School Animatronics\\FoxyReplacement\\left-door-aligned.png",
+			"LeftLight:Foxy,Bonnie": "School Animatronics\\BonnieReplacement\\left-door-aligned.png",
+			"RightLight:Default": "Office\\127-aligned.png",
+			"RightLight:Chica": "School Animatronics\\ChicaReplacement\\right-door-aligned.png",
+			"RightLight:Freddy": "School Animatronics\\FreddyReplacement\\right-door-aligned.png",
+			"RightLight:Freddy,Chica": "School Animatronics\\FreddyReplacement\\right-door-aligned.png",
+				"poweoutFreddyLight": "Office\\305.png",
+				"powerout": "Office\\304.png",
+				"powerout_black": "black.png"
+			},
+			"strong": true,
+			"textfont": "LCD Solid",
+			"toggle": true,
+			"toxic": false,
+			"uibuttons": {
+				"camera": {
+					"image": "e.defaultcamera",
+					"position": [ 295, 312 ]
+				},
+				"mask": {
+					"image": "e.defaultmask",
+					"position": [ 315, 21 ]
+				}
+			}
+		}
+	},
+	"sounds": {
+		"ambience": "office.wav",
+		"animatronic_move": [ "animatronicmoved.mp3" ],
+		"blip": "blip3.wav",
+		"camdown": "tablet.mp3",
+		"camup": "tablet.mp3",
+		"flashlight": "BallastHumMedium2.wav",
+		"maskbreathing": "",
+		"maskoff": "",
+		"maskon": "",
+		"masktoxic": "",
+		"music_box_run_out": "music box.wav",
+		"phone_calls": [ "Calls\\phonecall_night1.mp3", "Calls\\phonecall_night2.mp3", "Calls\\phonecall_night3.mp3", "Calls\\phonecall_night4.mp3", "Calls\\phonecall_night5.mp3", "silence.mp3", "silence.mp3" ],
+		"powerout": "powerdown.wav",
+		"signal_interrupted": "garble2.mp3",
+		"stare": "Creeps.mp3"
+	}
+}

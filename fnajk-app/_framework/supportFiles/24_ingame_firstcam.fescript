@@ -1,0 +1,14 @@
+[ {
+	"args": [],
+	"block": "on_night_start",
+	"subcode": [ {
+		"args": [ "Showstage" ],
+		"block": "change_camera"
+	}, {
+		"args": [ "FreddySing" ],
+		"block": "hide_office_object"
+	}, {
+		"args": [ "Sets the first cam to show when the player starts the night" ],
+		"block": "comment"
+	} ]
+} ]

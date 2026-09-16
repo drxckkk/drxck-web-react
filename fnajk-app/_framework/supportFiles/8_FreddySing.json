@@ -1,0 +1,31 @@
+[ {
+	"duration": 1,
+	"sprite": "AnimFreddy\\01.png"
+}, {
+	"duration": 25,
+	"sprite": "AnimFreddy\\02.png"
+}, {
+	"duration": 1,
+	"sprite": "AnimFreddy\\03.png"
+}, {
+	"duration": 1,
+	"sprite": "AnimFreddy\\04.png"
+}, {
+	"duration": 3,
+	"sprite": "AnimFreddy\\05.png"
+}, {
+	"duration": 1,
+	"sprite": "AnimFreddy\\06.png"
+}, {
+	"duration": 1,
+	"sprite": "AnimFreddy\\07.png"
+}, {
+	"duration": 1,
+	"sprite": "AnimFreddy\\08.png"
+}, {
+	"duration": 1,
+	"sprite": "AnimFreddy\\09.png"
+}, {
+	"duration": 1,
+	"sprite": "AnimFreddy\\10.png"
+} ]
