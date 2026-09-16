@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# The WebAssembly game build (~140MB) is produced by the FNAF-Studio repo.
+# Committing it would add that much to this repo's history on every patch, so
+# it is synced in before a deploy instead - see "npm run sync:game".
+/public/fnajk-app

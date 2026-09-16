@@ -17,6 +17,7 @@ const Work = lazy(loadWork);
 const ProjectPage = lazy(loadProject);
 const Xcrim = lazy(() => import("./pages/Xcrim"));
 const Faby = lazy(() => import("./pages/Faby"));
+const Game = lazy(() => import("./pages/Game"));
 
 const BARE = ["/faby", "/xcrim"];
 
@@ -74,6 +75,7 @@ export function Shell() {
 
           <Route path="/xcrim" element={<Xcrim />} />
           <Route path="/faby" element={<Faby />} />
+          <Route path="/fnajk" element={<Game />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         {!bare && <Footer />}
