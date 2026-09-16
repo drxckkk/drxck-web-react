@@ -1,7 +1,7 @@
 export const config = /*json-start*/{
   "mainAssemblyName": "RuntimeWeb.dll",
   "resources": {
-    "hash": "sha256-8Osu/Aj5yWBx4cmMMQ+YxS3vQTMCPlCCy9fpUAB8x6o=",
+    "hash": "sha256-swCOQVLFfsb/cGcq3Z0ndgbQxrIhZ3NmaTqrjKGz5WY=",
     "jsModuleNative": [
       {
         "name": "dotnet.native.js"
@@ -15,7 +15,7 @@ export const config = /*json-start*/{
     "wasmNative": [
       {
         "name": "dotnet.native.wasm",
-        "hash": "sha256-RyXDUqo48maKh64SPovrW3UTfjayC005FuQVTxaHCmQ="
+        "hash": "sha256-IMPKoJsOdtt14Ds0/9mQ812DBd4re8ZPHEwumiV3BEg="
       }
     ],
     "wasmSymbols": [
@@ -904,7 +904,7 @@ export const config = /*json-start*/{
       {
         "virtualPath": "RuntimeWeb.wasm",
         "name": "RuntimeWeb.wasm",
-        "hash": "sha256-wc8Crnt3SpN1EbjuUUaK3x62ZnOz32FdbR1/DxtS4xc="
+        "hash": "sha256-mjgHPUPeDaMu0Ws2sRaVLjXIx4p0hyWHC/Kzn8DlZb0="
       }
     ],
     "pdb": [
@@ -921,7 +921,7 @@ export const config = /*json-start*/{
       {
         "virtualPath": "RuntimeWeb.pdb",
         "name": "RuntimeWeb.pdb",
-        "hash": "sha256-oOlDHkhBGoGdaM1BeKSkRW1dj9cuNmLo91Ojs7uVAzQ="
+        "hash": "sha256-V+JD2yCyTvKng8pQz8uDi8IkuR9lJ15R31s1+b9poXo="
       }
     ],
     "vfs": [
