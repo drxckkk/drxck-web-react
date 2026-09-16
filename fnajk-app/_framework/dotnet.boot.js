@@ -1,7 +1,7 @@
 export const config = /*json-start*/{
   "mainAssemblyName": "RuntimeWeb.dll",
   "resources": {
-    "hash": "sha256-4yNmdBWH9VnaMIxrtwatTGX7FPJa+zDC4hIHCIAFYDA=",
+    "hash": "sha256-dKMZn8HEXwvLvy8dkdao5EALzfAJbguUkYvoM+kPvB4=",
     "jsModuleNative": [
       {
         "name": "dotnet.native.js"
@@ -15,7 +15,7 @@ export const config = /*json-start*/{
     "wasmNative": [
       {
         "name": "dotnet.native.wasm",
-        "hash": "sha256-IMPKoJsOdtt14Ds0/9mQ812DBd4re8ZPHEwumiV3BEg="
+        "hash": "sha256-/SHiRMxrUTWBXT8FD8VPOTrudKj205q52AzqRKzrgPA="
       }
     ],
     "wasmSymbols": [
@@ -904,7 +904,7 @@ export const config = /*json-start*/{
       {
         "virtualPath": "RuntimeWeb.wasm",
         "name": "RuntimeWeb.wasm",
-        "hash": "sha256-qMg8Td69kddfXNNBDCsXN0iz3VWXv1YdiDFxekEEHgQ="
+        "hash": "sha256-kvTgq02ykAQE5iWRNASq4LTRhoQY91SV9H6EcUHLMo0="
       }
     ],
     "pdb": [
@@ -921,7 +921,7 @@ export const config = /*json-start*/{
       {
         "virtualPath": "RuntimeWeb.pdb",
         "name": "RuntimeWeb.pdb",
-        "hash": "sha256-XRlyUo/Xk6YY8LOTVAhESd3GXA8o17gIYSpsbHV79T8="
+        "hash": "sha256-Xzvp4rDpT8sqVK1Y+SmgJoHxaNm2a5t1kCyp2bD+k0I="
       }
     ],
     "vfs": [
@@ -998,7 +998,7 @@ export const config = /*json-start*/{
       {
         "virtualPath": "data/projects/fnaf-template-by-blocky-for-fe-3/game.json",
         "name": "supportFiles/14_game.json",
-        "hash": "sha256-waW1/Pg3J29PlKkdTmfEgY3jhJhFzOnysVcIvE2vTyI="
+        "hash": "sha256-5PA+WE0t/B3/OqYEeZ/t25D9LL3f8Flm9lK9tqibQMc="
       },
       {
         "virtualPath": "data/projects/fnaf-template-by-blocky-for-fe-3/minigames.json",
