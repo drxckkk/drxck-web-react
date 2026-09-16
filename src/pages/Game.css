@@ -60,6 +60,66 @@
   margin-bottom: 3.5rem;
 }
 
+.game-toolbar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.625rem;
+}
+
+.game-tool {
+  padding: 0.5rem 0.875rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  font: 500 0.875rem/1 var(--font);
+  cursor: pointer;
+  transition: border-color var(--t-hover, 0.2s) var(--ease);
+}
+
+.game-tool:hover {
+  border-color: var(--border-strong);
+}
+
+.game-tool:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* framer-motion leaves a transform on .game-page, and a transformed ancestor
+   becomes the containing block for position:fixed - so the covering frame would
+   be pinned to the page element instead of the viewport, leaving the site nav
+   on top of the game. Dropping the transform fixes that without moving the
+   iframe in the DOM, which would reload it and lose the player's progress. */
+.game-page--covering {
+  transform: none !important;
+}
+
+/* Fallback "fullscreen" for engines without the Fullscreen API (iPhone
+   Safari): pin the frame over the viewport instead. */
+.game-frame.game-frame--cover {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100dvh;
+  max-height: none;
+  z-index: 9998;
+  border: 0;
+  border-radius: 0;
+}
+
+body.game-covering .nav-wrap,
+body.game-covering footer {
+  display: none;
+}
+
+.game-tool--floating {
+  position: fixed;
+  top: max(12px, env(safe-area-inset-top));
+  right: max(12px, env(safe-area-inset-right));
+  z-index: 9999;
+}
+
 .game-frame {
   display: block;
   width: 100%;
