@@ -35,13 +35,18 @@
   #pad{position:fixed;left:14px;bottom:14px;
     display:none;align-items:flex-end;gap:10px;
     opacity:.26;transition:opacity .18s ease;
-    user-select:none;-webkit-user-select:none;touch-action:none;z-index:2}
+    user-select:none;-webkit-user-select:none;touch-action:none;z-index:2;
+    /* Only the keys themselves may swallow input. The container and the grid
+       span a much larger box than the buttons, and their gaps were eating taps
+       meant for the game - on a phone that box covers the lower half of the
+       canvas, which is why the night-1 wire puzzle could not be completed. */
+    pointer-events:none}
   #pad.on{display:flex}
   #pad.live{opacity:.72}
 
   #dpad{display:grid;grid-template-columns:repeat(3,52px);
-    grid-template-rows:repeat(2,52px);gap:5px}
-  .k{display:grid;place-items:center;background:rgba(12,12,16,.62);
+    grid-template-rows:repeat(2,52px);gap:5px;pointer-events:none}
+  .k{pointer-events:auto;display:grid;place-items:center;background:rgba(12,12,16,.62);
     color:#fff;border:1px solid rgba(255,255,255,.28);border-radius:12px;
     font:600 16px/1 inherit;touch-action:none;
     -webkit-tap-highlight-color:transparent;cursor:pointer;

@@ -4984,7 +4984,7 @@
             },
             {
               "args": [
-                "WhatDay"
+                "PrologueTitle"
               ],
               "block": "goto_menu"
             }
@@ -5012,7 +5012,7 @@
             },
             {
               "args": [
-                "WhatDay"
+                "Night2PrologueTitle"
               ],
               "block": "goto_menu"
             }
@@ -5039,10 +5039,8 @@
               "block": "set_data"
             },
             {
-              "args": [
-                "WhatDay"
-              ],
-              "block": "goto_menu"
+              "args": [],
+              "block": "start_night3_minigame"
             }
           ]
         },
