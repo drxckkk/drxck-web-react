@@ -2,50 +2,76 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
 <title>FNAF Parody</title>
 <style>
-  :root { color-scheme: dark; }
-  html,body{margin:0;min-height:100%;background:#0b0b0d;color:#eee;
+  :root { color-scheme: dark;
+    --sa-left: env(safe-area-inset-left, 0px);
+    --sa-bottom: env(safe-area-inset-bottom, 0px); }
+  html,body{margin:0;height:100%;background:#000;overflow:hidden;
     font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     -webkit-text-size-adjust:100%}
-  body{display:flex;flex-direction:column;align-items:center;justify-content:center;
-    gap:12px;padding:12px;box-sizing:border-box}
+  /* The stage is centred by translate rather than by grid/flex alignment: the
+     unscaled box is 1280x720, so in any smaller viewport it overflows, and
+     centring clamps an overflowing box back to the start - the scale then
+     happens about that wrong origin and the canvas sits low and to the right. */
+  body{position:relative}
 
-  /* The canvas must keep a 1280x720 backing store: emscripten resizes the
+  /* The canvas must keep its 1280x720 backing store: emscripten resizes the
      backing store to match any CSS size set on the canvas, and raylib then
      draws 1280-space UI into a smaller framebuffer while reporting the mouse in
-     canvas pixels, so input lands in the wrong place. Leaving the canvas at its
-     natural size and scaling a wrapper with a transform avoids that - and
+     canvas pixels, so input lands in the wrong place. Scale a wrapper instead -
      emscripten maps pointer coords through canvas.width/rect.width, so a
      transformed canvas still reads correctly. */
-  #frame{width:100%;max-width:1280px;overflow:hidden}
-  #stage{width:1280px;height:720px;transform-origin:top left}
+  #stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;
+    transform-origin:center center}
   canvas{display:block;background:#000;touch-action:none}
 
-  #status{color:#9a9aa2;min-height:1.4em;text-align:center}
-
-  #pad{display:none;gap:8px;user-select:none;-webkit-user-select:none;
-    touch-action:none;align-items:center}
+  /* Overlaid, not stacked underneath: keeping the pad out of the layout means
+     the frame is exactly the game's aspect and nothing is reserved for it. */
+  /* left/bottom are set from script so the pad tracks the rendered canvas
+     rather than the viewport: letterboxed in portrait the canvas is a band in
+     the middle, and a viewport-anchored pad would float off the game. */
+  #pad{position:fixed;left:14px;bottom:14px;
+    display:none;align-items:flex-end;gap:10px;
+    opacity:.26;transition:opacity .18s ease;
+    user-select:none;-webkit-user-select:none;touch-action:none;z-index:2}
   #pad.on{display:flex}
-  #dpad{display:grid;grid-template-columns:repeat(3,56px);
-    grid-template-rows:repeat(2,56px);gap:6px}
-  .k{display:grid;place-items:center;background:#1b1b20;color:#e8e8ec;
-    border:1px solid #33333c;border-radius:12px;font:600 17px/1 inherit;
-    touch-action:none;-webkit-tap-highlight-color:transparent;cursor:pointer}
-  .k:active,.k[data-held="1"]{background:#33333e;border-color:#55556a}
+  #pad.live{opacity:.72}
+
+  #dpad{display:grid;grid-template-columns:repeat(3,52px);
+    grid-template-rows:repeat(2,52px);gap:5px}
+  .k{display:grid;place-items:center;background:rgba(12,12,16,.62);
+    color:#fff;border:1px solid rgba(255,255,255,.28);border-radius:12px;
+    font:600 16px/1 inherit;touch-action:none;
+    -webkit-tap-highlight-color:transparent;cursor:pointer;
+    backdrop-filter:blur(2px)}
+  .k[data-held="1"]{background:rgba(255,255,255,.34);
+    border-color:rgba(255,255,255,.6)}
   #kw{grid-column:2;grid-row:1}
   #ka{grid-column:1;grid-row:2}
   #ks{grid-column:2;grid-row:2}
   #kd{grid-column:3;grid-row:2}
-  #kspace{width:96px;height:56px}
+  #kspace{width:78px;height:52px;font-size:13px}
+
+  /* Touch targets stay finger-sized in fullscreen/landscape, where the game is
+     actually playable, but a 16:9 game letterboxed into a portrait phone is only
+     ~340px wide and full-size buttons would cover half of it. */
+  @media (max-width: 760px) {
+    #dpad{grid-template-columns:repeat(3,40px);grid-template-rows:repeat(2,40px);gap:4px}
+    .k{font-size:13px;border-radius:9px}
+    #kspace{width:58px;height:40px;font-size:11px}
+    #pad{gap:7px}
+  }
+
+  #status{position:fixed;left:0;right:0;bottom:12px;text-align:center;
+    color:#8a8a92;pointer-events:none}
 </style>
 </head>
 <body>
-  <div id="frame"><div id="stage">
+  <div id="stage">
     <canvas id="canvas" width="1280" height="720"></canvas>
-  </div></div>
-  <div id="status">Loading…</div>
+  </div>
 
   <div id="pad">
     <div id="dpad">
@@ -57,16 +83,29 @@
     <div class="k" id="kspace" data-key=" ">Action</div>
   </div>
 
+  <div id="status">Loading…</div>
+
   <script>
-  // Scale the stage to fit without ever touching the canvas' CSS size.
+  // Scale the stage to fit, without ever setting a CSS size on the canvas.
   (function () {
-    const frame = document.getElementById('frame');
     const stage = document.getElementById('stage');
+    const pad = document.getElementById('pad');
     const fit = () => {
-      const maxH = Math.max(240, innerHeight - 190);
-      const k = Math.min(frame.clientWidth / 1280, maxH / 720);
-      stage.style.transform = 'scale(' + k + ')';
-      frame.style.height = (720 * k) + 'px';
+      const k = Math.min(innerWidth / 1280, innerHeight / 720);
+      stage.style.transform = 'translate(-50%, -50%) scale(' + k + ')';
+
+      // Pin the pad inside the canvas' bottom-left corner, honouring any
+      // safe-area inset so it clears a home indicator or notch.
+      const inset = innerWidth < 760 ? 8 : 14;
+      const gapX = Math.max(0, (innerWidth - 1280 * k) / 2);
+      const gapY = Math.max(0, (innerHeight - 720 * k) / 2);
+      const safe = (side, fallback) => {
+        const v = getComputedStyle(document.documentElement)
+          .getPropertyValue('--sa-' + side).trim();
+        return v ? parseFloat(v) || fallback : fallback;
+      };
+      pad.style.left = (gapX + inset + safe('left', 0)) + 'px';
+      pad.style.bottom = (gapY + inset + safe('bottom', 0)) + 'px';
     };
     addEventListener('resize', fit);
     addEventListener('orientationchange', fit);
@@ -86,30 +125,34 @@
       d: { code: 'KeyD', keyCode: 68 },
       ' ': { code: 'Space', keyCode: 32 },
     };
+    const pad = document.getElementById('pad');
 
     const send = (type, key) => {
       const k = KEYS[key];
       if (!k) return;
-      // Emscripten's GLFW shim reads keyCode/which, and listens on the
-      // document, so the event has to bubble from there.
-      const ev = new KeyboardEvent(type, {
+      // Emscripten's GLFW shim reads keyCode/which and listens on the document,
+      // so the event has to bubble from there.
+      document.dispatchEvent(new KeyboardEvent(type, {
         key, code: k.code, keyCode: k.keyCode, which: k.keyCode,
         bubbles: true, cancelable: true, view: window,
-      });
-      document.dispatchEvent(ev);
+      }));
     };
 
     const held = new Set();
+    const sync = () => pad.classList.toggle('live', held.size > 0);
+
     const press = (el, key) => {
       if (held.has(key)) return;
       held.add(key);
       el.dataset.held = '1';
+      sync();
       send('keydown', key);
     };
     const release = (el, key) => {
       if (!held.has(key)) return;
       held.delete(key);
       delete el.dataset.held;
+      sync();
       send('keyup', key);
     };
 
@@ -117,8 +160,8 @@
       const key = el.dataset.key;
       el.addEventListener('pointerdown', (e) => {
         e.preventDefault();
-        // Capture keeps the key held if the finger slides off the button.
-        // It throws for a pointer id the element never saw, so never let that
+        // Capture keeps the key held if the finger slides off the button. It
+        // throws for a pointer id the element never saw, so never let that
         // abort the keypress below.
         try { el.setPointerCapture?.(e.pointerId); } catch {}
         press(el, key);
@@ -127,7 +170,6 @@
       el.addEventListener('pointerup', up);
       el.addEventListener('pointercancel', up);
       el.addEventListener('lostpointercapture', up);
-      // A pointer that leaves the button without capture would otherwise stick.
       el.addEventListener('pointerleave', up);
     }
 
@@ -138,11 +180,10 @@
       }
     });
 
-    // Show the pad on touch devices, or when the viewport is phone-sized.
     const touch = matchMedia('(hover: none), (pointer: coarse)').matches
       || 'ontouchstart' in window;
-    if (touch || innerWidth < 820) document.getElementById('pad').classList.add('on');
-    window.__showPad = () => document.getElementById('pad').classList.add('on');
+    if (touch) pad.classList.add('on');
+    window.__showPad = () => pad.classList.add('on');
   })();
   </script>
   <script type="module" src="main.js"></script>
