@@ -1,7 +1,7 @@
 export const config = /*json-start*/{
   "mainAssemblyName": "RuntimeWeb.dll",
   "resources": {
-    "hash": "sha256-dKMZn8HEXwvLvy8dkdao5EALzfAJbguUkYvoM+kPvB4=",
+    "hash": "sha256-Gg8Cr2cHafV1HjHNR6yILtp1KsdJzccj1wRfmCpjCEc=",
     "jsModuleNative": [
       {
         "name": "dotnet.native.js"
@@ -904,7 +904,7 @@ export const config = /*json-start*/{
       {
         "virtualPath": "RuntimeWeb.wasm",
         "name": "RuntimeWeb.wasm",
-        "hash": "sha256-kvTgq02ykAQE5iWRNASq4LTRhoQY91SV9H6EcUHLMo0="
+        "hash": "sha256-BeGLy7p1oAZG74WXL9VBMSX2LJs5YbRs+xr2+Pz8iTo="
       }
     ],
     "pdb": [
@@ -921,7 +921,7 @@ export const config = /*json-start*/{
       {
         "virtualPath": "RuntimeWeb.pdb",
         "name": "RuntimeWeb.pdb",
-        "hash": "sha256-Xzvp4rDpT8sqVK1Y+SmgJoHxaNm2a5t1kCyp2bD+k0I="
+        "hash": "sha256-MiuP5sD1LHqXxyDCRGj0JPuu2Ne9bRXrAT3H/TlBEpE="
       }
     ],
     "vfs": [
