@@ -1,16 +1,9 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import ProjectFolder from "./ProjectFolder";
-import { FEATURED, PROJECTS, countFor } from "../../data/projects";
+import { FEATURED, PROJECTS } from "../../data/projects";
 import { prefetchWork } from "../../routes";
 import "./WorkSection.css";
-
-const COUNTS = [
-  { id: "games", one: "game", many: "games" },
-  { id: "systems", one: "system", many: "systems" },
-]
-  .map((c) => ({ ...c, n: countFor(c.id) }))
-  .filter((c) => c.n > 0);
 
 function WorkSection() {
   return (

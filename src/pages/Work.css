@@ -32,13 +32,6 @@
   font-size: clamp(44px, 4vw + 16px, 72px);
 }
 
-.work-total {
-  align-self: flex-end;
-  margin-left: auto;
-  padding-bottom: 10px;
-  font-variant-numeric: tabular-nums;
-}
-
 @keyframes work-pop {
   from {
     opacity: 0;
@@ -296,12 +289,6 @@
 }
 
 @media (max-width: 640px) {
-  .work-total {
-    width: 100%;
-    margin-left: 0;
-    padding-bottom: 0;
-  }
-
   .work-toolbar {
     gap: 10px;
   }

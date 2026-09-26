@@ -323,13 +323,6 @@ ol {
   color: var(--text-secondary);
 }
 
-.surface {
-  position: relative;
-  background: var(--surface);
-  border-radius: var(--r-lg);
-  box-shadow: var(--shadow-sm), var(--ring);
-}
-
 .card {
   position: relative;
   display: flex;
@@ -486,16 +479,6 @@ a.card:hover .card-corner {
   --btn-bg: color-mix(in srgb, var(--text) 86%, var(--bg));
 }
 
-.btn-accent {
-  --btn-bg: var(--accent);
-  --btn-fg: var(--on-accent);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.06), 0 8px 20px -8px color-mix(in srgb, var(--accent) 70%, transparent);
-}
-
-.btn-accent:hover {
-  --btn-bg: var(--accent-hover);
-}
-
 .btn-lg {
   min-height: 52px;
   padding: 0 28px;
@@ -570,12 +553,6 @@ a.card:hover .card-corner {
 .status-dot.is-busy {
   background: var(--caution-dot);
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--caution-dot) 22%, transparent);
-}
-
-.media-cover {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 [data-reveal] {

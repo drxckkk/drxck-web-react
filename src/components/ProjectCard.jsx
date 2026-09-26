@@ -2,23 +2,11 @@ import { Link } from "react-router-dom";
 import { PROJECT_ICONS, iconFor } from "./icons";
 import "./ProjectCard.css";
 
-const statusClass = (status = "") => `is-${status.toLowerCase().replace(/[^a-z]+/g, "-")}`;
-
 const SIZES = {
   grid: "(max-width: 640px) 92vw, (max-width: 1100px) 46vw, 380px",
   wide: "(max-width: 640px) 92vw, (max-width: 1100px) 92vw, 780px",
   list: "112px",
 };
-
-export function StatusChip({ status }) {
-  if (!status) return null;
-  return (
-    <span className={`chip status-chip ${statusClass(status)}`}>
-      <span className="status-chip-dot" aria-hidden="true" />
-      {status}
-    </span>
-  );
-}
 
 function ProjectCard({ project, layout = "grid", wide = false, eager = false, priority = false }) {
   const Icon = iconFor(project.icon, PROJECT_ICONS);
@@ -47,11 +35,6 @@ function ProjectCard({ project, layout = "grid", wide = false, eager = false, pr
         </span>
         <span className="project-name">{project.title}</span>
         <span className="project-desc">{project.shortDescription}</span>
-      </span>
-
-      <span className="project-foot">
-        <span className="project-year">{project.year}</span>
-        <StatusChip status={project.status} />
       </span>
     </Link>
   );

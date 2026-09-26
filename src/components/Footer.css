@@ -29,26 +29,3 @@
     radial-gradient(circle, var(--brand-signal) 1.6px, transparent 1.9px) center / 14px 14px no-repeat,
     radial-gradient(circle, var(--text-tertiary) 1.1px, transparent 1.4px) 0 0 / 4.67px 4.67px;
 }
-
-.footer-note {
-  margin-right: auto;
-}
-
-.footer-links {
-  display: flex;
-  gap: 4px;
-}
-
-.footer-links a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 36px;
-  padding: 0 10px;
-  border-radius: 999px;
-  transition: background-color var(--t-hover) var(--ease), color var(--t-hover) var(--ease);
-}
-
-.footer-links a:hover {
-  background: var(--fill);
-  color: var(--text);
-}

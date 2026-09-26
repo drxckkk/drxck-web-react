@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight, BookOpen, Clock, Hammer, Sparkles } from "lucide-react";
+import { ArrowUpRight, Clock, Hammer } from "lucide-react";
 import Emblem from "../Emblem";
-import Tuner from "./Tuner";
 import { ABOUT, CURRENTLY, PROFILE, STATUS } from "../../data/profile";
 import { projectById } from "../../data/projects";
 import "./About.css";
@@ -137,45 +136,6 @@ function BuildingCard() {
   );
 }
 
-function LearningCard() {
-  return (
-    <article className="card about-learning" data-reveal>
-      <p className="card-label">
-        <BookOpen aria-hidden="true" strokeWidth={2} />
-        Currently learning
-      </p>
-      <ol className="learning-list">
-        {CURRENTLY.learning.map((item, i) => (
-          <li key={item}>
-            <span className="learning-index" aria-hidden="true">
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            {item}
-          </li>
-        ))}
-      </ol>
-    </article>
-  );
-}
-
-function PlayingCard() {
-  return (
-    <article className="card about-playing" data-reveal style={{ "--reveal-delay": "120ms" }}>
-      <p className="card-label">
-        <Sparkles aria-hidden="true" strokeWidth={2} />
-        Playing with
-      </p>
-      <ul className="playing-list">
-        {CURRENTLY.playingWith.map((item) => (
-          <li className="playing-chip" key={item}>
-            {item}
-          </li>
-        ))}
-      </ul>
-    </article>
-  );
-}
-
 function About() {
   return (
     <section id="about" className="section home-about" data-nav-section="about">
@@ -189,9 +149,6 @@ function About() {
           <ProfileCard />
           <StatusCard />
           <BuildingCard />
-          <LearningCard />
-          <Tuner />
-          <PlayingCard />
         </div>
       </div>
     </section>

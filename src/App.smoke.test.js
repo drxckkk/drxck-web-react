@@ -6,8 +6,7 @@ import { Shell } from "./App";
 import { FEATURED, FILTERS, PROJECTS, searchProjects } from "./data/projects";
 import { CONTACT, CURRENTLY } from "./data/profile";
 import { PLACES } from "./data/places";
-import { HARDWARE, SOFTWARE, STACK } from "./data/uses";
-import { ICONS } from "./components/icons";
+import { STACK } from "./data/uses";
 
 const PUBLIC = path.join(__dirname, "..", "public");
 
@@ -204,40 +203,6 @@ test("the archive has a list view as well as a grid", async () => {
   expect(document.querySelector(".work-collection.is-list")).toBeInTheDocument();
 });
 
-test("tuning the radio to 1440 MHz reveals the project it's named after", () => {
-  renderAt("/");
-  const dial = screen.getByLabelText(/radio frequency/i);
-
-  expect(screen.queryByRole("link", { name: /signal found/i })).not.toBeInTheDocument();
-  fireEvent.change(dial, { target: { value: "1440" } });
-  expect(screen.getByRole("link", { name: /signal found/i })).toHaveAttribute(
-    "href",
-    `/work/${CURRENTLY.building}`
-  );
-});
-
-test("a revealed card stays visible when its own classes change", () => {
-  global.IntersectionObserver = class {
-    constructor(callback) {
-      this.callback = callback;
-    }
-    observe(target) {
-      this.callback([{ isIntersecting: true, target }]);
-    }
-    unobserve() {}
-    disconnect() {}
-  };
-
-  renderAt("/");
-  const dial = screen.getByLabelText(/radio frequency/i);
-  const card = dial.closest("[data-reveal]");
-
-  expect(card).toHaveAttribute("data-revealed");
-  fireEvent.change(dial, { target: { value: "1440" } });
-  expect(card).toHaveClass("is-locked");
-  expect(card).toHaveAttribute("data-revealed");
-});
-
 test("contact uses the real channels", () => {
   renderAt("/");
   const contact = document.getElementById("contact");
@@ -281,7 +246,6 @@ test("the currently-building card points at a real project", () => {
   expect(PROJECTS.some((p) => p.id === CURRENTLY.building)).toBe(true);
 });
 
-test("every uses entry has a known icon and every stack entry a symbol", () => {
-  [...HARDWARE, ...SOFTWARE].forEach((item) => expect(ICONS[item.icon]).toBeDefined());
+test("every stack entry has a symbol", () => {
   STACK.forEach((item) => expect(item.symbol).toBeTruthy());
 });

@@ -1,4 +1,3 @@
-import { CONTACT } from "../data/profile";
 import "./Footer.css";
 
 function Footer() {

@@ -11,7 +11,6 @@ import {
   Search,
   User,
 } from "lucide-react";
-import { GitHubIcon } from "./icons";
 import { PROJECTS, searchProjects } from "../data/projects";
 import { CONTACT } from "../data/profile";
 import "./CommandPalette.css";
@@ -21,7 +20,7 @@ const PAGES = [
   { id: "p-work", title: "Work", hint: "Every project", to: "/work", Icon: Folder },
   { id: "p-about", title: "About", hint: "Who I am, what I'm up to", to: "/#about", Icon: User },
   { id: "p-places", title: "Places", hint: "Photos", to: "/#places", Icon: MapPin },
-  { id: "p-uses", title: "What I use", hint: "Hardware, software, stack", to: "/#uses", Icon: Monitor },
+  { id: "p-uses", title: "What I use", hint: "Stack, tools, how I work", to: "/#uses", Icon: Monitor },
   { id: "p-contact", title: "Contact", hint: "Email, Discord, GitHub", to: "/#contact", Icon: Mail },
 ];
 

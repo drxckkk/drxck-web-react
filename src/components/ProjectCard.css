@@ -64,21 +64,6 @@
   color: var(--text-secondary);
 }
 
-.project-foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: auto;
-  padding: 14px 10px 8px;
-}
-
-.project-year {
-  font-size: 13px;
-  color: var(--text-secondary);
-  font-variant-numeric: tabular-nums;
-}
-
 @media (hover: hover) {
   .project-card:hover {
     transform: translate3d(0, -3px, 0);
@@ -92,25 +77,6 @@
 
 .project-card:active {
   transform: scale(0.985);
-}
-
-.status-chip-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--text-tertiary);
-}
-
-.status-chip.is-shipped .status-chip-dot {
-  background: var(--positive-dot);
-}
-
-.status-chip.is-in-progress .status-chip-dot {
-  background: var(--accent);
-}
-
-.status-chip.is-prototype .status-chip-dot {
-  background: var(--caution-dot);
 }
 
 .project-card.is-wide {
@@ -139,10 +105,6 @@
 .project-card.is-wide .project-desc {
   font-size: 16px;
   -webkit-line-clamp: 3;
-}
-
-.project-card.is-wide .project-foot {
-  padding: 14px 22px 16px;
 }
 
 .project-card.is-list {
@@ -177,15 +139,6 @@
   font-size: 14px;
 }
 
-.project-card.is-list .project-foot {
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 6px;
-  margin: 0;
-  padding: 0;
-}
-
 @media (hover: hover) {
   .project-card.is-list:hover {
     transform: translate3d(0, -2px, 0);
@@ -205,20 +158,12 @@
   .project-card.is-wide .project-info {
     padding: 14px 10px 0;
   }
-
-  .project-card.is-wide .project-foot {
-    padding: 14px 10px 8px;
-  }
 }
 
 @media (max-width: 560px) {
   .project-card.is-list {
     grid-template-columns: 88px minmax(0, 1fr);
     padding-right: 14px;
-  }
-
-  .project-card.is-list .project-foot {
-    display: none;
   }
 }
 

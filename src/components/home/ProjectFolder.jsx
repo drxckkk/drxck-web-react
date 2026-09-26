@@ -1,11 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
 import { PROJECT_ICONS, iconFor } from "../icons";
 import { prefetchWork } from "../../routes";
 import "./ProjectFolder.css";
-
-const MARK = Array.from({ length: 9 }, (_, i) => i);
 
 function useOpenOnView(ref) {
   const [open, setOpen] = useState(false);
@@ -59,19 +56,6 @@ function ProjectFolder({ projects, total }) {
           to="/work"
           aria-label={`Work, open the archive of ${total} projects`}
         >
-          <span className="folder-front-face">
-            <span className="folder-label">Recent Work</span>
-            <span className="folder-count">{total} projects</span>
-          </span>
-          <span className="folder-open-chip" aria-hidden="true">
-            Open
-            <ArrowUpRight strokeWidth={2.2} />
-          </span>
-          <span className="folder-mark" aria-hidden="true">
-            {MARK.map((i) => (
-              <span key={i} />
-            ))}
-          </span>
         </Link>
 
         <ul className="folder-sheets" aria-label="Featured projects">
@@ -108,7 +92,6 @@ function ProjectFolder({ projects, total }) {
       </div>
 
       <p className="folder-hint" aria-hidden="true">
-        <span className="folder-hint-hover">Hover to peek inside · click to open</span>
         <span className="folder-hint-touch">Tap a file to open it</span>
       </p>
     </div>

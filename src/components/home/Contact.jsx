@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Check, Copy, Mail } from "lucide-react";
-import { DiscordIcon, GitHubIcon } from "../icons";
+import { DiscordIcon } from "../icons";
 import { CONTACT } from "../../data/profile";
 import "./Contact.css";
 

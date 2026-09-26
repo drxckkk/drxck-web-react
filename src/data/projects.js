@@ -1,10 +1,10 @@
 import luckyVideo from "../assets/project1.mp4";
 import orbVideo from "../assets/project2.mp4";
-import jumpVideo from "../assets/project3.mp4";
 import kartVideo from "../assets/project4.mp4";
 import kitchenSimVideo from "../assets/project5.mp4";
 import realVehVideo from "../assets/project6.mp4";
 import signalVideo from "../assets/project7.mp4";
+import eggVideo from "../assets/project8.mp4";
 
 const still = (id) => ({
   src: `/images/projects/${id}-640.webp`,
@@ -14,24 +14,44 @@ const still = (id) => ({
 
 export const PROJECTS = [
   {
+    id: "crackanegg",
+    title: "Crack An Egg",
+    category: "Roblox game",
+    platform: "Roblox",
+    filters: ["games", "roblox"],
+    icon: "game",
+    shortDescription: "Crack a giant egg layer by layer and raise the mini eggs that fall out.",
+    summary:
+      "A game built around one giant egg. Every hit drops cash, and the mini eggs that drop keep earning once you carry them back to your plot.",
+    overview:
+      "The project's built to be fully modular, configurable and editable to every aspect. With also a heavy focus on perfomance due to the exploding debris & physics. Yet perfoming well even on low-end mobile devices.",
+    stats: [
+      { label: "Delivery", value: "12 days" },
+      { label: "From", value: "$350" },
+    ],
+    tags: ["Economy", "Simulator", "Progression"],
+    video: eggVideo,
+    image: still("crackanegg"),
+    featured: true,
+  },
+  {
     id: "luckyblock",
     title: "Catch a Lucky Block",
     category: "Roblox game",
     platform: "Roblox",
     filters: ["games", "roblox"],
     icon: "game",
-    year: "2026",
     status: "Shipped",
-    shortDescription: "Break Lucky Blocks, collect what falls out. Shipped and ready.",
+    shortDescription: "Break Lucky Blocks, collect what falls out.",
     summary:
-      "A shipped game where players break Lucky Blocks to earn rewards and items. Built for modularity and reuse, heavily optimized and entirely coded by me.",
+      "A game where players break Lucky Blocks to earn rewards and items. Heavily optimized and entirely coded/built by me.",
     overview:
-      "Built with a focus on optimization, modularity and quality. The UI is made to be satisfying and attractive to the players who end up on front-page games, and the whole loop was planned to be satisfying, attractive and fun.",
+      "Built with a focus on performance and polish. The UI is designed to feel rewarding to the players who find front-page games, and the whole loop was planned to be fun from the first block.",
     stats: [
       { label: "Delivery", value: "7 days" },
-      { label: "From", value: "$500" },
+      { label: "From", value: "$250" },
     ],
-    tags: ["Luau", "UI", "Rewards"],
+    tags: ["Roblox", "UI", "Rewards"],
     video: luckyVideo,
     image: still("luckyblock"),
     featured: true,
@@ -43,7 +63,6 @@ export const PROJECTS = [
     platform: "Desktop",
     filters: ["games"],
     icon: "signal",
-    year: "2026",
     status: "In progress",
     shortDescription: "A scanning game where the world only exists once you've scanned it.",
     summary:
@@ -51,7 +70,7 @@ export const PROJECTS = [
     overview:
       "A side project planned to be atmospheric, tense and satisfying to play. The whole view is made of dots that only exist after you scan them. You find signals, interference and fragments, and reconstruct what was, or is, there.",
     stats: [],
-    tags: ["Electron", "TypeScript", "Three.js", "Vite"],
+    tags: ["Electron", "Three.js", "Vite"],
     video: signalVideo,
     image: still("scangame"),
     featured: true,
@@ -63,7 +82,6 @@ export const PROJECTS = [
     platform: "Roblox",
     filters: ["systems", "roblox"],
     icon: "vehicle",
-    year: "2026",
     status: "Shipped",
     shortDescription: "Smooth, drifty kart handling with a suspension that's fun on purpose.",
     summary:
@@ -74,7 +92,7 @@ export const PROJECTS = [
       { label: "Delivery", value: "5 days" },
       { label: "From", value: "$200" },
     ],
-    tags: ["Luau", "Raycast suspension", "Physics"],
+    tags: ["Roblox", "Raycast suspension", "Physics"],
     video: kartVideo,
     image: still("kartsystem"),
     featured: true,
@@ -86,7 +104,6 @@ export const PROJECTS = [
     platform: "Roblox",
     filters: ["games", "roblox"],
     icon: "game",
-    year: "2026",
     status: "Shipped",
     shortDescription: "A complete simulator, designed, programmed and optimized from corner to corner.",
     summary:
@@ -94,13 +111,12 @@ export const PROJECTS = [
     overview:
       "Placement system, unlockable areas, shops, a full cooking loop, collectables and progression. Built for production, with the data layer and economy structured so new content drops in without a rewrite.",
     stats: [
-      { label: "Delivery", value: "3 weeks" },
-      { label: "From", value: "$600" },
+      { label: "Delivery", value: "14 Days" },
+      { label: "From", value: "$350" },
     ],
-    tags: ["Luau", "Placement", "Economy", "Data"],
+    tags: ["Roblox", "Placement", "Economy", "Data"],
     video: kitchenSimVideo,
     image: still("kitchensim"),
-    featured: true,
   },
   {
     id: "realveh",
@@ -109,18 +125,17 @@ export const PROJECTS = [
     platform: "Roblox",
     filters: ["systems", "roblox"],
     icon: "vehicle",
-    year: "2026",
     status: "Shipped",
     shortDescription: "Raycast suspension, springs and air resistance, all configurable.",
     summary:
-      "A realistic vehicle system with raycast suspension and a configurable handling model: springs, air resistance and more. Built to be modular and reusable.",
+      "A realistic vehicle system with raycast suspension and a configurable handling model: springs, air resistance and more. Every value is exposed, so the handling can be re-tuned without touching code.",
     overview:
       "Raycasts, body forces, custom physics and sounds, all combined to simulate realistic vehicle behaviour inside Roblox.",
     stats: [
-      { label: "Delivery", value: "4 days" },
-      { label: "From", value: "$400" },
+      { label: "Delivery", value: "5 Days" },
+      { label: "From", value: "$300" },
     ],
-    tags: ["Luau", "Physics", "Audio"],
+    tags: ["Roblox", "Physics", "Audio"],
     video: realVehVideo,
     image: still("realveh"),
   },
@@ -131,7 +146,6 @@ export const PROJECTS = [
     platform: "Roblox",
     filters: ["systems", "roblox"],
     icon: "system",
-    year: "2025",
     shortDescription: "Pooled orbs on custom physics: 512+ on screen at a stable frame rate.",
     summary:
       "Custom physics and clustered object pooling. No matter how many orbs are on screen, it keeps performing.",
@@ -139,32 +153,11 @@ export const PROJECTS = [
       "Orbs are pooled and reused instead of being created and destroyed on each spawn, and the motion runs on hand-rolled physics rather than the engine's. The result holds a stable frame rate with 512+ orbs live at once.",
     stats: [
       { label: "Delivery", value: "2 days" },
-      { label: "From", value: "$70" },
+      { label: "From", value: "$75" },
     ],
-    tags: ["Luau", "Object pooling", "Physics"],
+    tags: ["Roblox", "Object pooling", "Physics"],
     video: orbVideo,
     image: still("orbsystem"),
-  },
-  {
-    id: "jumpugc",
-    title: "Jump for UGC",
-    category: "Roblox game",
-    platform: "Roblox",
-    filters: ["games", "roblox"],
-    icon: "game",
-    year: "2025",
-    shortDescription: "Jump, clear obbies, earn gold and unlock free UGC items.",
-    summary:
-      "A 'Jump for UGC' game where players jump and complete obbies to earn gold and unlock free UGC items.",
-    overview:
-      "Built to be modular and easy to customize, using Roact and Nevermore Engine. A old small project I worked on years past.",
-    stats: [
-      { label: "Delivery", value: "3 days" },
-      { label: "From", value: "$100" },
-    ],
-    tags: ["Luau", "Roact", "Nevermore"],
-    video: jumpVideo,
-    image: still("jumpugc"),
   },
 ];
 
@@ -172,7 +165,6 @@ export const FILTERS = [
   { id: "all", label: "All" },
   { id: "games", label: "Games" },
   { id: "systems", label: "Systems" },
-  { id: "web", label: "Web" },
   { id: "roblox", label: "Roblox" },
 ];
 
@@ -198,7 +190,7 @@ export function searchProjects(query, list = PROJECTS) {
 
   return list.filter((p) => {
     const haystack = normalize(
-      [p.title, p.category, p.platform, p.shortDescription, p.summary, p.status, p.year, ...p.tags]
+      [p.title, p.category, p.platform, p.shortDescription, p.summary, p.status, ...p.tags]
         .filter(Boolean)
         .join(" ")
     );

@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
-import Emblem from "../Emblem";
 import { PROFILE } from "../../data/profile";
 import { prefersReducedMotion } from "../../routes";
 import "./Hero.css";
@@ -8,33 +7,27 @@ import "./Hero.css";
 const GRID = 22;
 const SPOT = 380;
 
-function usePointerLight(sectionRef, emblemRef, spotRef) {
+function usePointerLight(sectionRef, spotRef) {
   useEffect(() => {
     const section = sectionRef.current;
-    const emblem = emblemRef.current;
     const spot = spotRef.current;
-    if (!section || !emblem || !spot) return undefined;
+    if (!section || !spot) return undefined;
 
     const fine = window.matchMedia?.("(hover: hover) and (pointer: fine)").matches;
     if (!fine || prefersReducedMotion()) return undefined;
 
     let rect = null;
     let frame = 0;
-    const target = { x: 0, y: 0, sx: 0, sy: 0 };
-    const current = { x: 0, y: 0, sx: 0, sy: 0 };
+    const target = { sx: 0, sy: 0 };
+    const current = { sx: 0, sy: 0 };
 
     const measure = () => {
       rect = section.getBoundingClientRect();
     };
 
     const tick = () => {
-      current.x += (target.x - current.x) * 0.1;
-      current.y += (target.y - current.y) * 0.1;
       current.sx += (target.sx - current.sx) * 0.28;
       current.sy += (target.sy - current.sy) * 0.28;
-
-      emblem.style.setProperty("--mx", current.x.toFixed(4));
-      emblem.style.setProperty("--my", current.y.toFixed(4));
 
       const left = current.sx - SPOT / 2;
       const top = current.sy - SPOT / 2;
@@ -42,8 +35,6 @@ function usePointerLight(sectionRef, emblemRef, spotRef) {
       spot.style.backgroundPosition = `${-(left % GRID)}px ${-(top % GRID)}px`;
 
       const settling =
-        Math.abs(target.x - current.x) > 0.001 ||
-        Math.abs(target.y - current.y) > 0.001 ||
         Math.abs(target.sx - current.sx) > 0.3 ||
         Math.abs(target.sy - current.sy) > 0.3;
 
@@ -64,18 +55,13 @@ function usePointerLight(sectionRef, emblemRef, spotRef) {
 
     const onMove = (e) => {
       if (!rect) measure();
-      target.x = Math.max(-1, Math.min(1, ((e.clientX - rect.left) / rect.width - 0.5) * 2));
-      target.y = Math.max(-1, Math.min(1, ((e.clientY - rect.top) / rect.height - 0.4) * 2));
       target.sx = e.clientX - rect.left;
       target.sy = e.clientY - rect.top;
       schedule();
     };
 
     const onLeave = () => {
-      target.x = 0;
-      target.y = 0;
       section.classList.remove("is-pointing");
-      schedule();
     };
 
     const invalidate = () => {
@@ -96,15 +82,14 @@ function usePointerLight(sectionRef, emblemRef, spotRef) {
       window.removeEventListener("scroll", invalidate);
       window.removeEventListener("resize", invalidate);
     };
-  }, [sectionRef, emblemRef, spotRef]);
+  }, [sectionRef, spotRef]);
 }
 
 function Hero() {
   const sectionRef = useRef(null);
-  const emblemRef = useRef(null);
   const spotRef = useRef(null);
 
-  usePointerLight(sectionRef, emblemRef, spotRef);
+  usePointerLight(sectionRef, spotRef);
 
   return (
     <section className="hero" id="top" data-nav-section="home" ref={sectionRef}>
@@ -114,10 +99,6 @@ function Hero() {
       </div>
 
       <div className="shell hero-inner">
-        <div className="hero-emblem">
-          <Emblem ref={emblemRef} className="hero-emblem-icon" />
-        </div>
-
         <h1 className="hero-name title-xl">{PROFILE.name}</h1>
         <p className="hero-role">{PROFILE.role}</p>
         <p className="hero-tagline body-l">{PROFILE.tagline}</p>

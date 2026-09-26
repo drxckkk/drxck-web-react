@@ -40,20 +40,6 @@
   animation: project-rise 560ms var(--ease) backwards;
 }
 
-.project-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-secondary);
-}
-
-.project-eyebrow svg {
-  width: 16px;
-  height: 16px;
-}
-
 .project-title {
   font-size: clamp(40px, 4vw + 16px, 76px);
   text-wrap: balance;

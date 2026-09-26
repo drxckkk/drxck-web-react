@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronLeft, Pause, Play } from "lucide-react";
 import LazyVideo from "../components/LazyVideo";
-import { StatusChip } from "../components/ProjectCard";
-import { PROJECT_ICONS, iconFor } from "../components/icons";
 import usePageMeta from "../hooks/usePageMeta";
 import { PROJECTS, projectById } from "../data/projects";
 import { prefersReducedMotion } from "../routes";
@@ -80,7 +78,7 @@ function ProjectPage() {
 
   usePageMeta({
     title: project ? project.title : "Project not found",
-    description: project ? `${project.shortDescription} ${project.category}, ${project.year}.` : undefined,
+    description: project ? `${project.shortDescription} ${project.category}.` : undefined,
     path: `/work/${id}`,
   });
 
@@ -98,7 +96,6 @@ function ProjectPage() {
     );
   }
 
-  const Icon = iconFor(project.icon, PROJECT_ICONS);
   const index = PROJECTS.indexOf(project);
   const prev = PROJECTS[(index - 1 + PROJECTS.length) % PROJECTS.length];
   const next = PROJECTS[(index + 1) % PROJECTS.length];
@@ -113,12 +110,6 @@ function ProjectPage() {
         </Link>
 
         <header className="project-header">
-          <p className="project-eyebrow">
-            <Icon aria-hidden="true" strokeWidth={2} />
-            {project.category}
-            <span aria-hidden="true">·</span>
-            {project.year}
-          </p>
           <h1 className="title-xl project-title">{project.title}</h1>
           <p className="body-l project-lead">{project.summary}</p>
 
@@ -159,18 +150,6 @@ function ProjectPage() {
                 <dt>Platform</dt>
                 <dd>{project.platform}</dd>
               </div>
-              <div>
-                <dt>Year</dt>
-                <dd>{project.year}</dd>
-              </div>
-              {project.status && (
-                <div>
-                  <dt>Status</dt>
-                  <dd>
-                    <StatusChip status={project.status} />
-                  </dd>
-                </div>
-              )}
               {project.stats.map((stat) => (
                 <div key={stat.label}>
                   <dt>{stat.label}</dt>
@@ -181,7 +160,6 @@ function ProjectPage() {
 
             {project.tags.length > 0 && (
               <div className="project-tags">
-                <p className="meta">Built with</p>
                 <ul>
                   {project.tags.map((tag) => (
                     <li className="chip" key={tag}>

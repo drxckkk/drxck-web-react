@@ -2,7 +2,7 @@
   position: relative;
   display: grid;
   place-items: center;
-  min-height: clamp(560px, 76vh, 820px);
+  min-height: clamp(560px, 55vh, 820px);
   padding-block: calc(var(--nav-space) + 12px) clamp(24px, 4vw, 56px);
   text-align: center;
   isolation: isolate;
@@ -50,28 +50,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.hero-emblem {
-  margin-bottom: clamp(24px, 3vw, 34px);
-  animation: hero-icon 700ms var(--ease) 40ms backwards;
-}
-
-.hero-emblem-icon {
-  --size: clamp(96px, 8vw + 40px, 128px);
-  transition: transform 420ms var(--ease);
-}
-
-.hero-emblem-icon:hover {
-  transform: translate3d(0, -3px, 0);
-}
-
-.hero-emblem-icon .emblem-shadow {
-  transition: opacity 420ms var(--ease);
-}
-
-.hero-emblem-icon:hover .emblem-shadow {
-  opacity: 1;
 }
 
 .hero-name {
@@ -145,15 +123,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-emblem,
   .hero-name,
   .hero-role,
   .hero-tagline,
   .hero-actions {
     animation-name: hero-fade;
-  }
-
-  .hero-emblem-icon:hover {
-    transform: none;
   }
 }

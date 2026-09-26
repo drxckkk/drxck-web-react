@@ -21,34 +21,6 @@
   max-width: 40ch;
 }
 
-.home-work-counts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 6px;
-}
-
-.home-work-counts li {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 6px;
-  height: 32px;
-  padding: 0 14px 0 12px;
-  align-items: center;
-  border-radius: 999px;
-  background: var(--surface);
-  box-shadow: var(--shadow-sm), var(--ring);
-  font-size: 14px;
-  font-weight: 550;
-  color: var(--text-secondary);
-}
-
-.home-work-count {
-  font-weight: 700;
-  color: var(--text);
-  font-variant-numeric: tabular-nums;
-}
-
 .home-work-stage {
   min-width: 0;
 }

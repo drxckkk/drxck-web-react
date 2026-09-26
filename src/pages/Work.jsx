@@ -14,12 +14,6 @@ const FILTER_OPTIONS = FILTERS.map((f) => ({ ...f, count: countFor(f.id) })).fil
   (f) => f.count > 0
 );
 
-const YEARS = PROJECTS.map((p) => Number(p.year)).filter(Boolean);
-const SPAN =
-  Math.min(...YEARS) === Math.max(...YEARS)
-    ? String(Math.max(...YEARS))
-    : `${Math.min(...YEARS)}–${Math.max(...YEARS)}`;
-
 function readView() {
   try {
     return localStorage.getItem(VIEW_KEY) === "list" ? "list" : "grid";
@@ -123,11 +117,8 @@ function Work() {
         <FolderGlyph />
         <div className="work-head-text">
           <h1 className="title-xl work-title">Work</h1>
-          <p className="body-l">Games, software &amp; experiments.</p>
+          <p className="body-l">Games, systems &amp; more.</p>
         </div>
-        <p className="work-total meta">
-          {PROJECTS.length} projects · {SPAN}
-        </p>
       </header>
 
       <div className="shell">
@@ -236,7 +227,7 @@ function Work() {
         ) : (
           <div className="work-empty">
             <p className="title-s">Nothing matches “{query.trim()}”.</p>
-            <p className="body">Try a tool like “Luau”, a year, or a different filter.</p>
+            <p className="body">Try a tool like “Physics” or “Three.js”, or a different filter.</p>
             <button
               type="button"
               className="btn"

@@ -3,7 +3,7 @@ import { useEffect } from "react";
 const SITE = "https://drxck.cyou";
 const DEFAULT_TITLE = "Drxck";
 const DEFAULT_DESCRIPTION =
-  "Software engineer & Game Developer building software, games and interactive experiments.";
+  "Software engineer & Game Developer building systems, games and more.";
 
 function setMeta(selector, attr, value) {
   const el = document.head.querySelector(selector);

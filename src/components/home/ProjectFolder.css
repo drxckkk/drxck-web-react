@@ -193,84 +193,6 @@
   pointer-events: none;
 }
 
-.folder-front-face {
-  position: absolute;
-  left: clamp(18px, 5%, 30px);
-  bottom: clamp(16px, 6%, 28px);
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  text-shadow: 0 1px 1px rgba(0, 40, 100, 0.25);
-}
-
-.folder-label {
-  font-family: var(--font-display);
-  font-size: clamp(28px, 4vw, 40px);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.03em;
-}
-
-.folder-count {
-  font-size: clamp(13px, 1.6vw, 15px);
-  font-weight: 600;
-  opacity: 0.92;
-}
-
-.folder-open-chip {
-  position: absolute;
-  top: 20%;
-  right: clamp(14px, 4%, 24px);
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  height: 30px;
-  padding: 0 10px 0 12px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.2);
-  box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.35);
-  font-size: 13px;
-  font-weight: 600;
-  transition: background-color var(--t-hover) var(--ease);
-}
-
-.folder-open-chip svg {
-  width: 14px;
-  height: 14px;
-  transition: transform var(--t-hover) var(--ease);
-}
-
-.folder-front:hover .folder-open-chip {
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.folder-front:hover .folder-open-chip svg {
-  transform: translate(2px, -2px);
-}
-
-.folder-mark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(9px, 2vw, 14px);
-  transform: translate(-50%, -58%);
-}
-
-.folder-mark span {
-  width: clamp(10px, 2.1vw, 15px);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: rgba(0, 32, 90, 0.2);
-  box-shadow: inset 0 1px 1px rgba(0, 20, 60, 0.28), 0 1px 0 rgba(255, 255, 255, 0.32);
-}
-
-.folder-mark span:nth-child(5) {
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 1px 1px rgba(0, 20, 60, 0.2), 0 0 0 4px rgba(255, 255, 255, 0.14);
-}
-
 .folder-front:focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 4px;
@@ -366,10 +288,6 @@
 }
 
 @media (hover: none), (pointer: coarse) {
-  .folder-hint-hover {
-    display: none;
-  }
-
   .folder-hint-touch {
     display: inline;
   }
@@ -438,10 +356,6 @@
 
   .sheet-category {
     font-size: 10px;
-  }
-
-  .folder-open-chip {
-    display: none;
   }
 }
 

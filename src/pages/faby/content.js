@@ -4,7 +4,7 @@ export const APELIDOS = {
 };
 
 export const INICIO = "2026-06-18T00:00:00";
-export const INICIO_TEXTO = "18 de junho de 2026";
+const INICIO_TEXTO = "18 de junho de 2026";
 
 export const ABERTURA = {
   ola: "pra você, faby, minha princesa",
@@ -87,24 +87,6 @@ export const FRASINHAS = [
   "você merece o mundo, e eu quero te dar ele",
 ];
 
-export const AMIGUINHOS = [
-  {
-    sprite: "myMelody",
-    nome: "my melody",
-    fala: "a faby é a mais fofa de todas, e eu sei do que tô falando 💗",
-  },
-  {
-    sprite: "cinnamoroll",
-    nome: "cinnamoroll",
-    fala: "vim voando de longe só pra dizer que ele te ama muito!",
-  },
-  {
-    sprite: "keroppi",
-    nome: "keroppi",
-    fala: "quanto amor por aqui... mas pode deixar que eu shippo demais!",
-  },
-];
-
 export const FINAL = {
   titulo: "eu te amo, faby",
   frase: "você é o meu amor, minha bobinha, minha princesa. obrigado por ser você, e você mesma, pq eu amo vc do jeito q você é.",
@@ -117,7 +99,6 @@ export const SECOES = {
   perguntas: "umas perguntinhas 💌",
   motivos: "motivos pra te amar",
   frasinhas: "e por fim..",
-  amiguinhos: "seus amiguinhos vieram te ver",
   maisMotivos: "quero mais um motivo",
   maisFrases: "me diz algo fofo..",
   refazer: "responder de novo",

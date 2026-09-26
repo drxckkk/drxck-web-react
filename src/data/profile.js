@@ -2,7 +2,7 @@ export const PROFILE = {
   name: "Drxck",
   handle: "drxck",
   role: "Software Engineer & Game Developer",
-  tagline: "Building games on Roblox & Godot, apps on Swift & more.",
+  tagline: "Building games on Roblox & Godot, and apps in Kotlin & Swift.",
 
   location: "Brazil",
   timeZone: "America/Sao_Paulo",
@@ -25,23 +25,21 @@ export const STATUS = {
 };
 
 export const ABOUT = {
-  statement: "I build software, games and experiments.",
+  statement: "I build systems, games and more.",
   paragraphs: [
-    "Most of what I make lives on Roblox: gameplay systems, complete games and tooling in Luau, built to be modular, fast and easy to re-tune. I care as much about how something feels to use as how efficiently it runs.",
-    "The rest of the time I'm building side projects around physics sims, voxel engines, mostly to find out whether an idea actually works.",
+    "Most of what I make lives on Roblox: gameplay systems, complete games and tools, built to be modular, fast and easy to re-tune. I care as much about how something feels to use as how efficiently it runs.",
+    "The rest of the time I'm building side projects like physics sims and voxel engines, mostly to find out whether an idea actually works.",
   ],
   facts: [
     { label: "Focus", value: "Gameplay systems & games" },
-    { label: "Main platform", value: "Roblox · Luau" },
-    { label: "Also", value: "Godot, Java, Electron" },
+    { label: "Main platform", value: "Roblox" },
+    { label: "Also", value: "Godot, Kotlin, Swift" },
     { label: "Experience", value: "5+ years" },
   ],
 };
 
 export const CURRENTLY = {
   building: "scangame",
-  learning: ["C++", "Database", "Game design"],
-  playingWith: ["Point-cloud rendering", "Custom physics", "Godot"],
 };
 
 export const PRINCIPLES = [

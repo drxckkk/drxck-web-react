@@ -1,33 +1,7 @@
-import { Blocks, Cpu, Monitor } from "lucide-react";
-import { ICONS, iconFor } from "../icons";
-import { CAPABILITIES, HARDWARE, SOFTWARE, STACK } from "../../data/uses";
+import { Blocks } from "lucide-react";
+import { CAPABILITIES, STACK } from "../../data/uses";
 import { PRINCIPLES } from "../../data/profile";
 import "./Toolbox.css";
-
-function UseList({ title, Icon, items }) {
-  return (
-    <div className="uses-group">
-      <h3 className="uses-group-title">
-        <Icon aria-hidden="true" strokeWidth={2} />
-        {title}
-      </h3>
-      <ul className="uses-list">
-        {items.map((item) => {
-          const Glyph = iconFor(item.icon, ICONS);
-          return (
-            <li className="uses-row" key={item.name}>
-              <span className="uses-icon" aria-hidden="true">
-                <Glyph strokeWidth={1.8} />
-              </span>
-              <span className="uses-name">{item.name}</span>
-              <span className="uses-detail">{item.detail}</span>
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  );
-}
 
 function Toolbox() {
   return (
@@ -68,10 +42,6 @@ function Toolbox() {
             </ul>
           </article>
 
-          <article className="card uses-card" data-reveal style={{ "--reveal-delay": "80ms" }}>
-            <UseList title="Hardware" Icon={Cpu} items={HARDWARE} />
-            <UseList title="Software" Icon={Monitor} items={SOFTWARE} />
-          </article>
 
           <article className="card principles-card" data-reveal>
             <h3 className="card-label">How I work</h3>
