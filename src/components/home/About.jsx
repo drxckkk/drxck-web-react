@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Clock, Hammer } from "lucide-react";
 import Emblem from "../Emblem";
-import { ABOUT, CURRENTLY, PROFILE, STATUS } from "../../data/profile";
+import { ABOUT, CURRENTLY, PRINCIPLES, PROFILE, STATUS } from "../../data/profile";
 import { projectById } from "../../data/projects";
 import "./About.css";
 
@@ -136,6 +136,24 @@ function BuildingCard() {
   );
 }
 
+function PrinciplesCard() {
+  return (
+    <article className="card about-principles" data-reveal>
+      <ol className="principles">
+        {PRINCIPLES.map((principle, i) => (
+          <li className="principle" key={principle.title}>
+            <span className="principle-number" aria-hidden="true">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <span className="principle-title">{principle.title}</span>
+            <span className="principle-body">{principle.body}</span>
+          </li>
+        ))}
+      </ol>
+    </article>
+  );
+}
+
 function About() {
   return (
     <section id="about" className="section home-about" data-nav-section="about">
@@ -149,6 +167,7 @@ function About() {
           <ProfileCard />
           <StatusCard />
           <BuildingCard />
+          <PrinciplesCard />
         </div>
       </div>
     </section>

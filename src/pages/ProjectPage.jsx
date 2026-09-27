@@ -131,47 +131,6 @@ function ProjectPage() {
         </header>
 
         <Media project={project} />
-
-        <div className="project-body">
-          <section className="project-overview" aria-labelledby="overview-title">
-            <h2 id="overview-title" className="title-m">
-              About the build
-            </h2>
-            <p className="body-l">{project.overview}</p>
-          </section>
-
-          <aside className="card project-facts" aria-label="Project details">
-            <dl className="project-dl">
-              <div>
-                <dt>Type</dt>
-                <dd>{project.category}</dd>
-              </div>
-              <div>
-                <dt>Platform</dt>
-                <dd>{project.platform}</dd>
-              </div>
-              {project.stats.map((stat) => (
-                <div key={stat.label}>
-                  <dt>{stat.label}</dt>
-                  <dd>{stat.value}</dd>
-                </div>
-              ))}
-            </dl>
-
-            {project.tags.length > 0 && (
-              <div className="project-tags">
-                <ul>
-                  {project.tags.map((tag) => (
-                    <li className="chip" key={tag}>
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </aside>
-        </div>
-
         <nav className="project-pager" aria-label="More projects">
           <Neighbour project={prev} direction="prev" />
           <Neighbour project={next} direction="next" />

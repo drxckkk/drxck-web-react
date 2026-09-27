@@ -4,7 +4,6 @@ import Hero from "../components/home/Hero";
 import WorkSection from "../components/home/WorkSection";
 import About from "../components/home/About";
 import Places from "../components/home/Places";
-import Toolbox from "../components/home/Toolbox";
 import Contact from "../components/home/Contact";
 import useReveal from "../hooks/useReveal";
 import usePageMeta from "../hooks/usePageMeta";
@@ -33,7 +32,6 @@ function Landing() {
       <WorkSection />
       <About />
       <Places />
-      <Toolbox />
       <Contact />
     </main>
   );

@@ -5,6 +5,7 @@ import kitchenSimVideo from "../assets/project5.mp4";
 import realVehVideo from "../assets/project6.mp4";
 import signalVideo from "../assets/project7.mp4";
 import eggVideo from "../assets/project8.mp4";
+import pumpkinVideo from "../assets/project9.mp4";
 
 const still = (id) => ({
   src: `/images/projects/${id}-640.webp`,
@@ -14,6 +15,22 @@ const still = (id) => ({
 
 export const PROJECTS = [
   {
+    id: "pumpkinclick",
+    title: "Plus One Pumpkin Per Click",
+    category: "Roblox game",
+    platform: "Roblox",
+    filters: ["games", "roblox"],
+    icon: "game",
+    shortDescription: "Click to grow a pumpkin, then roll it downhill and smash every wall in its way.",
+    summary:
+      "A clicker simulator game coded completely by me and with a focus on performance and ready to be shipped to the public.",
+    stats: [],
+    tags: ["Clicker", "Physics", "Progression"],
+    video: pumpkinVideo,
+    image: still("pumpkinclick"),
+    featured: true,
+  },
+  {
     id: "crackanegg",
     title: "Crack An Egg",
     category: "Roblox game",
@@ -22,9 +39,7 @@ export const PROJECTS = [
     icon: "game",
     shortDescription: "Crack a giant egg layer by layer and raise the mini eggs that fall out.",
     summary:
-      "A game built around one giant egg. Every hit drops cash, and the mini eggs that drop keep earning once you carry them back to your plot.",
-    overview:
-      "The project's built to be fully modular, configurable and editable to every aspect. With also a heavy focus on perfomance due to the exploding debris & physics. Yet perfoming well even on low-end mobile devices.",
+      "The project was built to be fully modular, configurable and editable to every aspect. With also a heavy focus on perfomance due to the exploding debris & physics. Yet perfoming well even on low-end mobile devices.",
     stats: [
       { label: "Delivery", value: "12 days" },
       { label: "From", value: "$350" },
@@ -33,6 +48,27 @@ export const PROJECTS = [
     video: eggVideo,
     image: still("crackanegg"),
     featured: true,
+  },
+  {
+    id: "kitchensim",
+    title: "Kitchen Simulator",
+    category: "Roblox game",
+    platform: "Roblox",
+    filters: ["games", "roblox"],
+    icon: "game",
+    status: "Shipped",
+    shortDescription: "A complete simulator, designed, programmed and optimized from corner to corner.",
+    summary:
+      "A complete, shipped simulator game, designed, programmed and balanced end to end. Configurable, optimized and satisfying.",
+    overview:
+      "Placement system, unlockable areas, shops, a full cooking loop, collectables and progression. Built for production, with the data layer and economy structured so new content drops in without a rewrite.",
+    stats: [
+      { label: "Delivery", value: "14 Days" },
+      { label: "From", value: "$350" },
+    ],
+    tags: ["Roblox", "Placement", "Economy", "Data"],
+    video: kitchenSimVideo,
+    image: still("kitchensim"),
   },
   {
     id: "luckyblock",
@@ -95,28 +131,6 @@ export const PROJECTS = [
     tags: ["Roblox", "Raycast suspension", "Physics"],
     video: kartVideo,
     image: still("kartsystem"),
-    featured: true,
-  },
-  {
-    id: "kitchensim",
-    title: "Kitchen Simulator",
-    category: "Roblox game",
-    platform: "Roblox",
-    filters: ["games", "roblox"],
-    icon: "game",
-    status: "Shipped",
-    shortDescription: "A complete simulator, designed, programmed and optimized from corner to corner.",
-    summary:
-      "A complete, shipped simulator game, designed, programmed and balanced end to end. Configurable, optimized and satisfying.",
-    overview:
-      "Placement system, unlockable areas, shops, a full cooking loop, collectables and progression. Built for production, with the data layer and economy structured so new content drops in without a rewrite.",
-    stats: [
-      { label: "Delivery", value: "14 Days" },
-      { label: "From", value: "$350" },
-    ],
-    tags: ["Roblox", "Placement", "Economy", "Data"],
-    video: kitchenSimVideo,
-    image: still("kitchensim"),
   },
   {
     id: "realveh",
