@@ -14,7 +14,7 @@ if (!existsSync("public/fnajk-app/index.html")) {
   );
 }
 
-// The game content ships as gamedata-N.bin parts listed in gamedata.json. A
+// The game content ships as gamedata-<hash>.bin parts listed in gamedata.json. A
 // half-synced copy still has index.html, but the game would fail to boot with
 // "Failed to load game data", so check every part is actually here.
 if (!existsSync("public/fnajk-app/gamedata.json")) {
