@@ -32,7 +32,10 @@ async function fetchWithRetry(url, init) {
 // at a time and unpacked straight into emscripten's filesystem, so peak memory
 // stays at about one part rather than the whole 90 MB of assets at once.
 async function unpackGameData(module) {
-  const manifest = await (await fetchWithRetry('gamedata.json', { cache: 'default' })).json();
+  // The manifest is always revalidated; the parts it names carry a hash of
+  // their contents, so they can be cached for as long as the browser likes and
+  // an update still reaches everyone (see tools/wasm/pack-assets.py).
+  const manifest = await (await fetchWithRetry('gamedata.json', { cache: 'no-cache' })).json();
   const { FS } = module;
   const known = new Set();
   let done = 0;
@@ -70,10 +73,61 @@ async function unpackGameData(module) {
   if (done < manifest.bytes) throw new Error('game data incomplete');
 }
 
+// Saves live in emscripten's in-memory filesystem, which a page reload wipes -
+// so Continue, the night reached and every unlock were lost on refresh. The
+// save directory is mounted on IndexedDB instead: loaded before the game starts
+// (restoreSaves), and flushed shortly after each write (fnajk.persist, called
+// from EventManager). Private browsing or blocked storage just means saves stay
+// in memory for the session, same as before - nothing fails.
+const SAVE_ROOT = '/persist';
+let saveFs = null;
+let persistTimer = 0;
+
+function restoreSaves(module) {
+  const { FS } = module;
+  const IDBFS = FS.filesystems && FS.filesystems.IDBFS;
+  if (!IDBFS) return;
+  try {
+    FS.mkdirTree(SAVE_ROOT);
+    FS.mount(IDBFS, {}, SAVE_ROOT);
+  } catch (err) {
+    console.warn('Save storage unavailable:', err);
+    return;
+  }
+  saveFs = FS;
+  module.addRunDependency('saves');
+  FS.syncfs(true, (err) => {
+    if (err) console.warn('Could not load saves:', err);
+    module.removeRunDependency('saves');
+  });
+}
+
+globalThis.fnajk = {
+  // Android only; iOS Safari has no vibration API and ignores it.
+  vibrate(ms) {
+    try { navigator.vibrate?.(ms); } catch { /* unsupported */ }
+  },
+  // Coalesces bursts of saves (a script may set several values in a row)
+  // into one IndexedDB write.
+  persist() {
+    if (!saveFs) return;
+    clearTimeout(persistTimer);
+    persistTimer = setTimeout(() => {
+      saveFs.syncfs(false, (err) => { if (err) console.warn('Could not save:', err); });
+    }, 250);
+  },
+};
+
 try {
   say('Starting runtime…');
 
+  // ?test=night4 starts straight into a night, the way `fnajk play 4` passes
+  // /test:night4 on the desktop. Without it the game boots normally.
+  const test = new URLSearchParams(location.search).get('test');
+  const args = test && /^night[1-5]$/.test(test) ? [`/test:${test}`] : [];
+
   const { runMain } = await dotnet
+    .withApplicationArguments(...args)
     .withConfig({
       maxParallelDownloads: 4,
       loadBootResource: (type, name, defaultUri, integrity) => {
@@ -97,6 +151,7 @@ try {
           () => module.removeRunDependency('gamedata'),
           (err) => { say('Failed to load game data: ' + err); },
         );
+        restoreSaves(module);
       },
       print: (t) => console.log(t),
       printErr: (t) => console.error(t),
