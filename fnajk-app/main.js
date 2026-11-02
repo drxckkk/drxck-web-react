@@ -122,9 +122,10 @@ try {
   say('Starting runtime…');
 
   // ?test=night4 starts straight into a night, the way `fnajk play 4` passes
-  // /test:night4 on the desktop. Without it the game boots normally.
+  // /test:night4 on the desktop; ?test=office4 skips the memory and starts in
+  // the office. Without it the game boots normally.
   const test = new URLSearchParams(location.search).get('test');
-  const args = test && /^night[1-5]$/.test(test) ? [`/test:${test}`] : [];
+  const args = test && /^(night[1-5]|office[1-7])$/.test(test) ? [`/test:${test}`] : [];
 
   const { runMain } = await dotnet
     .withApplicationArguments(...args)
